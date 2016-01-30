@@ -1,0 +1,1519 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="exd-2Y-jDk">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <scenes>
+        <!--Home Page View Controller-->
+        <scene sceneID="sC9-eN-N9V">
+            <objects>
+                <viewController id="exd-2Y-jDk" customClass="HomePageViewController" customModule="After_School_Manager_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qjw-Sm-0Kl"/>
+                        <viewControllerLayoutGuide type="bottom" id="uAk-02-ERQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oiq-i8-M83">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="JWJ-ms-q1e">
+                                <rect key="frame" x="20" y="165" width="101" height="49"/>
+                                <state key="normal" title="Sign Out Student"/>
+                                <connections>
+                                    <segue destination="K1v-nX-DK3" kind="show" identifier="HomePageToSignOutRosterSelect" id="OIU-pB-gCG">
+                                        <nil key="action"/>
+                                    </segue>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="u50-AY-JVg">
+                                <rect key="frame" x="124" y="165" width="120" height="40"/>
+                                <state key="normal" title="Upcoming Absences"/>
+                                <connections>
+                                    <segue destination="wDe-xK-MTg" kind="show" id="Yl6-p6-9Bv">
+                                        <nil key="action"/>
+                                    </segue>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G2L-qO-XGG">
+                                <rect key="frame" x="146" y="213" width="115" height="30"/>
+                                <state key="normal" title="Student Records"/>
+                                <connections>
+                                    <segue destination="K1v-nX-DK3" kind="show" identifier="HomePageToStudentRosterSelect" id="sUa-Xg-H2f">
+                                        <nil key="action"/>
+                                    </segue>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ek-Ua-Dgl">
+                                <rect key="frame" x="149" y="251" width="109" height="30"/>
+                                <state key="normal" title="Instructor Menu"/>
+                                <connections>
+                                    <segue destination="9Gq-Av-E4n" kind="show" id="RnZ-pl-rKh">
+                                        <nil key="action"/>
+                                    </segue>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Header Image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NpP-pJ-nFy">
+                                <rect key="frame" x="116" y="84" width="108" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="rYh-Ka-ABD">
+                                <rect key="frame" x="292" y="165" width="84" height="39"/>
+                                <state key="normal" title="Events Calendar"/>
+                                <connections>
+                                    <segue destination="czR-3k-ewH" kind="show" id="bCM-La-BtF">
+                                        <nil key="action"/>
+                                    </segue>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eXT-OV-cP1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1345" y="870"/>
+        </scene>
+        <!--Roster Type View Controller-->
+        <scene sceneID="oXG-jX-cNf">
+            <objects>
+                <viewController id="K1v-nX-DK3" customClass="RosterTypeViewController" customModule="After_School_Manager_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8VM-h9-a4T"/>
+                        <viewControllerLayoutGuide type="bottom" id="36T-f5-eJJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YC9-uy-n2Z">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zL5-cF-zYj">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Select Roster" id="gtF-Bw-fAy">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="1k7-rc-E5a">
+                                            <connections>
+                                                <action selector="back:" destination="K1v-nX-DK3" id="Qcy-Hd-fLW"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="anY-Tb-tpn">
+                                <rect key="frame" x="82" y="190" width="83" height="30"/>
+                                <state key="normal" title="Week Camp"/>
+                                <connections>
+                                    <segue destination="ZEB-g3-1tR" kind="show" identifier="RosterTypesToWeekCamps" id="8Gp-1f-UCm">
+                                        <nil key="action"/>
+                                    </segue>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UgO-93-FEt">
+                                <rect key="frame" x="88" y="127" width="71" height="30"/>
+                                <state key="normal" title="Day Camp"/>
+                                <connections>
+                                    <segue destination="ZEB-g3-1tR" kind="show" identifier="RosterTypesToDayCamps" id="xQw-aq-Cov">
+                                        <nil key="action"/>
+                                    </segue>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Mb-jm-aWV">
+                                <rect key="frame" x="49" y="254" width="148" height="30"/>
+                                <state key="normal" title="After School Program"/>
+                                <connections>
+                                    <segue destination="ZEB-g3-1tR" kind="show" identifier="RosterTypesToAfterSchoolPrograms" id="gdh-kH-LPf">
+                                        <nil key="action"/>
+                                    </segue>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="85d-VP-OsH" kind="unwind" identifier="returnToHomePage" unwindAction="returnHomeUnwind:" id="3dF-GF-xCv"/>
+                        <segue destination="85d-VP-OsH" kind="unwind" identifier="returnToScheduleAbsences" unwindAction="scheduleAbsenceUnwind:" id="1ky-pU-IH0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pSB-Pl-3YU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="85d-VP-OsH" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1345" y="1548"/>
+        </scene>
+        <!--Upcoming Absences View Controller-->
+        <scene sceneID="ZoQ-NQ-gR3">
+            <objects>
+                <viewController id="wDe-xK-MTg" customClass="UpcomingAbsencesViewController" customModule="After_School_Manager_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="o2a-K0-2rG"/>
+                        <viewControllerLayoutGuide type="bottom" id="HFb-26-oHj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kcq-g8-y1t">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fqy-uk-PLF">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Upcoming Absences" id="w8b-Lm-hk4">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="ZE4-mt-Pso">
+                                            <connections>
+                                                <segue destination="wio-2b-bVo" kind="unwind" unwindAction="returnHomeUnwind:" id="Lov-aN-flm"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XiS-lu-r2g">
+                                <rect key="frame" x="236" y="86" width="128" height="30"/>
+                                <state key="normal" title="Schedule Absence"/>
+                                <connections>
+                                    <segue destination="K1v-nX-DK3" kind="show" identifier="UpcomingAbsencesToScheduleAbsenceRosterSelect" id="b71-pI-SmA">
+                                        <nil key="action"/>
+                                    </segue>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9wd-m5-vcR">
+                                <rect key="frame" x="109" y="148" width="386" height="395"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="TBS-RV-EL1">
+                                        <rect key="frame" x="0.0" y="28" width="386" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TBS-RV-EL1" id="X9H-me-DhQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="386" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="wDe-xK-MTg" id="21Z-gv-nv7"/>
+                                    <outlet property="delegate" destination="wDe-xK-MTg" id="QOK-66-jgU"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="upcomingAbsencesListTable" destination="9wd-m5-vcR" id="P1h-mr-2Yj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="arm-mn-66r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="wio-2b-bVo" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2011" y="194"/>
+        </scene>
+        <!--Events Calendar View Controller-->
+        <scene sceneID="G6k-j2-Lw1">
+            <objects>
+                <viewController id="czR-3k-ewH" customClass="EventsCalendarViewController" customModule="After_School_Manager_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cej-NS-Xpb"/>
+                        <viewControllerLayoutGuide type="bottom" id="DfZ-Bl-EaQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Cxr-gO-crd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V6p-wX-THX">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="qDV-on-cQl">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="bNP-RR-nkH">
+                                            <connections>
+                                                <segue destination="0e6-mi-jRv" kind="unwind" unwindAction="returnHomeUnwind:" id="jqM-LG-zH7"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Events Calendar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="stG-h0-Gdj">
+                                <rect key="frame" x="269" y="210" width="125" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="utn-xZ-w8w" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="0e6-mi-jRv" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2011" y="861"/>
+        </scene>
+        <!--Instructor Menu View Controller-->
+        <scene sceneID="4An-je-sVU">
+            <objects>
+                <viewController id="9Gq-Av-E4n" customClass="InstructorMenuViewController" customModule="After_School_Manager_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="56i-FE-3Xj"/>
+                        <viewControllerLayoutGuide type="bottom" id="AbM-Hb-Pez"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zxz-Jl-7sg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L3d-nL-dca">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Instructor's Menu" id="Lof-NH-6xy">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="Cax-wz-pPb">
+                                            <connections>
+                                                <segue destination="S2O-ge-ZUp" kind="unwind" unwindAction="returnHomeUnwind:" id="hTP-4u-1iE"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pNS-IA-Pue">
+                                <rect key="frame" x="270" y="106" width="62" height="30"/>
+                                <state key="normal" title="Students"/>
+                                <connections>
+                                    <segue destination="aMe-6K-Fcj" kind="show" id="cUk-0S-AGs">
+                                        <nil key="action"/>
+                                    </segue>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F6Z-Yf-1hM">
+                                <rect key="frame" x="270" y="144" width="52" height="30"/>
+                                <state key="normal" title="Rosters"/>
+                                <connections>
+                                    <segue destination="Plr-Nq-L0d" kind="show" id="5Z9-8H-IEE">
+                                        <nil key="action"/>
+                                    </segue>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Xm-G4-LOD">
+                                <rect key="frame" x="273" y="182" width="46" height="30"/>
+                                <state key="normal" title="Events"/>
+                                <connections>
+                                    <segue destination="1dN-bJ-7yp" kind="show" id="uVC-K9-CHg">
+                                        <nil key="action"/>
+                                    </segue>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yo5-2Y-wCS">
+                                <rect key="frame" x="250" y="220" width="101" height="30"/>
+                                <state key="normal" title="Today's Roster"/>
+                                <connections>
+                                    <segue destination="ucB-K0-gfW" kind="show" id="FYm-0h-PrD">
+                                        <nil key="action"/>
+                                    </segue>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kde-il-QaT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="S2O-ge-ZUp" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2751" y="861"/>
+        </scene>
+        <!--All Rosters View Controller-->
+        <scene sceneID="ILt-ts-AXM">
+            <objects>
+                <viewController id="Plr-Nq-L0d" customClass="AllRostersViewController" customModule="After_School_Manager_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xMe-oZ-jyY"/>
+                        <viewControllerLayoutGuide type="bottom" id="sWC-3W-Mgr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BSH-0J-7we">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pjl-bk-9Um">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Rosters" id="6OX-ge-1KN">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="0KJ-YW-c9s">
+                                            <connections>
+                                                <segue destination="cPU-bE-ia1" kind="unwind" unwindAction="instructorMenuUnwind:" id="5DQ-jM-8a1"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="9T4-Dq-apH">
+                                            <connections>
+                                                <segue destination="JIw-fz-5fF" kind="show" identifier="AllRostersToNewRoster" id="LZy-H4-SEb">
+                                                    <nil key="action"/>
+                                                </segue>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="acT-Sh-azQ">
+                                <rect key="frame" x="86" y="96" width="429" height="328"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="caI-z4-6gm">
+                                        <rect key="frame" x="0.0" y="28" width="429" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="caI-z4-6gm" id="atR-F4-ym8">
+                                            <rect key="frame" x="0.0" y="0.0" width="429" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Plr-Nq-L0d" id="tlt-c0-JOP"/>
+                                    <outlet property="delegate" destination="Plr-Nq-L0d" id="S7I-vn-3EP"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="rosterListTable" destination="acT-Sh-azQ" id="Z1V-on-vOr"/>
+                        <segue destination="suQ-xa-ndd" kind="show" identifier="AllRostersToSpecificRoster" id="8w4-g8-wwD">
+                            <nil key="action"/>
+                        </segue>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h96-CM-Thp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="cPU-bE-ia1" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="3460" y="884"/>
+        </scene>
+        <!--Create Roster View Controller-->
+        <scene sceneID="K5S-o6-pvC">
+            <objects>
+                <viewController id="JIw-fz-5fF" customClass="CreateRosterViewController" customModule="After_School_Manager_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4WE-S4-dDh"/>
+                        <viewControllerLayoutGuide type="bottom" id="WjP-xg-c8e"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Uj9-OQ-jJm">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OFD-jg-ofI">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Create/Edit Roster" id="lOR-IV-ikZ">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="6fe-1D-qvr">
+                                            <connections>
+                                                <action selector="backButton:" destination="JIw-fz-5fF" id="hZJ-Hd-BsM"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Roster Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0aD-43-dH6">
+                                <rect key="frame" x="61" y="102" width="99" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Start Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbc-rg-gJM">
+                                <rect key="frame" x="74" y="313" width="78" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="End Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IMu-AJ-U2U">
+                                <rect key="frame" x="78" y="384" width="70" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p66-pP-NfB">
+                                <rect key="frame" x="281" y="93" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="aOg-5j-BKl">
+                                <rect key="frame" x="172" y="289" width="301" height="63"/>
+                                <date key="date" timeIntervalSinceReferenceDate="474833435.28024101">
+                                    <!--2016-01-18 18:10:35 +0000-->
+                                </date>
+                            </datePicker>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Ivj-wN-hOx">
+                                <rect key="frame" x="172" y="215" width="301" height="63"/>
+                                <date key="date" timeIntervalSinceReferenceDate="474833435.28024101">
+                                    <!--2016-01-18 18:10:35 +0000-->
+                                </date>
+                            </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pick Up Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8UJ-a3-HPU">
+                                <rect key="frame" x="62" y="229" width="102" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="esv-YC-I8E">
+                                <rect key="frame" x="212" y="137" width="234" height="63"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="JIw-fz-5fF" id="CNj-X0-llP"/>
+                                    <outlet property="delegate" destination="JIw-fz-5fF" id="0pU-jU-PO6"/>
+                                </connections>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Roster Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gr9-5p-EiO">
+                                <rect key="frame" x="55" y="158" width="92" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="W5J-9Z-N9d">
+                                <rect key="frame" x="172" y="363" width="301" height="63"/>
+                                <date key="date" timeIntervalSinceReferenceDate="474833435.28024101">
+                                    <!--2016-01-18 18:10:35 +0000-->
+                                </date>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JUr-Kr-xCZ">
+                                <rect key="frame" x="266" y="460" width="126" height="30"/>
+                                <state key="normal" title="Create/Edit Roster"/>
+                                <connections>
+                                    <action selector="createRoster:" destination="JIw-fz-5fF" eventType="touchUpInside" id="SnJ-Nj-YWK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nVe-p7-UHj">
+                                <rect key="frame" x="282" y="498" width="93" height="30"/>
+                                <state key="normal" title="Delete Roster"/>
+                                <connections>
+                                    <action selector="deleteRoster:" destination="JIw-fz-5fF" eventType="touchUpInside" id="H7V-Nm-z2P"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="createRosterButton" destination="JUr-Kr-xCZ" id="eyy-tx-E4A"/>
+                        <outlet property="deleteRosterButton" destination="nVe-p7-UHj" id="xUv-Ts-9hK"/>
+                        <outlet property="endDate" destination="W5J-9Z-N9d" id="pla-hq-YsI"/>
+                        <outlet property="endDateLabel" destination="IMu-AJ-U2U" id="5Kl-Zg-FwD"/>
+                        <outlet property="pickUpTime" destination="Ivj-wN-hOx" id="Gh3-jF-LqM"/>
+                        <outlet property="rosterName" destination="p66-pP-NfB" id="rjW-zc-Wm4"/>
+                        <outlet property="rosterType" destination="esv-YC-I8E" id="9ae-9g-0u7"/>
+                        <outlet property="startDate" destination="aOg-5j-BKl" id="x3z-yd-Mkn"/>
+                        <outlet property="titleBar" destination="lOR-IV-ikZ" id="vKZ-aL-Peq"/>
+                        <segue destination="MSn-5D-Yer" kind="unwind" identifier="ReturnToAllRostersUnwind" unwindAction="returnToAllRostersUnwind:" id="6J0-MK-F9A"/>
+                        <segue destination="MSn-5D-Yer" kind="unwind" identifier="ReturnToRosterUnwind" unwindAction="returnToRosterUnwind:" id="caG-fe-a9Y"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R3C-xV-QTl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="MSn-5D-Yer" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="4169" y="908"/>
+        </scene>
+        <!--Add Or Edit Attendance View Controller-->
+        <scene sceneID="SBM-iN-6bv">
+            <objects>
+                <viewController id="G1Q-IP-rXa" customClass="AddOrEditAttendanceViewController" customModule="After_School_Manager_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Jyp-mz-4KQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="eCy-pv-d4k"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FWl-aO-hRA">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRZ-WZ-bX3">
+                                <rect key="frame" x="154" y="92" width="45" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Approved Guardians" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wns-v4-hn8">
+                                <rect key="frame" x="50" y="140" width="156" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ur0-nc-mf4">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Edit/Add Student Attendance" id="04c-Ww-PoH">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="nXf-W6-Zbs">
+                                            <connections>
+                                                <action selector="backButton:" destination="G1Q-IP-rXa" id="xFH-9Y-ogj"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ce6-aT-uyf">
+                                <rect key="frame" x="44" y="231" width="92" height="30"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Monday"/>
+                                <connections>
+                                    <action selector="mondaySelect:" destination="G1Q-IP-rXa" eventType="touchUpInside" id="TSx-Wd-fBu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hdt-ak-xus">
+                                <rect key="frame" x="148" y="231" width="92" height="30"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Tuesday"/>
+                                <connections>
+                                    <action selector="tuesdaySelect:" destination="G1Q-IP-rXa" eventType="touchUpInside" id="p9Y-oU-mN1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r4x-UC-0hD">
+                                <rect key="frame" x="254" y="231" width="92" height="30"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Wednesday"/>
+                                <connections>
+                                    <action selector="wednesdaySelect:" destination="G1Q-IP-rXa" eventType="touchUpInside" id="gT0-VZ-Nbz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZEO-nP-jMC">
+                                <rect key="frame" x="459" y="231" width="92" height="30"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Friday"/>
+                                <connections>
+                                    <action selector="fridaySelect:" destination="G1Q-IP-rXa" eventType="touchUpInside" id="dJv-I6-dCi"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1jU-9m-VFu">
+                                <rect key="frame" x="194" y="277" width="92" height="30"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Saturday"/>
+                                <connections>
+                                    <action selector="saturdaySelect:" destination="G1Q-IP-rXa" eventType="touchUpInside" id="DAp-ne-bUp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dVC-DY-zi7">
+                                <rect key="frame" x="309" y="277" width="92" height="30"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Sunday"/>
+                                <connections>
+                                    <action selector="sundaySelect:" destination="G1Q-IP-rXa" eventType="touchUpInside" id="2oV-Gv-8az"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ECN-L6-WLm">
+                                <rect key="frame" x="354" y="231" width="92" height="30"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Thursday"/>
+                                <connections>
+                                    <action selector="thursdaySelect:" destination="G1Q-IP-rXa" eventType="touchUpInside" id="Dnh-8H-ghX"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="John Doe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ncq-Zu-4zr">
+                                <rect key="frame" x="213" y="92" width="73" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PaG-1J-q8k">
+                                <rect key="frame" x="236" y="394" width="129" height="30"/>
+                                <state key="normal" title="Delete from Roster"/>
+                                <connections>
+                                    <action selector="deleteFromRoster:" destination="G1Q-IP-rXa" eventType="touchUpInside" id="Tb0-YZ-8fj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9eX-Of-hoA">
+                                <rect key="frame" x="234" y="342" width="133" height="30"/>
+                                <state key="normal" title="Update Attendance"/>
+                                <connections>
+                                    <action selector="updateAttendance:" destination="G1Q-IP-rXa" eventType="touchUpInside" id="7qF-wb-Ncd"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="deleteFromRosterButton" destination="PaG-1J-q8k" id="1r1-Fa-rRM"/>
+                        <outlet property="friday" destination="ZEO-nP-jMC" id="Unn-3J-tlL"/>
+                        <outlet property="monday" destination="ce6-aT-uyf" id="Ohc-A4-jGf"/>
+                        <outlet property="saturday" destination="1jU-9m-VFu" id="T5d-Bs-ZpB"/>
+                        <outlet property="studentName" destination="ncq-Zu-4zr" id="Fby-kd-Spm"/>
+                        <outlet property="sunday" destination="dVC-DY-zi7" id="y6Y-l7-QTo"/>
+                        <outlet property="thursday" destination="ECN-L6-WLm" id="MjN-BQ-crV"/>
+                        <outlet property="titleBar" destination="04c-Ww-PoH" id="38D-LS-eX7"/>
+                        <outlet property="tuesday" destination="hdt-ak-xus" id="CLB-1k-w6Q"/>
+                        <outlet property="updateAttendanceButton" destination="9eX-Of-hoA" id="QhU-FU-GOy"/>
+                        <outlet property="wednesday" destination="r4x-UC-0hD" id="MbW-eM-Nzd"/>
+                        <segue destination="7hq-1b-YII" kind="unwind" identifier="EditStudentFromAllRostersUnwind" unwindAction="returnToRosterUnwind:" id="VGs-RU-juh"/>
+                        <segue destination="7hq-1b-YII" kind="unwind" identifier="ReturnToSelectStudentToAddToRosterUnwind" unwindAction="returnToSelectStudentToAddToRosterUnwind:" id="iSr-MC-eaU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z4i-FN-1dk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="7hq-1b-YII" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="4164" y="194"/>
+        </scene>
+        <!--Roster List View Controller-->
+        <scene sceneID="2Jg-dH-WrI">
+            <objects>
+                <viewController id="ZEB-g3-1tR" customClass="RosterListViewController" customModule="After_School_Manager_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="G75-Yn-9GD"/>
+                        <viewControllerLayoutGuide type="bottom" id="YCK-qx-dxt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="u4z-mA-f7P">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PZR-Ov-ugS">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Rosters" id="YHy-qu-Mrh">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="l5j-ey-n7C">
+                                            <connections>
+                                                <segue destination="Nn2-9t-SnT" kind="unwind" unwindAction="rosterTypeSelectUnwind:" id="XdE-Oj-crb"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6ag-zo-kHZ">
+                                <rect key="frame" x="30" y="115" width="506" height="339"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="3Mg-oE-aDi">
+                                        <rect key="frame" x="0.0" y="28" width="506" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Mg-oE-aDi" id="mTJ-HO-MNt">
+                                            <rect key="frame" x="0.0" y="0.0" width="506" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ZEB-g3-1tR" id="ssX-7p-n1x"/>
+                                    <outlet property="delegate" destination="ZEB-g3-1tR" id="9Ec-Dq-2RX"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="titleBar" destination="YHy-qu-Mrh" id="a5b-PD-wPb"/>
+                        <segue destination="X6a-Dm-akH" kind="show" identifier="RosterSelectToStudentRoster" id="njK-ob-as0">
+                            <nil key="action"/>
+                        </segue>
+                        <segue destination="bJt-LC-pkh" kind="show" identifier="RostersToSignOutRecords" id="0LH-hx-LJT">
+                            <nil key="action"/>
+                        </segue>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xos-xT-Wwb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Nn2-9t-SnT" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1345" y="2202"/>
+        </scene>
+        <!--Student Roster View Controller-->
+        <scene sceneID="P8p-Ld-un6">
+            <objects>
+                <viewController id="X6a-Dm-akH" customClass="StudentRosterViewController" customModule="After_School_Manager_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xa7-Fg-4gY"/>
+                        <viewControllerLayoutGuide type="bottom" id="f6s-4E-EBx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eST-QV-B9X">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mpy-Ic-cVn">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Student Roster (and schedule absence)" id="z7f-Wu-wNf">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="bMu-iz-oyL">
+                                            <connections>
+                                                <segue destination="WJr-s6-VGd" kind="unwind" unwindAction="rosterSelectUnwind:" id="Naq-wY-4ZM"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7nB-H3-xno">
+                                <rect key="frame" x="102" y="117" width="428" height="370"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Edq-ZV-Dh1">
+                                        <rect key="frame" x="0.0" y="28" width="428" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Edq-ZV-Dh1" id="oBN-op-uzF">
+                                            <rect key="frame" x="0.0" y="0.0" width="428" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="X6a-Dm-akH" id="Mf3-pa-1Ic"/>
+                                    <outlet property="delegate" destination="X6a-Dm-akH" id="idN-MD-sgg"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="studentListTable" destination="7nB-H3-xno" id="It8-f1-v9c"/>
+                        <outlet property="titleBar" destination="z7f-Wu-wNf" id="gQJ-Rh-59n"/>
+                        <segue destination="7Gv-iV-d7w" kind="show" identifier="StudentRosterToSignOut" id="yjI-ju-ZGQ">
+                            <nil key="action"/>
+                        </segue>
+                        <segue destination="dm5-X3-Pdg" kind="show" identifier="StudentRosterToScheduleAbsence" id="0CC-ZP-ABi">
+                            <nil key="action"/>
+                        </segue>
+                        <segue destination="KzA-dT-hLE" kind="show" identifier="StudentRosterToStudentProfile" id="95a-F9-lfd">
+                            <nil key="action"/>
+                        </segue>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rQQ-R7-0fF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="WJr-s6-VGd" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1345" y="2903"/>
+        </scene>
+        <!--Sign Out View Controller-->
+        <scene sceneID="XgU-PC-GEO">
+            <objects>
+                <viewController id="7Gv-iV-d7w" customClass="SignOutViewController" customModule="After_School_Manager_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DOO-NO-bbw"/>
+                        <viewControllerLayoutGuide type="bottom" id="2jX-ze-WRC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NyD-XK-K6c">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hm1-zE-aiY">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Sign Out *Student's Name*" id="SNi-af-bDv">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="Yug-Vx-MeH">
+                                            <connections>
+                                                <segue destination="Wdk-6y-a7L" kind="unwind" identifier="SignOutToStudentSelectUnwind" unwindAction="studentSelectUnwind:" id="Xaw-dH-RUc"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select Guardian (popout table?)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="arp-Y1-tXp">
+                                <rect key="frame" x="60" y="106" width="243" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0gM-Ao-M8r">
+                                <rect key="frame" x="257" y="373" width="36" height="30"/>
+                                <state key="normal" title="Clear"/>
+                                <connections>
+                                    <action selector="clearSignature:" destination="7Gv-iV-d7w" eventType="touchUpInside" id="nsw-f6-Rfy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="29X-QC-kbb">
+                                <rect key="frame" x="146" y="373" width="55" height="30"/>
+                                <state key="normal" title="Confirm"/>
+                                <connections>
+                                    <action selector="signOut:" destination="7Gv-iV-d7w" eventType="touchUpInside" id="y5d-kw-pHf"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sign Here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7u2-IS-Y9l">
+                                <rect key="frame" x="182" y="177" width="75" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dY6-Rm-GYf" customClass="SignatureView" customModule="After_School_Manager_iOS" customModuleProvider="target">
+                                <rect key="frame" x="20" y="206" width="502" height="153"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="signatureBox" destination="dY6-Rm-GYf" id="KcF-mZ-OS3"/>
+                        <outlet property="titleBar" destination="SNi-af-bDv" id="bwf-c3-ZmY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JWq-aM-fef" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Wdk-6y-a7L" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2059" y="3628"/>
+        </scene>
+        <!--Schedule Absence View Controller-->
+        <scene sceneID="rmp-MZ-5G2">
+            <objects>
+                <viewController id="dm5-X3-Pdg" customClass="ScheduleAbsenceViewController" customModule="After_School_Manager_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Rfd-sS-ew2"/>
+                        <viewControllerLayoutGuide type="bottom" id="VDK-yv-G8y"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oQx-ff-wWH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="sDT-K1-jqK">
+                                <rect key="frame" x="20" y="101" width="600" height="216"/>
+                                <date key="date" timeIntervalSinceReferenceDate="471899034.35766602">
+                                    <!--2015-12-15 19:03:54 +0000-->
+                                </date>
+                                <locale key="locale" localeIdentifier="en_US"/>
+                            </datePicker>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c1g-Jd-LDj">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Schedule Absence" id="ZRV-cg-TSz">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="AGd-TK-eCN">
+                                            <connections>
+                                                <segue destination="vaw-kn-MZQ" kind="unwind" identifier="ScheduleAbsenceToStudentSelect" unwindAction="studentSelectUnwind:" id="O08-F9-IP2"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="On1-gn-aOZ">
+                                <rect key="frame" x="216" y="357" width="64" height="30"/>
+                                <state key="normal" title="Schedule"/>
+                                <connections>
+                                    <action selector="schedule:" destination="dm5-X3-Pdg" eventType="touchUpInside" id="9Op-ek-sa7"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="datePicker" destination="sDT-K1-jqK" id="CaJ-hO-MGw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vYq-39-wlr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="vaw-kn-MZQ" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1345" y="3628"/>
+        </scene>
+        <!--Student Info View Controller-->
+        <scene sceneID="nTv-16-efz">
+            <objects>
+                <viewController id="KzA-dT-hLE" customClass="StudentInfoViewController" customModule="After_School_Manager_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Y3a-hz-JEE"/>
+                        <viewControllerLayoutGuide type="bottom" id="9ZS-en-OJW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iCS-gL-jD3">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f1m-up-VQq">
+                                <rect key="frame" x="116" y="95" width="83" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Approved Pick Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GgD-rv-Yrr">
+                                <rect key="frame" x="69" y="233" width="138" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="School" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSr-tC-xCU">
+                                <rect key="frame" x="112" y="185" width="53" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Birthday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1G-3x-ET2">
+                                <rect key="frame" x="100" y="137" width="65" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Oh-Fd-s3f">
+                                <rect key="frame" x="298" y="137" width="30" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Signout Records" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K86-kM-FMk">
+                                <rect key="frame" x="47" y="345" width="127" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Emergency Contacts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QcN-Sf-q9A">
+                                <rect key="frame" x="49" y="279" width="160" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="09/30/1993" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2pe-6U-N32">
+                                <rect key="frame" x="177" y="137" width="92" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="21" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I54-sw-FmL">
+                                <rect key="frame" x="386" y="137" width="58" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTE-vW-ORo">
+                                <rect key="frame" x="229" y="233" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GtL-R8-5P8">
+                                <rect key="frame" x="229" y="279" width="312" height="82"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="John" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PzC-Mq-f7S">
+                                <rect key="frame" x="207" y="95" width="38" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rPm-19-3pK">
+                                <rect key="frame" x="306" y="95" width="82" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Oxford University" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTz-38-5Lz">
+                                <rect key="frame" x="183" y="184" width="134" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fpm-uW-1Rk">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Student Info" id="dgL-qH-0UW">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="z84-Vv-2qJ">
+                                            <connections>
+                                                <segue destination="qvD-AM-V78" kind="unwind" unwindAction="studentSelectUnwind:" id="S0T-My-15Z"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Doe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ha-WH-mT7">
+                                <rect key="frame" x="396" y="95" width="31" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DXd-0w-3YD">
+                                <rect key="frame" x="36" y="468" width="148" height="30"/>
+                                <state key="normal" title="After School Program"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RS6-Gx-9ei">
+                                <rect key="frame" x="71" y="374" width="79" height="30"/>
+                                <state key="normal" title="Day Camps"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="faj-rz-sh9">
+                                <rect key="frame" x="59" y="419" width="102" height="30"/>
+                                <state key="normal" title="Weekly Camps"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="studentAge" destination="I54-sw-FmL" id="xkf-PG-frL"/>
+                        <outlet property="studentContacts" destination="GtL-R8-5P8" id="rrq-74-2Qg"/>
+                        <outlet property="studentDOB" destination="2pe-6U-N32" id="Tma-sv-BV8"/>
+                        <outlet property="studentFirstName" destination="PzC-Mq-f7S" id="tpo-O8-R5H"/>
+                        <outlet property="studentGuardians" destination="hTE-vW-ORo" id="bff-iI-7as"/>
+                        <outlet property="studentLastName" destination="9Ha-WH-mT7" id="S71-D7-dCZ"/>
+                        <outlet property="studentSchool" destination="HTz-38-5Lz" id="vpW-OK-dIL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dPm-lZ-XBZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="qvD-AM-V78" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2032" y="2903"/>
+        </scene>
+        <!--Sign Out History View Controller-->
+        <scene sceneID="RSl-au-pzF">
+            <objects>
+                <viewController id="bJt-LC-pkh" customClass="SignOutHistoryViewController" customModule="After_School_Manager_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6l1-M3-oQA"/>
+                        <viewControllerLayoutGuide type="bottom" id="Zo3-H5-dfn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="U87-4Q-xDw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bc6-Gr-Kkd">
+                                <rect key="frame" x="29" y="97" width="36" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1rT-op-10P">
+                                <rect key="frame" x="100" y="97" width="38" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Who Signed Out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kg-80-gEl">
+                                <rect key="frame" x="174" y="97" width="126" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Signed Out/Absent (scheduled/UNSCHEDULED!/School closed/etc)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5fQ-pW-LFc">
+                                <rect key="frame" x="29" y="320" width="517" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fsc-Jd-tSu">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Sign Out Records" id="9Yc-ME-fik">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="1Iv-Nj-3J5"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XPl-Sj-U0e">
+                                <rect key="frame" x="381" y="97" width="43" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event Types" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XlU-bF-RCr">
+                                <rect key="frame" x="34" y="278" width="94" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fu8-w7-T3D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2053" y="2202"/>
+        </scene>
+        <!--Add Or Edit Student View Controller-->
+        <scene sceneID="Xe7-O8-qfT">
+            <objects>
+                <viewController id="eat-KY-ysK" customClass="AddOrEditStudentViewController" customModule="After_School_Manager_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dIz-8O-oI5"/>
+                        <viewControllerLayoutGuide type="bottom" id="jSM-6c-0jD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jg5-yd-S1T">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qTn-dM-qSL">
+                                <rect key="frame" x="46" y="80" width="83" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Approved Pick Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lyA-TL-zfm">
+                                <rect key="frame" x="74" y="238" width="138" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="School" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EKF-S0-jCs">
+                                <rect key="frame" x="117" y="190" width="53" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Birthday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jdi-Ht-9dd">
+                                <rect key="frame" x="105" y="131" width="65" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Emergency Contacts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y2a-Rq-3vp">
+                                <rect key="frame" x="54" y="284" width="160" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lWf-9e-8f7">
+                                <rect key="frame" x="142" y="80" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qvf-bT-XHA">
+                                <rect key="frame" x="326" y="83" width="82" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zcM-YN-pZz">
+                                <rect key="frame" x="416" y="83" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6UN-Vg-W2p">
+                                <rect key="frame" x="233" y="186" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u4M-BJ-2vL">
+                                <rect key="frame" x="178" y="122" width="290" height="51"/>
+                                <date key="date" timeIntervalSinceReferenceDate="-347102723.19527435">
+                                    <!--1990-01-01 14:34:36 +0000-->
+                                </date>
+                            </datePicker>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="0Ph-Yj-oKS">
+                                <rect key="frame" x="72" y="326" width="125" height="29"/>
+                                <segments>
+                                    <segment title="Active"/>
+                                    <segment title="Inactive"/>
+                                </segments>
+                            </segmentedControl>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4eG-gp-5EW">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="New/Edit Student" id="E4s-WF-UcW">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="mpc-e2-SiR">
+                                            <connections>
+                                                <segue destination="GGQ-HY-VuM" kind="unwind" identifier="instructorMenuStudentsUnwind" unwindAction="instructorMenuStudentsUnwind:" id="THE-MJ-ztA"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Signout Records" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zEs-5I-anV">
+                                <rect key="frame" x="68" y="412" width="127" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PKr-y9-uiL">
+                                <rect key="frame" x="69" y="524" width="148" height="30"/>
+                                <state key="normal" title="After School Program"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PbY-U7-b2A">
+                                <rect key="frame" x="98" y="441" width="79" height="30"/>
+                                <state key="normal" title="Day Camps"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g13-xt-2vw">
+                                <rect key="frame" x="86" y="486" width="102" height="30"/>
+                                <state key="normal" title="Weekly Camps"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rzz-3o-MtC">
+                                <rect key="frame" x="111" y="374" width="52" height="30"/>
+                                <state key="normal" title="Rosters"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QjL-6g-rFH">
+                                <rect key="frame" x="316" y="362" width="103" height="30"/>
+                                <state key="normal" title="Delete Student"/>
+                                <connections>
+                                    <action selector="deleteStudent:" destination="eat-KY-ysK" eventType="touchUpInside" id="UCH-a0-HDp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Of-va-zlg">
+                                <rect key="frame" x="323" y="333" width="83" height="30"/>
+                                <state key="normal" title="Add/Update"/>
+                                <connections>
+                                    <action selector="updateStudent:" destination="eat-KY-ysK" eventType="touchUpInside" id="zav-my-YGc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="active" destination="0Ph-Yj-oKS" id="fWt-84-klg"/>
+                        <outlet property="addToRoster" destination="Rzz-3o-MtC" id="yo6-Q5-NjG"/>
+                        <outlet property="addUpdateButton" destination="4Of-va-zlg" id="LjX-Pi-pRe"/>
+                        <outlet property="afterSchoolProgramRosters" destination="PKr-y9-uiL" id="NvV-uS-e0c"/>
+                        <outlet property="birthdayPicker" destination="u4M-BJ-2vL" id="z2k-Fe-MrQ"/>
+                        <outlet property="dayCampsRosters" destination="PbY-U7-b2A" id="U1x-Bg-m4k"/>
+                        <outlet property="deleteButton" destination="QjL-6g-rFH" id="bBd-Xe-g4s"/>
+                        <outlet property="firstName" destination="lWf-9e-8f7" id="XCs-od-aYU"/>
+                        <outlet property="lastName" destination="zcM-YN-pZz" id="C4T-Dg-gSX"/>
+                        <outlet property="school" destination="6UN-Vg-W2p" id="rew-P4-8op"/>
+                        <outlet property="signOutRecordsLabel" destination="zEs-5I-anV" id="xrR-jf-MNe"/>
+                        <outlet property="titleBar" destination="E4s-WF-UcW" id="zdu-yt-RdF"/>
+                        <outlet property="weeklyCampsRosters" destination="g13-xt-2vw" id="26H-NM-bDb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p3F-Cn-QeA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="GGQ-HY-VuM" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2751" y="-465"/>
+        </scene>
+        <!--All Students View Controller-->
+        <scene sceneID="Abi-uK-kyx">
+            <objects>
+                <viewController id="aMe-6K-Fcj" customClass="AllStudentsViewController" customModule="After_School_Manager_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jP5-fd-tDr"/>
+                        <viewControllerLayoutGuide type="bottom" id="bN5-gU-x7N"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="r0F-w3-DyW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xAJ-Aq-pkN">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Students" id="vw3-1d-kcb">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="6Li-rX-BSl">
+                                            <connections>
+                                                <segue destination="Fsz-z8-y0N" kind="unwind" unwindAction="instructorMenuUnwind:" id="6ab-Vx-ekI"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="2Sk-9R-sqv">
+                                            <connections>
+                                                <segue destination="eat-KY-ysK" kind="show" identifier="InstructorMenuStudentsToAddStudent" id="69W-z6-Bqt">
+                                                    <nil key="action"/>
+                                                </segue>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hRa-vZ-Zgi">
+                                <rect key="frame" x="86" y="93" width="428" height="279"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="cLH-qg-boL">
+                                        <rect key="frame" x="0.0" y="28" width="428" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cLH-qg-boL" id="zBv-Q2-t7s">
+                                            <rect key="frame" x="0.0" y="0.0" width="428" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="aMe-6K-Fcj" id="Tv0-n5-fsr"/>
+                                    <outlet property="delegate" destination="aMe-6K-Fcj" id="9bP-0n-iG8"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="studentListTable" destination="hRa-vZ-Zgi" id="Kmb-rn-3px"/>
+                        <segue destination="eat-KY-ysK" kind="show" identifier="InstructorMenuStudentsToEditStudent" id="Jr8-W3-Udp">
+                            <nil key="action"/>
+                        </segue>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WGo-It-kd8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Fsz-z8-y0N" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2751" y="182"/>
+        </scene>
+        <!--Roster View Controller-->
+        <scene sceneID="xHI-tt-c3L">
+            <objects>
+                <viewController id="suQ-xa-ndd" customClass="RosterViewController" customModule="After_School_Manager_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4sy-5t-nkU"/>
+                        <viewControllerLayoutGuide type="bottom" id="RtS-nZ-O0Z"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tT3-6c-18z">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kpw-5p-gKo">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Roster Name" id="V8v-GJ-voJ">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="Sng-ca-9Tl">
+                                            <connections>
+                                                <action selector="backButton:" destination="suQ-xa-ndd" id="Fop-cj-HIH"/>
+                                                <segue destination="4pX-Yj-Zwc" kind="unwind" unwindAction="returnToAllRostersUnwind:" id="QKF-ff-mP5"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Add Student" id="e1s-Kj-ekW">
+                                            <connections>
+                                                <segue destination="Y9H-KI-o7c" kind="show" identifier="SelectNewStudentToAddToRoster" id="KTB-ra-tjQ">
+                                                    <nil key="action"/>
+                                                </segue>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cbs-Q3-TSm">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="8Ct-qE-uNb"/>
+                                    <barButtonItem title="Edit" id="SE9-jG-fcy">
+                                        <connections>
+                                            <segue destination="JIw-fz-5fF" kind="show" identifier="RosterToEditRoster" id="p75-6g-aLt">
+                                                <nil key="action"/>
+                                            </segue>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gr6-W8-0Rd">
+                                <rect key="frame" x="119" y="113" width="441" height="283"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="sgl-TD-1dl">
+                                        <rect key="frame" x="0.0" y="28" width="441" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sgl-TD-1dl" id="pGE-uK-8sb">
+                                            <rect key="frame" x="0.0" y="0.0" width="441" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="suQ-xa-ndd" id="Zkz-T2-xF0"/>
+                                    <outlet property="delegate" destination="suQ-xa-ndd" id="jMM-HN-qov"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="studentListTable" destination="gr6-W8-0Rd" id="Kfa-ma-svt"/>
+                        <outlet property="titleBar" destination="V8v-GJ-voJ" id="fbU-ye-FP0"/>
+                        <segue destination="G1Q-IP-rXa" kind="show" identifier="SpecificRosterToEditStudent" id="Sgd-4S-nsG">
+                            <nil key="action"/>
+                        </segue>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mq4-vH-hyb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="4pX-Yj-Zwc" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="3460" y="194"/>
+        </scene>
+        <!--Today Roster View Controller-->
+        <scene sceneID="Y5R-WY-D0A">
+            <objects>
+                <viewController id="ucB-K0-gfW" customClass="TodayRosterViewController" customModule="After_School_Manager_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="u1X-zz-7rQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="eCE-cE-NGm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Jf1-4n-bkU">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HCF-Jk-knu">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Today's Roster" id="46v-kH-JZ9">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="wfe-wB-UYs">
+                                            <connections>
+                                                <segue destination="eze-X9-HTx" kind="unwind" unwindAction="instructorMenuUnwind:" id="919-nP-Ydi"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="dJn-jt-0B5"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="All Students from today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rfe-qM-ax9">
+                                <rect key="frame" x="88" y="138" width="180" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yHT-pc-2dw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="eze-X9-HTx" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2726" y="1566"/>
+        </scene>
+        <!--All Events View Controller-->
+        <scene sceneID="ted-N9-hoN">
+            <objects>
+                <viewController id="1dN-bJ-7yp" customClass="AllEventsViewController" customModule="After_School_Manager_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MUf-Gx-TAD"/>
+                        <viewControllerLayoutGuide type="bottom" id="Vcp-ba-CVR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="i1y-yL-hPi">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dtq-E5-KJY">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Events" id="v4A-KO-77c">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="MG2-qk-w85">
+                                            <connections>
+                                                <segue destination="UuN-r2-Njb" kind="unwind" unwindAction="instructorMenuUnwind:" id="1ap-LT-6VX"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="z2v-ku-qke"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add/edit/delete events" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z5h-nK-Z15">
+                                <rect key="frame" x="94" y="138" width="174" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cgc-Nc-Ciq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="UuN-r2-Njb" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="3460" y="1566"/>
+        </scene>
+        <!--Select Student To Add To Roster View Controller-->
+        <scene sceneID="t9z-LG-6Mm">
+            <objects>
+                <viewController id="Y9H-KI-o7c" customClass="SelectStudentToAddToRosterViewController" customModule="After_School_Manager_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kTv-Af-3ZY"/>
+                        <viewControllerLayoutGuide type="bottom" id="Wuw-3M-2yv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RSO-2h-0HK">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Uq-oS-89i">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Select Student to Add" id="64J-pb-LCc">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="Jzv-JY-Ca7">
+                                            <connections>
+                                                <segue destination="0LC-Zp-1VV" kind="unwind" unwindAction="returnToRosterUnwind:" id="Gs1-fy-nZ1"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="88Q-cL-oKR">
+                                <rect key="frame" x="86" y="93" width="428" height="279"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="LJA-9w-8U4">
+                                        <rect key="frame" x="0.0" y="28" width="428" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LJA-9w-8U4" id="Opk-Xl-P1J">
+                                            <rect key="frame" x="0.0" y="0.0" width="428" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y9H-KI-o7c" id="sVz-fr-CIy"/>
+                                    <outlet property="delegate" destination="Y9H-KI-o7c" id="KWO-Zz-fCs"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="studentListTable" destination="88Q-cL-oKR" id="Z9U-tx-li4"/>
+                        <segue destination="G1Q-IP-rXa" kind="show" identifier="SelectStudentToAddToRoster" id="2F6-fC-QeF">
+                            <nil key="action"/>
+                        </segue>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9wT-lh-0y8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="0LC-Zp-1VV" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="3451" y="-476"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="xQw-aq-Cov"/>
+        <segue reference="b71-pI-SmA"/>
+        <segue reference="p75-6g-aLt"/>
+        <segue reference="2F6-fC-QeF"/>
+        <segue reference="Jr8-W3-Udp"/>
+    </inferredMetricsTieBreakers>
+</document>
