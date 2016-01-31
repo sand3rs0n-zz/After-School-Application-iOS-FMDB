@@ -17,10 +17,7 @@ class AddOrEditStudentViewController: UIViewController {
     @IBOutlet weak var addUpdateButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var addToRoster: UIButton!
-    @IBOutlet weak var signOutRecordsLabel: UILabel!
-    @IBOutlet weak var dayCampsRosters: UIButton!
-    @IBOutlet weak var weeklyCampsRosters: UIButton!
-    @IBOutlet weak var afterSchoolProgramRosters: UIButton!
+    @IBOutlet weak var signOutRecordsButton: UIButton!
 
     @IBOutlet weak var titleBar: UINavigationItem!
     @IBOutlet weak var active: UISegmentedControl!
@@ -112,10 +109,7 @@ class AddOrEditStudentViewController: UIViewController {
     private func hideFields() {
         deleteButton.hidden = true
         addToRoster.hidden = true
-        signOutRecordsLabel.hidden = true
-        dayCampsRosters.hidden = true
-        weeklyCampsRosters.hidden = true
-        afterSchoolProgramRosters.hidden = true
+        signOutRecordsButton.hidden = true
     }
 
     private func setBirthDate() {
