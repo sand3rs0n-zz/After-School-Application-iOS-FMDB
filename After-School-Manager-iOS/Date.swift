@@ -100,7 +100,12 @@ class Date {
     }
 
     func fullTime() -> String {
-        return hourAsString() + ":" + minuteAsString()
+        var ampm = "AM"
+        if (hour > 12) {
+            hour = hour - 12
+            ampm = "PM"
+        }
+        return hourAsString() + ":" + minuteAsString() + " " + ampm
     }
 
     func age() -> Int {

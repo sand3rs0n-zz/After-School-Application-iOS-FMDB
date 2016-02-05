@@ -7,3 +7,89 @@
 //
 
 import Foundation
+
+class SignOut {
+    private var studentID = 0
+    private var rosterID = 0
+    private var signOutGuardian = ""
+    private var campName = ""
+    private var rosterType = 0
+    private var day = 0
+    private var month = 0
+    private var year = 0
+    private var hour = 0
+    private var minute = 0
+    private var timeStamp = Date()
+
+    init() {
+    }
+
+    func createTimeStamp() {
+        timeStamp = Date(day: day, month: month, year: year, hour: hour, minute: minute)
+    }
+
+    func getTimeStamp() -> Date {
+        return timeStamp
+    }
+
+    func getStudentID() -> Int {
+        return studentID
+    }
+    func getRosterID() -> Int {
+        return rosterID
+    }
+    func getSignOutGuardian() -> String {
+        return signOutGuardian
+    }
+    func getCampName() -> String {
+        return campName
+    }
+    func gerRosterType() -> Int {
+        return rosterType
+    }
+    func getDay() -> Int {
+        return day
+    }
+    func getMonth() -> Int {
+        return month
+    }
+    func getYear() -> Int {
+        return year
+    }
+    func getHour() -> Int {
+        return hour
+    }
+    func getMinute() -> Int {
+        return minute
+    }
+    func setStudentID(studentID: Int) {
+        self.studentID = studentID
+    }
+    func setRosterID(rosterID: Int) {
+        self.rosterID = rosterID
+    }
+    func setSignOutGuaridan(signOutGuardian: String) {
+        self.signOutGuardian = signOutGuardian
+    }
+    func setCampName(campName: String) {
+        self.campName = campName
+    }
+    func setRosterType(rosterType: Int) {
+        self.rosterType = rosterType
+    }
+    func setDay(day: Int) {
+        self.day = day
+    }
+    func setMonth(month: Int) {
+        self.month = month
+    }
+    func setYear(year: Int) {
+        self.year = year
+    }
+    func setHour(hour: Int) {
+        self.hour = hour
+    }
+    func setMinute(minute: Int) {
+        self.minute = minute
+    }
+}

@@ -132,4 +132,15 @@ class StudentInfoViewController: UIViewController {
         }
         return contactList
     }
+
+    @IBAction func studentInfoUnwind(segue: UIStoryboardSegue) {
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "StudentInfoToSignOuts") {
+            let sohvc = segue.destinationViewController as? SignOutHistoryViewController
+            sohvc?.setState(0)
+            sohvc?.setStudentID(studentID)
+        }
+    }
 }

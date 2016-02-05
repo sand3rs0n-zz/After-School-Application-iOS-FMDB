@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="exd-2Y-jDk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="exd-2Y-jDk">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
         <!--Home Page View Controller-->
@@ -978,6 +978,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RS6-Gx-9ei">
                                 <rect key="frame" x="51" y="374" width="120" height="30"/>
                                 <state key="normal" title="Sign Out Records"/>
+                                <connections>
+                                    <segue destination="bJt-LC-pkh" kind="show" identifier="StudentInfoToSignOuts" id="R5z-Eg-ICD"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1010,25 +1013,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bc6-Gr-Kkd">
-                                <rect key="frame" x="29" y="97" width="36" height="21"/>
+                                <rect key="frame" x="58" y="116" width="36" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1rT-op-10P">
-                                <rect key="frame" x="100" y="97" width="38" height="21"/>
+                                <rect key="frame" x="129" y="116" width="38" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Who Signed Out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kg-80-gEl">
-                                <rect key="frame" x="259" y="97" width="126" height="21"/>
+                                <rect key="frame" x="288" y="116" width="126" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Signed Out/Absent (scheduled/UNSCHEDULED!/School closed/etc)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5fQ-pW-LFc">
-                                <rect key="frame" x="29" y="320" width="517" height="21"/>
+                                <rect key="frame" x="42" y="551" width="517" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -1037,33 +1040,85 @@
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <items>
                                     <navigationItem title="Sign Out Records" id="9Yc-ME-fik">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="1Iv-Nj-3J5"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="1Iv-Nj-3J5">
+                                            <connections>
+                                                <action selector="backButton:" destination="bJt-LC-pkh" id="WHX-mn-I2m"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XPl-Sj-U0e">
-                                <rect key="frame" x="448" y="97" width="43" height="21"/>
+                                <rect key="frame" x="477" y="116" width="43" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event Types" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XlU-bF-RCr">
-                                <rect key="frame" x="34" y="278" width="94" height="21"/>
+                                <rect key="frame" x="47" y="528" width="94" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Camp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pjt-Br-7G0">
-                                <rect key="frame" x="165" y="97" width="46" height="21"/>
+                                <rect key="frame" x="203" y="116" width="46" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vfX-Am-8p4">
+                                <rect key="frame" x="168" y="78" width="79" height="30"/>
+                                <state key="normal" title="Day Camps"/>
+                                <connections>
+                                    <action selector="dayCamp:" destination="bJt-LC-pkh" eventType="touchUpInside" id="yQ1-Fk-znJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5e-pU-jEk">
+                                <rect key="frame" x="255" y="78" width="91" height="30"/>
+                                <state key="normal" title="Week Camps"/>
+                                <connections>
+                                    <action selector="weekCamp:" destination="bJt-LC-pkh" eventType="touchUpInside" id="clf-d8-laZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1vp-ph-IR2">
+                                <rect key="frame" x="362" y="78" width="85" height="30"/>
+                                <state key="normal" title="After School"/>
+                                <connections>
+                                    <action selector="afterSchool:" destination="bJt-LC-pkh" eventType="touchUpInside" id="Rdq-tt-Q6D"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wPa-37-GL5">
+                                <rect key="frame" x="42" y="151" width="506" height="369"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="rBc-fV-KdH">
+                                        <rect key="frame" x="0.0" y="28" width="506" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rBc-fV-KdH" id="HKm-eE-uzE">
+                                            <rect key="frame" x="0.0" y="0.0" width="506" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="bJt-LC-pkh" id="Rsz-Ga-Cma"/>
+                                    <outlet property="delegate" destination="bJt-LC-pkh" id="PX9-vn-fMg"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="afterSchoolButton" destination="1vp-ph-IR2" id="7a4-ev-Nlt"/>
+                        <outlet property="dayCampButton" destination="vfX-Am-8p4" id="87J-UW-kuH"/>
+                        <outlet property="signOutsListTable" destination="wPa-37-GL5" id="mmO-UL-tX7"/>
+                        <outlet property="weekCampButton" destination="h5e-pU-jEk" id="PpX-0z-XiX"/>
+                        <segue destination="mQM-uW-Ixp" kind="unwind" identifier="SignOutsToStudentInfoUnwind" unwindAction="studentInfoUnwind:" id="2uf-fV-vKP"/>
+                        <segue destination="mQM-uW-Ixp" kind="unwind" identifier="SignOutsToEditStudentInfoUnwind" unwindAction="editStudentInfoUnwind:" id="G8U-He-r4B"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fu8-w7-T3D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="mQM-uW-Ixp" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2053" y="2202"/>
         </scene>
@@ -1158,6 +1213,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="via-90-fAc">
                                 <rect key="frame" x="78" y="422" width="120" height="30"/>
                                 <state key="normal" title="Sign Out Records"/>
+                                <connections>
+                                    <segue destination="bJt-LC-pkh" kind="show" identifier="EditStudentInfoToSignOuts" id="0dW-OO-Qat"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rzz-3o-MtC">
                                 <rect key="frame" x="111" y="374" width="52" height="30"/>
@@ -1196,7 +1254,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p3F-Cn-QeA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="GGQ-HY-VuM" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2751" y="-465"/>
+            <point key="canvasLocation" x="2751" y="-470"/>
         </scene>
         <!--All Students View Controller-->
         <scene sceneID="Abi-uK-kyx">
@@ -1480,10 +1538,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="xQw-aq-Cov"/>
         <segue reference="b71-pI-SmA"/>
+        <segue reference="xQw-aq-Cov"/>
+        <segue reference="R5z-Eg-ICD"/>
+        <segue reference="Jr8-W3-Udp"/>
         <segue reference="p75-6g-aLt"/>
         <segue reference="2F6-fC-QeF"/>
-        <segue reference="Jr8-W3-Udp"/>
     </inferredMetricsTieBreakers>
 </document>
