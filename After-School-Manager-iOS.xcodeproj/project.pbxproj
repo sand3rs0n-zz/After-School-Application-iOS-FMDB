@@ -35,6 +35,8 @@
 		0F1CF3A11C5D31E90048A7D7 /* StudentInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1CF3A01C5D31E90048A7D7 /* StudentInfoViewController.swift */; };
 		0F1CF3A31C5D3DEA0048A7D7 /* UpcomingAbsencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1CF3A21C5D3DEA0048A7D7 /* UpcomingAbsencesViewController.swift */; };
 		0F1CF3A71C5D4CE80048A7D7 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1CF3A61C5D4CE80048A7D7 /* libsqlite3.0.tbd */; };
+		0F33BEF61C6556EC00312041 /* AddOrEditEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F33BEF51C6556EC00312041 /* AddOrEditEventViewController.swift */; };
+		0F33BEF81C655AB200312041 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F33BEF71C655AB200312041 /* Event.swift */; };
 		0F7699051C5D4F9800F04142 /* Guardian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7699041C5D4F9800F04142 /* Guardian.swift */; };
 		0F7699071C5D4FA400F04142 /* Absence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7699061C5D4FA400F04142 /* Absence.swift */; };
 		0F76990C1C5D4FC200F04142 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7699081C5D4FC200F04142 /* Settings.swift */; };
@@ -51,6 +53,7 @@
 		0F76991F1C5D64C800F04142 /* RosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F76991E1C5D64C800F04142 /* RosterViewController.swift */; };
 		0F7699211C5D674600F04142 /* AddOrEditAttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7699201C5D674600F04142 /* AddOrEditAttendanceViewController.swift */; };
 		0F7699231C5D6E0200F04142 /* SelectStudentToAddToRosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7699221C5D6E0200F04142 /* SelectStudentToAddToRosterViewController.swift */; };
+		0F7D26C61C6571DC00176CF2 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7D26C51C6571DC00176CF2 /* EventViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +94,8 @@
 		0F1CF3A01C5D31E90048A7D7 /* StudentInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentInfoViewController.swift; sourceTree = "<group>"; };
 		0F1CF3A21C5D3DEA0048A7D7 /* UpcomingAbsencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingAbsencesViewController.swift; sourceTree = "<group>"; };
 		0F1CF3A61C5D4CE80048A7D7 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		0F33BEF51C6556EC00312041 /* AddOrEditEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOrEditEventViewController.swift; sourceTree = "<group>"; };
+		0F33BEF71C655AB200312041 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		0F7699041C5D4F9800F04142 /* Guardian.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Guardian.swift; sourceTree = "<group>"; };
 		0F7699061C5D4FA400F04142 /* Absence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Absence.swift; sourceTree = "<group>"; };
 		0F7699081C5D4FC200F04142 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -107,6 +112,7 @@
 		0F76991E1C5D64C800F04142 /* RosterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterViewController.swift; sourceTree = "<group>"; };
 		0F7699201C5D674600F04142 /* AddOrEditAttendanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOrEditAttendanceViewController.swift; sourceTree = "<group>"; };
 		0F7699221C5D6E0200F04142 /* SelectStudentToAddToRosterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStudentToAddToRosterViewController.swift; sourceTree = "<group>"; };
+		0F7D26C51C6571DC00176CF2 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,12 +197,14 @@
 			isa = PBXGroup;
 			children = (
 				0F7699201C5D674600F04142 /* AddOrEditAttendanceViewController.swift */,
+				0F33BEF51C6556EC00312041 /* AddOrEditEventViewController.swift */,
 				0F7699141C5D556800F04142 /* AddOrEditStudentViewController.swift */,
 				0F7699161C5D5E4100F04142 /* AllEventsViewController.swift */,
 				0F76991A1C5D5E7600F04142 /* AllRostersViewController.swift */,
 				0F7699121C5D540F00F04142 /* AllStudentsViewController.swift */,
 				0F76991C1C5D600600F04142 /* CreateRosterViewController.swift */,
 				0F7699181C5D5E5400F04142 /* EventsCalendarViewController.swift */,
+				0F7D26C51C6571DC00176CF2 /* EventViewController.swift */,
 				0F1CF3621C5C65FC0048A7D7 /* HomePageViewController.swift */,
 				0F1CF3631C5C65FC0048A7D7 /* InstructorMenuViewController.swift */,
 				0F1CF3651C5C65FC0048A7D7 /* RosterListViewController.swift */,
@@ -219,6 +227,7 @@
 			children = (
 				0F7699061C5D4FA400F04142 /* Absence.swift */,
 				0F7699101C5D4FE100F04142 /* ContactNumber.swift */,
+				0F33BEF71C655AB200312041 /* Event.swift */,
 				0F7699041C5D4F9800F04142 /* Guardian.swift */,
 				0F1CF3851C5D0C450048A7D7 /* Roster.swift */,
 				0F7699081C5D4FC200F04142 /* Settings.swift */,
@@ -318,15 +327,18 @@
 				0F1CF3721C5C65FC0048A7D7 /* Date.swift in Sources */,
 				0F1CF38F1C5D1DED0048A7D7 /* StudentRoster.swift in Sources */,
 				0F1CF3751C5C65FC0048A7D7 /* InstructorMenuViewController.swift in Sources */,
+				0F33BEF61C6556EC00312041 /* AddOrEditEventViewController.swift in Sources */,
 				0F7699111C5D4FE100F04142 /* ContactNumber.swift in Sources */,
 				0F1CF39D1C5D26840048A7D7 /* ScheduleAbsenceViewController.swift in Sources */,
 				0F1CF3771C5C65FC0048A7D7 /* RosterListViewController.swift in Sources */,
 				0F1CF39F1C5D283B0048A7D7 /* SignOutViewController.swift in Sources */,
 				0F1CF30E1C5C4BB00048A7D7 /* FMDatabaseAdditions.m in Sources */,
 				0F76991D1C5D600600F04142 /* CreateRosterViewController.swift in Sources */,
+				0F33BEF81C655AB200312041 /* Event.swift in Sources */,
 				0F1CF3741C5C65FC0048A7D7 /* HomePageViewController.swift in Sources */,
 				0F76990D1C5D4FC200F04142 /* SignOut.swift in Sources */,
 				0F7699071C5D4FA400F04142 /* Absence.swift in Sources */,
+				0F7D26C61C6571DC00176CF2 /* EventViewController.swift in Sources */,
 				0F1CF38D1C5D1DC40048A7D7 /* Student.swift in Sources */,
 				0F76991F1C5D64C800F04142 /* RosterViewController.swift in Sources */,
 				0F7699191C5D5E5400F04142 /* EventsCalendarViewController.swift in Sources */,
