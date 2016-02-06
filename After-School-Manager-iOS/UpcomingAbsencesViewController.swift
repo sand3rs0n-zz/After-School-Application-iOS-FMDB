@@ -46,6 +46,7 @@ class UpcomingAbsencesViewController: UIViewController, UITableViewDataSource, U
                 cur.setYear(Int(results.intForColumn("year")))
                 absenceList.append(cur)
             }
+            results.close()
             contactDB.close()
         } else {
             print("Error: \(contactDB.lastErrorMessage())")

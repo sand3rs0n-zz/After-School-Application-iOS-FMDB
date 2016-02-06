@@ -54,6 +54,8 @@
 		0F7699211C5D674600F04142 /* AddOrEditAttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7699201C5D674600F04142 /* AddOrEditAttendanceViewController.swift */; };
 		0F7699231C5D6E0200F04142 /* SelectStudentToAddToRosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7699221C5D6E0200F04142 /* SelectStudentToAddToRosterViewController.swift */; };
 		0F7D26C61C6571DC00176CF2 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7D26C51C6571DC00176CF2 /* EventViewController.swift */; };
+		0F7D26C81C65784000176CF2 /* RosterHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7D26C71C65784000176CF2 /* RosterHistoryViewController.swift */; };
+		0F7D26CA1C657A6000176CF2 /* SelectRosterToAddStudentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7D26C91C657A6000176CF2 /* SelectRosterToAddStudentViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -113,6 +115,8 @@
 		0F7699201C5D674600F04142 /* AddOrEditAttendanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOrEditAttendanceViewController.swift; sourceTree = "<group>"; };
 		0F7699221C5D6E0200F04142 /* SelectStudentToAddToRosterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStudentToAddToRosterViewController.swift; sourceTree = "<group>"; };
 		0F7D26C51C6571DC00176CF2 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		0F7D26C71C65784000176CF2 /* RosterHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterHistoryViewController.swift; sourceTree = "<group>"; };
+		0F7D26C91C657A6000176CF2 /* SelectRosterToAddStudentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectRosterToAddStudentViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,9 +211,11 @@
 				0F7D26C51C6571DC00176CF2 /* EventViewController.swift */,
 				0F1CF3621C5C65FC0048A7D7 /* HomePageViewController.swift */,
 				0F1CF3631C5C65FC0048A7D7 /* InstructorMenuViewController.swift */,
+				0F7D26C71C65784000176CF2 /* RosterHistoryViewController.swift */,
 				0F1CF3651C5C65FC0048A7D7 /* RosterListViewController.swift */,
 				0F1CF3661C5C65FC0048A7D7 /* RosterTypeViewController.swift */,
 				0F76991E1C5D64C800F04142 /* RosterViewController.swift */,
+				0F7D26C91C657A6000176CF2 /* SelectRosterToAddStudentViewController.swift */,
 				0F7699221C5D6E0200F04142 /* SelectStudentToAddToRosterViewController.swift */,
 				0F1CF39C1C5D26840048A7D7 /* ScheduleAbsenceViewController.swift */,
 				0F1CF3881C5D1D3A0048A7D7 /* SignOutHistoryViewController.swift */,
@@ -326,6 +332,7 @@
 				0F1CF2F01C5C4B9D0048A7D7 /* AppDelegate.swift in Sources */,
 				0F1CF3721C5C65FC0048A7D7 /* Date.swift in Sources */,
 				0F1CF38F1C5D1DED0048A7D7 /* StudentRoster.swift in Sources */,
+				0F7D26CA1C657A6000176CF2 /* SelectRosterToAddStudentViewController.swift in Sources */,
 				0F1CF3751C5C65FC0048A7D7 /* InstructorMenuViewController.swift in Sources */,
 				0F33BEF61C6556EC00312041 /* AddOrEditEventViewController.swift in Sources */,
 				0F7699111C5D4FE100F04142 /* ContactNumber.swift in Sources */,
@@ -342,6 +349,7 @@
 				0F1CF38D1C5D1DC40048A7D7 /* Student.swift in Sources */,
 				0F76991F1C5D64C800F04142 /* RosterViewController.swift in Sources */,
 				0F7699191C5D5E5400F04142 /* EventsCalendarViewController.swift in Sources */,
+				0F7D26C81C65784000176CF2 /* RosterHistoryViewController.swift in Sources */,
 				0F1CF37C1C5C65FC0048A7D7 /* SignatureView.swift in Sources */,
 				0F1CF3761C5C65FC0048A7D7 /* Line.swift in Sources */,
 				0F7699171C5D5E4100F04142 /* AllEventsViewController.swift in Sources */,

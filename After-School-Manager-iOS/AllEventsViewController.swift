@@ -43,6 +43,7 @@ class AllEventsViewController: UIViewController, UITableViewDataSource, UITableV
                 cur.setYear(Int(results.intForColumn("year")))
                 eventList.append(cur)
             }
+            results.close()
             contactDB.close()
         } else {
             print("Error: \(contactDB.lastErrorMessage())")

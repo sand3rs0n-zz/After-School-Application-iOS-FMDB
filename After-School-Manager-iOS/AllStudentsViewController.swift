@@ -47,6 +47,7 @@ class AllStudentsViewController: UIViewController, UITableViewDataSource, UITabl
                 cur.setBirthYear(Int(results.intForColumn("birthYear")))
                 studentList.append(cur)
             }
+            results.close()
             contactDB.close()
         } else {
             print("Error: \(contactDB.lastErrorMessage())")

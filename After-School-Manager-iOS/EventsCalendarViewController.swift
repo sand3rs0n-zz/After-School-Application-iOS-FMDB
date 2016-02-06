@@ -44,6 +44,7 @@ class EventsCalendarViewController: UIViewController, UITableViewDataSource, UIT
                 cur.setYear(Int(results.intForColumn("year")))
                 eventList.append(cur)
             }
+            results.close()
             contactDB.close()
         } else {
             print("Error: \(contactDB.lastErrorMessage())")

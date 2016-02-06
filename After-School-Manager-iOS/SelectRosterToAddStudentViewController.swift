@@ -1,21 +1,20 @@
 //
-//  AllRostersViewController.swift
-//  ParseStarterProject-Swift
+//  SelectRosterToAddStudentViewController.swift
+//  After-School-Manager-iOS
 //
-//  Created by Steven on 12/17/15.
-//  Copyright © 2015 Parse. All rights reserved.
+//  Created by Steven on 2/5/16.
+//  Copyright © 2016 Steven Anderson. All rights reserved.
 //
 
 import UIKit
 
-class AllRostersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SelectRosterToAddStudentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var rosterListTable: UITableView!
     private var rosterList = [Roster]()
 
+    private var studentID = 0
     private var forwardedRosterID = 0
-    private var forwardedRosterName = ""
-    private var forwardedRoster = Roster()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +32,7 @@ class AllRostersViewController: UIViewController, UITableViewDataSource, UITable
         let contactDB = FMDatabase(path: path)
 
         if contactDB.open() {
-            let querySQL = "SELECT * FROM ROSTERS ORDER BY startYear, startMonth, startDay, name ASC"
+            let querySQL = "SELECT * FROM ROSTERS WHERE rosterID NOT IN (SELECT rosterID FROM STUDENTROSTERS WHERE studentID = '\(studentID)') ORDER BY name ASC"
 
             let results = contactDB.executeQuery(querySQL, withArgumentsInArray: nil)
             while (results.next()) {
@@ -58,6 +57,10 @@ class AllRostersViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
 
+    func setStudentID(studentID: Int) {
+        self.studentID = studentID
+    }
+
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let roster = rosterList[indexPath.row]
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
@@ -72,12 +75,10 @@ class AllRostersViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let roster = rosterList[(indexPath.row)]
         forwardedRosterID = roster.getRosterID()
-        forwardedRosterName = roster.getName()
-        forwardedRoster = roster
-        performSegueWithIdentifier("AllRostersToSpecificRoster", sender: self)
+        performSegueWithIdentifier("SelectRosterToAddStudentToAddAttendance", sender: self)
     }
 
-    @IBAction func returnToAllRostersUnwind(segue: UIStoryboardSegue) {
+    @IBAction func returnToSelectRosterToAddStudentUnwind(segue: UIStoryboardSegue) {
         rosterList.removeAll()
         getRosters()
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -86,16 +87,13 @@ class AllRostersViewController: UIViewController, UITableViewDataSource, UITable
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "AllRostersToSpecificRoster") {
-            let rvc = segue.destinationViewController as? RosterViewController
-            rvc?.setTitleValue(forwardedRosterName)
-            rvc?.setRosterID(forwardedRosterID)
-            rvc?.setRoster(forwardedRoster)
-        } else if (segue.identifier == "AllRostersToNewRoster") {
-            let crvc = segue.destinationViewController as? CreateRosterViewController
-            crvc?.setState(0)
-            crvc?.setTitleValue("Create Roster")
-            crvc?.setCreateRosterButtonValue("Create Roster")
+        if (segue.identifier == "SelectRosterToAddStudentToAddAttendance") {
+            let aeavc = segue.destinationViewController as? AddOrEditAttendanceViewController
+            aeavc?.setState(3)
+            aeavc?.setTitleValue("Add Student to Roster")
+            aeavc?.setStudentId(studentID)
+            aeavc?.setRosterId(forwardedRosterID)
+            aeavc?.setButtonText("Add Attendance")
         }
     }
 }

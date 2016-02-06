@@ -62,6 +62,7 @@ class SignOutHistoryViewController: UIViewController, UITableViewDataSource, UIT
                     cur.createTimeStamp()
                 signOuts.append(cur)
             }
+            results.close()
             contactDB.close()
         } else {
             print("Error: \(contactDB.lastErrorMessage())")

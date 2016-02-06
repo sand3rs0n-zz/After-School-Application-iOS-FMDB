@@ -61,6 +61,7 @@ class StudentRosterViewController: UIViewController, UITableViewDataSource, UITa
                 cur.setSunday(Int(results.intForColumn("sunday")))
                 students.append(cur)
             }
+            results.close()
             contactDB.close()
         } else {
             print("Error: \(contactDB.lastErrorMessage())")

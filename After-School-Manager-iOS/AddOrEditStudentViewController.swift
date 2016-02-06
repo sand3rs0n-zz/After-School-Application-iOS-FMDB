@@ -66,6 +66,7 @@ class AddOrEditStudentViewController: UIViewController {
         student.setBirthDay(Int(results.intForColumn("birthDay")))
         student.setBirthMonth(Int(results.intForColumn("birthMonth")))
         student.setBirthYear(Int(results.intForColumn("birthYear")))
+        results.close()
     }
 
     private func getGuardians(contactDB: FMDatabase) {
@@ -78,6 +79,7 @@ class AddOrEditStudentViewController: UIViewController {
             cur.setStudentID(Int(results.intForColumn("studentID")))
             guardians.append(cur)
         }
+        results.close()
     }
 
     private func getContactNumbers(contactDB: FMDatabase) {
@@ -91,6 +93,7 @@ class AddOrEditStudentViewController: UIViewController {
             cur.setStudentID(Int(results.intForColumn("studentID")))
             contactNumbers.append(cur)
         }
+        results.close()
     }
 
     private func fillFields() {
@@ -231,6 +234,9 @@ class AddOrEditStudentViewController: UIViewController {
             let sohvc = segue.destinationViewController as? SignOutHistoryViewController
             sohvc?.setState(1)
             sohvc?.setStudentID(studentID)
+        } else if (segue.identifier == "EditStudentToRosterHistory") {
+            let rhvc = segue.destinationViewController as? RosterHistoryViewController
+            rhvc?.setStudentID(studentID)
         }
     }
 }

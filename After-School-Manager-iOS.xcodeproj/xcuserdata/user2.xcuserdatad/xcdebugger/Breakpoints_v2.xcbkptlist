@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "After-School-Manager-iOS/RosterListViewController.swift"
-            timestampString = "475876776.220453"
+            timestampString = "476414810.618871"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
             landmarkName = "tableView(_:cellForRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -112,6 +112,70 @@
             startingLineNumber = "52"
             endingLineNumber = "52"
             landmarkName = "schedule(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "After-School-Manager-iOS/ScheduleAbsenceViewController.swift"
+            timestampString = "476414810.618871"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "schedule(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "After_School_Manager_iOS.ScheduleAbsenceViewController.schedule (After_School_Manager_iOS.ScheduleAbsenceViewController)(Swift.AnyObject) -&gt; ()"
+                  moduleName = "After-School-Manager-iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user2/Documents/After-School-Application-iOS-FMDB/After-School-Manager-iOS/ScheduleAbsenceViewController.swift"
+                  timestampString = "476414554.308052"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "6969">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "After_School_Manager_iOS.ScheduleAbsenceViewController.schedule (After_School_Manager_iOS.ScheduleAbsenceViewController)(Swift.AnyObject) -&gt; ()"
+                  moduleName = "After-School-Manager-iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user2/Documents/After-School-Application-iOS-FMDB/After-School-Manager-iOS/ScheduleAbsenceViewController.swift"
+                  timestampString = "476414554.309638"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "6989">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "After-School-Manager-iOS/RosterHistoryViewController.swift"
+            timestampString = "476416237.699453"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "getRosters()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

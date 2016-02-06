@@ -42,6 +42,7 @@ class SelectStudentToAddToRosterViewController: UIViewController, UITableViewDat
                 cur.setBirthYear(Int(results.intForColumn("birthYear")))
                 students.append(cur)
             }
+            results.close()
             contactDB.close()
         } else {
             print("Error: \(contactDB.lastErrorMessage())")
