@@ -52,6 +52,7 @@
 		0F76991F1C5D64C800F04142 /* RosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F76991E1C5D64C800F04142 /* RosterViewController.swift */; };
 		0F7699211C5D674600F04142 /* AddOrEditAttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7699201C5D674600F04142 /* AddOrEditAttendanceViewController.swift */; };
 		0F7699231C5D6E0200F04142 /* SelectStudentToAddToRosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7699221C5D6E0200F04142 /* SelectStudentToAddToRosterViewController.swift */; };
+		8D35069C1C6AA967007D7A2C /* img in Resources */ = {isa = PBXBuildFile; fileRef = 8D35069B1C6AA967007D7A2C /* img */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -109,6 +110,7 @@
 		0F76991E1C5D64C800F04142 /* RosterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterViewController.swift; sourceTree = "<group>"; };
 		0F7699201C5D674600F04142 /* AddOrEditAttendanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOrEditAttendanceViewController.swift; sourceTree = "<group>"; };
 		0F7699221C5D6E0200F04142 /* SelectStudentToAddToRosterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStudentToAddToRosterViewController.swift; sourceTree = "<group>"; };
+		8D35069B1C6AA967007D7A2C /* img */ = {isa = PBXFileReference; lastKnownFileType = folder; path = img; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 				0F1CF2EF1C5C4B9D0048A7D7 /* AppDelegate.swift */,
 				0F1CF31D1C5C61B60048A7D7 /* AfterSchoolData.sqlite */,
 				0F1CF2F31C5C4B9D0048A7D7 /* Main.storyboard */,
+				8D35069B1C6AA967007D7A2C /* img */,
 				0F1CF3871C5D0C490048A7D7 /* Models */,
 				0F1CF2F11C5C4B9D0048A7D7 /* ViewController.swift */,
 				0F1CF3841C5D0BEB0048A7D7 /* ViewControllers */,
@@ -290,6 +293,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D35069C1C6AA967007D7A2C /* img in Resources */,
 				0F1CF2FA1C5C4B9D0048A7D7 /* LaunchScreen.storyboard in Resources */,
 				0F1CF2F71C5C4B9D0048A7D7 /* Assets.xcassets in Resources */,
 				0F1CF31E1C5C61B60048A7D7 /* AfterSchoolData.sqlite in Resources */,
