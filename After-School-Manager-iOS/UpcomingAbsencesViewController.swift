@@ -13,6 +13,8 @@ class UpcomingAbsencesViewController: UIViewController, UITableViewDataSource, U
     private var absenceList = [Absence]()
     private let date = Date()
     private let calendar = NSCalendar.currentCalendar()
+
+    private var forwardedAbsence = Absence()
     
     @IBOutlet weak var upcomingAbsencesListTable: UITableView!
     override func viewDidLoad() {
@@ -89,15 +91,20 @@ class UpcomingAbsencesViewController: UIViewController, UITableViewDataSource, U
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
-        let text = cell?.textLabel?.text
-        print(text)
+        let absence = absenceList[(indexPath.row)]
+        forwardedAbsence = absence
+        performSegueWithIdentifier("UpcomingAbsenceToUpdateAbsence", sender: self)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "UpcomingAbsencesToScheduleAbsenceRosterSelect") {
             let srvc = segue.destinationViewController as? RosterTypeViewController
             srvc?.setState(2)
+        } else if (segue.identifier == "UpcomingAbsenceToUpdateAbsence") {
+            let savc = segue.destinationViewController as? ScheduleAbsenceViewController
+            savc?.setState(1)
+            savc?.setButtonText("Update Absence")
+            savc?.setAbsence(forwardedAbsence)
         }
     }
     
