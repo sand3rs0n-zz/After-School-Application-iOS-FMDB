@@ -90,22 +90,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "After-School-Manager-iOS/ScheduleAbsenceViewController.swift"
-            timestampString = "477453491.175254"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
-            landmarkName = "scheduleOrUpdateAbsence(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "After-School-Manager-iOS/ScheduleAbsenceViewController.swift"
             timestampString = "477453059.742007"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -113,54 +97,6 @@
             endingLineNumber = "93"
             landmarkName = "scheduleOrUpdateAbsence(_:)"
             landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "After-School-Manager-iOS/ScheduleAbsenceViewController.swift"
-            timestampString = "477453491.175254"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
-            landmarkName = "scheduleOrUpdateAbsence(_:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "After_School_Manager_iOS.ScheduleAbsenceViewController.schedule (After_School_Manager_iOS.ScheduleAbsenceViewController)(Swift.AnyObject) -&gt; ()"
-                  moduleName = "After-School-Manager-iOS"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/user2/Documents/After-School-Application-iOS-FMDB/After-School-Manager-iOS/ScheduleAbsenceViewController.swift"
-                  timestampString = "476414554.308052"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "62"
-                  endingLineNumber = "62"
-                  offsetFromSymbolStart = "6969">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "After_School_Manager_iOS.ScheduleAbsenceViewController.schedule (After_School_Manager_iOS.ScheduleAbsenceViewController)(Swift.AnyObject) -&gt; ()"
-                  moduleName = "After-School-Manager-iOS"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/user2/Documents/After-School-Application-iOS-FMDB/After-School-Manager-iOS/ScheduleAbsenceViewController.swift"
-                  timestampString = "476414554.309638"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "62"
-                  endingLineNumber = "62"
-                  offsetFromSymbolStart = "6989">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

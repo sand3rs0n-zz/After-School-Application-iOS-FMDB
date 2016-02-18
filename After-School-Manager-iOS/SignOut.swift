@@ -14,6 +14,7 @@ class SignOut {
     private var signOutGuardian = ""
     private var campName = ""
     private var rosterType = 0
+    private var signOutType = 0
     private var day = 0
     private var month = 0
     private var year = 0
@@ -27,11 +28,9 @@ class SignOut {
     func createTimeStamp() {
         timeStamp = Date(day: day, month: month, year: year, hour: hour, minute: minute)
     }
-
     func getTimeStamp() -> Date {
         return timeStamp
     }
-
     func getStudentID() -> Int {
         return studentID
     }
@@ -46,6 +45,9 @@ class SignOut {
     }
     func gerRosterType() -> Int {
         return rosterType
+    }
+    func gerSignOutType() -> Int {
+        return signOutType
     }
     func getDay() -> Int {
         return day
@@ -76,6 +78,9 @@ class SignOut {
     }
     func setRosterType(rosterType: Int) {
         self.rosterType = rosterType
+    }
+    func setSignOutType(signOutType: Int) {
+        self.signOutType = signOutType
     }
     func setDay(day: Int) {
         self.day = day

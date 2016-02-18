@@ -14,6 +14,9 @@ class TodayRosterViewController: UIViewController, UITableViewDataSource, UITabl
     private var studentList = [StudentRoster]()
     private var date = Date()
     private var forwardedStudentID = 0
+    private var forwardedRosterID = 0
+    private var forwardedStudentFirstName = ""
+    private var forwardedStudentLastName = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,26 +38,13 @@ class TodayRosterViewController: UIViewController, UITableViewDataSource, UITabl
         let weekday = date.getCurrentWeekday()
 
         if contactDB.open() {
-            let querySQL = "SELECT STUDENTROSTERS.studentFirstName, STUDENTROSTERS.studentLastName, STUDENTROSTERS.studentID, STUDENTROSTERS.rosterID, ROSTERS.name FROM STUDENTROSTERS LEFT OUTER JOIN ROSTERS ON STUDENTROSTERS.rosterID = ROSTERS.rosterID WHERE (endYear > '\(year)' OR (endYear = '\(year)' AND endMonth > '\(month)') OR (endYear = '\(year)' AND endMonth = '\(month)' AND endDay >= '\(day)')) AND (startYear < '\(year)' OR (startYear = '\(year)' AND startMonth < '\(month)') OR (startYear = '\(year)' AND startMonth = '\(month)' AND startDay <= '\(day)')) AND \(weekday) = 1 ORDER BY studentLastName, studentFirstName ASC"
+            let querySQL = "SELECT STUDENTROSTERS.studentFirstName AS studentFirstName, STUDENTROSTERS.studentLastName AS studentLastName, STUDENTROSTERS.studentID AS studentID, STUDENTROSTERS.rosterID AS rosterID, ROSTERS.name AS name FROM STUDENTROSTERS LEFT OUTER JOIN ROSTERS ON STUDENTROSTERS.rosterID = ROSTERS.rosterID  WHERE (endYear > '\(year)' OR (endYear = '\(year)' AND endMonth > '\(month)') OR (endYear = '\(year)' AND endMonth = '\(month)' AND endDay >= '\(day)')) AND (startYear < '\(year)' OR (startYear = '\(year)' AND startMonth < '\(month)') OR (startYear = '\(year)' AND startMonth = '\(month)' AND startDay <= '\(day)')) AND \(weekday) = 1 UNION SELECT STUDENTPROFILES.firstName AS studentFirstName, STUDENTPROFILES.lastName AS studentLastName, STUDENTPROFILES.studentID AS studentID, ROSTERS.rosterID as rosterID, ROSTERS.name as name FROM ONETIMEATTENDANCE LEFT OUTER JOIN STUDENTPROFILES ON ONETIMEATTENDANCE.studentID = STUDENTPROFILES.studentID LEFT OUTER JOIN ROSTERS ON ONETIMEATTENDANCE.rosterID = ROSTERS.rosterID WHERE year = '\(year)' AND month = '\(month)' AND day = '\(day)' ORDER BY studentLastName, studentFirstName, name ASC"
 
-            let secondQuery = "SELECT STUDENTPROFILES.firstName, STUDENTPROFILES.lastName, STUDENTPROFILES.studentID, ROSTERS.rosterID, ROSTERS.name FROM ONETIMEATTENDANCE LEFT OUTER JOIN STUDENTPROFILES ON ONETIMEATTENDANCE.studentID = STUDENTPROFILES.studentID LEFT OUTER JOIN ROSTERS ON ONETIMEATTENDANCE.rosterID = ROSTERS.rosterID WHERE year = '\(year)' AND month = '\(month)' AND day = '\(day)' ORDER BY lastName, firstName ASC"
-
-            var results = contactDB.executeQuery(querySQL, withArgumentsInArray: nil)
+            let results = contactDB.executeQuery(querySQL, withArgumentsInArray: nil)
             while (results.next()) {
                 let cur = StudentRoster()
                 cur.setStudentFirstName(results.stringForColumn("studentFirstName"))
                 cur.setStudentLastName(results.stringForColumn("studentLastName"))
-                cur.setStudentID(Int(results.intForColumn("studentID")))
-                cur.setRosterID(Int(results.intForColumn("rosterID")))
-                cur.setRosterName(results.stringForColumn("name"))
-                studentList.append(cur)
-            }
-            results = contactDB.executeQuery(secondQuery, withArgumentsInArray: nil)
-
-            while (results.next()) {
-                let cur = StudentRoster()
-                cur.setStudentFirstName(results.stringForColumn("firstName"))
-                cur.setStudentLastName(results.stringForColumn("lastName"))
                 cur.setStudentID(Int(results.intForColumn("studentID")))
                 cur.setRosterID(Int(results.intForColumn("rosterID")))
                 cur.setRosterName(results.stringForColumn("name"))
@@ -83,6 +73,9 @@ class TodayRosterViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let student = studentList[(indexPath.row)]
         forwardedStudentID = student.getStudentID()
+        forwardedRosterID = student.getRosterID()
+        forwardedStudentFirstName = student.getStudentFirstName()
+        forwardedStudentLastName = student.getStudentLastName()
         performSegueWithIdentifier("TodayRosterToEditAttendance", sender: self)
     }
 
@@ -98,6 +91,9 @@ class TodayRosterViewController: UIViewController, UITableViewDataSource, UITabl
         if (segue.identifier == "TodayRosterToEditAttendance") {
             let etavc = segue.destinationViewController as? EditTodayAttendanceViewController
             etavc?.setStudentID(forwardedStudentID)
+            etavc?.setRosterID(forwardedRosterID)
+            etavc?.setStudentFirstName(forwardedStudentFirstName)
+            etavc?.setStudentLastName(forwardedStudentLastName)
         }
     }
 }
