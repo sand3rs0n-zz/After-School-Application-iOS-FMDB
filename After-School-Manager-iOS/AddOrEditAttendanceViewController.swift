@@ -92,6 +92,7 @@ class AddOrEditAttendanceViewController: UIViewController {
             results.next()
             schedule.setStudentFirstName(results.stringForColumn("studentFirstName"))
             schedule.setStudentLastName(results.stringForColumn("studentLastName"))
+            schedule.setStudentLastName(results.stringForColumn("rosterName"))
             schedule.setStudentID(Int(results.intForColumn("studentID")))
             schedule.setRosterID(Int(results.intForColumn("rosterID")))
             schedule.setMonday(Int(results.intForColumn("monday")))
@@ -223,7 +224,7 @@ class AddOrEditAttendanceViewController: UIViewController {
                 if (state == 0 || state == 2) {
                     insertSQL = "UPDATE STUDENTROSTERS SET studentFirstName = '\(name![0])', studentLastName = '\(name![1])', studentID = '\(studentID)', rosterID = '\(rosterID)', monday = '\(weekBool[0])', tuesday = '\(weekBool[1])', wednesday = '\(weekBool[2])', thursday = '\(weekBool[3])', friday = '\(weekBool[4])', saturday = '\(weekBool[5])', sunday = '\(weekBool[6])' WHERE rosterID = '\(rosterID)' AND studentID = '\(studentID)'"
                 } else if (state == 1 || state == 3) {
-                    insertSQL = "INSERT INTO STUDENTROSTERS (studentFirstName, studentLastName, studentID, rosterID, monday, tuesday, wednesday, thursday, friday, saturday, sunday) VALUES ('\(name![0])', '\(name![1])', '\(studentID)', '\(rosterID)', '\(weekBool[0])', '\(weekBool[1])', '\(weekBool[2])', '\(weekBool[3])', '\(weekBool[4])', '\(weekBool[5])', '\(weekBool[6])')"
+                    insertSQL = "INSERT INTO STUDENTROSTERS (studentFirstName, studentLastName, rosterName, studentID, rosterID, monday, tuesday, wednesday, thursday, friday, saturday, sunday) VALUES ('\(name![0])', '\(name![1])', '\(schedule.getRosterName())', '\(studentID)', '\(rosterID)', '\(weekBool[0])', '\(weekBool[1])', '\(weekBool[2])', '\(weekBool[3])', '\(weekBool[4])', '\(weekBool[5])', '\(weekBool[6])')"
                 }
             let result = contactDB.executeUpdate(insertSQL, withArgumentsInArray: nil)
 
@@ -254,14 +255,23 @@ class AddOrEditAttendanceViewController: UIViewController {
 
             if contactDB.open() {
                 let deleteSQL = "DELETE FROM STUDENTROSTERS WHERE rosterID = '\(self.rosterID)' AND studentID = '\(self.studentID)'"
-                let result = contactDB.executeUpdate(deleteSQL, withArgumentsInArray: nil)
-                if !result {
+                let deleteSignOuts = "DELETE FROM SIGNOUTS WHERE rosterID = '\(self.rosterID)' AND studentID = '\(self.studentID)'"
+                let result1 = contactDB.executeUpdate(deleteSQL, withArgumentsInArray: nil)
+                if !result1 {
+                    print("Error: \(contactDB.lastErrorMessage())")
+                } else {
+                    print("Deleted")
+                }
+                let result2 = contactDB.executeUpdate(deleteSignOuts, withArgumentsInArray: nil)
+                if !result2 {
                     print("Error: \(contactDB.lastErrorMessage())")
                 } else {
                     print("Deleted")
                 }
                 contactDB.close()
-                self.back()
+                if (result1 && result2) {
+                    self.back()
+                }
             }
         }
         myAlertController.addAction(nextAction)

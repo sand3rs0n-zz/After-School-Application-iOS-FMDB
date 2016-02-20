@@ -31,17 +31,15 @@ class RosterListViewController: UIViewController, UITableViewDataSource, UITable
         // Dispose of any resources that can be recreated.
     }
 
-    /*override func viewDidAppear(animated: Bool) {
-        if (rosterList.count == 1) {
-        }
-    }*/
-
     private func getRosters() {
+        let year = date.getCurrentYear()
+        let month = date.getCurrentMonth()
+        let day = date.getCurrentDay()
+
         let path = Util.getPath("AfterSchoolData.sqlite")
         let contactDB = FMDatabase(path: path)
-
         if contactDB.open() {
-            let querySQL = "SELECT * FROM ROSTERS WHERE rosterType = '\(rosterType)' AND endYear >= '\(date.getCurrentYear())' ORDER BY startMonth, startDay, name ASC"
+            let querySQL = "SELECT * FROM ROSTERS WHERE rosterType = '\(rosterType)' AND (endYear > '\(year)' OR (endYear = '\(year)' AND endMonth > '\(month)') OR (endYear = '\(year)' AND endMonth = '\(month)' AND endDay >= '\(day)')) AND (startYear < '\(year)' OR (startYear = '\(year)' AND startMonth < '\(month)') OR (startYear = '\(year)' AND startMonth = '\(month)' AND startDay <= '\(day)')) ORDER BY startMonth, startDay, name ASC"
 
             let results = contactDB.executeQuery(querySQL, withArgumentsInArray: nil)
             while (results.next()) {
@@ -63,41 +61,6 @@ class RosterListViewController: UIViewController, UITableViewDataSource, UITable
             contactDB.close()
         } else {
             print("Error: \(contactDB.lastErrorMessage())")
-        }
-        if (rosterState == 1) {
-            //get it so only relevant camps show up
-        }
-        removeOldDates()
-    }
-
-    private func removeOldDates() {
-        let year = date.getCurrentYear()
-        let month = date.getCurrentMonth()
-        let day = date.getCurrentDay()
-        for (var i = 0; i < rosterList.count; i++) {
-            let roster = rosterList[i]
-            if (roster.getEndYear() < year) {
-                rosterList.removeAtIndex(i)
-                i--
-            } else if (roster.getEndYear() == year && roster.getEndMonth() < month) {
-                rosterList.removeAtIndex(i)
-                i--
-            } else if (roster.getEndYear() == year && roster.getEndMonth() == month && roster.getEndDay() < day) {
-                rosterList.removeAtIndex(i)
-                i--
-            }
-            if (rosterState == 1) {
-                if (roster.getStartYear() > year) {
-                    rosterList.removeAtIndex(i)
-                    i--
-                } else if (roster.getStartYear() == year && roster.getStartMonth() > month) {
-                    rosterList.removeAtIndex(i)
-                    i--
-                } else if (roster.getStartYear() == year && roster.getStartMonth() ==  month && roster.getStartDay() > day) {
-                    rosterList.removeAtIndex(i)
-                    i--
-                }
-            }
         }
     }
 

@@ -41,7 +41,7 @@ class StudentRosterViewController: UIViewController, UITableViewDataSource, UITa
             let date = Date()
             var querySQL = ""
             if (rosterState == 1) {
-                querySQL = "SELECT * FROM STUDENTROSTERS WHERE rosterID = '\(rosterID)' AND studentID NOT IN (SELECT studentID FROM SIGNOUTS WHERE day = '\(date.getCurrentDay())' AND month = '\(date.getCurrentMonth())' AND year = '\(date.getCurrentYear())' AND rosterID = '\(rosterID)') AND \(date.getCurrentWeekday()) = 1 ORDER BY studentLastName ASC"
+                querySQL = "SELECT * FROM STUDENTROSTERS WHERE rosterID = '\(rosterID)' AND studentID NOT IN (SELECT studentID FROM SIGNOUTS WHERE day = '\(date.getCurrentDay())' AND month = '\(date.getCurrentMonth())' AND year = '\(date.getCurrentYear())' AND rosterID = '\(rosterID)') AND \(date.getCurrentWeekday()) = 1 AND studentID IN (SELECT studentID FROM STUDENTPROFILES WHERE active = 1) ORDER BY studentLastName ASC"
             } else {
                 querySQL = "SELECT * FROM STUDENTROSTERS WHERE rosterID = '\(rosterID)' ORDER BY studentLastName ASC"
             }

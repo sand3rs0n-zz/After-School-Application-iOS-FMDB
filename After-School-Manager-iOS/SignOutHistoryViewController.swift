@@ -40,11 +40,16 @@ class SignOutHistoryViewController: UIViewController, UITableViewDataSource, UIT
     }
 
     private func getSignOuts() {
+        let date = Date()
+        let year = date.getCurrentYear()
+        let month = date.getCurrentMonth()
+        let day = date.getCurrentDay()
+
         let path = Util.getPath("AfterSchoolData.sqlite")
         let contactDB = FMDatabase(path: path)
 
         if contactDB.open() {
-            let querySQL = "SELECT SIGNOUTS.*, ROSTERS.name FROM SIGNOUTS LEFT OUTER JOIN ROSTERS ON SIGNOUTS.rosterID = ROSTERS.rosterID WHERE studentID = '\(studentID)' AND SIGNOUTS.rosterType IN \(rosterTypeString) ORDER BY year, month, day, name ASC"
+            let querySQL = "SELECT SIGNOUTS.*, ROSTERS.name FROM SIGNOUTS LEFT OUTER JOIN ROSTERS ON SIGNOUTS.rosterID = ROSTERS.rosterID WHERE (year < '\(year)' OR (year = '\(year)' AND month < '\(month)') OR (year = '\(year)' AND month = '\(month)' AND day <= '\(day)')) AND studentID = '\(studentID)' AND SIGNOUTS.rosterType IN \(rosterTypeString) ORDER BY year, month, day, name ASC"
 
             let results = contactDB.executeQuery(querySQL, withArgumentsInArray: nil)
             while (results.next()) {

@@ -161,26 +161,46 @@ class AddOrEditStudentViewController: UIViewController {
         }
 
         var insertSQL = ""
+        var absencesList = ""
+        var studentRosters = ""
 
         if contactDB.open() {
             if (validatFields()) {
                 if (updateStudent) {
                     insertSQL = "UPDATE STUDENTPROFILES SET firstName = '\(firstName.text!)', lastName = '\(lastName.text!)', active = '\(activeBool)', school = '\(school.text!)', birthDay = '\(Int(dateArr[1])!)', birthMonth = '\(Int(dateArr[0])!)', birthYear = '\(Int(dateArr[2])!)' WHERE studentID = '\(studentID)'"
-                    //update other tables
+                    absencesList = "UPDATE ABSENCESLIST SET studentFirstName = '\(firstName.text!)', studentLastName = '\(lastName.text!)' WHERE studentID = '\(studentID)'"
+                    studentRosters = "UPDATE STUDENTROSTERS SET studentFirstName = '\(firstName.text!)', studentLastName = '\(lastName.text!)' WHERE studentID = '\(studentID)'"
                 } else {
                     insertSQL = "INSERT INTO STUDENTPROFILES (firstName, lastName, active, school, birthDay, birthMonth, birthYear) VALUES ('\(firstName.text!)', '\(lastName.text!)', '\(activeBool)', '\(school.text!)', '\(Int(dateArr[1])!)', '\(Int(dateArr[0])!)', '\(Int(dateArr[2])!)')"
                 }
             }
 
-            let result = contactDB.executeUpdate(insertSQL, withArgumentsInArray: nil)
-
-            if !result {
+            let result1 = contactDB.executeUpdate(insertSQL, withArgumentsInArray: nil)
+            if !result1 {
                 print("Error: \(contactDB.lastErrorMessage())")
             } else {
                 print("Successful")
             }
+            var result2 = false
+            var result3 = false
+            if(updateStudent) {
+                result2 = contactDB.executeUpdate(absencesList, withArgumentsInArray: nil)
+                if !result2 {
+                    print("Error: \(contactDB.lastErrorMessage())")
+                } else {
+                    print("Successful")
+                }
+                result3 = contactDB.executeUpdate(studentRosters, withArgumentsInArray: nil)
+                if !result3 {
+                    print("Error: \(contactDB.lastErrorMessage())")
+                } else {
+                    print("Successful")
+                }
+            }
             contactDB.close()
-            self.performSegueWithIdentifier("instructorMenuStudentsUnwind", sender: self)
+            if (result1 && !updateStudent) {
+                self.performSegueWithIdentifier("instructorMenuStudentsUnwind", sender: self)
+            }
         } else {
             print("Error: \(contactDB.lastErrorMessage())")
         }
@@ -208,14 +228,58 @@ class AddOrEditStudentViewController: UIViewController {
 
             if contactDB.open() {
                 let insertSQL = "DELETE FROM STUDENTPROFILES WHERE studentID = '\(self.studentID)'"
-                let result = contactDB.executeUpdate(insertSQL, withArgumentsInArray: nil)
-                if !result {
+                let deleteStudentRosters = "DELETE FROM STUDENTROSTERS WHERE studentID = '\(self.studentID)'"
+                let deleteSignOuts = "DELETE FROM SIGNOUTS WHERE studentID = '\(self.studentID)'"
+                let deleteOneTimeAttendance = "DELETE FROM ONETIMEATTENDANCE WHERE studentID = '\(self.studentID)'"
+                let deleteGuardians = "DELETE FROM GUARDIANS WHERE studentID = '\(self.studentID)'"
+                let deleteContactNumbers = "DELETE FROM CONTACTNUMBERS WHERE studentID = '\(self.studentID)'"
+                let deleteAbsencesList = "DELETE FROM ABSENCESLIST WHERE studentID = '\(self.studentID)'"
+                let result1 = contactDB.executeUpdate(insertSQL, withArgumentsInArray: nil)
+                if !result1 {
+                    print("Error: \(contactDB.lastErrorMessage())")
+                } else {
+                    print("Deleted")
+                }
+                let result2 = contactDB.executeUpdate(deleteStudentRosters, withArgumentsInArray: nil)
+                if !result2 {
+                    print("error: \(contactDB.lastErrorMessage())")
+                } else {
+                    print("Deleted")
+                }
+                let result3 = contactDB.executeUpdate(deleteSignOuts, withArgumentsInArray: nil)
+                if !result3 {
+                    print("Error: \(contactDB.lastErrorMessage())")
+                } else {
+                    print("Deleted")
+                }
+                let result4 = contactDB.executeUpdate(deleteOneTimeAttendance, withArgumentsInArray: nil)
+                if !result4 {
+                    print("Error: \(contactDB.lastErrorMessage())")
+                } else {
+                    print("Deleted")
+                }
+                let result5 = contactDB.executeUpdate(deleteGuardians, withArgumentsInArray: nil)
+                if !result5 {
+                    print("Error: \(contactDB.lastErrorMessage())")
+                } else {
+                    print("Deleted")
+                }
+                let result6 = contactDB.executeUpdate(deleteContactNumbers, withArgumentsInArray: nil)
+                if !result6 {
+                    print("Error: \(contactDB.lastErrorMessage())")
+                } else {
+                    print("Deleted")
+                }
+                let result7 = contactDB.executeUpdate(deleteAbsencesList, withArgumentsInArray: nil)
+                if !result7 {
                     print("Error: \(contactDB.lastErrorMessage())")
                 } else {
                     print("Deleted")
                 }
                 contactDB.close()
-                self.performSegueWithIdentifier("instructorMenuStudentsUnwind", sender: self)
+                if (result1 && result2 && result3 && result4 && result5 && result6 && result7) {
+                    self.performSegueWithIdentifier("instructorMenuStudentsUnwind", sender: self)
+                }
             } else {
                 print("Error: \(contactDB.lastErrorMessage())")
             }
@@ -224,6 +288,7 @@ class AddOrEditStudentViewController: UIViewController {
         presentViewController(myAlertController, animated: true, completion: nil)
 
         //also delete all relevant info
+        //studentrosters, signouts, onetimeattendance, guardians, contactnumbers, absenceslist
     }
 
     @IBAction func editStudentInfoUnwind(segue: UIStoryboardSegue) {

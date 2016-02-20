@@ -59,7 +59,7 @@ class SignOutViewController: UIViewController {
             let contactDB = FMDatabase(path: path)
 
             if contactDB.open() {
-                let insertSQL = "INSERT INTO SIGNOUTS VALUES ('\(studentID)', '\(rosterID)', '\(signOutGuardian)', '\(rosterType)', '\(timestamp.getCurrentDay())', '\(timestamp.getCurrentMonth())', '\(timestamp.getCurrentYear())', '\(timestamp.getCurrentHour())', '\(timestamp.getCurrentMinute())')"
+                let insertSQL = "INSERT INTO SIGNOUTS (studentID, rosterID, signOutGuardian, rosterType, signoutType, day, month, year, hour, minute) VALUES ('\(studentID)', '\(rosterID)', '\(signOutGuardian)', '\(rosterType)', '1', '\(timestamp.getCurrentDay())', '\(timestamp.getCurrentMonth())', '\(timestamp.getCurrentYear())', '\(timestamp.getCurrentHour())', '\(timestamp.getCurrentMinute())')"
                 let result = contactDB.executeUpdate(insertSQL, withArgumentsInArray: nil)
 
                 if !result {

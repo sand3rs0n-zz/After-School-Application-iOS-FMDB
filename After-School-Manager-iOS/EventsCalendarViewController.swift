@@ -30,7 +30,7 @@ class EventsCalendarViewController: UIViewController, UITableViewDataSource, UIT
         let contactDB = FMDatabase(path: path)
 
         if contactDB.open() {
-            let querySQL = "SELECT * FROM EVENTS WHERE year >= '\(date.getCurrentYear())' ORDER BY year, month, day, name ASC"
+            let querySQL = "SELECT * FROM EVENTS WHERE (year > '\(date.getCurrentYear())' OR (year = '\(date.getCurrentYear())' AND month > '\(date.getCurrentMonth())') OR (year = '\(date.getCurrentYear())' AND month = '\(date.getCurrentMonth())' AND day >= '\(date.getCurrentDay())')) ORDER BY year, month, day, name ASC"
 
             let results = contactDB.executeQuery(querySQL, withArgumentsInArray: nil)
             while (results.next()) {
