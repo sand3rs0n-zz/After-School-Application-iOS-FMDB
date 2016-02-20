@@ -15,17 +15,19 @@ class EditTodayAttendanceViewController: UIViewController {
     private var studentLastName = ""
     private var rosterID = 0
     private var date = Date()
-    private var rosterType = 0
+    private var roster = Roster()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let path = Util.getPath("AfterSchoolData.sqlite")
         let contactDB = FMDatabase(path: path)
         if contactDB.open() {
-            let insertSQL = "SELECT rosterType FROM ROSTERS WHERE rosterID = '\(rosterID)'"
+            let insertSQL = "SELECT * FROM ROSTERS WHERE rosterID = '\(rosterID)'"
             let result = contactDB.executeQuery(insertSQL, withArgumentsInArray: nil)
             result.next()
-            rosterType = Int(result.intForColumn("rosterType"))
+            roster.setRosterType(Int(result.intForColumn("rosterType")))
+            roster.setPickUpHour(Int(result.intForColumn("pickUpHour")))
+            roster.setPickUpMinute(Int(result.intForColumn("pickUpMinute")))
             contactDB.close()
         }
 
@@ -69,7 +71,7 @@ class EditTodayAttendanceViewController: UIViewController {
         let path = Util.getPath("AfterSchoolData.sqlite")
         let contactDB = FMDatabase(path: path)
         if contactDB.open() {
-            let insertSQL = "INSERT INTO ABSENCESLIST (studentFirstName, studentLastName, studentID, day, month, year) VALUES ('\(studentFirstName)', '\(studentLastName)', '\(studentID)', '\(date.getCurrentDay())', '\(date.getCurrentMonth())', '\(date.getCurrentYear())')"
+            let insertSQL = "INSERT INTO ABSENCESLIST (studentFirstName, studentLastName, studentID, rosterID, day, month, year) VALUES ('\(studentFirstName)', '\(studentLastName)', '\(studentID)', '\(rosterID)', '\(date.getCurrentDay())', '\(date.getCurrentMonth())', '\(date.getCurrentYear())')"
             let result = contactDB.executeUpdate(insertSQL, withArgumentsInArray: nil)
             if !result {
                 print("Error: \(contactDB.lastErrorMessage())")
@@ -84,7 +86,7 @@ class EditTodayAttendanceViewController: UIViewController {
         let path = Util.getPath("AfterSchoolData.sqlite")
         let contactDB = FMDatabase(path: path)
         if contactDB.open() {
-            let insertSQL = "INSERT INTO SIGNOUTS (studentID, rosterID, signOutGuardian, rosterType, signOutType, day, month, year, hour, minute) VALUES ('\(studentID)', '\(rosterID)', 'Instructor', '\(rosterType)', '\(signOutType)', '\(date.getCurrentDay())', '\(date.getCurrentMonth())', '\(date.getCurrentYear())', '\(date.getCurrentHour())', '\(date.getCurrentMinute())')"
+            let insertSQL = "INSERT INTO SIGNOUTS (studentID, rosterID, signOutGuardian, rosterType, signOutType, day, month, year, hour, minute) VALUES ('\(studentID)', '\(rosterID)', 'Instructor', '\(roster.getRosterType())', '\(signOutType)', '\(date.getCurrentDay())', '\(date.getCurrentMonth())', '\(date.getCurrentYear())', '\(roster.getPickUpHour())', '\(roster.getPickUpMinute())')"
             let result = contactDB.executeUpdate(insertSQL, withArgumentsInArray: nil)
             if !result {
                 print("Error: \(contactDB.lastErrorMessage())")

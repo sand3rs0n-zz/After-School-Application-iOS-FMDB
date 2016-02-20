@@ -122,6 +122,8 @@ class StudentRosterViewController: UIViewController, UITableViewDataSource, UITa
             savc?.setStudentID(forwardedStudentID)
             savc?.setStudentLastName(forwardedStudentLastName)
             savc?.setStudentFirstName(forwardedStudentFirstName)
+            savc?.setRosterType(rosterType)
+            savc?.setRosterID(rosterID)
         } else if (rosterState == 0) {
             let sivc = segue.destinationViewController as? StudentInfoViewController
             sivc?.setStudentID(forwardedStudentID)

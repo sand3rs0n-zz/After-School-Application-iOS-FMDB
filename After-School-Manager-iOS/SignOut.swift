@@ -9,6 +9,7 @@
 import Foundation
 
 class SignOut {
+    private var signOutID = 0
     private var studentID = 0
     private var rosterID = 0
     private var signOutGuardian = ""
@@ -30,6 +31,9 @@ class SignOut {
     }
     func getTimeStamp() -> Date {
         return timeStamp
+    }
+    func getSignOutID() -> Int {
+        return signOutID
     }
     func getStudentID() -> Int {
         return studentID
@@ -63,6 +67,9 @@ class SignOut {
     }
     func getMinute() -> Int {
         return minute
+    }
+    func setSignOutID(signOutID: Int) {
+        self.signOutID = signOutID
     }
     func setStudentID(studentID: Int) {
         self.studentID = studentID

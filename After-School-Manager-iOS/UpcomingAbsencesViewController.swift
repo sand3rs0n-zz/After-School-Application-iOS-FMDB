@@ -43,6 +43,8 @@ class UpcomingAbsencesViewController: UIViewController, UITableViewDataSource, U
                 cur.setStudentFirstName(results.stringForColumn("studentFirstName"))
                 cur.setStudentLastName(results.stringForColumn("studentLastName"))
                 cur.setStudentID(Int(results.intForColumn("studentID")))
+                cur.setRosterID(Int(results.intForColumn("rosterID")))
+                cur.setAbsenceID(Int(results.intForColumn("absenceID")))
                 cur.setDay(Int(results.intForColumn("day")))
                 cur.setMonth(Int(results.intForColumn("month")))
                 cur.setYear(Int(results.intForColumn("year")))
