@@ -55,58 +55,39 @@ class AddOrEditAttendanceViewController: UIViewController {
     }
 
     private func fillAddPage() {
-        let path = Util.getPath("AfterSchoolData.sqlite")
-        let contactDB = FMDatabase(path: path)
-
-        if contactDB.open() {
-            let querySQL = "SELECT * FROM STUDENTPROFILES WHERE studentID = '\(studentID)'"
-
-            let results = contactDB.executeQuery(querySQL, withArgumentsInArray: nil)
-            results.next()
-            student.setStudentID(Int(results.intForColumn("studentID")))
-            student.setFirstName(results.stringForColumn("firstName"))
-            student.setLastName(results.stringForColumn("lastName"))
-            student.setActive(Int(results.intForColumn("active")))
-            student.setSchool(results.stringForColumn("school"))
-            student.setBirthDay(Int(results.intForColumn("birthDay")))
-            student.setBirthMonth(Int(results.intForColumn("birthMonth")))
-            student.setBirthYear(Int(results.intForColumn("birthYear")))
-
-            results.close()
-            contactDB.close()
-        } else {
-            print("Error: \(contactDB.lastErrorMessage())")
-        }
+        let querySQL = "SELECT * FROM STUDENTPROFILES WHERE studentID = '\(studentID)'"
+        let results = database.search(querySQL)
+        results.next()
+        student.setStudentID(Int(results.intForColumn("studentID")))
+        student.setFirstName(results.stringForColumn("firstName"))
+        student.setLastName(results.stringForColumn("lastName"))
+        student.setActive(Int(results.intForColumn("active")))
+        student.setSchool(results.stringForColumn("school"))
+        student.setBirthDay(Int(results.intForColumn("birthDay")))
+        student.setBirthMonth(Int(results.intForColumn("birthMonth")))
+        student.setBirthYear(Int(results.intForColumn("birthYear")))
+        results.close()
         studentName.text = (student.getFirstName() + " " + student.getLastName())
-
         deleteFromRosterButton.hidden = true
     }
 
     private func fillEditPage() {
-        let path = Util.getPath("AfterSchoolData.sqlite")
-        let contactDB = FMDatabase(path: path)
-
-        if contactDB.open() {
-            let querySQL = "SELECT * FROM STUDENTROSTERS WHERE rosterID = '\(rosterID)' AND studentID = '\(studentID)'"
-            let results = contactDB.executeQuery(querySQL, withArgumentsInArray: nil)
-            results.next()
-            schedule.setStudentFirstName(results.stringForColumn("studentFirstName"))
-            schedule.setStudentLastName(results.stringForColumn("studentLastName"))
-            schedule.setStudentLastName(results.stringForColumn("rosterName"))
-            schedule.setStudentID(Int(results.intForColumn("studentID")))
-            schedule.setRosterID(Int(results.intForColumn("rosterID")))
-            schedule.setMonday(Int(results.intForColumn("monday")))
-            schedule.setTuesday(Int(results.intForColumn("tuesday")))
-            schedule.setWednesday(Int(results.intForColumn("wednesday")))
-            schedule.setThursday(Int(results.intForColumn("thursday")))
-            schedule.setFriday(Int(results.intForColumn("friday")))
-            schedule.setSaturday(Int(results.intForColumn("saturday")))
-            schedule.setSunday(Int(results.intForColumn("sunday")))
-            results.close()
-            contactDB.close()
-        } else {
-            print("Error: \(contactDB.lastErrorMessage())")
-        }
+        let querySQL = "SELECT * FROM STUDENTROSTERS WHERE rosterID = '\(rosterID)' AND studentID = '\(studentID)'"
+        let results = database.search(querySQL)
+        results.next()
+        schedule.setStudentFirstName(results.stringForColumn("studentFirstName"))
+        schedule.setStudentLastName(results.stringForColumn("studentLastName"))
+        schedule.setStudentLastName(results.stringForColumn("rosterName"))
+        schedule.setStudentID(Int(results.intForColumn("studentID")))
+        schedule.setRosterID(Int(results.intForColumn("rosterID")))
+        schedule.setMonday(Int(results.intForColumn("monday")))
+        schedule.setTuesday(Int(results.intForColumn("tuesday")))
+        schedule.setWednesday(Int(results.intForColumn("wednesday")))
+        schedule.setThursday(Int(results.intForColumn("thursday")))
+        schedule.setFriday(Int(results.intForColumn("friday")))
+        schedule.setSaturday(Int(results.intForColumn("saturday")))
+        schedule.setSunday(Int(results.intForColumn("sunday")))
+        results.close()
         studentName.text = (schedule.getStudentFirstName() + " " + schedule.getStudentLastName())
 
         if (schedule.getMonday() == 1) {
@@ -212,33 +193,18 @@ class AddOrEditAttendanceViewController: UIViewController {
     }
 
     @IBAction func updateAttendance(sender: AnyObject) {
-        //save/update selecetd student
-        //loop through week to find which ones are "selected"
         var name = studentName.text?.componentsSeparatedByString(" ")
-
-        let path = Util.getPath("AfterSchoolData.sqlite")
-        let contactDB = FMDatabase(path: path)
         var insertSQL = ""
-
-        if contactDB.open() {
-                if (state == 0 || state == 2) {
-                    insertSQL = "UPDATE STUDENTROSTERS SET studentFirstName = '\(name![0])', studentLastName = '\(name![1])', studentID = '\(studentID)', rosterID = '\(rosterID)', monday = '\(weekBool[0])', tuesday = '\(weekBool[1])', wednesday = '\(weekBool[2])', thursday = '\(weekBool[3])', friday = '\(weekBool[4])', saturday = '\(weekBool[5])', sunday = '\(weekBool[6])' WHERE rosterID = '\(rosterID)' AND studentID = '\(studentID)'"
-                } else if (state == 1 || state == 3) {
-                    insertSQL = "INSERT INTO STUDENTROSTERS (studentFirstName, studentLastName, rosterName, studentID, rosterID, monday, tuesday, wednesday, thursday, friday, saturday, sunday) VALUES ('\(name![0])', '\(name![1])', '\(schedule.getRosterName())', '\(studentID)', '\(rosterID)', '\(weekBool[0])', '\(weekBool[1])', '\(weekBool[2])', '\(weekBool[3])', '\(weekBool[4])', '\(weekBool[5])', '\(weekBool[6])')"
-                }
-            let result = contactDB.executeUpdate(insertSQL, withArgumentsInArray: nil)
-
-            if !result {
-                print("Error: \(contactDB.lastErrorMessage())")
-            } else {
-                print("Successful")
-            }
-            contactDB.close()
-            self.back()
-        } else {
-            print("Error: \(contactDB.lastErrorMessage())")
+        if (state == 0 || state == 2) {
+            insertSQL = "UPDATE STUDENTROSTERS SET studentFirstName = '\(name![0])', studentLastName = '\(name![1])', studentID = '\(studentID)', rosterID = '\(rosterID)', monday = '\(weekBool[0])', tuesday = '\(weekBool[1])', wednesday = '\(weekBool[2])', thursday = '\(weekBool[3])', friday = '\(weekBool[4])', saturday = '\(weekBool[5])', sunday = '\(weekBool[6])' WHERE rosterID = '\(rosterID)' AND studentID = '\(studentID)'"
+        } else if (state == 1 || state == 3) {
+            insertSQL = "INSERT INTO STUDENTROSTERS (studentFirstName, studentLastName, rosterName, studentID, rosterID, monday, tuesday, wednesday, thursday, friday, saturday, sunday) VALUES ('\(name![0])', '\(name![1])', '\(schedule.getRosterName())', '\(studentID)', '\(rosterID)', '\(weekBool[0])', '\(weekBool[1])', '\(weekBool[2])', '\(weekBool[3])', '\(weekBool[4])', '\(weekBool[5])', '\(weekBool[6])')"
         }
+        let result = database.update(insertSQL)
 
+        if (result) {
+            self.back()
+        }
     }
 
     @IBAction func deleteFromRoster(sender: AnyObject) {
@@ -250,28 +216,12 @@ class AddOrEditAttendanceViewController: UIViewController {
         myAlertController.addAction(cancelAction)
 
         let nextAction = UIAlertAction(title: "Delete", style: .Default) { action -> Void in
-            let path = Util.getPath("AfterSchoolData.sqlite")
-            let contactDB = FMDatabase(path: path)
-
-            if contactDB.open() {
-                let deleteSQL = "DELETE FROM STUDENTROSTERS WHERE rosterID = '\(self.rosterID)' AND studentID = '\(self.studentID)'"
-                let deleteSignOuts = "DELETE FROM SIGNOUTS WHERE rosterID = '\(self.rosterID)' AND studentID = '\(self.studentID)'"
-                let result1 = contactDB.executeUpdate(deleteSQL, withArgumentsInArray: nil)
-                if !result1 {
-                    print("Error: \(contactDB.lastErrorMessage())")
-                } else {
-                    print("Deleted")
-                }
-                let result2 = contactDB.executeUpdate(deleteSignOuts, withArgumentsInArray: nil)
-                if !result2 {
-                    print("Error: \(contactDB.lastErrorMessage())")
-                } else {
-                    print("Deleted")
-                }
-                contactDB.close()
-                if (result1 && result2) {
-                    self.back()
-                }
+            let deleteSQL = "DELETE FROM STUDENTROSTERS WHERE rosterID = '\(self.rosterID)' AND studentID = '\(self.studentID)'"
+            let deleteSignOuts = "DELETE FROM SIGNOUTS WHERE rosterID = '\(self.rosterID)' AND studentID = '\(self.studentID)'"
+            let result1 = database.update(deleteSQL)
+            let result2 = database.update(deleteSignOuts)
+            if (result1 && result2) {
+                self.back()
             }
         }
         myAlertController.addAction(nextAction)

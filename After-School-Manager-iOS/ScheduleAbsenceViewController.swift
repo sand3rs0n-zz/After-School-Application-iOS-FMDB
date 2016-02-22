@@ -26,39 +26,26 @@ class ScheduleAbsenceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let path = Util.getPath("AfterSchoolData.sqlite")
-        let contactDB = FMDatabase(path: path)
         self.scheduleAbsenceButton!.setTitle(buttonText, forState: .Normal)
         if (state == 1) {
             fillValues()
             rosterID = absence.getRosterID()
             studentID = absence.getStudentID()
-            if contactDB.open() {
-                let signOutSQL = "SELECT * FROM SIGNOUTS WHERE rosterID = '\(rosterID)' AND studentID = '\(studentID)' AND day = '\(absence.getDay())' AND month = '\(absence.getMonth())' AND year = '\(absence.getYear())'"
-                let results = contactDB.executeQuery(signOutSQL, withArgumentsInArray: nil)
-                results.next()
-                signOutID = Int(results.intForColumn("signOutID"))
-                results.close()
-                contactDB.close()
-            } else {
-                print("Error: \(contactDB.lastErrorMessage())")
-            }
-
+            let signOutSQL = "SELECT * FROM SIGNOUTS WHERE rosterID = '\(rosterID)' AND studentID = '\(studentID)' AND day = '\(absence.getDay())' AND month = '\(absence.getMonth())' AND year = '\(absence.getYear())'"
+            let results = database.search(signOutSQL)
+            results.next()
+            signOutID = Int(results.intForColumn("signOutID"))
+            results.close()
         } else if (state == 0) {
             deleteAbsenceButton.hidden = true
         }
 
-        if contactDB.open() {
-            let querySQL = "SELECT * FROM ROSTERS WHERE rosterID = '\(rosterID)'"
-            let results = contactDB.executeQuery(querySQL, withArgumentsInArray: nil)
-            results.next()
-            roster.setPickUpHour(Int(results.intForColumn("pickUpHour")))
-            roster.setPickUpMinute(Int(results.intForColumn("pickUpMinute")))
-            results.close()
-            contactDB.close()
-        } else {
-            print("Error: \(contactDB.lastErrorMessage())")
-        }
+        let rostersSQL = "SELECT * FROM ROSTERS WHERE rosterID = '\(rosterID)'"
+        let results = database.search(rostersSQL)
+        results.next()
+        roster.setPickUpHour(Int(results.intForColumn("pickUpHour")))
+        roster.setPickUpMinute(Int(results.intForColumn("pickUpMinute")))
+        results.close()
         // Do any additional setup after loading the view.
     }
     
@@ -120,38 +107,20 @@ class ScheduleAbsenceViewController: UIViewController {
         let inputDate = dateFormatter.stringFromDate(datePicker.date)
         let dateArr = inputDate.characters.split{$0 == "/"}.map(String.init)
 
-        let path = Util.getPath("AfterSchoolData.sqlite")
-        let contactDB = FMDatabase(path: path)
+        var absenceListSQL = ""
+        var signOutSQL = ""
+        if (state == 1) {
+            absenceListSQL = "UPDATE ABSENCESLIST SET studentFirstName = '\(absence.getStudentFirstName())', studentLastName = '\(absence.getStudentLastName())', studentID = '\(absence.getStudentID())', rosterID = '\(rosterID)', day = '\(Int(dateArr[1])!)', month = '\(Int(dateArr[0])!)', year = '\(Int(dateArr[2])!)' WHERE absenceID = '\(absence.getAbsenceID())'"
+            signOutSQL = "UPDATE SIGNOUTS SET studentID = '\(absence.getStudentID())', rosterID = '\(rosterID)', signOutGuardian = 'Instructor', rosterType = '\(rosterType)', signOutType = '2', day = '\(Int(dateArr[1])!)', month = '\(Int(dateArr[0])!)', year = '\(Int(dateArr[2])!)', hour = '\(roster.getPickUpHour())', minute = '\(roster.getPickUpMinute())' WHERE signOutID = '\(signOutID)'"
+        } else if (state == 0) {
+            absenceListSQL = "INSERT INTO ABSENCESLIST (studentFirstName, studentLastName, studentID, rosterID, day, month, year) VALUES ('\(studentFirstName)', '\(studentLastName)', '\(studentID)', '\(rosterID)', '\(Int(dateArr[1])!)', '\(Int(dateArr[0])!)', '\(Int(dateArr[2])!)')"
+            signOutSQL = "INSERT INTO SIGNOUTS (studentID, rosterID, signOutGuardian, rosterType, signOutType, day, month, year, hour, minute) VALUES ('\(studentID)', '\(rosterID)', 'Instructor', '\(rosterType)', '2', '\(Int(dateArr[1])!)', '\(Int(dateArr[0])!)', '\(Int(dateArr[2])!)', '\(roster.getPickUpHour())', '\(roster.getPickUpMinute())')"
+        }
 
-        if contactDB.open() {
-            var insertSQL = ""
-            var signOutSQL = ""
-            if (state == 1) {
-                insertSQL = "UPDATE ABSENCESLIST SET studentFirstName = '\(absence.getStudentFirstName())', studentLastName = '\(absence.getStudentLastName())', studentID = '\(absence.getStudentID())', rosterID = '\(rosterID)', day = '\(Int(dateArr[1])!)', month = '\(Int(dateArr[0])!)', year = '\(Int(dateArr[2])!)' WHERE absenceID = '\(absence.getAbsenceID())'"
-                signOutSQL = "UPDATE SIGNOUTS SET studentID = '\(absence.getStudentID())', rosterID = '\(rosterID)', signOutGuardian = 'Instructor', rosterType = '\(rosterType)', signOutType = '2', day = '\(Int(dateArr[1])!)', month = '\(Int(dateArr[0])!)', year = '\(Int(dateArr[2])!)', hour = '\(roster.getPickUpHour())', minute = '\(roster.getPickUpMinute())' WHERE signOutID = '\(signOutID)'"
-            } else if (state == 0) {
-                insertSQL = "INSERT INTO ABSENCESLIST (studentFirstName, studentLastName, studentID, rosterID, day, month, year) VALUES ('\(studentFirstName)', '\(studentLastName)', '\(studentID)', '\(rosterID)', '\(Int(dateArr[1])!)', '\(Int(dateArr[0])!)', '\(Int(dateArr[2])!)')"
-                signOutSQL = "INSERT INTO SIGNOUTS (studentID, rosterID, signOutGuardian, rosterType, signOutType, day, month, year, hour, minute) VALUES ('\(studentID)', '\(rosterID)', 'Instructor', '\(rosterType)', '2', '\(Int(dateArr[1])!)', '\(Int(dateArr[0])!)', '\(Int(dateArr[2])!)', '\(roster.getPickUpHour())', '\(roster.getPickUpMinute())')"
-            }
-
-            let result1 = contactDB.executeUpdate(insertSQL, withArgumentsInArray: nil)
-            if !result1 {
-                print("Error: \(contactDB.lastErrorMessage())")
-            } else {
-                print("Successful")
-            }
-            let result2 = contactDB.executeUpdate(signOutSQL, withArgumentsInArray: nil)
-            if !result2 {
-                print("Error: \(contactDB.lastErrorMessage())")
-            } else {
-                print("Successful")
-            }
-            contactDB.close()
-            if (result1 && result2) {
-                self.back()
-            }
-        } else {
-            print("Error: \(contactDB.lastErrorMessage())")
+        let result1 = database.update(absenceListSQL)
+        let result2 = database.update(signOutSQL)
+        if (result1 && result2) {
+            self.back()
         }
     }
 
@@ -164,28 +133,12 @@ class ScheduleAbsenceViewController: UIViewController {
         myAlertController.addAction(cancelAction)
 
         let nextAction = UIAlertAction(title: "Delete", style: .Default) { action -> Void in
-            let path = Util.getPath("AfterSchoolData.sqlite")
-            let contactDB = FMDatabase(path: path)
-
-            if contactDB.open() {
-                let insertSQL = "DELETE FROM ABSENCESLIST WHERE absenceID = '\(self.absence.getAbsenceID())'"
-                let signOutSQL = "DELETE FROM SIGNOUTS WHERE signOutID = '\(self.signOutID)'"
-                let result1 = contactDB.executeUpdate(insertSQL, withArgumentsInArray: nil)
-                if !result1 {
-                    print("Error: \(contactDB.lastErrorMessage())")
-                } else {
-                    print("Deleted")
-                }
-                let result2 = contactDB.executeUpdate(signOutSQL, withArgumentsInArray: nil)
-                if !result2 {
-                    print("Error: \(contactDB.lastErrorMessage())")
-                } else {
-                    print("Deleted")
-                }
-                contactDB.close()
-                if (result1 && result2) {
-                    self.back()
-                }
+            let absenceListSQL = "DELETE FROM ABSENCESLIST WHERE absenceID = '\(self.absence.getAbsenceID())'"
+            let signOutSQL = "DELETE FROM SIGNOUTS WHERE signOutID = '\(self.signOutID)'"
+            let result1 = database.update(absenceListSQL)
+            let result2 = database.update(signOutSQL)
+            if (result1 && result2) {
+                self.back()
             }
         }
         myAlertController.addAction(nextAction)

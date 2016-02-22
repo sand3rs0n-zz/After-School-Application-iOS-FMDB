@@ -27,30 +27,22 @@ class SelectStudentToAddAttendanceViewController: UIViewController, UITableViewD
     }
 
     private func getStudents() {
-        let path = Util.getPath("AfterSchoolData.sqlite")
-        let contactDB = FMDatabase(path: path)
+        let querySQL = "SELECT * FROM STUDENTPROFILES WHERE active = 1 ORDER BY lastName, firstName ASC"
 
-        if contactDB.open() {
-            let querySQL = "SELECT * FROM STUDENTPROFILES ORDER BY lastName, firstName ASC"
-
-            let results = contactDB.executeQuery(querySQL, withArgumentsInArray: nil)
-            while (results.next()) {
-                let cur = Student()
-                cur.setStudentID(Int(results.intForColumn("studentID")))
-                cur.setFirstName(results.stringForColumn("firstName"))
-                cur.setLastName(results.stringForColumn("lastName"))
-                cur.setActive(Int(results.intForColumn("active")))
-                cur.setSchool(results.stringForColumn("school"))
-                cur.setBirthDay(Int(results.intForColumn("birthDay")))
-                cur.setBirthMonth(Int(results.intForColumn("birthMonth")))
-                cur.setBirthYear(Int(results.intForColumn("birthYear")))
-                studentList.append(cur)
-            }
-            results.close()
-            contactDB.close()
-        } else {
-            print("Error: \(contactDB.lastErrorMessage())")
+        let results = database.search(querySQL)
+        while (results.next()) {
+            let cur = Student()
+            cur.setStudentID(Int(results.intForColumn("studentID")))
+            cur.setFirstName(results.stringForColumn("firstName"))
+            cur.setLastName(results.stringForColumn("lastName"))
+            cur.setActive(Int(results.intForColumn("active")))
+            cur.setSchool(results.stringForColumn("school"))
+            cur.setBirthDay(Int(results.intForColumn("birthDay")))
+            cur.setBirthMonth(Int(results.intForColumn("birthMonth")))
+            cur.setBirthYear(Int(results.intForColumn("birthYear")))
+            studentList.append(cur)
         }
+        results.close()
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

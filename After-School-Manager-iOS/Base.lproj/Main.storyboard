@@ -2058,13 +2058,13 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="Jr8-W3-Udp"/>
         <segue reference="b71-pI-SmA"/>
         <segue reference="xQw-aq-Cov"/>
         <segue reference="0CC-ZP-ABi"/>
         <segue reference="R5z-Eg-ICD"/>
-        <segue reference="lZo-3K-BmO"/>
-        <segue reference="Jr8-W3-Udp"/>
         <segue reference="LZy-H4-SEb"/>
         <segue reference="2F6-fC-QeF"/>
+        <segue reference="lZo-3K-BmO"/>
     </inferredMetricsTieBreakers>
 </document>

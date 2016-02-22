@@ -35,33 +35,25 @@ class RosterListViewController: UIViewController, UITableViewDataSource, UITable
         let year = date.getCurrentYear()
         let month = date.getCurrentMonth()
         let day = date.getCurrentDay()
+        let querySQL = "SELECT * FROM ROSTERS WHERE rosterType = '\(rosterType)' AND (endYear > '\(year)' OR (endYear = '\(year)' AND endMonth > '\(month)') OR (endYear = '\(year)' AND endMonth = '\(month)' AND endDay >= '\(day)')) AND (startYear < '\(year)' OR (startYear = '\(year)' AND startMonth < '\(month)') OR (startYear = '\(year)' AND startMonth = '\(month)' AND startDay <= '\(day)')) ORDER BY startMonth, startDay, name ASC"
 
-        let path = Util.getPath("AfterSchoolData.sqlite")
-        let contactDB = FMDatabase(path: path)
-        if contactDB.open() {
-            let querySQL = "SELECT * FROM ROSTERS WHERE rosterType = '\(rosterType)' AND (endYear > '\(year)' OR (endYear = '\(year)' AND endMonth > '\(month)') OR (endYear = '\(year)' AND endMonth = '\(month)' AND endDay >= '\(day)')) AND (startYear < '\(year)' OR (startYear = '\(year)' AND startMonth < '\(month)') OR (startYear = '\(year)' AND startMonth = '\(month)' AND startDay <= '\(day)')) ORDER BY startMonth, startDay, name ASC"
-
-            let results = contactDB.executeQuery(querySQL, withArgumentsInArray: nil)
-            while (results.next()) {
-                let cur = Roster()
-                cur.setRosterID(Int(results.intForColumn("rosterID")))
-                cur.setRosterType(Int(results.intForColumn("rosterType")))
-                cur.setName(results.stringForColumn("name"))
-                cur.setStartDay(Int(results.intForColumn("startDay")))
-                cur.setStartMonth(Int(results.intForColumn("startMonth")))
-                cur.setStartYear(Int(results.intForColumn("startYear")))
-                cur.setEndDay(Int(results.intForColumn("endDay")))
-                cur.setEndMonth(Int(results.intForColumn("endMonth")))
-                cur.setEndYear(Int(results.intForColumn("endYear")))
-                cur.setPickUpHour(Int(results.intForColumn("pickUpHour")))
-                cur.setPickUpMinute(Int(results.intForColumn("pickUpMinute")))
-                rosterList.append(cur)
-            }
-            results.close()
-            contactDB.close()
-        } else {
-            print("Error: \(contactDB.lastErrorMessage())")
+        let results = database.search(querySQL)
+        while (results.next()) {
+            let cur = Roster()
+            cur.setRosterID(Int(results.intForColumn("rosterID")))
+            cur.setRosterType(Int(results.intForColumn("rosterType")))
+            cur.setName(results.stringForColumn("name"))
+            cur.setStartDay(Int(results.intForColumn("startDay")))
+            cur.setStartMonth(Int(results.intForColumn("startMonth")))
+            cur.setStartYear(Int(results.intForColumn("startYear")))
+            cur.setEndDay(Int(results.intForColumn("endDay")))
+            cur.setEndMonth(Int(results.intForColumn("endMonth")))
+            cur.setEndYear(Int(results.intForColumn("endYear")))
+            cur.setPickUpHour(Int(results.intForColumn("pickUpHour")))
+            cur.setPickUpMinute(Int(results.intForColumn("pickUpMinute")))
+            rosterList.append(cur)
         }
+        results.close()
     }
 
     func setState(state: Int) {

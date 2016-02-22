@@ -34,38 +34,26 @@ class StudentRosterViewController: UIViewController, UITableViewDataSource, UITa
     }
 
     private func getStudents() {
-        let path = Util.getPath("AfterSchoolData.sqlite")
-        let contactDB = FMDatabase(path: path)
-
-        if contactDB.open() {
-            let date = Date()
-            var querySQL = ""
-            if (rosterState == 1) {
-                querySQL = "SELECT * FROM STUDENTROSTERS WHERE rosterID = '\(rosterID)' AND studentID NOT IN (SELECT studentID FROM SIGNOUTS WHERE day = '\(date.getCurrentDay())' AND month = '\(date.getCurrentMonth())' AND year = '\(date.getCurrentYear())' AND rosterID = '\(rosterID)') AND \(date.getCurrentWeekday()) = 1 AND studentID IN (SELECT studentID FROM STUDENTPROFILES WHERE active = 1) ORDER BY studentLastName ASC"
-            } else {
-                querySQL = "SELECT * FROM STUDENTROSTERS WHERE rosterID = '\(rosterID)' ORDER BY studentLastName ASC"
-            }
-            let results = contactDB.executeQuery(querySQL, withArgumentsInArray: nil)
-            while (results.next()) {
-                let cur = StudentRoster()
-                cur.setStudentFirstName(results.stringForColumn("studentFirstName"))
-                cur.setStudentLastName(results.stringForColumn("studentLastName"))
-                cur.setStudentID(Int(results.intForColumn("studentID")))
-                cur.setRosterID(Int(results.intForColumn("rosterID")))
-                cur.setMonday(Int(results.intForColumn("monday")))
-                cur.setTuesday(Int(results.intForColumn("tuesday")))
-                cur.setWednesday(Int(results.intForColumn("wednesday")))
-                cur.setThursday(Int(results.intForColumn("thursday")))
-                cur.setFriday(Int(results.intForColumn("friday")))
-                cur.setSaturday(Int(results.intForColumn("saturday")))
-                cur.setSunday(Int(results.intForColumn("sunday")))
-                students.append(cur)
-            }
-            results.close()
-            contactDB.close()
+        let date = Date()
+        let day = date.getCurrentDay()
+        let month = date.getCurrentMonth()
+        let year = date.getCurrentYear()
+        var querySQL = ""
+        if (rosterState == 1) {
+            querySQL = "SELECT STUDENTROSTERS.studentFirstName AS studentFirstName, STUDENTROSTERS.studentLastName AS studentLastName, STUDENTROSTERS.studentID AS studentID FROM STUDENTROSTERS WHERE rosterID = '\(rosterID)' AND studentID NOT IN (SELECT studentID FROM SIGNOUTS WHERE day = '\(date.getCurrentDay())' AND month = '\(date.getCurrentMonth())' AND year = '\(date.getCurrentYear())' AND rosterID = '\(rosterID)') AND \(date.getCurrentWeekday()) = 1 AND studentID IN (SELECT studentID FROM STUDENTPROFILES WHERE active = 1) UNION SELECT STUDENTPROFILES.firstName AS studentFirstName, STUDENTPROFILES.lastName AS studentLastName, STUDENTPROFILES.studentID AS studentID FROM ONETIMEATTENDANCE LEFT OUTER JOIN STUDENTPROFILES ON ONETIMEATTENDANCE.studentID = STUDENTPROFILES.studentID LEFT OUTER JOIN ROSTERS ON ONETIMEATTENDANCE.rosterID = ROSTERS.rosterID WHERE year = '\(year)' AND month = '\(month)' AND day = '\(day)' AND active = 1 AND ONETIMEATTENDANCE.studentID NOT IN (SELECT studentID FROM SIGNOUTS WHERE day = '\(date.getCurrentDay())' AND month = '\(date.getCurrentMonth())' AND year = '\(date.getCurrentYear())' AND rosterID = '\(rosterID)') ORDER BY studentLastName, studentFirstName ASC"
         } else {
-            print("Error: \(contactDB.lastErrorMessage())")
+            querySQL = "SELECT * FROM STUDENTROSTERS WHERE rosterID = '\(rosterID)' AND studentID IN (SELECT studentID FROM STUDENTPROFILES WHERE active = 1) ORDER BY studentLastName, studentFirstName ASC"
         }
+        let results = database.search(querySQL)
+        while (results.next()) {
+            let cur = StudentRoster()
+            cur.setStudentFirstName(results.stringForColumn("studentFirstName"))
+            cur.setStudentLastName(results.stringForColumn("studentLastName"))
+            cur.setStudentID(Int(results.intForColumn("studentID")))
+            students.append(cur)
+        }
+        results.close()
+
     }
     
     func setState(state: Int) {

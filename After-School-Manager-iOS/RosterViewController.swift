@@ -33,32 +33,24 @@ class RosterViewController: UIViewController, UITableViewDataSource, UITableView
     }
 
     private func getStudents() {
-        let path = Util.getPath("AfterSchoolData.sqlite")
-        let contactDB = FMDatabase(path: path)
-
-        if contactDB.open() {
-            let querySQL = "SELECT * FROM STUDENTROSTERS WHERE rosterID = '\(rosterID)' ORDER BY studentLastName ASC"
-            let results = contactDB.executeQuery(querySQL, withArgumentsInArray: nil)
-            while (results.next()) {
-                let cur = StudentRoster()
-                cur.setStudentFirstName(results.stringForColumn("studentFirstName"))
-                cur.setStudentLastName(results.stringForColumn("studentLastName"))
-                cur.setStudentID(Int(results.intForColumn("studentID")))
-                cur.setRosterID(Int(results.intForColumn("rosterID")))
-                cur.setMonday(Int(results.intForColumn("monday")))
-                cur.setTuesday(Int(results.intForColumn("tuesday")))
-                cur.setWednesday(Int(results.intForColumn("wednesday")))
-                cur.setThursday(Int(results.intForColumn("thursday")))
-                cur.setFriday(Int(results.intForColumn("friday")))
-                cur.setSaturday(Int(results.intForColumn("saturday")))
-                cur.setSunday(Int(results.intForColumn("sunday")))
-                students.append(cur)
-            }
-            results.close()
-            contactDB.close()
-        } else {
-            print("Error: \(contactDB.lastErrorMessage())")
+        let querySQL = "SELECT * FROM STUDENTROSTERS WHERE rosterID = '\(rosterID)' ORDER BY studentLastName ASC"
+        let results = database.search(querySQL)
+        while (results.next()) {
+            let cur = StudentRoster()
+            cur.setStudentFirstName(results.stringForColumn("studentFirstName"))
+            cur.setStudentLastName(results.stringForColumn("studentLastName"))
+            cur.setStudentID(Int(results.intForColumn("studentID")))
+            cur.setRosterID(Int(results.intForColumn("rosterID")))
+            cur.setMonday(Int(results.intForColumn("monday")))
+            cur.setTuesday(Int(results.intForColumn("tuesday")))
+            cur.setWednesday(Int(results.intForColumn("wednesday")))
+            cur.setThursday(Int(results.intForColumn("thursday")))
+            cur.setFriday(Int(results.intForColumn("friday")))
+            cur.setSaturday(Int(results.intForColumn("saturday")))
+            cur.setSunday(Int(results.intForColumn("sunday")))
+            students.append(cur)
         }
+        results.close()
     }
 
     func setTitleValue(navTitle: String) {
@@ -119,15 +111,4 @@ class RosterViewController: UIViewController, UITableViewDataSource, UITableView
             ssarvc?.setRosterID(rosterID)
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

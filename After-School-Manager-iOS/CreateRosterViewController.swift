@@ -147,36 +147,15 @@ class CreateRosterViewController: UIViewController {
         myAlertController.addAction(cancelAction)
 
         let nextAction = UIAlertAction(title: "Delete", style: .Default) { action -> Void in
-            let path = Util.getPath("AfterSchoolData.sqlite")
-            let contactDB = FMDatabase(path: path)
-
-            if contactDB.open() {
                 let insertSQL = "DELETE FROM ROSTERS WHERE rosterID = '\(self.existingRoster.getRosterID())'"
                 let deleteSignOut = "DELETE FROM SIGNOUTS WHERE rosterID = '\(self.existingRoster.getRosterID())'"
                 let deleteStudentRosters = "DELETE FROM STUDENTROSTERS WHERE rosterID = '\(self.existingRoster.getRosterID())'"
-                let result1 = contactDB.executeUpdate(insertSQL, withArgumentsInArray: nil)
-                if !result1 {
-                    print("Error: \(contactDB.lastErrorMessage())")
-                } else {
-                    print("Deleted")
-                }
-                let result2 = contactDB.executeUpdate(deleteSignOut, withArgumentsInArray: nil)
-                if !result2 {
-                    print("Error: \(contactDB.lastErrorMessage())")
-                } else {
-                    print("Deleted")
-                }
-                let result3 = contactDB.executeUpdate(deleteStudentRosters, withArgumentsInArray: nil)
-                if !result3 {
-                    print("Error: \(contactDB.lastErrorMessage())")
-                } else {
-                    print("Deleted")
-                }
-                contactDB.close()
+                let result1 = database.update(insertSQL)
+                let result2 = database.update(deleteSignOut)
+                let result3 = database.update(deleteStudentRosters)
                 if (result1 && result2 && result3) {
                     self.back()
                 }
-            }
         }
         myAlertController.addAction(nextAction)
         presentViewController(myAlertController, animated: true, completion: nil)
@@ -215,49 +194,24 @@ class CreateRosterViewController: UIViewController {
         let pickUpHour = Int(dateArr[0])!
         let pickUpMinute = Int(dateArr[1])!
 
-        let path = Util.getPath("AfterSchoolData.sqlite")
-        let contactDB = FMDatabase(path: path)
         var insertSQL = ""
         var updateSignOut = ""
         var updateStudentRosters = ""
-
-        if contactDB.open() {
-            if (rosterName.text != "") {
-                if (state == 1) {
-                    insertSQL = "UPDATE ROSTERS SET rosterType = '\(selected)', name = '\(rosterName.text!)', startDay = '\(startDay)', startMonth = '\(startMonth)', startYear = '\(startYear)', endDay = '\(endDay)', endMonth = '\(endMonth)', endYear = '\(endYear)', pickUpHour = '\(pickUpHour)', pickUpMinute = '\(pickUpMinute)' WHERE rosterID = '\(existingRoster.getRosterID())'"
-                    existingRoster.setName(rosterName.text!)
-                    updateSignOut = "UPDATE SIGNOUTS SET rosterType = '\(selected)' WHERE rosterID = '\(existingRoster.getRosterID())'"
-                    updateStudentRosters = "UPDATE STUDENTROSTERS SET rosterName = '\(rosterName.text!)' WHERE rosterID = '\(existingRoster.getRosterID())'"
-                } else if (state == 0) {
-                    insertSQL = "INSERT INTO ROSTERS (rosterType, name, startDay, startMonth, startYear, endDay, endMonth, endYear, pickUpHour, pickUpMinute) VALUES ('\(selected)', '\(rosterName.text!)', '\(startDay)', '\(startMonth)', '\(startYear)', '\(endDay)', '\(endMonth)', '\(endYear)', '\(pickUpHour)', '\(pickUpMinute)')"
-                }
+        if (rosterName.text != "") {
+            if (state == 1) {
+                insertSQL = "UPDATE ROSTERS SET rosterType = '\(selected)', name = '\(rosterName.text!)', startDay = '\(startDay)', startMonth = '\(startMonth)', startYear = '\(startYear)', endDay = '\(endDay)', endMonth = '\(endMonth)', endYear = '\(endYear)', pickUpHour = '\(pickUpHour)', pickUpMinute = '\(pickUpMinute)' WHERE rosterID = '\(existingRoster.getRosterID())'"
+                existingRoster.setName(rosterName.text!)
+                updateSignOut = "UPDATE SIGNOUTS SET rosterType = '\(selected)' WHERE rosterID = '\(existingRoster.getRosterID())'"
+                updateStudentRosters = "UPDATE STUDENTROSTERS SET rosterName = '\(rosterName.text!)' WHERE rosterID = '\(existingRoster.getRosterID())'"
+            } else if (state == 0) {
+                insertSQL = "INSERT INTO ROSTERS (rosterType, name, startDay, startMonth, startYear, endDay, endMonth, endYear, pickUpHour, pickUpMinute) VALUES ('\(selected)', '\(rosterName.text!)', '\(startDay)', '\(startMonth)', '\(startYear)', '\(endDay)', '\(endMonth)', '\(endYear)', '\(pickUpHour)', '\(pickUpMinute)')"
             }
-
-            let result1 = contactDB.executeUpdate(insertSQL, withArgumentsInArray: nil)
-            if !result1 {
-                print("Error: \(contactDB.lastErrorMessage())")
-            } else {
-                print("Successful")
-            }
-            let result2 = contactDB.executeUpdate(updateSignOut, withArgumentsInArray: nil)
-            if !result2 {
-                print("Error: \(contactDB.lastErrorMessage())")
-            } else {
-                print("Successful")
-            }
-            let result3 = contactDB.executeUpdate(updateStudentRosters, withArgumentsInArray: nil)
-            if !result3 {
-                print("Error: \(contactDB.lastErrorMessage())")
-            } else {
-                print("Successful")
-            }
-            contactDB.close()
+            let result1 = database.update(insertSQL)
+            let result2 = database.update(updateSignOut)
+            let result3 = database.update(updateStudentRosters)
             if (result1 && result2 && result3) {
                 self.back()
             }
-        } else {
-            print("Error: \(contactDB.lastErrorMessage())")
         }
-
     }
 }

@@ -19,18 +19,12 @@ class EditTodayAttendanceViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let path = Util.getPath("AfterSchoolData.sqlite")
-        let contactDB = FMDatabase(path: path)
-        if contactDB.open() {
-            let insertSQL = "SELECT * FROM ROSTERS WHERE rosterID = '\(rosterID)'"
-            let result = contactDB.executeQuery(insertSQL, withArgumentsInArray: nil)
-            result.next()
-            roster.setRosterType(Int(result.intForColumn("rosterType")))
-            roster.setPickUpHour(Int(result.intForColumn("pickUpHour")))
-            roster.setPickUpMinute(Int(result.intForColumn("pickUpMinute")))
-            contactDB.close()
-        }
-
+        let querySQL = "SELECT * FROM ROSTERS WHERE rosterID = '\(rosterID)'"
+        let result = database.search(querySQL)
+        result.next()
+        roster.setRosterType(Int(result.intForColumn("rosterType")))
+        roster.setPickUpHour(Int(result.intForColumn("pickUpHour")))
+        roster.setPickUpMinute(Int(result.intForColumn("pickUpMinute")))
         // Do any additional setup after loading the view.
     }
 
@@ -68,33 +62,19 @@ class EditTodayAttendanceViewController: UIViewController {
     }
 
     private func scheduleAbsence() {
-        let path = Util.getPath("AfterSchoolData.sqlite")
-        let contactDB = FMDatabase(path: path)
-        if contactDB.open() {
-            let insertSQL = "INSERT INTO ABSENCESLIST (studentFirstName, studentLastName, studentID, rosterID, day, month, year) VALUES ('\(studentFirstName)', '\(studentLastName)', '\(studentID)', '\(rosterID)', '\(date.getCurrentDay())', '\(date.getCurrentMonth())', '\(date.getCurrentYear())')"
-            let result = contactDB.executeUpdate(insertSQL, withArgumentsInArray: nil)
-            if !result {
-                print("Error: \(contactDB.lastErrorMessage())")
-            } else {
-                print("Successful")
-            }
-            contactDB.close()
-        }
+        let insertSQL = "INSERT INTO ABSENCESLIST (studentFirstName, studentLastName, studentID, rosterID, day, month, year) VALUES ('\(studentFirstName)', '\(studentLastName)', '\(studentID)', '\(rosterID)', '\(date.getCurrentDay())', '\(date.getCurrentMonth())', '\(date.getCurrentYear())')"
+        database.update(insertSQL)
     }
 
     private func signOut(signOutType: Int) {
-        let path = Util.getPath("AfterSchoolData.sqlite")
-        let contactDB = FMDatabase(path: path)
-        if contactDB.open() {
-            let insertSQL = "INSERT INTO SIGNOUTS (studentID, rosterID, signOutGuardian, rosterType, signOutType, day, month, year, hour, minute) VALUES ('\(studentID)', '\(rosterID)', 'Instructor', '\(roster.getRosterType())', '\(signOutType)', '\(date.getCurrentDay())', '\(date.getCurrentMonth())', '\(date.getCurrentYear())', '\(roster.getPickUpHour())', '\(roster.getPickUpMinute())')"
-            let result = contactDB.executeUpdate(insertSQL, withArgumentsInArray: nil)
-            if !result {
-                print("Error: \(contactDB.lastErrorMessage())")
-            } else {
-                print("Successful")
-            }
-
-            contactDB.close()
+        var pickUpHour = roster.getPickUpHour()
+        var pickUpMinute = roster.getPickUpMinute()
+        if (signOutType == 4) {
+            date = Date()
+            pickUpHour = date.getCurrentHour()
+            pickUpMinute = date.getCurrentMinute()
         }
+        let insertSQL = "INSERT INTO SIGNOUTS (studentID, rosterID, signOutGuardian, rosterType, signOutType, day, month, year, hour, minute) VALUES ('\(studentID)', '\(rosterID)', 'Instructor', '\(roster.getRosterType())', '\(signOutType)', '\(date.getCurrentDay())', '\(date.getCurrentMonth())', '\(date.getCurrentYear())', '\(pickUpHour)', '\(pickUpMinute)')"
+        database.update(insertSQL)
     }
 }

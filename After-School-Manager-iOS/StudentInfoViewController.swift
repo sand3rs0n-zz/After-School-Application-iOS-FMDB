@@ -27,23 +27,16 @@ class StudentInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let path = Util.getPath("AfterSchoolData.sqlite")
-        let contactDB = FMDatabase(path: path)
-        if contactDB.open() {
-            getStudent(contactDB)
-            getGuardians(contactDB)
-            getContactNumbers(contactDB)
-            contactDB.close()
-        } else {
-            print("Error: \(contactDB.lastErrorMessage())")
-        }
+        getStudent()
+        getGuardians()
+        getContactNumbers()
         setDOB()
         fillPage()
     }
 
-    private func getStudent(contactDB: FMDatabase) {
+    private func getStudent() {
         let querySQL = "SELECT * FROM STUDENTPROFILES WHERE studentID = '\(studentID)'"
-        let results = contactDB.executeQuery(querySQL, withArgumentsInArray: nil)
+        let results = database.search(querySQL)
         results.next()
         student.setStudentID(Int(results.intForColumn("studentID")))
         student.setFirstName(results.stringForColumn("firstName"))
@@ -56,9 +49,9 @@ class StudentInfoViewController: UIViewController {
         results.close()
     }
 
-    private func getGuardians(contactDB: FMDatabase) {
+    private func getGuardians() {
         let querySQL = "SELECT * FROM GUARDIANS WHERE studentID = '\(studentID)'"
-        let results = contactDB.executeQuery(querySQL, withArgumentsInArray: nil)
+        let results = database.search(querySQL)
         while (results.next()) {
             let cur = Guardian()
             cur.setGuardianID(Int(results.intForColumn("guardianID")))
@@ -69,9 +62,9 @@ class StudentInfoViewController: UIViewController {
         results.close()
     }
 
-    private func getContactNumbers(contactDB: FMDatabase) {
+    private func getContactNumbers() {
         let querySQL = "SELECT * FROM CONTACTNUMBERS WHERE studentID = '\(studentID)'"
-        let results = contactDB.executeQuery(querySQL, withArgumentsInArray: nil)
+        let results = database.search(querySQL)
         while (results.next()) {
             let cur = ContactNumber()
             cur.setContactID(Int(results.intForColumn("contactID")))

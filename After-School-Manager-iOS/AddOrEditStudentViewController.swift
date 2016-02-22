@@ -36,17 +36,9 @@ class AddOrEditStudentViewController: UIViewController {
         self.titleBar.title = navTitle
         self.addUpdateButton!.setTitle(buttonText, forState: .Normal)
         if (updateStudent) {
-            let path = Util.getPath("AfterSchoolData.sqlite")
-            let contactDB = FMDatabase(path: path)
-            if contactDB.open() {
-                getStudent(contactDB)
-                getGuardians(contactDB)
-                getContactNumbers(contactDB)
-                contactDB.close()
-            } else {
-                print("Error: \(contactDB.lastErrorMessage())")
-            }
-
+            getStudent()
+            getGuardians()
+            getContactNumbers()
             fillFields()
         } else {
             hideFields()
@@ -54,9 +46,9 @@ class AddOrEditStudentViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    private func getStudent(contactDB: FMDatabase) {
+    private func getStudent() {
         let querySQL = "SELECT * FROM STUDENTPROFILES WHERE studentID = '\(studentID)'"
-        let results = contactDB.executeQuery(querySQL, withArgumentsInArray: nil)
+        let results = database.search(querySQL)
         results.next()
         student.setStudentID(Int(results.intForColumn("studentID")))
         student.setFirstName(results.stringForColumn("firstName"))
@@ -69,9 +61,9 @@ class AddOrEditStudentViewController: UIViewController {
         results.close()
     }
 
-    private func getGuardians(contactDB: FMDatabase) {
+    private func getGuardians() {
         let querySQL = "SELECT * FROM GUARDIANS WHERE studentID = '\(studentID)'"
-        let results = contactDB.executeQuery(querySQL, withArgumentsInArray: nil)
+        let results = database.search(querySQL)
         while (results.next()) {
             let cur = Guardian()
             cur.setGuardianID(Int(results.intForColumn("guardianID")))
@@ -82,9 +74,9 @@ class AddOrEditStudentViewController: UIViewController {
         results.close()
     }
 
-    private func getContactNumbers(contactDB: FMDatabase) {
+    private func getContactNumbers() {
         let querySQL = "SELECT * FROM CONTACTNUMBERS WHERE studentID = '\(studentID)'"
-        let results = contactDB.executeQuery(querySQL, withArgumentsInArray: nil)
+        let results = database.search(querySQL)
         while (results.next()) {
             let cur = ContactNumber()
             cur.setContactID(Int(results.intForColumn("contactID")))
@@ -145,9 +137,6 @@ class AddOrEditStudentViewController: UIViewController {
     }
     
     @IBAction func updateStudent(sender: AnyObject) {
-        let path = Util.getPath("AfterSchoolData.sqlite")
-        let contactDB = FMDatabase(path: path)
-
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
         dateFormatter.dateFormat = "MM/dd/yyyy"
@@ -164,47 +153,26 @@ class AddOrEditStudentViewController: UIViewController {
         var absencesList = ""
         var studentRosters = ""
 
-        if contactDB.open() {
-            if (validatFields()) {
-                if (updateStudent) {
-                    insertSQL = "UPDATE STUDENTPROFILES SET firstName = '\(firstName.text!)', lastName = '\(lastName.text!)', active = '\(activeBool)', school = '\(school.text!)', birthDay = '\(Int(dateArr[1])!)', birthMonth = '\(Int(dateArr[0])!)', birthYear = '\(Int(dateArr[2])!)' WHERE studentID = '\(studentID)'"
-                    absencesList = "UPDATE ABSENCESLIST SET studentFirstName = '\(firstName.text!)', studentLastName = '\(lastName.text!)' WHERE studentID = '\(studentID)'"
-                    studentRosters = "UPDATE STUDENTROSTERS SET studentFirstName = '\(firstName.text!)', studentLastName = '\(lastName.text!)' WHERE studentID = '\(studentID)'"
-                } else {
-                    insertSQL = "INSERT INTO STUDENTPROFILES (firstName, lastName, active, school, birthDay, birthMonth, birthYear) VALUES ('\(firstName.text!)', '\(lastName.text!)', '\(activeBool)', '\(school.text!)', '\(Int(dateArr[1])!)', '\(Int(dateArr[0])!)', '\(Int(dateArr[2])!)')"
-                }
+        if (validatFields()) {
+            if (updateStudent) {
+                insertSQL = "UPDATE STUDENTPROFILES SET firstName = '\(firstName.text!)', lastName = '\(lastName.text!)', active = '\(activeBool)', school = '\(school.text!)', birthDay = '\(Int(dateArr[1])!)', birthMonth = '\(Int(dateArr[0])!)', birthYear = '\(Int(dateArr[2])!)' WHERE studentID = '\(studentID)'"
+                absencesList = "UPDATE ABSENCESLIST SET studentFirstName = '\(firstName.text!)', studentLastName = '\(lastName.text!)' WHERE studentID = '\(studentID)'"
+                studentRosters = "UPDATE STUDENTROSTERS SET studentFirstName = '\(firstName.text!)', studentLastName = '\(lastName.text!)' WHERE studentID = '\(studentID)'"
+            } else {
+                insertSQL = "INSERT INTO STUDENTPROFILES (firstName, lastName, active, school, birthDay, birthMonth, birthYear) VALUES ('\(firstName.text!)', '\(lastName.text!)', '\(activeBool)', '\(school.text!)', '\(Int(dateArr[1])!)', '\(Int(dateArr[0])!)', '\(Int(dateArr[2])!)')"
             }
 
-            let result1 = contactDB.executeUpdate(insertSQL, withArgumentsInArray: nil)
-            if !result1 {
-                print("Error: \(contactDB.lastErrorMessage())")
-            } else {
-                print("Successful")
-            }
+            let result1 = database.update(insertSQL)
             var result2 = false
             var result3 = false
-            if(updateStudent) {
-                result2 = contactDB.executeUpdate(absencesList, withArgumentsInArray: nil)
-                if !result2 {
-                    print("Error: \(contactDB.lastErrorMessage())")
-                } else {
-                    print("Successful")
-                }
-                result3 = contactDB.executeUpdate(studentRosters, withArgumentsInArray: nil)
-                if !result3 {
-                    print("Error: \(contactDB.lastErrorMessage())")
-                } else {
-                    print("Successful")
-                }
+            if (updateStudent) {
+                result2 = database.update(absencesList)
+                result3 = database.update(studentRosters)
             }
-            contactDB.close()
-            if (result1 && !updateStudent) {
+            if (result1 && (!updateStudent || (result2 && result3))) {
                 self.performSegueWithIdentifier("instructorMenuStudentsUnwind", sender: self)
             }
-        } else {
-            print("Error: \(contactDB.lastErrorMessage())")
         }
-
     }
 
     private func validatFields() -> Bool {
@@ -223,72 +191,27 @@ class AddOrEditStudentViewController: UIViewController {
         myAlertController.addAction(cancelAction)
 
         let nextAction = UIAlertAction(title: "Delete", style: .Default) { action -> Void in
-            let path = Util.getPath("AfterSchoolData.sqlite")
-            let contactDB = FMDatabase(path: path)
+            let insertSQL = "DELETE FROM STUDENTPROFILES WHERE studentID = '\(self.studentID)'"
+            let deleteStudentRosters = "DELETE FROM STUDENTROSTERS WHERE studentID = '\(self.studentID)'"
+            let deleteSignOuts = "DELETE FROM SIGNOUTS WHERE studentID = '\(self.studentID)'"
+            let deleteOneTimeAttendance = "DELETE FROM ONETIMEATTENDANCE WHERE studentID = '\(self.studentID)'"
+            let deleteGuardians = "DELETE FROM GUARDIANS WHERE studentID = '\(self.studentID)'"
+            let deleteContactNumbers = "DELETE FROM CONTACTNUMBERS WHERE studentID = '\(self.studentID)'"
+            let deleteAbsencesList = "DELETE FROM ABSENCESLIST WHERE studentID = '\(self.studentID)'"
+            let result1 = database.update(insertSQL)
+            let result2 = database.update(deleteStudentRosters)
+            let result3 = database.update(deleteSignOuts)
+            let result4 = database.update(deleteOneTimeAttendance)
+            let result5 = database.update(deleteGuardians)
+            let result6 = database.update(deleteContactNumbers)
+            let result7 = database.update(deleteAbsencesList)
 
-            if contactDB.open() {
-                let insertSQL = "DELETE FROM STUDENTPROFILES WHERE studentID = '\(self.studentID)'"
-                let deleteStudentRosters = "DELETE FROM STUDENTROSTERS WHERE studentID = '\(self.studentID)'"
-                let deleteSignOuts = "DELETE FROM SIGNOUTS WHERE studentID = '\(self.studentID)'"
-                let deleteOneTimeAttendance = "DELETE FROM ONETIMEATTENDANCE WHERE studentID = '\(self.studentID)'"
-                let deleteGuardians = "DELETE FROM GUARDIANS WHERE studentID = '\(self.studentID)'"
-                let deleteContactNumbers = "DELETE FROM CONTACTNUMBERS WHERE studentID = '\(self.studentID)'"
-                let deleteAbsencesList = "DELETE FROM ABSENCESLIST WHERE studentID = '\(self.studentID)'"
-                let result1 = contactDB.executeUpdate(insertSQL, withArgumentsInArray: nil)
-                if !result1 {
-                    print("Error: \(contactDB.lastErrorMessage())")
-                } else {
-                    print("Deleted")
-                }
-                let result2 = contactDB.executeUpdate(deleteStudentRosters, withArgumentsInArray: nil)
-                if !result2 {
-                    print("error: \(contactDB.lastErrorMessage())")
-                } else {
-                    print("Deleted")
-                }
-                let result3 = contactDB.executeUpdate(deleteSignOuts, withArgumentsInArray: nil)
-                if !result3 {
-                    print("Error: \(contactDB.lastErrorMessage())")
-                } else {
-                    print("Deleted")
-                }
-                let result4 = contactDB.executeUpdate(deleteOneTimeAttendance, withArgumentsInArray: nil)
-                if !result4 {
-                    print("Error: \(contactDB.lastErrorMessage())")
-                } else {
-                    print("Deleted")
-                }
-                let result5 = contactDB.executeUpdate(deleteGuardians, withArgumentsInArray: nil)
-                if !result5 {
-                    print("Error: \(contactDB.lastErrorMessage())")
-                } else {
-                    print("Deleted")
-                }
-                let result6 = contactDB.executeUpdate(deleteContactNumbers, withArgumentsInArray: nil)
-                if !result6 {
-                    print("Error: \(contactDB.lastErrorMessage())")
-                } else {
-                    print("Deleted")
-                }
-                let result7 = contactDB.executeUpdate(deleteAbsencesList, withArgumentsInArray: nil)
-                if !result7 {
-                    print("Error: \(contactDB.lastErrorMessage())")
-                } else {
-                    print("Deleted")
-                }
-                contactDB.close()
-                if (result1 && result2 && result3 && result4 && result5 && result6 && result7) {
-                    self.performSegueWithIdentifier("instructorMenuStudentsUnwind", sender: self)
-                }
-            } else {
-                print("Error: \(contactDB.lastErrorMessage())")
+            if (result1 && result2 && result3 && result4 && result5 && result6 && result7) {
+                self.performSegueWithIdentifier("instructorMenuStudentsUnwind", sender: self)
             }
         }
         myAlertController.addAction(nextAction)
         presentViewController(myAlertController, animated: true, completion: nil)
-
-        //also delete all relevant info
-        //studentrosters, signouts, onetimeattendance, guardians, contactnumbers, absenceslist
     }
 
     @IBAction func editStudentInfoUnwind(segue: UIStoryboardSegue) {

@@ -28,34 +28,26 @@ class RosterHistoryViewController: UIViewController, UITableViewDataSource, UITa
     }
 
     private func getRosters() {
-        let path = Util.getPath("AfterSchoolData.sqlite")
-        let contactDB = FMDatabase(path: path)
+        let querySQL = "SELECT STUDENTROSTERS.*, ROSTERS.name FROM STUDENTROSTERS LEFT OUTER JOIN ROSTERS ON STUDENTROSTERS.rosterID = ROSTERS.rosterID WHERE STUDENTROSTERS.studentID = '\(studentID)'"
 
-        if contactDB.open() {
-            let querySQL = "SELECT STUDENTROSTERS.*, ROSTERS.name FROM STUDENTROSTERS LEFT OUTER JOIN ROSTERS ON STUDENTROSTERS.rosterID = ROSTERS.rosterID WHERE STUDENTROSTERS.studentID = '\(studentID)'"
-
-            let results = contactDB.executeQuery(querySQL, withArgumentsInArray: nil)
-            while (results.next()) {
-                let cur = StudentRoster()
-                cur.setStudentFirstName(results.stringForColumn("studentFirstName"))
-                cur.setStudentLastName(results.stringForColumn("studentLastName"))
-                cur.setStudentID(Int(results.intForColumn("studentID")))
-                cur.setRosterID(Int(results.intForColumn("rosterID")))
-                cur.setRosterName(results.stringForColumn("name"))
-                cur.setMonday(Int(results.intForColumn("monday")))
-                cur.setTuesday(Int(results.intForColumn("tuesday")))
-                cur.setWednesday(Int(results.intForColumn("wednesday")))
-                cur.setThursday(Int(results.intForColumn("thursday")))
-                cur.setFriday(Int(results.intForColumn("friday")))
-                cur.setSaturday(Int(results.intForColumn("saturday")))
-                cur.setSunday(Int(results.intForColumn("sunday")))
-                rosterList.append(cur)
-            }
-            results.close()
-            contactDB.close()
-        } else {
-            print("Error: \(contactDB.lastErrorMessage())")
+        let results = database.search(querySQL)
+        while (results.next()) {
+            let cur = StudentRoster()
+            cur.setStudentFirstName(results.stringForColumn("studentFirstName"))
+            cur.setStudentLastName(results.stringForColumn("studentLastName"))
+            cur.setStudentID(Int(results.intForColumn("studentID")))
+            cur.setRosterID(Int(results.intForColumn("rosterID")))
+            cur.setRosterName(results.stringForColumn("name"))
+            cur.setMonday(Int(results.intForColumn("monday")))
+            cur.setTuesday(Int(results.intForColumn("tuesday")))
+            cur.setWednesday(Int(results.intForColumn("wednesday")))
+            cur.setThursday(Int(results.intForColumn("thursday")))
+            cur.setFriday(Int(results.intForColumn("friday")))
+            cur.setSaturday(Int(results.intForColumn("saturday")))
+            cur.setSunday(Int(results.intForColumn("sunday")))
+            rosterList.append(cur)
         }
+        results.close()
     }
 
     func setStudentID(studentID: Int) {

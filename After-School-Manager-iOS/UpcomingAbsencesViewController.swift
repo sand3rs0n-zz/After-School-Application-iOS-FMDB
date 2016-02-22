@@ -30,53 +30,25 @@ class UpcomingAbsencesViewController: UIViewController, UITableViewDataSource, U
     }
 
     private func getUpcomingAbsences() {
-        let path = Util.getPath("AfterSchoolData.sqlite")
-        let contactDB = FMDatabase(path: path)
+        let date = Date()
+        let querySQL = "SELECT * FROM ABSENCESLIST WHERE year > '\(date.getCurrentYear())' OR (year = '\(date.getCurrentYear())' AND month > '\(date.getCurrentMonth())') OR (year = '\(date.getCurrentYear())' AND month = '\(date.getCurrentMonth())' AND day >= '\(date.getCurrentDay())') ORDER BY year, month, day, studentLastName ASC"
+        let results = database.search(querySQL)
+        while (results.next()) {
+            let cur = Absence()
+            cur.setAbsenceID(Int(results.intForColumn("absenceID")))
+            cur.setStudentFirstName(results.stringForColumn("studentFirstName"))
+            cur.setStudentLastName(results.stringForColumn("studentLastName"))
+            cur.setStudentID(Int(results.intForColumn("studentID")))
+            cur.setRosterID(Int(results.intForColumn("rosterID")))
+            cur.setAbsenceID(Int(results.intForColumn("absenceID")))
+            cur.setDay(Int(results.intForColumn("day")))
+            cur.setMonth(Int(results.intForColumn("month")))
+            cur.setYear(Int(results.intForColumn("year")))
+            absenceList.append(cur)
+        }
+        results.close()
+    }
 
-        if contactDB.open() {
-            let date = Date()
-            let querySQL = "SELECT * FROM ABSENCESLIST WHERE year >= '\(date.getCurrentYear())' ORDER BY year, month, day, studentLastName ASC"
-            let results = contactDB.executeQuery(querySQL, withArgumentsInArray: nil)
-            while (results.next()) {
-                let cur = Absence()
-                cur.setAbsenceID(Int(results.intForColumn("absenceID")))
-                cur.setStudentFirstName(results.stringForColumn("studentFirstName"))
-                cur.setStudentLastName(results.stringForColumn("studentLastName"))
-                cur.setStudentID(Int(results.intForColumn("studentID")))
-                cur.setRosterID(Int(results.intForColumn("rosterID")))
-                cur.setAbsenceID(Int(results.intForColumn("absenceID")))
-                cur.setDay(Int(results.intForColumn("day")))
-                cur.setMonth(Int(results.intForColumn("month")))
-                cur.setYear(Int(results.intForColumn("year")))
-                absenceList.append(cur)
-            }
-            results.close()
-            contactDB.close()
-        } else {
-            print("Error: \(contactDB.lastErrorMessage())")
-        }
-        removeOldDates()
-    }
-    
-    private func removeOldDates() {
-        let year = date.getCurrentYear()
-        let month = date.getCurrentMonth()
-        let day = date.getCurrentDay()
-        for (var i = 0; i < absenceList.count; i++) {
-            let currentAbsence = absenceList[i]
-            if (currentAbsence.getYear() < year) {
-                absenceList.removeAtIndex(i)
-                i--
-            } else if (currentAbsence.getYear() == year && currentAbsence.getMonth() < month) {
-                absenceList.removeAtIndex(i)
-                i--
-            } else if (currentAbsence.getYear() == year && currentAbsence.getMonth() == month && currentAbsence.getDay() < day) {
-                absenceList.removeAtIndex(i)
-                i--
-            }
-        }
-    }
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let absence = absenceList[indexPath.row]
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")

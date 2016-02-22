@@ -45,33 +45,25 @@ class SignOutHistoryViewController: UIViewController, UITableViewDataSource, UIT
         let month = date.getCurrentMonth()
         let day = date.getCurrentDay()
 
-        let path = Util.getPath("AfterSchoolData.sqlite")
-        let contactDB = FMDatabase(path: path)
+        let querySQL = "SELECT SIGNOUTS.*, ROSTERS.name FROM SIGNOUTS LEFT OUTER JOIN ROSTERS ON SIGNOUTS.rosterID = ROSTERS.rosterID WHERE (year < '\(year)' OR (year = '\(year)' AND month < '\(month)') OR (year = '\(year)' AND month = '\(month)' AND day <= '\(day)')) AND studentID = '\(studentID)' AND SIGNOUTS.rosterType IN \(rosterTypeString) ORDER BY year, month, day, name ASC"
 
-        if contactDB.open() {
-            let querySQL = "SELECT SIGNOUTS.*, ROSTERS.name FROM SIGNOUTS LEFT OUTER JOIN ROSTERS ON SIGNOUTS.rosterID = ROSTERS.rosterID WHERE (year < '\(year)' OR (year = '\(year)' AND month < '\(month)') OR (year = '\(year)' AND month = '\(month)' AND day <= '\(day)')) AND studentID = '\(studentID)' AND SIGNOUTS.rosterType IN \(rosterTypeString) ORDER BY year, month, day, name ASC"
-
-            let results = contactDB.executeQuery(querySQL, withArgumentsInArray: nil)
-            while (results.next()) {
-                let cur = SignOut()
-                cur.setRosterID(Int(results.intForColumn("studentID")))
-                cur.setRosterID(Int(results.intForColumn("rosterID")))
-                cur.setSignOutGuaridan(results.stringForColumn("signOutGuardian"))
-                cur.setCampName(results.stringForColumn("name"))
-                cur.setRosterType(Int(results.intForColumn("rosterType")))
-                cur.setDay(Int(results.intForColumn("day")))
-                cur.setMonth(Int(results.intForColumn("month")))
-                cur.setYear(Int(results.intForColumn("year")))
-                cur.setHour(Int(results.intForColumn("hour")))
-                cur.setMinute(Int(results.intForColumn("minute")))
-                    cur.createTimeStamp()
-                signOuts.append(cur)
-            }
-            results.close()
-            contactDB.close()
-        } else {
-            print("Error: \(contactDB.lastErrorMessage())")
+        let results = database.search(querySQL)
+        while (results.next()) {
+            let cur = SignOut()
+            cur.setRosterID(Int(results.intForColumn("studentID")))
+            cur.setRosterID(Int(results.intForColumn("rosterID")))
+            cur.setSignOutGuaridan(results.stringForColumn("signOutGuardian"))
+            cur.setCampName(results.stringForColumn("name"))
+            cur.setRosterType(Int(results.intForColumn("rosterType")))
+            cur.setDay(Int(results.intForColumn("day")))
+            cur.setMonth(Int(results.intForColumn("month")))
+            cur.setYear(Int(results.intForColumn("year")))
+            cur.setHour(Int(results.intForColumn("hour")))
+            cur.setMinute(Int(results.intForColumn("minute")))
+            cur.createTimeStamp()
+            signOuts.append(cur)
         }
+        results.close()
     }
 
     func setStudentID(studentID: Int) {
