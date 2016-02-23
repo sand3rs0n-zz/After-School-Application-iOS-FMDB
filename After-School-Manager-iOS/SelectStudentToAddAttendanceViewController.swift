@@ -1,24 +1,23 @@
 //
-//  AllStudentsViewController.swift
-//  ParseStarterProject-Swift
+//  SelectStudentToAddAttendanceViewController.swift
+//  After-School-Manager-iOS
 //
-//  Created by Steven on 12/17/15.
-//  Copyright © 2015 Parse. All rights reserved.
+//  Created by Steven on 2/15/16.
+//  Copyright © 2016 Steven Anderson. All rights reserved.
 //
 
 import UIKit
 
-class AllStudentsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SelectStudentToAddAttendanceViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var studentListTable: UITableView!
-
     private var studentList = [Student]()
     private var forwardedStudentID = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         getStudents()
+
         // Do any additional setup after loading the view.
     }
 
@@ -53,11 +52,11 @@ class AllStudentsViewController: UIViewController, UITableViewDataSource, UITabl
             print("Error: \(contactDB.lastErrorMessage())")
         }
     }
-    
+
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let student = studentList[indexPath.row]
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
-        cell.textLabel?.text = (student.getFirstName() + " " + student.getLastName())
+        cell.textLabel?.text = student.getFirstName() + " " + student.getLastName()
         return cell
     }
 
@@ -68,10 +67,10 @@ class AllStudentsViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let student = studentList[(indexPath.row)]
         forwardedStudentID = student.getStudentID()
-        performSegueWithIdentifier("InstructorMenuStudentsToEditStudent", sender: self)
+        performSegueWithIdentifier("SelectStudentToSelectRoster", sender: self)
     }
 
-    @IBAction func instructorMenuStudentsUnwind(segue: UIStoryboardSegue) {
+    @IBAction func selectStudentToAddUnwind(segue: UIStoryboardSegue) {
         studentList.removeAll()
         getStudents()
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -80,26 +79,9 @@ class AllStudentsViewController: UIViewController, UITableViewDataSource, UITabl
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let aesvc = segue.destinationViewController as? AddOrEditStudentViewController
-        if (segue.identifier == "InstructorMenuStudentsToAddStudent") {
-            aesvc?.setTitleValue("Add New Student")
-            aesvc?.setAddUpdateButtonText("Add Student")
-        } else if (segue.identifier == "InstructorMenuStudentsToEditStudent") {
-            aesvc?.setTitleValue("Edit Student")
-            aesvc?.setAddUpdateButtonText("Update Student")
-            aesvc?.setUpdate(true)
-            aesvc?.setStudentID(forwardedStudentID)
+        if (segue.identifier == "SelectStudentToSelectRoster") {
+            let asavc = segue.destinationViewController as? AddSpecialAttendanceViewController
+            asavc?.setStudentID(forwardedStudentID)
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

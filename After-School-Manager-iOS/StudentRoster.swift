@@ -13,6 +13,7 @@ class StudentRoster {
     private var studentLastName = ""
     private var studentID = 0
     private var rosterID = 0
+    private var rosterName = ""
     private var monday = 0
     private var tuesday = 0
     private var wednesday = 0
@@ -35,6 +36,9 @@ class StudentRoster {
     }
     func getRosterID() -> Int {
         return rosterID
+    }
+    func getRosterName() -> String {
+        return rosterName
     }
     func getMonday() -> Int {
         return monday
@@ -68,6 +72,9 @@ class StudentRoster {
     }
     func setRosterID(rosterID: Int) {
         self.rosterID = rosterID
+    }
+    func setRosterName(rosterName: String) {
+        self.rosterName = rosterName
     }
     func setMonday(monday: Int) {
         self.monday = monday

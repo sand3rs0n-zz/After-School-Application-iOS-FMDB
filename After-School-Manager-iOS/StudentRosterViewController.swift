@@ -61,6 +61,7 @@ class StudentRosterViewController: UIViewController, UITableViewDataSource, UITa
                 cur.setSunday(Int(results.intForColumn("sunday")))
                 students.append(cur)
             }
+            results.close()
             contactDB.close()
         } else {
             print("Error: \(contactDB.lastErrorMessage())")
@@ -116,6 +117,8 @@ class StudentRosterViewController: UIViewController, UITableViewDataSource, UITa
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (rosterState == 2) {
             let savc = segue.destinationViewController as? ScheduleAbsenceViewController
+            savc?.setState(0)
+            savc?.setButtonText("Schedule Absence")
             savc?.setStudentID(forwardedStudentID)
             savc?.setStudentLastName(forwardedStudentLastName)
             savc?.setStudentFirstName(forwardedStudentFirstName)

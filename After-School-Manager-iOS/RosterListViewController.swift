@@ -59,6 +59,7 @@ class RosterListViewController: UIViewController, UITableViewDataSource, UITable
                 cur.setPickUpMinute(Int(results.intForColumn("pickUpMinute")))
                 rosterList.append(cur)
             }
+            results.close()
             contactDB.close()
         } else {
             print("Error: \(contactDB.lastErrorMessage())")

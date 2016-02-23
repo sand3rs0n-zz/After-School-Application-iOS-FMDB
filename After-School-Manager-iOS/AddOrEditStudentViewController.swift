@@ -17,10 +17,7 @@ class AddOrEditStudentViewController: UIViewController {
     @IBOutlet weak var addUpdateButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var addToRoster: UIButton!
-    @IBOutlet weak var signOutRecordsLabel: UILabel!
-    @IBOutlet weak var dayCampsRosters: UIButton!
-    @IBOutlet weak var weeklyCampsRosters: UIButton!
-    @IBOutlet weak var afterSchoolProgramRosters: UIButton!
+    @IBOutlet weak var signOutRecordsButton: UIButton!
 
     @IBOutlet weak var titleBar: UINavigationItem!
     @IBOutlet weak var active: UISegmentedControl!
@@ -69,6 +66,7 @@ class AddOrEditStudentViewController: UIViewController {
         student.setBirthDay(Int(results.intForColumn("birthDay")))
         student.setBirthMonth(Int(results.intForColumn("birthMonth")))
         student.setBirthYear(Int(results.intForColumn("birthYear")))
+        results.close()
     }
 
     private func getGuardians(contactDB: FMDatabase) {
@@ -81,6 +79,7 @@ class AddOrEditStudentViewController: UIViewController {
             cur.setStudentID(Int(results.intForColumn("studentID")))
             guardians.append(cur)
         }
+        results.close()
     }
 
     private func getContactNumbers(contactDB: FMDatabase) {
@@ -94,6 +93,7 @@ class AddOrEditStudentViewController: UIViewController {
             cur.setStudentID(Int(results.intForColumn("studentID")))
             contactNumbers.append(cur)
         }
+        results.close()
     }
 
     private func fillFields() {
@@ -112,10 +112,7 @@ class AddOrEditStudentViewController: UIViewController {
     private func hideFields() {
         deleteButton.hidden = true
         addToRoster.hidden = true
-        signOutRecordsLabel.hidden = true
-        dayCampsRosters.hidden = true
-        weeklyCampsRosters.hidden = true
-        afterSchoolProgramRosters.hidden = true
+        signOutRecordsButton.hidden = true
     }
 
     private func setBirthDate() {
@@ -229,14 +226,17 @@ class AddOrEditStudentViewController: UIViewController {
         //also delete all relevant info
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func editStudentInfoUnwind(segue: UIStoryboardSegue) {
     }
-    */
 
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "EditStudentInfoToSignOuts") {
+            let sohvc = segue.destinationViewController as? SignOutHistoryViewController
+            sohvc?.setState(1)
+            sohvc?.setStudentID(studentID)
+        } else if (segue.identifier == "EditStudentToRosterHistory") {
+            let rhvc = segue.destinationViewController as? RosterHistoryViewController
+            rhvc?.setStudentID(studentID)
+        }
+    }
 }

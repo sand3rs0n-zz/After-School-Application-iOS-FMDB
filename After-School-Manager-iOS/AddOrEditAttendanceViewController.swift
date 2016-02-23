@@ -41,9 +41,9 @@ class AddOrEditAttendanceViewController: UIViewController {
         self.titleBar.title = navTitle
         self.updateAttendanceButton!.setTitle(buttonText, forState: .Normal)
 
-        if (state == 0) {
+        if (state == 0 || state == 2) {
             fillEditPage()
-        } else if (state == 1) {
+        } else if (state == 1 || state == 3) {
             fillAddPage()
         }
         // Do any additional setup after loading the view.
@@ -72,6 +72,7 @@ class AddOrEditAttendanceViewController: UIViewController {
             student.setBirthMonth(Int(results.intForColumn("birthMonth")))
             student.setBirthYear(Int(results.intForColumn("birthYear")))
 
+            results.close()
             contactDB.close()
         } else {
             print("Error: \(contactDB.lastErrorMessage())")
@@ -100,6 +101,7 @@ class AddOrEditAttendanceViewController: UIViewController {
             schedule.setFriday(Int(results.intForColumn("friday")))
             schedule.setSaturday(Int(results.intForColumn("saturday")))
             schedule.setSunday(Int(results.intForColumn("sunday")))
+            results.close()
             contactDB.close()
         } else {
             print("Error: \(contactDB.lastErrorMessage())")
@@ -165,6 +167,10 @@ class AddOrEditAttendanceViewController: UIViewController {
             performSegueWithIdentifier("EditStudentFromAllRostersUnwind", sender: self)
         } else if (state == 1) {
             performSegueWithIdentifier("ReturnToSelectStudentToAddToRosterUnwind", sender: self)
+        } else if (state == 2) {
+            performSegueWithIdentifier("ReturnToRosterHistoryUnwind", sender: self)
+        } else if (state == 3) {
+            performSegueWithIdentifier("ReturnToSelectRosterToAddStudentUnwind", sender: self)
         }
     }
 
@@ -214,9 +220,9 @@ class AddOrEditAttendanceViewController: UIViewController {
         var insertSQL = ""
 
         if contactDB.open() {
-                if (state == 0) {
-                    insertSQL = "UPDATE ROSTERS SET studentFirstName = '\(name![0])', studentLastName = '\(name![1])', studentID = '\(studentID)', rosterID = '\(rosterID)', monday = '\(weekBool[0])', tuesday = '\(weekBool[1])', wednesday = '\(weekBool[2])', thursday = '\(weekBool[3])', friday = '\(weekBool[4])', saturday = '\(weekBool[5])', sunday = '\(weekBool[6])' WHERE rosterID = '\(rosterID)' AND studentID = '\(studentID)'"
-                } else if (state == 1) {
+                if (state == 0 || state == 2) {
+                    insertSQL = "UPDATE STUDENTROSTERS SET studentFirstName = '\(name![0])', studentLastName = '\(name![1])', studentID = '\(studentID)', rosterID = '\(rosterID)', monday = '\(weekBool[0])', tuesday = '\(weekBool[1])', wednesday = '\(weekBool[2])', thursday = '\(weekBool[3])', friday = '\(weekBool[4])', saturday = '\(weekBool[5])', sunday = '\(weekBool[6])' WHERE rosterID = '\(rosterID)' AND studentID = '\(studentID)'"
+                } else if (state == 1 || state == 3) {
                     insertSQL = "INSERT INTO STUDENTROSTERS (studentFirstName, studentLastName, studentID, rosterID, monday, tuesday, wednesday, thursday, friday, saturday, sunday) VALUES ('\(name![0])', '\(name![1])', '\(studentID)', '\(rosterID)', '\(weekBool[0])', '\(weekBool[1])', '\(weekBool[2])', '\(weekBool[3])', '\(weekBool[4])', '\(weekBool[5])', '\(weekBool[6])')"
                 }
             let result = contactDB.executeUpdate(insertSQL, withArgumentsInArray: nil)
