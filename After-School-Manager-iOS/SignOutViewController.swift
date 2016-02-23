@@ -55,23 +55,9 @@ class SignOutViewController: UIViewController {
     @IBAction func signOut(sender: AnyObject) {
         if (/*signOutGuardian != "" ||*/ !signatureBox.getLines().isEmpty) {
             let timestamp = Date()
-            let path = Util.getPath("AfterSchoolData.sqlite")
-            let contactDB = FMDatabase(path: path)
-
-            if contactDB.open() {
-                let insertSQL = "INSERT INTO SIGNOUTS VALUES ('\(studentID)', '\(rosterID)', '\(signOutGuardian)', '\(rosterType)', '\(timestamp.getCurrentDay())', '\(timestamp.getCurrentMonth())', '\(timestamp.getCurrentYear())', '\(timestamp.getCurrentHour())', '\(timestamp.getCurrentMinute())')"
-                let result = contactDB.executeUpdate(insertSQL, withArgumentsInArray: nil)
-
-                if !result {
-                    print("Error: \(contactDB.lastErrorMessage())")
-                } else {
-                    print("Successful")
-                }
-                contactDB.close()
-                self.performSegueWithIdentifier("SignOutToStudentSelectUnwind", sender: self)
-            } else {
-                print("Error: \(contactDB.lastErrorMessage())")
-            }
+            let signOutSQL = "INSERT INTO SIGNOUTS (studentID, rosterID, signOutGuardian, rosterType, signoutType, day, month, year, hour, minute) VALUES ('\(studentID)', '\(rosterID)', '\(signOutGuardian)', '\(rosterType)', '1', '\(timestamp.getCurrentDay())', '\(timestamp.getCurrentMonth())', '\(timestamp.getCurrentYear())', '\(timestamp.getCurrentHour())', '\(timestamp.getCurrentMinute())')"
+            database.update(signOutSQL)
+            self.performSegueWithIdentifier("SignOutToStudentSelectUnwind", sender: self)
         } else {
             print("error message")
         }

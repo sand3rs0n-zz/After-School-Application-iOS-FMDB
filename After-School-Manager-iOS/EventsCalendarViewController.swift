@@ -26,29 +26,20 @@ class EventsCalendarViewController: UIViewController, UITableViewDataSource, UIT
     }
 
     private func getEvents() {
-        let path = Util.getPath("AfterSchoolData.sqlite")
-        let contactDB = FMDatabase(path: path)
-
-        if contactDB.open() {
-            let querySQL = "SELECT * FROM EVENTS WHERE year >= '\(date.getCurrentYear())' ORDER BY year, month, day, name ASC"
-
-            let results = contactDB.executeQuery(querySQL, withArgumentsInArray: nil)
-            while (results.next()) {
-                let cur = Event()
-                cur.setEventID(Int(results.intForColumn("eventID")))
-                cur.setEventType(Int(results.intForColumn("eventType")))
-                cur.setName(results.stringForColumn("name"))
-                cur.setDescription(results.stringForColumn("description"))
-                cur.setDay(Int(results.intForColumn("day")))
-                cur.setMonth(Int(results.intForColumn("month")))
-                cur.setYear(Int(results.intForColumn("year")))
-                eventList.append(cur)
-            }
-            results.close()
-            contactDB.close()
-        } else {
-            print("Error: \(contactDB.lastErrorMessage())")
+        let querySQL = "SELECT * FROM EVENTS WHERE (year > '\(date.getCurrentYear())' OR (year = '\(date.getCurrentYear())' AND month > '\(date.getCurrentMonth())') OR (year = '\(date.getCurrentYear())' AND month = '\(date.getCurrentMonth())' AND day >= '\(date.getCurrentDay())')) ORDER BY year, month, day, name ASC"
+        let results = database.search(querySQL)
+        while (results.next()) {
+            let cur = Event()
+            cur.setEventID(Int(results.intForColumn("eventID")))
+            cur.setEventType(Int(results.intForColumn("eventType")))
+            cur.setName(results.stringForColumn("name"))
+            cur.setDescription(results.stringForColumn("description"))
+            cur.setDay(Int(results.intForColumn("day")))
+            cur.setMonth(Int(results.intForColumn("month")))
+            cur.setYear(Int(results.intForColumn("year")))
+            eventList.append(cur)
         }
+        results.close()
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

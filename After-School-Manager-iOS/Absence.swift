@@ -10,9 +10,10 @@ import Foundation
 
 class Absence {
     private var absenceID = 0
+    private var studentID = 0
+    private var rosterID = 0
     private var studentFirstName = ""
     private var studentLastName = ""
-    private var studentID = 0
     private var day = 0
     private var month = 0
     private var year = 0
@@ -31,6 +32,9 @@ class Absence {
     }
     func getStudentID() -> Int {
         return studentID
+    }
+    func getRosterID() -> Int {
+        return rosterID
     }
     func getDay() -> Int {
         return day
@@ -52,6 +56,9 @@ class Absence {
     }
     func setStudentID(studentID: Int) {
         self.studentID = studentID
+    }
+    func setRosterID(rosterID: Int) {
+        self.rosterID = rosterID
     }
     func setDay(day: Int) {
         self.day = day

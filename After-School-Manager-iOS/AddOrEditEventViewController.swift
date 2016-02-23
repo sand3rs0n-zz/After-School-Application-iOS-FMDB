@@ -81,32 +81,20 @@ class AddOrEditEventViewController: UIViewController {
         let month = Int(dateArr[1])!
         let year = Int(dateArr[2])!
 
-        let path = Util.getPath("AfterSchoolData.sqlite")
-        let contactDB = FMDatabase(path: path)
         var insertSQL = ""
-
-        if contactDB.open() {
-            if (eventName.text != "" && eventDescription.text != "") {
-                if (state == 1) {
-                    insertSQL = "UPDATE EVENTS SET name = '\(eventName.text!)', eventType = '\(selected)', description = '\(eventDescription.text!)', day = '\(day)', month = '\(month)', year = '\(year)' WHERE eventID = '\(event.getEventID())'"
-                    event.setName(eventName.text!)
-                    //update other tables
-                } else if (state == 0) {
-                    insertSQL = "INSERT INTO EVENTS (name, eventType, description, day, month, year) VALUES ('\(eventName.text!)', '\(selected)', '\(eventDescription.text!)', '\(day)', '\(month)', '\(year)')"
-                }
+        if (eventName.text != "" && eventDescription.text != "") {
+            if (state == 1) {
+                insertSQL = "UPDATE EVENTS SET name = '\(eventName.text!)', eventType = '\(selected)', description = '\(eventDescription.text!)', day = '\(day)', month = '\(month)', year = '\(year)' WHERE eventID = '\(event.getEventID())'"
+                event.setName(eventName.text!)
+                //update other tables
+            } else if (state == 0) {
+                insertSQL = "INSERT INTO EVENTS (name, eventType, description, day, month, year) VALUES ('\(eventName.text!)', '\(selected)', '\(eventDescription.text!)', '\(day)', '\(month)', '\(year)')"
             }
+        }
 
-            let result = contactDB.executeUpdate(insertSQL, withArgumentsInArray: nil)
-
-            if !result {
-                print("Error: \(contactDB.lastErrorMessage())")
-            } else {
-                print("Successful")
-            }
-            contactDB.close()
+        let result = database.update(insertSQL)
+        if (result) {
             self.back()
-        } else {
-            print("Error: \(contactDB.lastErrorMessage())")
         }
     }
     
@@ -119,20 +107,9 @@ class AddOrEditEventViewController: UIViewController {
         myAlertController.addAction(cancelAction)
 
         let nextAction = UIAlertAction(title: "Delete", style: .Default) { action -> Void in
-            let path = Util.getPath("AfterSchoolData.sqlite")
-            let contactDB = FMDatabase(path: path)
-
-            if contactDB.open() {
-                let insertSQL = "DELETE FROM EVENTS WHERE eventID = '\(self.event.getEventID())'"
-                let result = contactDB.executeUpdate(insertSQL, withArgumentsInArray: nil)
-                if !result {
-                    print("Error: \(contactDB.lastErrorMessage())")
-                } else {
-                    print("Deleted")
-                }
-                contactDB.close()
-                self.back()
-            }
+            let insertSQL = "DELETE FROM EVENTS WHERE eventID = '\(self.event.getEventID())'"
+            database.update(insertSQL)
+            self.back()
         }
         myAlertController.addAction(nextAction)
         presentViewController(myAlertController, animated: true, completion: nil)
