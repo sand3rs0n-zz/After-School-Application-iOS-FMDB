@@ -16,6 +16,7 @@ class Event {
     private var day = 0
     private var month = 0
     private var year = 0
+    private var rosterID = 0
 
     init() {
     }
@@ -41,6 +42,9 @@ class Event {
     func getYear() -> Int {
         return year
     }
+    func getRosterID() -> Int {
+        return rosterID
+    }
     func setEventID(eventID: Int) {
         self.eventID = eventID
     }
@@ -61,5 +65,8 @@ class Event {
     }
     func setYear(year: Int) {
         self.year = year
+    }
+    func setRosterID(rosterID: Int) {
+        self.rosterID = rosterID
     }
 }

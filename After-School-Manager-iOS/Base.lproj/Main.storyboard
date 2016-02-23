@@ -2178,6 +2178,9 @@
                                 <date key="date" timeIntervalSinceReferenceDate="474833435.28024101">
                                     <!--2016-01-18 18:10:35 +0000-->
                                 </date>
+                                <connections>
+                                    <action selector="datePickerChanged:" destination="M3Y-Zp-MFq" eventType="valueChanged" id="Ph1-ro-jfi"/>
+                                </connections>
                             </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3O-eC-opq">
                                 <rect key="frame" x="37" y="258" width="88" height="21"/>
@@ -2192,6 +2195,9 @@
                                     <segment title="No School"/>
                                     <segment title="Other"/>
                                 </segments>
+                                <connections>
+                                    <action selector="eventTypeAction:" destination="M3Y-Zp-MFq" eventType="valueChanged" id="xhR-aa-gRR"/>
+                                </connections>
                             </segmentedControl>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WbB-YU-ch2">
                                 <rect key="frame" x="232" y="99" width="97" height="30"/>
@@ -2204,6 +2210,21 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="haI-iL-fcO">
+                                <rect key="frame" x="447" y="269" width="287" height="105"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="M3Y-Zp-MFq" id="3S1-6U-kFa"/>
+                                    <outlet property="delegate" destination="M3Y-Zp-MFq" id="Wi8-xa-7GQ"/>
+                                </connections>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lpp-pC-Cqm">
+                                <rect key="frame" x="509" y="219" width="162" height="30"/>
+                                <color key="backgroundColor" white="0.82727693260000001" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Suspend Roster for Day"/>
+                                <connections>
+                                    <action selector="suspendRoster:" destination="M3Y-Zp-MFq" eventType="touchUpInside" id="Okg-Cy-LcT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -2214,6 +2235,8 @@
                         <outlet property="eventDescription" destination="yBo-al-d5d" id="THE-ln-gzt"/>
                         <outlet property="eventName" destination="WbB-YU-ch2" id="4rT-CU-hJ1"/>
                         <outlet property="eventType" destination="ALq-b9-XJA" id="PV0-OQ-eCO"/>
+                        <outlet property="rosterPicker" destination="haI-iL-fcO" id="qbc-CK-0xw"/>
+                        <outlet property="suspendRosterButton" destination="lpp-pC-Cqm" id="l4X-As-aeY"/>
                         <outlet property="titleBar" destination="IJk-po-eux" id="MpV-Ky-raP"/>
                     </connections>
                 </viewController>
@@ -2344,8 +2367,8 @@
         <segue reference="p75-6g-aLt"/>
         <segue reference="lZo-3K-BmO"/>
         <segue reference="Jr8-W3-Udp"/>
+        <segue reference="0dW-OO-Qat"/>
         <segue reference="aHV-gM-FhL"/>
         <segue reference="0CC-ZP-ABi"/>
-        <segue reference="R5z-Eg-ICD"/>
     </inferredMetricsTieBreakers>
 </document>
