@@ -24,6 +24,7 @@ class AddOrEditAttendanceViewController: UIViewController {
     @IBOutlet weak var updateAttendanceButton: UIButton!
     @IBOutlet weak var titleBar: UINavigationItem!
     @IBOutlet weak var studentName: UILabel!
+    @IBOutlet weak var rosterName: UILabel!
 
     private var week: [UIButton] = []
     private var weekBool = [0, 0, 0, 0, 0, 0, 0]
@@ -46,6 +47,10 @@ class AddOrEditAttendanceViewController: UIViewController {
         } else if (state == 1 || state == 3) {
             fillAddPage()
         }
+        let results = database.search("SELECT name FROM ROSTERS WHERE rosterID = '\(rosterID)'")
+        results.next()
+        rosterName.text = results.stringForColumn("name")
+        results.close()
         // Do any additional setup after loading the view.
     }
 
@@ -77,7 +82,7 @@ class AddOrEditAttendanceViewController: UIViewController {
         results.next()
         schedule.setStudentFirstName(results.stringForColumn("studentFirstName"))
         schedule.setStudentLastName(results.stringForColumn("studentLastName"))
-        schedule.setStudentLastName(results.stringForColumn("rosterName"))
+        schedule.setRosterName(results.stringForColumn("rosterName"))
         schedule.setStudentID(Int(results.intForColumn("studentID")))
         schedule.setRosterID(Int(results.intForColumn("rosterID")))
         schedule.setMonday(Int(results.intForColumn("monday")))

@@ -53,7 +53,6 @@
 		0F76991F1C5D64C800F04142 /* RosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F76991E1C5D64C800F04142 /* RosterViewController.swift */; };
 		0F7699211C5D674600F04142 /* AddOrEditAttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7699201C5D674600F04142 /* AddOrEditAttendanceViewController.swift */; };
 		0F7699231C5D6E0200F04142 /* SelectStudentToAddToRosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7699221C5D6E0200F04142 /* SelectStudentToAddToRosterViewController.swift */; };
-		8D35069C1C6AA967007D7A2C /* img in Resources */ = {isa = PBXBuildFile; fileRef = 8D35069B1C6AA967007D7A2C /* img */; };
 		0F7D26C61C6571DC00176CF2 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7D26C51C6571DC00176CF2 /* EventViewController.swift */; };
 		0F7D26C81C65784000176CF2 /* RosterHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7D26C71C65784000176CF2 /* RosterHistoryViewController.swift */; };
 		0F7D26CA1C657A6000176CF2 /* SelectRosterToAddStudentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7D26C91C657A6000176CF2 /* SelectRosterToAddStudentViewController.swift */; };
@@ -62,6 +61,7 @@
 		0FF20FF01C72A80F007285DB /* AddSpecialAttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF20FEF1C72A80F007285DB /* AddSpecialAttendanceViewController.swift */; };
 		0FF20FF21C72A847007285DB /* SelectStudentToAddAttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF20FF11C72A847007285DB /* SelectStudentToAddAttendanceViewController.swift */; };
 		0FF20FF41C73ADE0007285DB /* OneTimeAttendance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF20FF31C73ADE0007285DB /* OneTimeAttendance.swift */; };
+		8D35069C1C6AA967007D7A2C /* img in Resources */ = {isa = PBXBuildFile; fileRef = 8D35069B1C6AA967007D7A2C /* img */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,7 +120,6 @@
 		0F76991E1C5D64C800F04142 /* RosterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterViewController.swift; sourceTree = "<group>"; };
 		0F7699201C5D674600F04142 /* AddOrEditAttendanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOrEditAttendanceViewController.swift; sourceTree = "<group>"; };
 		0F7699221C5D6E0200F04142 /* SelectStudentToAddToRosterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStudentToAddToRosterViewController.swift; sourceTree = "<group>"; };
-		8D35069B1C6AA967007D7A2C /* img */ = {isa = PBXFileReference; lastKnownFileType = folder; path = img; sourceTree = "<group>"; };
 		0F7D26C51C6571DC00176CF2 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		0F7D26C71C65784000176CF2 /* RosterHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterHistoryViewController.swift; sourceTree = "<group>"; };
 		0F7D26C91C657A6000176CF2 /* SelectRosterToAddStudentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectRosterToAddStudentViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +128,7 @@
 		0FF20FEF1C72A80F007285DB /* AddSpecialAttendanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSpecialAttendanceViewController.swift; sourceTree = "<group>"; };
 		0FF20FF11C72A847007285DB /* SelectStudentToAddAttendanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStudentToAddAttendanceViewController.swift; sourceTree = "<group>"; };
 		0FF20FF31C73ADE0007285DB /* OneTimeAttendance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneTimeAttendance.swift; sourceTree = "<group>"; };
+		8D35069B1C6AA967007D7A2C /* img */ = {isa = PBXFileReference; lastKnownFileType = folder; path = img; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
