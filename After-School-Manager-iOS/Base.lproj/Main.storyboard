@@ -304,18 +304,22 @@
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7NK-41-cuI">
-                                <rect key="frame" x="167" y="148" width="240" height="128"/>
+                                <rect key="frame" x="167" y="148" width="553" height="203"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="SNE-ly-Ge6">
-                                        <rect key="frame" x="0.0" y="28" width="240" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="553" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SNE-ly-Ge6" id="khL-uV-AmT">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="553" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="czR-3k-ewH" id="e8P-p1-vKP"/>
+                                    <outlet property="delegate" destination="czR-3k-ewH" id="my4-E3-Xgm"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -370,7 +374,7 @@
                                     <constraint firstAttribute="height" constant="75" id="AuG-vT-nQe"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                <state key="normal" title="Add Student">
+                                <state key="normal" title="View/Edit Students">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -2340,8 +2344,8 @@
         <segue reference="p75-6g-aLt"/>
         <segue reference="lZo-3K-BmO"/>
         <segue reference="Jr8-W3-Udp"/>
-        <segue reference="0dW-OO-Qat"/>
         <segue reference="aHV-gM-FhL"/>
-        <segue reference="9dc-XQ-oCj"/>
+        <segue reference="0CC-ZP-ABi"/>
+        <segue reference="R5z-Eg-ICD"/>
     </inferredMetricsTieBreakers>
 </document>
