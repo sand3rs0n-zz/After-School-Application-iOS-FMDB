@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignOutViewController: UIViewController {
+class SignOutViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     private var studentID = 0
     private var rosterType = 0
@@ -19,11 +19,22 @@ class SignOutViewController: UIViewController {
     @IBOutlet weak var signatureBox: SignatureView!
     private var navTitle = ""
     
+    @IBOutlet weak var guardianPicker: UIPickerView!
+    var guardianPickerData:[String] = [String]() // string array of guardian names
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.titleBar.title = "Sign Out " + navTitle
 
         // Do any additional setup after loading the view.
+        
+        // Data connections
+        self.guardianPicker.delegate = self
+        self.guardianPicker.dataSource = self
+        
+        // Need to query for all guardians for this studentID
+        // First hardcoding this in
+        guardianPickerData = ["Mom", "Dad", "Brother", "Sister", "Grandma"]
     }
     
     override func didReceiveMemoryWarning() {
@@ -61,5 +72,19 @@ class SignOutViewController: UIViewController {
         } else {
             print("error message")
         }
+    }
+    
+    // Necessary methods for using UIPicker
+    // Columns of data - here just 1 
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    // Rows of data - here size of guardian list
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return guardianPickerData.count
+    }
+    // Data to show on scroll
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return guardianPickerData[row]
     }
 }

@@ -1062,6 +1062,7 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="guardianPicker" destination="1U6-jj-0x8" id="V68-o0-O7e"/>
                         <outlet property="signatureBox" destination="dY6-Rm-GYf" id="KcF-mZ-OS3"/>
                         <outlet property="titleBar" destination="SNi-af-bDv" id="bwf-c3-ZmY"/>
                     </connections>
