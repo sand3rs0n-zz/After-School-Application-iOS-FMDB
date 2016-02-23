@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="JWJ-ms-q1e">
+                            <button opaque="NO" contentMode="scaleAspectFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="JWJ-ms-q1e">
                                 <rect key="frame" x="329" y="183" width="160" height="75"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -35,7 +35,7 @@
                                     </segue>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="u50-AY-JVg">
+                            <button opaque="NO" contentMode="scaleAspectFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="u50-AY-JVg">
                                 <rect key="frame" x="535" y="183" width="160" height="75"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -52,7 +52,7 @@
                                     </segue>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="G2L-qO-XGG">
+                            <button opaque="NO" contentMode="scaleAspectFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="G2L-qO-XGG">
                                 <rect key="frame" x="329" y="298" width="160" height="75"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -69,7 +69,7 @@
                                     </segue>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="rYh-Ka-ABD">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="rYh-Ka-ABD">
                                 <rect key="frame" x="535" y="298" width="160" height="75"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -86,14 +86,7 @@
                                     </segue>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="i8p-AO-AkV">
-                                <rect key="frame" x="291" y="29" width="442" height="128"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="442" id="GQ4-7o-vkx"/>
-                                    <constraint firstAttribute="height" constant="128" id="c43-IJ-7Sj"/>
-                                </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="9Ek-Ua-Dgl">
+                            <button opaque="NO" contentMode="scaleAspectFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="9Ek-Ua-Dgl">
                                 <rect key="frame" x="432" y="408" width="160" height="75"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -110,29 +103,33 @@
                                     </segue>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ngP-lF-sCA">
+                                <rect key="frame" x="291" y="28" width="442" height="128"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="u50-AY-JVg" firstAttribute="top" secondItem="i8p-AO-AkV" secondAttribute="bottom" constant="26" id="3Q7-jJ-kaN"/>
                             <constraint firstItem="9Ek-Ua-Dgl" firstAttribute="leading" secondItem="oiq-i8-M83" secondAttribute="leading" constant="432" id="Ajm-lb-QeO"/>
                             <constraint firstItem="rYh-Ka-ABD" firstAttribute="leading" secondItem="G2L-qO-XGG" secondAttribute="trailing" constant="46" id="IFd-X8-o2c"/>
-                            <constraint firstItem="i8p-AO-AkV" firstAttribute="leading" secondItem="oiq-i8-M83" secondAttribute="leading" constant="291" id="MpK-fr-rgb"/>
-                            <constraint firstItem="i8p-AO-AkV" firstAttribute="top" secondItem="qjw-Sm-0Kl" secondAttribute="bottom" constant="9" id="Tjs-He-doC"/>
+                            <constraint firstItem="ngP-lF-sCA" firstAttribute="centerX" secondItem="oiq-i8-M83" secondAttribute="centerX" id="Me2-i2-rEd"/>
+                            <constraint firstItem="u50-AY-JVg" firstAttribute="top" secondItem="ngP-lF-sCA" secondAttribute="bottom" constant="27" id="RL7-Nm-npT"/>
                             <constraint firstAttribute="trailing" secondItem="9Ek-Ua-Dgl" secondAttribute="trailing" constant="432" id="VmB-if-scf"/>
                             <constraint firstItem="G2L-qO-XGG" firstAttribute="leading" secondItem="oiq-i8-M83" secondAttribute="leading" constant="329" id="Wyg-Lj-6Qs"/>
                             <constraint firstItem="JWJ-ms-q1e" firstAttribute="leading" secondItem="oiq-i8-M83" secondAttribute="leading" constant="329" id="ZIe-1m-Xbu"/>
-                            <constraint firstItem="JWJ-ms-q1e" firstAttribute="top" secondItem="i8p-AO-AkV" secondAttribute="bottom" constant="26" id="ZfB-vJ-527"/>
                             <constraint firstItem="G2L-qO-XGG" firstAttribute="top" secondItem="JWJ-ms-q1e" secondAttribute="bottom" constant="40" id="auD-1L-eCI"/>
                             <constraint firstItem="9Ek-Ua-Dgl" firstAttribute="top" secondItem="rYh-Ka-ABD" secondAttribute="bottom" constant="35" id="c4H-r3-x7a"/>
                             <constraint firstAttribute="trailing" secondItem="u50-AY-JVg" secondAttribute="trailing" constant="329" id="qBR-tm-AtT"/>
                             <constraint firstItem="rYh-Ka-ABD" firstAttribute="top" secondItem="u50-AY-JVg" secondAttribute="bottom" constant="40" id="sOB-1g-ft2"/>
+                            <constraint firstItem="JWJ-ms-q1e" firstAttribute="top" secondItem="ngP-lF-sCA" secondAttribute="bottom" constant="27" id="wJm-fD-ym1"/>
                             <constraint firstItem="u50-AY-JVg" firstAttribute="leading" secondItem="JWJ-ms-q1e" secondAttribute="trailing" constant="46" id="xbf-OA-kjZ"/>
                             <constraint firstAttribute="trailing" secondItem="rYh-Ka-ABD" secondAttribute="trailing" constant="329" id="xkZ-k7-6H8"/>
-                            <constraint firstAttribute="trailing" secondItem="i8p-AO-AkV" secondAttribute="trailing" constant="291" id="y4k-7S-flA"/>
                         </constraints>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                    <connections>
+                        <outlet property="image" destination="ngP-lF-sCA" id="qDI-Gf-eQC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eXT-OV-cP1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2337,17 +2334,14 @@
             <point key="canvasLocation" x="3878" y="-2102"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="logo.png" width="699" height="98"/>
-    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Jr8-W3-Udp"/>
-        <segue reference="b71-pI-SmA"/>
-        <segue reference="9dc-XQ-oCj"/>
         <segue reference="xQw-aq-Cov"/>
-        <segue reference="lZo-3K-BmO"/>
+        <segue reference="sUa-Xg-H2f"/>
         <segue reference="p75-6g-aLt"/>
+        <segue reference="lZo-3K-BmO"/>
+        <segue reference="Jr8-W3-Udp"/>
         <segue reference="0dW-OO-Qat"/>
         <segue reference="aHV-gM-FhL"/>
+        <segue reference="9dc-XQ-oCj"/>
     </inferredMetricsTieBreakers>
 </document>

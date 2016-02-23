@@ -11,9 +11,11 @@ import UIKit
 
 class HomePageViewController: UIViewController {
 
+    @IBOutlet weak var image: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        image.image = UIImage(named:"img/logo.png")!
     }
 
     override func didReceiveMemoryWarning() {
