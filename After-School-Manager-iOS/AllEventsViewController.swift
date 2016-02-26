@@ -36,6 +36,7 @@ class AllEventsViewController: UIViewController, UITableViewDataSource, UITableV
             cur.setDay(Int(results.intForColumn("day")))
             cur.setMonth(Int(results.intForColumn("month")))
             cur.setYear(Int(results.intForColumn("year")))
+            cur.setRosterID(Int(results.intForColumn("rosterID")))
             eventList.append(cur)
         }
         results.close()
