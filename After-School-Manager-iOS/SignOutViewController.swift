@@ -19,6 +19,7 @@ class SignOutViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     @IBOutlet weak var signatureBox: SignatureView!
     private var navTitle = ""
     
+    @IBOutlet weak var selectedGuardian: UILabel! // to store which Guardian they have selected
     @IBOutlet weak var guardianPicker: UIPickerView!
     var guardianPickerData:[String] = [String]() // string array of guardian names
     
@@ -28,11 +29,12 @@ class SignOutViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
 
         // Do any additional setup after loading the view.
         
-        // Data connections
-        self.guardianPicker.delegate = self
-        self.guardianPicker.dataSource = self
+//        // Data connections
+//        self.guardianPicker.delegate = self
+//        self.guardianPicker.dataSource = self
         
         // Need to query for all guardians for this studentID
+//        getAllGuardians()
         // First hardcoding this in
         guardianPickerData = ["Mom", "Dad", "Brother", "Sister", "Grandma"]
     }
@@ -57,6 +59,10 @@ class SignOutViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     func setRosterID(id: Int) {
         rosterID = id
     }
+    
+//    func getAllGuardians() {
+//        // Will need to add a query to list all the guardians for this student w/ the particular student ID.
+//    }
 
     @IBAction func clearSignature(sender: AnyObject) {
         signatureBox.setLines([])
@@ -74,6 +80,31 @@ class SignOutViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         }
     }
     
+    // Actions for when user selects to add a One-Time Guardian
+    @IBAction func selectOneTimeGuardian(sender: AnyObject) {
+        var name:String = ""
+        
+        let alertController = UIAlertController(title: "One-Time Guardian", message: "Please enter your name.", preferredStyle: .Alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) -> Void in
+                print("Cancelled")
+        }
+        alertController.addAction(cancelAction)
+        
+        alertController.addTextFieldWithConfigurationHandler { (textField) -> Void in
+            textField.placeholder = "<Your name here>"
+            name = ((alertController.textFields?.first)! as UITextField).text!
+        }
+        
+        let submitAction = UIAlertAction(title: "Submit", style: .Default) { (action) -> Void in
+            self.selectedGuardian.text = name
+        }
+        alertController.addAction(submitAction)
+        
+        self.presentViewController(alertController, animated: true) {
+            // Not really sure what to do here, actually
+        }
+    }
+    
     // Necessary methods for using UIPicker
     // Columns of data - here just 1 
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
@@ -86,5 +117,9 @@ class SignOutViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     // Data to show on scroll
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return guardianPickerData[row]
+    }
+    // Detect selection from user
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.selectedGuardian.text = guardianPickerData[row]
     }
 }
