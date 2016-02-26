@@ -1050,7 +1050,7 @@
                                 </state>
                                 <connections>
                                     <action selector="clearSignature:" destination="7Gv-iV-d7w" eventType="touchUpInside" id="zkw-Pt-mf6"/>
-                                    <action selector="selectOneTimeGuardian:" destination="7Gv-iV-d7w" eventType="touchUpInside" id="cGF-ab-96q"/>
+                                    <action selector="selectOneTimeGuardian:" destination="7Gv-iV-d7w" eventType="touchUpInside" id="zjn-67-WOb"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SELECTED GUARDIAN: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OWF-mg-tKh">
@@ -1069,7 +1069,7 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="addOneTimeGuardian" destination="bHf-QE-rLO" id="3p4-02-bib"/>
+                        <outlet property="guardianPicker" destination="1U6-jj-0x8" id="X8E-ev-lH9"/>
                         <outlet property="selectedGuardian" destination="cc5-6f-I74" id="upL-RM-Ayp"/>
                         <outlet property="signatureBox" destination="dY6-Rm-GYf" id="KcF-mZ-OS3"/>
                         <outlet property="titleBar" destination="SNi-af-bDv" id="bwf-c3-ZmY"/>
@@ -2377,11 +2377,11 @@
     <inferredMetricsTieBreakers>
         <segue reference="xQw-aq-Cov"/>
         <segue reference="sUa-Xg-H2f"/>
-        <segue reference="p75-6g-aLt"/>
         <segue reference="lZo-3K-BmO"/>
         <segue reference="Jr8-W3-Udp"/>
-        <segue reference="0dW-OO-Qat"/>
         <segue reference="aHV-gM-FhL"/>
+        <segue reference="p75-6g-aLt"/>
         <segue reference="0CC-ZP-ABi"/>
+        <segue reference="R5z-Eg-ICD"/>
     </inferredMetricsTieBreakers>
 </document>

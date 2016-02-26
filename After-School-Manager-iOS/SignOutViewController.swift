@@ -14,6 +14,7 @@ class SignOutViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     private var rosterType = 0
     private var signOutGuardian = ""
     private var rosterID = 0
+    private var guardianNames:[String] = [String]()
 
     @IBOutlet weak var titleBar: UINavigationItem!
     @IBOutlet weak var signatureBox: SignatureView!
@@ -29,12 +30,9 @@ class SignOutViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
 
         // Do any additional setup after loading the view.
         
-//        // Data connections
-//        self.guardianPicker.delegate = self
-//        self.guardianPicker.dataSource = self
-        
         // Need to query for all guardians for this studentID
-//        getAllGuardians()
+//        getGuardianNames()
+//        guardianPickerData = guardianNames
         // First hardcoding this in
         guardianPickerData = ["Mom", "Dad", "Brother", "Sister", "Grandma"]
     }
@@ -60,10 +58,17 @@ class SignOutViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         rosterID = id
     }
     
-//    func getAllGuardians() {
-//        // Will need to add a query to list all the guardians for this student w/ the particular student ID.
-//    }
-
+    private func getGuardianNames() {
+        let querySQL = "SELECT * FROM GUARDIANS WHERE studentID = '\(studentID)'"
+        let results = database.search(querySQL)
+        while (results.next()) {
+            let cur = Guardian()
+            let curname = cur.getName()
+            guardianNames.append(curname)
+        }
+        results.close()
+    }
+    
     @IBAction func clearSignature(sender: AnyObject) {
         signatureBox.setLines([])
         signatureBox.setNeedsDisplay()
@@ -86,16 +91,16 @@ class SignOutViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         
         let alertController = UIAlertController(title: "One-Time Guardian", message: "Please enter your name.", preferredStyle: .Alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) -> Void in
-                print("Cancelled")
+            print("Cancelled")
         }
         alertController.addAction(cancelAction)
         
         alertController.addTextFieldWithConfigurationHandler { (textField) -> Void in
             textField.placeholder = "<Your name here>"
-            name = ((alertController.textFields?.first)! as UITextField).text!
         }
         
         let submitAction = UIAlertAction(title: "Submit", style: .Default) { (action) -> Void in
+            name = ((alertController.textFields?.first)! as UITextField).text!
             self.selectedGuardian.text = name
         }
         alertController.addAction(submitAction)
