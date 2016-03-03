@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StudentInfoViewController: UIViewController {
+class StudentInfoViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     private var studentID = 0
     private var student = Student()
@@ -21,9 +21,10 @@ class StudentInfoViewController: UIViewController {
     @IBOutlet weak var studentLastName: UILabel!
     @IBOutlet weak var studentDOB: UILabel!
     @IBOutlet weak var studentSchool: UILabel!
-    @IBOutlet weak var studentGuardians: UILabel!
     @IBOutlet weak var studentContacts: UILabel!
     @IBOutlet weak var studentAge: UILabel!
+    @IBOutlet weak var guardianTable: UITableView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,7 +88,7 @@ class StudentInfoViewController: UIViewController {
         studentSchool.text = student.getSchool()
         studentDOB.text = dob.fullDateAmerican()
         studentAge.text = String(calcAge())
-        studentGuardians.text = guardianList()
+//        studentGuardians.text = guardianList() Using a table for this instead
         studentContacts.text = contactList()
     }
     
@@ -139,4 +140,37 @@ class StudentInfoViewController: UIViewController {
             sohvc?.setStudentID(studentID)
         }
     }
+    
+    // Table functions 
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if(tableView == self.guardianTable) {
+            return guardians.count
+        } else {
+            return 1
+        }
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
+        let row = indexPath.row
+        
+        if(guardians.count > 0) {
+            let guardian = guardians[row]
+            let guardianName = guardian.getName()
+            cell.textLabel?.text = guardianName
+        }
+        else {
+            cell.textLabel?.text = "No Approved Guardians"
+        }
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        // here do something when the person selects a Guardian?
+    }
+    
 }

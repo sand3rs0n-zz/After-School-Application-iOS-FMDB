@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddOrEditStudentViewController: UIViewController {
+class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var lastName: UITextField!
@@ -22,6 +22,9 @@ class AddOrEditStudentViewController: UIViewController {
     @IBOutlet weak var titleBar: UINavigationItem!
     @IBOutlet weak var active: UISegmentedControl!
 
+    @IBOutlet weak var guardianTable: UITableView!
+    
+    
     private var updateStudent = false
     private var studentID = 0
     private var student = Student()
@@ -227,4 +230,37 @@ class AddOrEditStudentViewController: UIViewController {
             rhvc?.setStudentID(studentID)
         }
     }
+    
+    // Table functions
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if(tableView == self.guardianTable) {
+            return guardians.count
+        } else {
+            return 1
+        }
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
+        let row = indexPath.row
+        
+        if(guardians.count > 0) {
+            let guardian = guardians[row]
+            let guardianName = guardian.getName()
+            cell.textLabel?.text = guardianName
+        }
+        else {
+            cell.textLabel?.text = "No Approved Guardians"
+        }
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        // here do something when the person selects a Guardian?
+    }
+    
 }
