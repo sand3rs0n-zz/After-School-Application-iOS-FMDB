@@ -30,6 +30,8 @@ class SignOutViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
 
         // Do any additional setup after loading the view.
         
+        // Here we need to set the correct studentID and rosterID, because currently initialized to 0??
+        
         // Need to query for all guardians for this studentID
 //        getGuardianNames()
 //        guardianPickerData = guardianNames
