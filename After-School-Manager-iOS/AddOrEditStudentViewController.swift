@@ -241,6 +241,8 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(tableView == self.guardianTable && guardians.count > 0) {
             return guardians.count + 1
+        } else if(tableView == self.contactTable && contactNumbers.count > 0) {
+            return contactNumbers.count + 1
         } else {
             return 2
         }
