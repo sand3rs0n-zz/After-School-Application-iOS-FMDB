@@ -29,6 +29,11 @@
                                 <state key="normal" title="Sign Out Student">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="K1v-nX-DK3" kind="show" identifier="HomePageToSignOutRosterSelect" id="OIU-pB-gCG">
                                         <nil key="action"/>
@@ -46,6 +51,11 @@
                                 <state key="normal" title="Schedule Absence">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="wDe-xK-MTg" kind="show" id="Yl6-p6-9Bv">
                                         <nil key="action"/>
@@ -63,6 +73,11 @@
                                 <state key="normal" title="Student Records">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="K1v-nX-DK3" kind="show" identifier="HomePageToStudentRosterSelect" id="sUa-Xg-H2f">
                                         <nil key="action"/>
@@ -80,6 +95,11 @@
                                 <state key="normal" title="Events Calendar">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="czR-3k-ewH" kind="show" id="bCM-La-BtF">
                                         <nil key="action"/>
@@ -97,6 +117,11 @@
                                 <state key="normal" title="Instructor Menu">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="9Gq-Av-E4n" kind="show" id="RnZ-pl-rKh">
                                         <nil key="action"/>
@@ -170,6 +195,11 @@
                                 <state key="normal" title="Week Camp">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="ZEB-g3-1tR" kind="show" identifier="RosterTypesToWeekCamps" id="8Gp-1f-UCm">
                                         <nil key="action"/>
@@ -183,6 +213,11 @@
                                 <state key="normal" title="Day Camp">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="ZEB-g3-1tR" kind="show" identifier="RosterTypesToDayCamps" id="xQw-aq-Cov">
                                         <nil key="action"/>
@@ -196,6 +231,11 @@
                                 <state key="normal" title="After School Program">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="ZEB-g3-1tR" kind="show" identifier="RosterTypesToAfterSchoolPrograms" id="gdh-kH-LPf">
                                         <nil key="action"/>
@@ -249,7 +289,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9wd-m5-vcR">
-                                <rect key="frame" x="109" y="148" width="386" height="395"/>
+                                <rect key="frame" x="107" y="148" width="386" height="395"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="TBS-RV-EL1">
@@ -377,6 +417,11 @@
                                 <state key="normal" title="View/Edit Students">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="aMe-6K-Fcj" kind="show" id="cUk-0S-AGs">
                                         <nil key="action"/>
@@ -394,6 +439,11 @@
                                 <state key="normal" title="View/Edit Rosters">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="Plr-Nq-L0d" kind="show" id="5Z9-8H-IEE">
                                         <nil key="action"/>
@@ -411,6 +461,11 @@
                                 <state key="normal" title="Settings">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbh-LY-FyI">
                                 <rect key="frame" x="537" y="198" width="160" height="75"/>
@@ -423,6 +478,11 @@
                                 <state key="normal" title="Today's Roster">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="ucB-K0-gfW" kind="show" id="h5a-eb-T0A"/>
                                 </connections>
@@ -438,6 +498,11 @@
                                 <state key="normal" title="View/Edit Events">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="1dN-bJ-7yp" kind="show" id="4ts-JU-W5q"/>
                                 </connections>
@@ -704,6 +769,11 @@
                                 <state key="normal" title="Monday">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="mondaySelect:" destination="G1Q-IP-rXa" eventType="touchUpInside" id="TSx-Wd-fBu"/>
                                 </connections>
@@ -715,6 +785,11 @@
                                 <state key="normal" title="Tuesday">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="tuesdaySelect:" destination="G1Q-IP-rXa" eventType="touchUpInside" id="p9Y-oU-mN1"/>
                                 </connections>
@@ -726,17 +801,27 @@
                                 <state key="normal" title="Wednesday">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="wednesdaySelect:" destination="G1Q-IP-rXa" eventType="touchUpInside" id="gT0-VZ-Nbz"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZEO-nP-jMC">
                                 <rect key="frame" x="678" y="328" width="100" height="30"/>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <state key="normal" title="Friday">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="fridaySelect:" destination="G1Q-IP-rXa" eventType="touchUpInside" id="dJv-I6-dCi"/>
                                 </connections>
@@ -748,6 +833,11 @@
                                 <state key="normal" title="Saturday">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="saturdaySelect:" destination="G1Q-IP-rXa" eventType="touchUpInside" id="DAp-ne-bUp"/>
                                 </connections>
@@ -759,6 +849,11 @@
                                 <state key="normal" title="Thursday">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="thursdaySelect:" destination="G1Q-IP-rXa" eventType="touchUpInside" id="Dnh-8H-ghX"/>
                                 </connections>
@@ -781,17 +876,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PaG-1J-q8k">
-                                <rect key="frame" x="432" y="491" width="160" height="50"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                <state key="normal" title="Delete from Roster">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="deleteFromRoster:" destination="G1Q-IP-rXa" eventType="touchUpInside" id="Tb0-YZ-8fj"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9eX-Of-hoA">
                                 <rect key="frame" x="432" y="433" width="160" height="50"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -799,19 +883,45 @@
                                 <state key="normal" title="Update Attendance">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="updateAttendance:" destination="G1Q-IP-rXa" eventType="touchUpInside" id="7qF-wb-Ncd"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dVC-DY-zi7">
                                 <rect key="frame" x="516" y="366" width="100" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <state key="normal" title="Sunday">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="sundaySelect:" destination="G1Q-IP-rXa" eventType="touchUpInside" id="2oV-Gv-8az"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PaG-1J-q8k">
+                                <rect key="frame" x="432" y="491" width="160" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="Delete from Roster">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="deleteFromRoster:" destination="G1Q-IP-rXa" eventType="touchUpInside" id="Tb0-YZ-8fj"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -996,12 +1106,6 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SELECT GUARDIAN (popout table?)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="arp-Y1-tXp">
-                                <rect key="frame" x="261" y="128" width="331" height="24"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="29X-QC-kbb">
                                 <rect key="frame" x="261" y="591" width="120" height="50"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1026,6 +1130,10 @@
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1U6-jj-0x8">
                                 <rect key="frame" x="261" y="153" width="502" height="167"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="7Gv-iV-d7w" id="kNL-V7-LSD"/>
+                                    <outlet property="delegate" destination="7Gv-iV-d7w" id="rgo-fb-uLg"/>
+                                </connections>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0gM-Ao-M8r">
                                 <rect key="frame" x="383" y="591" width="120" height="50"/>
@@ -1041,15 +1149,28 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="bHf-QE-rLO">
                                 <rect key="frame" x="603" y="102" width="160" height="75"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                <state key="normal" title="One-time Guardian">
+                                <state key="normal" title="One-Time Guardian">
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="clearSignature:" destination="7Gv-iV-d7w" eventType="touchUpInside" id="zkw-Pt-mf6"/>
+                                    <action selector="selectOneTimeGuardian:" destination="7Gv-iV-d7w" eventType="touchUpInside" id="zjn-67-WOb"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SELECTED GUARDIAN: Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OWF-mg-tKh">
-                                <rect key="frame" x="261" y="352" width="274" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SELECTED GUARDIAN: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OWF-mg-tKh">
+                                <rect key="frame" x="261" y="355" width="219" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cc5-6f-I74">
+                                <rect key="frame" x="488" y="355" width="275" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SELECT GUARDIAN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="arp-Y1-tXp">
+                                <rect key="frame" x="261" y="128" width="182" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -1058,6 +1179,8 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="guardianPicker" destination="1U6-jj-0x8" id="X8E-ev-lH9"/>
+                        <outlet property="selectedGuardian" destination="cc5-6f-I74" id="upL-RM-Ayp"/>
                         <outlet property="signatureBox" destination="dY6-Rm-GYf" id="KcF-mZ-OS3"/>
                         <outlet property="titleBar" destination="SNi-af-bDv" id="bwf-c3-ZmY"/>
                     </connections>
@@ -1152,7 +1275,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="APPROVED FOR PICKUP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GgD-rv-Yrr">
-                                <rect key="frame" x="395" y="103" width="235" height="21"/>
+                                <rect key="frame" x="596" y="103" width="235" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="EMERGENCY CONTACTS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3gf-hB-YrQ">
+                                <rect key="frame" x="596" y="358" width="235" height="23"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1181,14 +1310,14 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Emergency Contacts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QcN-Sf-q9A">
-                                <rect key="frame" x="49" y="279" width="160" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="09/30/1993" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2pe-6U-N32">
+                                <rect key="frame" x="167" y="182" width="165" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="09/30/1993" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2pe-6U-N32">
-                                <rect key="frame" x="167" y="182" width="92" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLL-HM-LoG">
+                                <rect key="frame" x="164" y="140" width="165" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1199,26 +1328,8 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTE-vW-ORo">
-                                <rect key="frame" x="491" y="132" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GtL-R8-5P8">
-                                <rect key="frame" x="356" y="377" width="312" height="82"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="John" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PzC-Mq-f7S">
-                                <rect key="frame" x="167" y="140" width="38" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Oxford University" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTz-38-5Lz">
-                                <rect key="frame" x="164" y="259" width="134" height="21"/>
+                                <rect key="frame" x="164" y="259" width="219" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1240,14 +1351,8 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Doe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ha-WH-mT7">
-                                <rect key="frame" x="213" y="140" width="31" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RS6-Gx-9ei">
-                                <rect key="frame" x="51" y="374" width="120" height="30"/>
+                                <rect key="frame" x="82" y="377" width="120" height="30"/>
                                 <state key="normal" title="Sign Out Records"/>
                                 <connections>
                                     <segue destination="bJt-LC-pkh" kind="show" identifier="StudentInfoToSignOuts" id="R5z-Eg-ICD"/>
@@ -1271,16 +1376,61 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nve-NW-bus">
+                                <rect key="frame" x="596" y="132" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <tableView key="tableFooterView" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="53J-iw-lmL">
+                                    <rect key="frame" x="0.0" y="72" width="240" height="128"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <connections>
+                                        <outlet property="dataSource" destination="KzA-dT-hLE" id="O0R-jI-Dhd"/>
+                                        <outlet property="delegate" destination="KzA-dT-hLE" id="0a9-PD-pHm"/>
+                                    </connections>
+                                </tableView>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="i8j-0W-GX7">
+                                        <rect key="frame" x="0.0" y="28" width="240" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="i8j-0W-GX7" id="2Pt-3z-F1n">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" identifier="cell"/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="KzA-dT-hLE" id="cMd-6V-OLC"/>
+                                    <outlet property="delegate" destination="KzA-dT-hLE" id="OB2-Sq-OZ9"/>
+                                </connections>
+                            </tableView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7LY-aW-Vdd">
+                                <rect key="frame" x="596" y="398" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="contactCell" id="4va-Dp-BH0">
+                                        <rect key="frame" x="0.0" y="28" width="240" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4va-Dp-BH0" id="9dc-nz-gJI">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="KzA-dT-hLE" id="H5f-pH-Elz"/>
+                                    <outlet property="delegate" destination="KzA-dT-hLE" id="AlM-de-BBn"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="contactTable" destination="7LY-aW-Vdd" id="QzN-1a-4Us"/>
+                        <outlet property="guardianTable" destination="nve-NW-bus" id="Obx-zY-f94"/>
                         <outlet property="studentAge" destination="I54-sw-FmL" id="xkf-PG-frL"/>
-                        <outlet property="studentContacts" destination="GtL-R8-5P8" id="rrq-74-2Qg"/>
                         <outlet property="studentDOB" destination="2pe-6U-N32" id="Tma-sv-BV8"/>
-                        <outlet property="studentFirstName" destination="PzC-Mq-f7S" id="tpo-O8-R5H"/>
-                        <outlet property="studentGuardians" destination="hTE-vW-ORo" id="bff-iI-7as"/>
-                        <outlet property="studentLastName" destination="9Ha-WH-mT7" id="S71-D7-dCZ"/>
+                        <outlet property="studentFullName" destination="BLL-HM-LoG" id="Bb0-Lc-zQh"/>
                         <outlet property="studentSchool" destination="HTz-38-5Lz" id="vpW-OK-dIL"/>
                     </connections>
                 </viewController>
@@ -1505,63 +1655,98 @@
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="via-90-fAc">
-                                <rect key="frame" x="57" y="577" width="120" height="30"/>
+                                <rect key="frame" x="66" y="702" width="120" height="30"/>
                                 <state key="normal" title="Sign Out Records"/>
                                 <connections>
                                     <segue destination="bJt-LC-pkh" kind="show" identifier="EditStudentInfoToSignOuts" id="0dW-OO-Qat"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W3a-dK-SlR">
-                                <rect key="frame" x="432" y="514" width="117" height="30"/>
+                                <rect key="frame" x="441" y="639" width="117" height="30"/>
                                 <state key="normal" title="Add/Edit Student">
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="updateStudent:" destination="eat-KY-ysK" eventType="touchUpInside" id="xLf-2A-FaU"/>
+                                    <action selector="updateStudent:" destination="eat-KY-ysK" eventType="touchUpInside" id="enX-xL-Da4"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rzz-3o-MtC">
-                                <rect key="frame" x="57" y="530" width="52" height="30"/>
+                                <rect key="frame" x="66" y="655" width="52" height="30"/>
                                 <state key="normal" title="Rosters"/>
                                 <connections>
                                     <segue destination="WMt-TF-t91" kind="show" identifier="EditStudentToRosterHistory" id="PTD-Id-5x2"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="APPROVED FOR PICK UP " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BvK-rm-A3R">
-                                <rect key="frame" x="57" y="418" width="260" height="24"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CONTACTS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XDT-aI-9Xp">
-                                <rect key="frame" x="61" y="463" width="260" height="24"/>
+                                <rect key="frame" x="719" y="101" width="260" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XWO-vT-ALc">
-                                <rect key="frame" x="439" y="547" width="103" height="30"/>
+                                <rect key="frame" x="448" y="672" width="103" height="30"/>
                                 <state key="normal" title="Delete Student">
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="deleteStudent:" destination="eat-KY-ysK" eventType="touchUpInside" id="7Iq-wv-Tjc"/>
-                                </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zKX-gf-pxn">
+                                <rect key="frame" x="719" y="150" width="260" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="VQM-gU-5pJ">
+                                        <rect key="frame" x="0.0" y="28" width="260" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VQM-gU-5pJ" id="jw3-Th-5nr">
+                                            <rect key="frame" x="0.0" y="0.0" width="260" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="eat-KY-ysK" id="61k-YV-2nY"/>
+                                    <outlet property="delegate" destination="eat-KY-ysK" id="8ab-Tb-q58"/>
+                                </connections>
+                            </tableView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="s7h-4E-ui3">
+                                <rect key="frame" x="719" y="413" width="260" height="157"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="contactCell" id="xQH-rm-Psv">
+                                        <rect key="frame" x="0.0" y="28" width="260" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xQH-rm-Psv" id="NaZ-ob-ir6">
+                                            <rect key="frame" x="0.0" y="0.0" width="260" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="eat-KY-ysK" id="b0w-vV-T3E"/>
+                                    <outlet property="delegate" destination="eat-KY-ysK" id="v9z-vh-HfB"/>
+                                </connections>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="EMERGENCY CONTACTS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XDT-aI-9Xp">
+                                <rect key="frame" x="719" y="372" width="260" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="active" destination="0Ph-Yj-oKS" id="fWt-84-klg"/>
-                        <outlet property="addToRoster" destination="Rzz-3o-MtC" id="yo6-Q5-NjG"/>
-                        <outlet property="addUpdateButton" destination="W3a-dK-SlR" id="1uT-oP-W0d"/>
-                        <outlet property="birthdayPicker" destination="u4M-BJ-2vL" id="z2k-Fe-MrQ"/>
-                        <outlet property="deleteButton" destination="XWO-vT-ALc" id="b1i-wg-cG6"/>
-                        <outlet property="firstName" destination="lWf-9e-8f7" id="XCs-od-aYU"/>
-                        <outlet property="lastName" destination="zcM-YN-pZz" id="C4T-Dg-gSX"/>
-                        <outlet property="school" destination="6UN-Vg-W2p" id="rew-P4-8op"/>
-                        <outlet property="signOutRecordsButton" destination="via-90-fAc" id="8FE-Ly-CnT"/>
-                        <outlet property="titleBar" destination="E4s-WF-UcW" id="zdu-yt-RdF"/>
+                        <outlet property="active" destination="0Ph-Yj-oKS" id="cDb-Ot-RMr"/>
+                        <outlet property="addToRoster" destination="Rzz-3o-MtC" id="B8k-cM-2Wj"/>
+                        <outlet property="addUpdateButton" destination="W3a-dK-SlR" id="WnG-ju-Thb"/>
+                        <outlet property="birthdayPicker" destination="u4M-BJ-2vL" id="fE6-Z3-iyG"/>
+                        <outlet property="contactTable" destination="s7h-4E-ui3" id="CaY-Hb-NBH"/>
+                        <outlet property="deleteButton" destination="XWO-vT-ALc" id="QNV-4I-hxs"/>
+                        <outlet property="firstName" destination="lWf-9e-8f7" id="afo-2C-eZF"/>
+                        <outlet property="guardianTable" destination="zKX-gf-pxn" id="neM-kx-t5e"/>
+                        <outlet property="lastName" destination="zcM-YN-pZz" id="OOf-W7-JVS"/>
+                        <outlet property="school" destination="6UN-Vg-W2p" id="GPH-SO-icy"/>
+                        <outlet property="signOutRecordsButton" destination="via-90-fAc" id="i0v-yH-fKM"/>
+                        <outlet property="titleBar" destination="E4s-WF-UcW" id="NMz-jg-RRB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p3F-Cn-QeA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1623,15 +1808,13 @@
                     </view>
                     <connections>
                         <outlet property="studentListTable" destination="hRa-vZ-Zgi" id="Kmb-rn-3px"/>
-                        <segue destination="eat-KY-ysK" kind="show" identifier="InstructorMenuStudentsToEditStudent" id="Jr8-W3-Udp">
-                            <nil key="action"/>
-                        </segue>
+                        <segue destination="eat-KY-ysK" kind="show" identifier="InstructorMenuStudentsToEditStudent" id="Jcc-rI-ynV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WGo-It-kd8" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Fsz-z8-y0N" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1247" y="-987"/>
+            <point key="canvasLocation" x="1287" y="-1012"/>
         </scene>
         <!--Roster View Controller-->
         <scene sceneID="xHI-tt-c3L">
@@ -2362,13 +2545,13 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="xQw-aq-Cov"/>
-        <segue reference="sUa-Xg-H2f"/>
-        <segue reference="p75-6g-aLt"/>
-        <segue reference="lZo-3K-BmO"/>
-        <segue reference="Jr8-W3-Udp"/>
-        <segue reference="0dW-OO-Qat"/>
+        <segue reference="Jcc-rI-ynV"/>
         <segue reference="aHV-gM-FhL"/>
+        <segue reference="lZo-3K-BmO"/>
+        <segue reference="p75-6g-aLt"/>
+        <segue reference="b71-pI-SmA"/>
+        <segue reference="xQw-aq-Cov"/>
         <segue reference="0CC-ZP-ABi"/>
+        <segue reference="R5z-Eg-ICD"/>
     </inferredMetricsTieBreakers>
 </document>

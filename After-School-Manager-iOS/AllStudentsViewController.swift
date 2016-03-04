@@ -58,7 +58,8 @@ class AllStudentsViewController: UIViewController, UITableViewDataSource, UITabl
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let student = studentList[(indexPath.row)]
+        let indexPath = tableView.indexPathForSelectedRow
+        let student = studentList[(indexPath?.row)!]
         forwardedStudentID = student.getStudentID()
         performSegueWithIdentifier("InstructorMenuStudentsToEditStudent", sender: self)
     }

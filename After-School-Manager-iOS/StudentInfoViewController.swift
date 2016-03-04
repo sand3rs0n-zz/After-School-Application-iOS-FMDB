@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StudentInfoViewController: UIViewController {
+class StudentInfoViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     private var studentID = 0
     private var student = Student()
@@ -17,13 +17,13 @@ class StudentInfoViewController: UIViewController {
     private var dob = Date()
     
 
-    @IBOutlet weak var studentFirstName: UILabel!
-    @IBOutlet weak var studentLastName: UILabel!
+    @IBOutlet weak var studentFullName: UILabel!
     @IBOutlet weak var studentDOB: UILabel!
     @IBOutlet weak var studentSchool: UILabel!
-    @IBOutlet weak var studentGuardians: UILabel!
-    @IBOutlet weak var studentContacts: UILabel!
     @IBOutlet weak var studentAge: UILabel!
+    @IBOutlet weak var guardianTable: UITableView!
+    @IBOutlet weak var contactTable: UITableView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,13 +82,12 @@ class StudentInfoViewController: UIViewController {
     }
     
     private func fillPage() {
-        studentFirstName.text = student.getFirstName()
-        studentLastName.text = student.getLastName()
+        studentFullName.text = student.getFirstName() + " " + student.getLastName()
         studentSchool.text = student.getSchool()
         studentDOB.text = dob.fullDateAmerican()
         studentAge.text = String(calcAge())
-        studentGuardians.text = guardianList()
-        studentContacts.text = contactList()
+//        studentGuardians.text = guardianList() Using a table for this instead
+//        studentContacts.text = contactList()
     }
     
     func setStudentID(id: Int) {
@@ -139,4 +138,54 @@ class StudentInfoViewController: UIViewController {
             sohvc?.setStudentID(studentID)
         }
     }
+    
+    // Table functions 
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if(tableView == self.guardianTable && guardians.count > 0) {
+            return guardians.count
+        } else if (tableView == self.contactTable && contactNumbers.count > 0){
+            return contactNumbers.count
+        } else {
+            return 1
+        }
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell = UITableViewCell()
+        if(tableView == self.guardianTable) {
+            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
+            let row = indexPath.row
+            
+            if(guardians.count > 0 && row < guardians.count) {
+                let guardian = guardians[row]
+                let guardianName = guardian.getName()
+                cell.textLabel?.text = guardianName
+            } else {
+                cell.textLabel?.text = "No Approved Guardians"
+            }
+        } else if(tableView == self.contactTable) {
+            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "contactCell")
+            let row = indexPath.row
+            
+            // Fix this
+            if(contactNumbers.count > 0 && row < contactNumbers.count) {
+                let contact = contactNumbers[row]
+                let contactName = contact.getName()
+                let contactPhone = contact.getPhoneNumber()
+                cell.textLabel?.text = "\(contactName): \(contactPhone)"
+            } else {
+                cell.textLabel?.text = "No Emergency Contacts"
+            }
+        }
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        // here do something when the person selects a Guardian?
+    }
+    
 }

@@ -96,31 +96,31 @@ class AddOrEditAttendanceViewController: UIViewController {
         studentName.text = (schedule.getStudentFirstName() + " " + schedule.getStudentLastName())
 
         if (schedule.getMonday() == 1) {
-            monday.backgroundColor = UIColor.greenColor()
+            toggleColor(monday)
             weekBool[0] = 1
         }
         if (schedule.getTuesday() == 1) {
-            tuesday.backgroundColor = UIColor.greenColor()
+            toggleColor(tuesday)
             weekBool[1] = 1
         }
         if (schedule.getWednesday() == 1) {
-            wednesday.backgroundColor = UIColor.greenColor()
+            toggleColor(wednesday)
             weekBool[2] = 1
         }
         if (schedule.getThursday() == 1) {
-            thursday.backgroundColor = UIColor.greenColor()
+            toggleColor(thursday)
             weekBool[3] = 1
         }
         if (schedule.getFriday() == 1) {
-            friday.backgroundColor = UIColor.greenColor()
+            toggleColor(friday)
             weekBool[4] = 1
         }
         if (schedule.getSaturday() == 1) {
-            saturday.backgroundColor = UIColor.greenColor()
+            toggleColor(saturday)
             weekBool[5] = 1
         }
         if (schedule.getSunday() == 1) {
-            sunday.backgroundColor = UIColor.greenColor()
+            toggleColor(sunday)
             weekBool[6] = 1
         }
     }
@@ -190,10 +190,17 @@ class AddOrEditAttendanceViewController: UIViewController {
             weekBool[day] = 1
         }
         let dayOfWeek = week[day]
-        if (dayOfWeek.backgroundColor == UIColor.greenColor()) {
-            dayOfWeek.backgroundColor = UIColor.grayColor()
+        toggleColor(dayOfWeek)
+    }
+
+    private func toggleColor(dayOfWeek: UIButton) {
+        // Toggle attendance colors
+        if(dayOfWeek.backgroundColor == UIColor.groupTableViewBackgroundColor()) {
+            dayOfWeek.backgroundColor = UIColor.redColor()
+            dayOfWeek.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         } else {
-            dayOfWeek.backgroundColor = UIColor.greenColor()
+            dayOfWeek.backgroundColor = UIColor.groupTableViewBackgroundColor()
+            dayOfWeek.setTitleColor(UIColor.darkTextColor(), forState: UIControlState.Normal)
         }
     }
 
