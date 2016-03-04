@@ -23,6 +23,7 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
     @IBOutlet weak var active: UISegmentedControl!
 
     @IBOutlet weak var guardianTable: UITableView!
+    @IBOutlet weak var contactTable: UITableView!
     
     
     private var updateStudent = false
@@ -52,15 +53,16 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
     private func getStudent() {
         let querySQL = "SELECT * FROM STUDENTPROFILES WHERE studentID = '\(studentID)'"
         let results = database.search(querySQL)
-        results.next()
-        student.setStudentID(Int(results.intForColumn("studentID")))
-        student.setFirstName(results.stringForColumn("firstName"))
-        student.setLastName(results.stringForColumn("lastName"))
-        student.setActive(Int(results.intForColumn("active")))
-        student.setSchool(results.stringForColumn("school"))
-        student.setBirthDay(Int(results.intForColumn("birthDay")))
-        student.setBirthMonth(Int(results.intForColumn("birthMonth")))
-        student.setBirthYear(Int(results.intForColumn("birthYear")))
+        while(results.next()) {
+            student.setStudentID(Int(results.intForColumn("studentID")))
+            student.setFirstName(results.stringForColumn("firstName"))
+            student.setLastName(results.stringForColumn("lastName"))
+            student.setActive(Int(results.intForColumn("active")))
+            student.setSchool(results.stringForColumn("school"))
+            student.setBirthDay(Int(results.intForColumn("birthDay")))
+            student.setBirthMonth(Int(results.intForColumn("birthMonth")))
+            student.setBirthYear(Int(results.intForColumn("birthYear")))
+        }
         results.close()
     }
 
@@ -237,30 +239,125 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(tableView == self.guardianTable) {
-            return guardians.count
+        if(tableView == self.guardianTable && guardians.count > 0) {
+            return guardians.count + 1
         } else {
-            return 1
+            return 2
         }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
-        let row = indexPath.row
-        
-        if(guardians.count > 0) {
-            let guardian = guardians[row]
-            let guardianName = guardian.getName()
-            cell.textLabel?.text = guardianName
-        }
-        else {
-            cell.textLabel?.text = "No Approved Guardians"
+        var cell = UITableViewCell()
+        if(tableView == self.guardianTable) {
+            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
+            let row = indexPath.row
+            
+            if(guardians.count > 0 && row < guardians.count) {
+                let guardian = guardians[row]
+                let guardianName = guardian.getName()
+                cell.textLabel?.text = guardianName
+            }
+            else if(row == 1){
+                cell.textLabel?.text = "Add New Guardian"
+                cell.textLabel?.textColor = UIColor.redColor()
+                cell.textLabel?.font = UIFont.boldSystemFontOfSize(17.0)
+            } else {
+                cell.textLabel?.text = "No Approved Guardians"
+            }
+        } else if(tableView == self.contactTable) {
+            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "contactCell")
+            let row = indexPath.row
+            
+            // Fix this
+            if(contactNumbers.count > 0 && row < contactNumbers.count) {
+                let contact = contactNumbers[row]
+                let contactName = contact.getName()
+                let contactPhone = contact.getPhoneNumber()
+                cell.textLabel?.text = "\(contactName): \(contactPhone)"
+            }
+            else if(row == 1){
+                cell.textLabel?.text = "Add New Contact"
+                cell.textLabel?.textColor = UIColor.redColor()
+                cell.textLabel?.font = UIFont.boldSystemFontOfSize(17.0)
+            } else {
+                cell.textLabel?.text = "No Emergency Contacts"
+            }
         }
         return cell
     }
     
-    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        // here do something when the person selects a Guardian?
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if(tableView == self.guardianTable) {
+            let indexPath = self.guardianTable.indexPathForSelectedRow
+            let selectedCell = self.guardianTable.cellForRowAtIndexPath(indexPath!)! as UITableViewCell
+            if(selectedCell.textLabel!.text == "Add New Guardian") {
+                print("Add New Guardian Selected")
+                var name:String = ""
+                
+                let alertController = UIAlertController(title: "New Guardian", message: "Please enter your name.", preferredStyle: .Alert)
+                let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) -> Void in
+                    print("Cancelled")
+                }
+                alertController.addAction(cancelAction)
+                
+                alertController.addTextFieldWithConfigurationHandler { (textField) -> Void in
+                    textField.placeholder = "Guardian Name"
+                }
+                
+                let submitAction = UIAlertAction(title: "Submit", style: .Default) { (action) -> Void in
+                    name = ((alertController.textFields?.first)! as UITextField).text!
+                    if(name != "") {
+                        print("Added guardian \(name)")
+                        // Need to add update to database here
+                    } else {
+                        print("Please enter a name")
+                    }
+                }
+                alertController.addAction(submitAction)
+                
+                self.presentViewController(alertController, animated: true) {
+                }
+            }
+
+        } else if(tableView == self.contactTable) {
+            let indexPath = self.contactTable.indexPathForSelectedRow
+            let selectedCell = self.contactTable.cellForRowAtIndexPath(indexPath!)! as UITableViewCell
+            if(selectedCell.textLabel!.text == "Add New Contact") {
+                print("Add New Contact Selected")
+                var name:String = ""
+                var number:String = ""
+                
+                let alertController = UIAlertController(title: "New Contact", message: "Please enter your name.", preferredStyle: .Alert)
+                let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) -> Void in
+                    print("Cancelled")
+                }
+                alertController.addAction(cancelAction)
+                
+                alertController.addTextFieldWithConfigurationHandler { (textField) -> Void in
+                    textField.placeholder = "Contact Name"
+                }
+                
+                alertController.addTextFieldWithConfigurationHandler { (textField) -> Void in
+                    textField.placeholder = "Phone Number"
+                }
+                
+                let submitAction = UIAlertAction(title: "Submit", style: .Default) { (action) -> Void in
+                    name = ((alertController.textFields?.first)! as UITextField).text!
+                    number = ((alertController.textFields?.last)! as UITextField).text!
+                    if(name != "" && number != "") {
+                        print("Added contact \(name) with number \(number)")
+                        // Need to add update to database here
+                    } else {
+                        print("Please enter a name and number")
+                    }
+                }
+                alertController.addAction(submitAction)
+                
+                self.presentViewController(alertController, animated: true) {
+                    // Not really sure what to do here, actually
+                }
+            }
+        }
     }
     
 }

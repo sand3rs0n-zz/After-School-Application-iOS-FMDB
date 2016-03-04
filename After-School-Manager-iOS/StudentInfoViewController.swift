@@ -17,8 +17,7 @@ class StudentInfoViewController: UIViewController, UITableViewDataSource, UITabl
     private var dob = Date()
     
 
-    @IBOutlet weak var studentFirstName: UILabel!
-    @IBOutlet weak var studentLastName: UILabel!
+    @IBOutlet weak var studentFullName: UILabel!
     @IBOutlet weak var studentDOB: UILabel!
     @IBOutlet weak var studentSchool: UILabel!
     @IBOutlet weak var studentContacts: UILabel!
@@ -83,8 +82,7 @@ class StudentInfoViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     private func fillPage() {
-        studentFirstName.text = student.getFirstName()
-        studentLastName.text = student.getLastName()
+        studentFullName.text = student.getFirstName() + " " + student.getLastName()
         studentSchool.text = student.getSchool()
         studentDOB.text = dob.fullDateAmerican()
         studentAge.text = String(calcAge())
