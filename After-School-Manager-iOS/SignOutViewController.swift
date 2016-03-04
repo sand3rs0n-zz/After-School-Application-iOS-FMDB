@@ -73,7 +73,7 @@ class SignOutViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     }
 
     @IBAction func signOut(sender: AnyObject) {
-        if (/*signOutGuardian != "" ||*/ !signatureBox.getLines().isEmpty) {
+        if (signOutGuardian != "" && !signatureBox.getLines().isEmpty) {
             let timestamp = Date()
             let signOutSQL = "INSERT INTO SIGNOUTS (studentID, rosterID, signOutGuardian, rosterType, signoutType, day, month, year, hour, minute) VALUES ('\(studentID)', '\(rosterID)', '\(signOutGuardian)', '\(rosterType)', '1', '\(timestamp.getCurrentDay())', '\(timestamp.getCurrentMonth())', '\(timestamp.getCurrentYear())', '\(timestamp.getCurrentHour())', '\(timestamp.getCurrentMinute())')"
             database.update(signOutSQL)
@@ -100,6 +100,7 @@ class SignOutViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         let submitAction = UIAlertAction(title: "Submit", style: .Default) { (action) -> Void in
             name = ((alertController.textFields?.first)! as UITextField).text!
             self.selectedGuardian.text = name
+            self.signOutGuardian = name
         }
         alertController.addAction(submitAction)
         
@@ -130,6 +131,9 @@ class SignOutViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     }
     // Detect selection from user
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.selectedGuardian.text = guardianPickerData[row]
+        if (guardianNames.count > 0) {
+            self.selectedGuardian.text = guardianPickerData[row]
+            self.signOutGuardian = guardianPickerData[row]
+        }
     }
 }

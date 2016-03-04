@@ -253,36 +253,39 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
         if(tableView == self.guardianTable) {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
             let row = indexPath.row
+
+            if (guardians.count == 0) {
+                cell.textLabel?.text = "No Approved Guardians"
+            }
             
-            if(guardians.count > 0 && row < guardians.count) {
+            if (guardians.count > 0 && row < guardians.count) {
                 let guardian = guardians[row]
                 let guardianName = guardian.getName()
                 cell.textLabel?.text = guardianName
             }
-            else if(row == 1){
+            else if (row == guardians.count) {
                 cell.textLabel?.text = "Add New Guardian"
                 cell.textLabel?.textColor = UIColor.redColor()
                 cell.textLabel?.font = UIFont.boldSystemFontOfSize(17.0)
-            } else {
-                cell.textLabel?.text = "No Approved Guardians"
             }
-        } else if(tableView == self.contactTable) {
+        } else if (tableView == self.contactTable) {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "contactCell")
             let row = indexPath.row
-            
-            // Fix this
-            if(contactNumbers.count > 0 && row < contactNumbers.count) {
+
+            if (contactNumbers.count == 0) {
+                cell.textLabel?.text = "No Emergency Contacts"
+            }
+
+            if (contactNumbers.count > 0 && row < contactNumbers.count) {
                 let contact = contactNumbers[row]
                 let contactName = contact.getName()
                 let contactPhone = contact.getPhoneNumber()
                 cell.textLabel?.text = "\(contactName): \(contactPhone)"
             }
-            else if(row == 1){
+            else if (row == contactNumbers.count){
                 cell.textLabel?.text = "Add New Contact"
                 cell.textLabel?.textColor = UIColor.redColor()
                 cell.textLabel?.font = UIFont.boldSystemFontOfSize(17.0)
-            } else {
-                cell.textLabel?.text = "No Emergency Contacts"
             }
         }
         return cell
@@ -310,8 +313,15 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
                     name = ((alertController.textFields?.first)! as UITextField).text!
                     if(name != "") {
                         print("Added guardian \(name)")
-                        // Need to add update to database here
-                    } else {
+                        let insertSQL = "INSERT INTO GUARDIANS (studentID, name) VALUES ('\(self.studentID)', '\(name)')"
+                        let result = database.update(insertSQL)
+                        if (result) {
+                            self.guardians.removeAll()
+                            self.getGuardians()
+                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                self.guardianTable.reloadData()
+                            })
+                        }                    } else {
                         print("Please enter a name")
                     }
                 }
@@ -348,7 +358,15 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
                     number = ((alertController.textFields?.last)! as UITextField).text!
                     if(name != "" && number != "") {
                         print("Added contact \(name) with number \(number)")
-                        // Need to add update to database here
+                        let insertSQL = "INSERT INTO CONTACTNUMBERS (studentID, phoneNumber, name) VALUES ('\(self.studentID)', '\(number)', '\(name)')"
+                        let result = database.update(insertSQL)
+                        if (result) {
+                            self.contactNumbers.removeAll()
+                            self.getContactNumbers()
+                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                self.contactTable.reloadData()
+                            })
+                        }
                     } else {
                         print("Please enter a name and number")
                     }
