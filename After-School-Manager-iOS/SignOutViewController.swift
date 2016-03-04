@@ -30,13 +30,10 @@ class SignOutViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
 
         // Do any additional setup after loading the view.
         
-        // Here we need to set the correct studentID and rosterID, because currently initialized to 0??
-        
-        // Need to query for all guardians for this studentID
-//        getGuardianNames()
-//        guardianPickerData = guardianNames
+        getGuardianNames()
+        guardianPickerData = guardianNames
         // First hardcoding this in
-        guardianPickerData = ["Mom", "Dad", "Brother", "Sister", "Grandma"]
+//        guardianPickerData = ["Mom", "Dad", "Brother", "Sister", "Grandma"]
     }
     
     override func didReceiveMemoryWarning() {
@@ -64,8 +61,7 @@ class SignOutViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         let querySQL = "SELECT * FROM GUARDIANS WHERE studentID = '\(studentID)'"
         let results = database.search(querySQL)
         while (results.next()) {
-            let cur = Guardian()
-            let curname = cur.getName()
+            let curname = results.stringForColumn("name")
             guardianNames.append(curname)
         }
         results.close()
@@ -98,7 +94,7 @@ class SignOutViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         alertController.addAction(cancelAction)
         
         alertController.addTextFieldWithConfigurationHandler { (textField) -> Void in
-            textField.placeholder = "<Your name here>"
+            textField.placeholder = "Guardian Name"
         }
         
         let submitAction = UIAlertAction(title: "Submit", style: .Default) { (action) -> Void in
@@ -119,11 +115,18 @@ class SignOutViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     }
     // Rows of data - here size of guardian list
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return guardianPickerData.count
+        if(guardianPickerData.count > 0) {
+            return guardianPickerData.count
+        }
+        return 1
     }
     // Data to show on scroll
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return guardianPickerData[row]
+        if(guardianPickerData.count > 0) {
+            return guardianPickerData[row]
+        } else {
+            return "No Approved Guardians"
+        }
     }
     // Detect selection from user
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {

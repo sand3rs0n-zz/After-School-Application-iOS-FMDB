@@ -195,6 +195,11 @@
                                 <state key="normal" title="Week Camp">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="ZEB-g3-1tR" kind="show" identifier="RosterTypesToWeekCamps" id="8Gp-1f-UCm">
                                         <nil key="action"/>
@@ -208,6 +213,11 @@
                                 <state key="normal" title="Day Camp">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="ZEB-g3-1tR" kind="show" identifier="RosterTypesToDayCamps" id="xQw-aq-Cov">
                                         <nil key="action"/>
@@ -221,6 +231,11 @@
                                 <state key="normal" title="After School Program">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="ZEB-g3-1tR" kind="show" identifier="RosterTypesToAfterSchoolPrograms" id="gdh-kH-LPf">
                                         <nil key="action"/>
@@ -1091,12 +1106,6 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SELECT GUARDIAN (popout table?)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="arp-Y1-tXp">
-                                <rect key="frame" x="261" y="128" width="331" height="24"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="29X-QC-kbb">
                                 <rect key="frame" x="261" y="591" width="120" height="50"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1154,8 +1163,14 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="{name}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cc5-6f-I74">
-                                <rect key="frame" x="488" y="355" width="183" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cc5-6f-I74">
+                                <rect key="frame" x="488" y="355" width="275" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SELECT GUARDIAN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="arp-Y1-tXp">
+                                <rect key="frame" x="261" y="128" width="182" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -1376,25 +1391,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nve-NW-bus">
                                 <rect key="frame" x="395" y="132" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <tableView key="tableFooterView" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="0fZ-lL-9Z1">
-                                    <rect key="frame" x="0.0" y="72" width="240" height="128"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <prototypes>
-                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="aHK-gL-F8a">
-                                            <rect key="frame" x="0.0" y="28" width="240" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aHK-gL-F8a" id="PDO-KR-gBC">
-                                                <rect key="frame" x="0.0" y="0.0" width="240" height="43"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                            </tableViewCellContentView>
-                                        </tableViewCell>
-                                    </prototypes>
-                                    <connections>
-                                        <outlet property="dataSource" destination="KzA-dT-hLE" id="tOD-2S-kXe"/>
-                                        <outlet property="delegate" destination="KzA-dT-hLE" id="tWp-15-7b3"/>
-                                    </connections>
-                                </tableView>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="i8j-0W-GX7">
                                         <rect key="frame" x="0.0" y="28" width="240" height="44"/>
@@ -1415,7 +1411,7 @@
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="guardianTable" destination="0fZ-lL-9Z1" id="Niy-zL-L9J"/>
+                        <outlet property="guardianTable" destination="nve-NW-bus" id="Obx-zY-f94"/>
                         <outlet property="studentAge" destination="I54-sw-FmL" id="xkf-PG-frL"/>
                         <outlet property="studentContacts" destination="GtL-R8-5P8" id="rrq-74-2Qg"/>
                         <outlet property="studentDOB" destination="2pe-6U-N32" id="Tma-sv-BV8"/>
@@ -2521,13 +2517,13 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="0dW-OO-Qat"/>
-        <segue reference="Jr8-W3-Udp"/>
-        <segue reference="b71-pI-SmA"/>
         <segue reference="xQw-aq-Cov"/>
-        <segue reference="0CC-ZP-ABi"/>
-        <segue reference="p75-6g-aLt"/>
-        <segue reference="lZo-3K-BmO"/>
+        <segue reference="b71-pI-SmA"/>
+        <segue reference="Jr8-W3-Udp"/>
         <segue reference="aHV-gM-FhL"/>
+        <segue reference="lZo-3K-BmO"/>
+        <segue reference="p75-6g-aLt"/>
+        <segue reference="0CC-ZP-ABi"/>
+        <segue reference="R5z-Eg-ICD"/>
     </inferredMetricsTieBreakers>
 </document>
