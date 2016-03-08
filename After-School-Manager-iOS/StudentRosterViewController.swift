@@ -44,8 +44,10 @@ class StudentRosterViewController: UIViewController, UITableViewDataSource, UITa
         if (rosterState == 1) {
             querySQL = "SELECT STUDENTROSTERS.studentFirstName AS studentFirstName, STUDENTROSTERS.studentLastName AS studentLastName, STUDENTROSTERS.studentID AS studentID FROM STUDENTROSTERS WHERE rosterID = '\(rosterID)' AND studentID NOT IN (SELECT studentID FROM SIGNOUTS WHERE day = '\(day)' AND month = '\(month)' AND year = '\(year)' AND rosterID = '\(rosterID)') AND \(date.getCurrentWeekday()) = 1 AND studentID IN (SELECT studentID FROM STUDENTPROFILES WHERE active = 1) AND STUDENTROSTERS.rosterID NOT IN (SELECT rosterID FROM EVENTS WHERE day = '\(day)' AND month = '\(month)' AND year = '\(year)') UNION SELECT STUDENTPROFILES.firstName AS studentFirstName, STUDENTPROFILES.lastName AS studentLastName, STUDENTPROFILES.studentID AS studentID FROM ONETIMEATTENDANCE LEFT OUTER JOIN STUDENTPROFILES ON ONETIMEATTENDANCE.studentID = STUDENTPROFILES.studentID LEFT OUTER JOIN ROSTERS ON ONETIMEATTENDANCE.rosterID = ROSTERS.rosterID WHERE year = '\(year)' AND month = '\(month)' AND day = '\(day)' AND active = 1 AND ONETIMEATTENDANCE.studentID NOT IN (SELECT studentID FROM SIGNOUTS WHERE day = '\(date.getCurrentDay())' AND month = '\(date.getCurrentMonth())' AND year = '\(date.getCurrentYear())' AND rosterID = '\(rosterID)') AND ROSTERS.rosterID NOT IN (SELECT rosterID FROM EVENTS WHERE day = '\(day)' AND month = '\(month)' AND year = '\(year)') ORDER BY studentLastName, studentFirstName ASC"
             signedOutSQL = "SELECT STUDENTROSTERS.studentFirstName AS studentFirstName, STUDENTROSTERS.studentLastName AS studentLastName, STUDENTROSTERS.studentID AS studentID FROM STUDENTROSTERS WHERE rosterID = '\(rosterID)' AND studentID IN (SELECT studentID FROM SIGNOUTS WHERE day = '\(day)' AND month = '\(month)' AND year = '\(year)' AND rosterID = '\(rosterID)') AND \(date.getCurrentWeekday()) = 1 AND studentID IN (SELECT studentID FROM STUDENTPROFILES WHERE active = 1) AND STUDENTROSTERS.rosterID NOT IN (SELECT rosterID FROM EVENTS WHERE day = '\(day)' AND month = '\(month)' AND year = '\(year)') UNION SELECT STUDENTPROFILES.firstName AS studentFirstName, STUDENTPROFILES.lastName AS studentLastName, STUDENTPROFILES.studentID AS studentID FROM ONETIMEATTENDANCE LEFT OUTER JOIN STUDENTPROFILES ON ONETIMEATTENDANCE.studentID = STUDENTPROFILES.studentID LEFT OUTER JOIN ROSTERS ON ONETIMEATTENDANCE.rosterID = ROSTERS.rosterID WHERE year = '\(year)' AND month = '\(month)' AND day = '\(day)' AND active = 1 AND ONETIMEATTENDANCE.studentID IN (SELECT studentID FROM SIGNOUTS WHERE day = '\(date.getCurrentDay())' AND month = '\(date.getCurrentMonth())' AND year = '\(date.getCurrentYear())' AND rosterID = '\(rosterID)') AND ROSTERS.rosterID NOT IN (SELECT rosterID FROM EVENTS WHERE day = '\(day)' AND month = '\(month)' AND year = '\(year)') ORDER BY studentLastName, studentFirstName ASC"
-        } else {
-            querySQL = "SELECT * FROM STUDENTROSTERS WHERE rosterID = '\(rosterID)' AND studentID IN (SELECT studentID FROM STUDENTPROFILES WHERE active = 1) ORDER BY studentLastName, studentFirstName ASC"
+        } else if (rosterState == 0) {
+            querySQL = "SELECT * FROM STUDENTROSTERS WHERE studentID IN (SELECT studentID FROM STUDENTPROFILES WHERE active = 1) GROUP BY studentID ORDER BY studentLastName, studentFirstName ASC"
+        } else if (rosterState == 2) {
+            querySQL = "SELECT * FROM STUDENTROSTERS WHERE studentID IN (SELECT studentID FROM STUDENTPROFILES WHERE active = 1) AND rosterID = '\(rosterID)' ORDER BY studentLastName, studentFirstName ASC"
         }
         let results = database.search(querySQL)
         while (results.next()) {
@@ -143,6 +145,16 @@ class StudentRosterViewController: UIViewController, UITableViewDataSource, UITa
             sovc?.setTitleValue(forwardedStudentFirstName + " " + forwardedStudentLastName)
             sovc?.setRosterType(rosterType)
             sovc?.setRosterID(rosterID)
+        }
+    }
+
+    @IBAction func back(sender: AnyObject) {
+        if (rosterState == 0) {
+            performSegueWithIdentifier("ReturnHomeFromStudentRoster", sender: self)
+        } else if (rosterState == 1) {
+            performSegueWithIdentifier("ReturnToRosterSelectFromStudentRoster", sender: self)
+        } else if (rosterState == 2) {
+            performSegueWithIdentifier("ReturnToRosterSelectFromStudentRoster", sender: self)
         }
     }
     

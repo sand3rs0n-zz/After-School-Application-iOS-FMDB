@@ -71,9 +71,10 @@ class UpcomingAbsencesViewController: UIViewController, UITableViewDataSource, U
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "UpcomingAbsencesToScheduleAbsenceRosterSelect") {
-            let srvc = segue.destinationViewController as? RosterTypeViewController
-            srvc?.setState(2)
+        if (segue.identifier == "ScheduleAbsenceToRosterSelect") {
+            let rlvc = segue.destinationViewController as? RosterListViewController
+            rlvc?.setState(2)
+            rlvc?.setTitleValue("Select Roster ")
         } else if (segue.identifier == "UpcomingAbsenceToUpdateAbsence") {
             let savc = segue.destinationViewController as? ScheduleAbsenceViewController
             savc?.setState(1)

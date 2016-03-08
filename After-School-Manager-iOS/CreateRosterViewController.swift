@@ -154,6 +154,7 @@ class CreateRosterViewController: UIViewController {
                 let result2 = database.update(deleteSignOut)
                 let result3 = database.update(deleteStudentRosters)
                 if (result1 && result2 && result3) {
+                    self.state = 0
                     self.back()
                 }
         }
@@ -198,17 +199,20 @@ class CreateRosterViewController: UIViewController {
         var updateSignOut = ""
         var updateStudentRosters = ""
         if (rosterName.text != "") {
+            var result2 = true
+            var result3 = true
             if (state == 1) {
                 insertSQL = "UPDATE ROSTERS SET rosterType = '\(selected)', name = '\(rosterName.text!)', startDay = '\(startDay)', startMonth = '\(startMonth)', startYear = '\(startYear)', endDay = '\(endDay)', endMonth = '\(endMonth)', endYear = '\(endYear)', pickUpHour = '\(pickUpHour)', pickUpMinute = '\(pickUpMinute)' WHERE rosterID = '\(existingRoster.getRosterID())'"
                 existingRoster.setName(rosterName.text!)
                 updateSignOut = "UPDATE SIGNOUTS SET rosterType = '\(selected)' WHERE rosterID = '\(existingRoster.getRosterID())'"
                 updateStudentRosters = "UPDATE STUDENTROSTERS SET rosterName = '\(rosterName.text!)' WHERE rosterID = '\(existingRoster.getRosterID())'"
+
+                result2 = database.update(updateSignOut)
+                result3 = database.update(updateStudentRosters)
             } else if (state == 0) {
                 insertSQL = "INSERT INTO ROSTERS (rosterType, name, startDay, startMonth, startYear, endDay, endMonth, endYear, pickUpHour, pickUpMinute) VALUES ('\(selected)', '\(rosterName.text!)', '\(startDay)', '\(startMonth)', '\(startYear)', '\(endDay)', '\(endMonth)', '\(endYear)', '\(pickUpHour)', '\(pickUpMinute)')"
             }
             let result1 = database.update(insertSQL)
-            let result2 = database.update(updateSignOut)
-            let result3 = database.update(updateStudentRosters)
             if (result1 && result2 && result3) {
                 self.back()
             }

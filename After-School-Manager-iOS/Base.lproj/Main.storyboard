@@ -35,9 +35,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="K1v-nX-DK3" kind="show" identifier="HomePageToSignOutRosterSelect" id="OIU-pB-gCG">
-                                        <nil key="action"/>
-                                    </segue>
+                                    <segue destination="ZEB-g3-1tR" kind="show" identifier="HomePageToSignOutRosterSelect" id="MbP-O1-PDi"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="u50-AY-JVg">
@@ -79,9 +77,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="K1v-nX-DK3" kind="show" identifier="HomePageToStudentRosterSelect" id="sUa-Xg-H2f">
-                                        <nil key="action"/>
-                                    </segue>
+                                    <segue destination="X6a-Dm-akH" kind="show" identifier="HomePageToStudentRoster" id="UNw-e2-ufb"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="rYh-Ka-ABD">
@@ -158,102 +154,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eXT-OV-cP1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-339" y="-34"/>
-        </scene>
-        <!--Roster Type View Controller-->
-        <scene sceneID="oXG-jX-cNf">
-            <objects>
-                <viewController id="K1v-nX-DK3" customClass="RosterTypeViewController" customModule="After_School_Manager_iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="8VM-h9-a4T"/>
-                        <viewControllerLayoutGuide type="bottom" id="36T-f5-eJJ"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="YC9-uy-n2Z">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zL5-cF-zYj">
-                                <rect key="frame" x="0.0" y="20" width="1024" height="44"/>
-                                <items>
-                                    <navigationItem title="Select Roster" id="gtF-Bw-fAy">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="1k7-rc-E5a">
-                                            <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <connections>
-                                                <action selector="back:" destination="K1v-nX-DK3" id="Qcy-Hd-fLW"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Home" id="VMA-Kd-abf">
-                                            <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="anY-Tb-tpn">
-                                <rect key="frame" x="432" y="231" width="160" height="75"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                <state key="normal" title="Week Camp">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="ZEB-g3-1tR" kind="show" identifier="RosterTypesToWeekCamps" id="8Gp-1f-UCm">
-                                        <nil key="action"/>
-                                    </segue>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="UgO-93-FEt">
-                                <rect key="frame" x="432" y="117" width="160" height="75"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                <state key="normal" title="Day Camp">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="ZEB-g3-1tR" kind="show" identifier="RosterTypesToDayCamps" id="xQw-aq-Cov">
-                                        <nil key="action"/>
-                                    </segue>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="9Mb-jm-aWV">
-                                <rect key="frame" x="432" y="346" width="160" height="75"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                <state key="normal" title="After School Program">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="ZEB-g3-1tR" kind="show" identifier="RosterTypesToAfterSchoolPrograms" id="gdh-kH-LPf">
-                                        <nil key="action"/>
-                                    </segue>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <connections>
-                        <segue destination="85d-VP-OsH" kind="unwind" identifier="returnToHomePage" unwindAction="returnHomeUnwind:" id="3dF-GF-xCv"/>
-                        <segue destination="85d-VP-OsH" kind="unwind" identifier="returnToScheduleAbsences" unwindAction="scheduleAbsenceUnwind:" id="1ky-pU-IH0"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pSB-Pl-3YU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="85d-VP-OsH" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="-351" y="984"/>
+            <point key="canvasLocation" x="-371" y="-54"/>
         </scene>
         <!--Upcoming Absences View Controller-->
         <scene sceneID="ZoQ-NQ-gR3">
@@ -283,9 +184,7 @@
                                 <rect key="frame" x="236" y="86" width="128" height="30"/>
                                 <state key="normal" title="Schedule Absence"/>
                                 <connections>
-                                    <segue destination="K1v-nX-DK3" kind="show" identifier="UpcomingAbsencesToScheduleAbsenceRosterSelect" id="b71-pI-SmA">
-                                        <nil key="action"/>
-                                    </segue>
+                                    <segue destination="ZEB-g3-1tR" kind="show" identifier="ScheduleAbsenceToRosterSelect" id="lem-1G-GJi"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9wd-m5-vcR">
@@ -317,7 +216,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="arm-mn-66r" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="wio-2b-bVo" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-351" y="-1326"/>
+            <point key="canvasLocation" x="-1559" y="874"/>
         </scene>
         <!--Events Calendar View Controller-->
         <scene sceneID="G6k-j2-Lw1">
@@ -974,7 +873,7 @@
                                     <navigationItem title="Rosters" id="YHy-qu-Mrh">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="l5j-ey-n7C">
                                             <connections>
-                                                <segue destination="Nn2-9t-SnT" kind="unwind" unwindAction="rosterTypeSelectUnwind:" id="XdE-Oj-crb"/>
+                                                <action selector="back:" destination="ZEB-g3-1tR" id="mDu-Nb-Fme"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -1006,12 +905,14 @@
                         <segue destination="X6a-Dm-akH" kind="show" identifier="RosterSelectToStudentRoster" id="njK-ob-as0">
                             <nil key="action"/>
                         </segue>
+                        <segue destination="Nn2-9t-SnT" kind="unwind" identifier="ReturnHomeFromRosterSelect" unwindAction="returnHomeUnwind:" id="1kz-yK-EwO"/>
+                        <segue destination="Nn2-9t-SnT" kind="unwind" identifier="ReturnToUpcomingAbsencesFromRosterSelect" unwindAction="scheduleAbsenceUnwind:" id="fq6-SU-gDr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xos-xT-Wwb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Nn2-9t-SnT" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-339" y="1926"/>
+            <point key="canvasLocation" x="-371" y="869"/>
         </scene>
         <!--Student Roster View Controller-->
         <scene sceneID="P8p-Ld-un6">
@@ -1031,7 +932,7 @@
                                     <navigationItem title="Student Roster (and schedule absence)" id="z7f-Wu-wNf">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="bMu-iz-oyL">
                                             <connections>
-                                                <segue destination="WJr-s6-VGd" kind="unwind" unwindAction="rosterSelectUnwind:" id="Naq-wY-4ZM"/>
+                                                <action selector="back:" destination="X6a-Dm-akH" id="bhF-og-6Mb"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -1070,12 +971,14 @@
                         <segue destination="KzA-dT-hLE" kind="show" identifier="StudentRosterToStudentProfile" id="95a-F9-lfd">
                             <nil key="action"/>
                         </segue>
+                        <segue destination="WJr-s6-VGd" kind="unwind" identifier="ReturnHomeFromStudentRoster" unwindAction="returnHomeUnwind:" id="MKK-0V-O2b"/>
+                        <segue destination="WJr-s6-VGd" kind="unwind" identifier="ReturnToRosterSelectFromStudentRoster" unwindAction="rosterSelectUnwind:" id="sRF-7Z-lpr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rQQ-R7-0fF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="WJr-s6-VGd" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-351" y="2983"/>
+            <point key="canvasLocation" x="-399" y="1959"/>
         </scene>
         <!--Sign Out View Controller-->
         <scene sceneID="XgU-PC-GEO">
@@ -1260,7 +1163,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vYq-39-wlr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="vaw-kn-MZQ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-383" y="4160"/>
+            <point key="canvasLocation" x="-431" y="3136"/>
         </scene>
         <!--Student Info View Controller-->
         <scene sceneID="nTv-16-efz">
@@ -2545,13 +2448,13 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="9dc-XQ-oCj"/>
         <segue reference="Jcc-rI-ynV"/>
         <segue reference="aHV-gM-FhL"/>
         <segue reference="lZo-3K-BmO"/>
         <segue reference="p75-6g-aLt"/>
-        <segue reference="b71-pI-SmA"/>
-        <segue reference="xQw-aq-Cov"/>
-        <segue reference="0CC-ZP-ABi"/>
+        <segue reference="lem-1G-GJi"/>
+        <segue reference="njK-ob-as0"/>
         <segue reference="R5z-Eg-ICD"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -34,6 +34,8 @@ class AddOrEditAttendanceViewController: UIViewController {
     private var schedule = StudentRoster()
     private var student = Student()
     private var buttonText = ""
+    private var rosterType = 0
+    private var weekday = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,9 +49,15 @@ class AddOrEditAttendanceViewController: UIViewController {
         } else if (state == 1 || state == 3) {
             fillAddPage()
         }
-        let results = database.search("SELECT name FROM ROSTERS WHERE rosterID = '\(rosterID)'")
+        let results = database.search("SELECT * FROM ROSTERS WHERE rosterID = '\(rosterID)'")
         results.next()
         rosterName.text = results.stringForColumn("name")
+        rosterType = Int(results.intForColumn("rosterType"))
+
+        if (rosterType == 0) {
+            let date = Date(day: Int(results.intForColumn("startDay")), month: Int(results.intForColumn("startMonth")), year: Int(results.intForColumn("startYear")))
+            dayCampButtons(date)
+        }
         results.close()
         // Do any additional setup after loading the view.
     }
@@ -57,6 +65,18 @@ class AddOrEditAttendanceViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    private func dayCampButtons(date: Date) {
+        weekday = date.getWeekday()
+        for (var i = 0; i < 7; i++) {
+            if (week[i].titleLabel?.text! == weekday.capitalizedString) {
+                toggleColor(week[i])
+                weekBool[i] = 1
+            } else {
+                week[i].hidden = true
+            }
+        }
     }
 
     private func fillAddPage() {

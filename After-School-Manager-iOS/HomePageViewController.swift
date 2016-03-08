@@ -27,12 +27,13 @@ class HomePageViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        let srvc = segue.destinationViewController as? RosterTypeViewController
         if (segue.identifier == "HomePageToSignOutRosterSelect") {
-            srvc?.setState(1)
-        } else if (segue.identifier == "HomePageToStudentRosterSelect") {
-            srvc?.setState(0)
+            let rlvc = segue.destinationViewController as? RosterListViewController
+            rlvc?.setState(1)
+            rlvc?.setTitleValue("Select Roster")
+        } else if (segue.identifier == "HomePageToStudentRoster") {
+            let srvc = segue.destinationViewController as? StudentRosterViewController
+            srvc?.setTitleValue("Student Roster")
         }
     }
 }

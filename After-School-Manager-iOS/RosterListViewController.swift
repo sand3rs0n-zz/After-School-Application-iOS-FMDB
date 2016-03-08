@@ -12,12 +12,12 @@ class RosterListViewController: UIViewController, UITableViewDataSource, UITable
 
     private var rosterState = 0
     private var rosterList = [Roster]()
-    private var rosterType = 0
     @IBOutlet weak var titleBar: UINavigationItem!
     private var navTitle = ""
     
     private var forwardedRosterID = 0
     private var forwardedRosterName = ""
+    private var forwardedRosterType = 0
     private let date = Date()
 
     override func viewDidLoad() {
@@ -35,7 +35,7 @@ class RosterListViewController: UIViewController, UITableViewDataSource, UITable
         let year = date.getCurrentYear()
         let month = date.getCurrentMonth()
         let day = date.getCurrentDay()
-        let querySQL = "SELECT * FROM ROSTERS WHERE rosterType = '\(rosterType)' AND (endYear > '\(year)' OR (endYear = '\(year)' AND endMonth > '\(month)') OR (endYear = '\(year)' AND endMonth = '\(month)' AND endDay >= '\(day)')) AND (startYear < '\(year)' OR (startYear = '\(year)' AND startMonth < '\(month)') OR (startYear = '\(year)' AND startMonth = '\(month)' AND startDay <= '\(day)')) ORDER BY startMonth, startDay, name ASC"
+        let querySQL = "SELECT * FROM ROSTERS WHERE (endYear > '\(year)' OR (endYear = '\(year)' AND endMonth > '\(month)') OR (endYear = '\(year)' AND endMonth = '\(month)' AND endDay >= '\(day)')) AND (startYear < '\(year)' OR (startYear = '\(year)' AND startMonth < '\(month)') OR (startYear = '\(year)' AND startMonth = '\(month)' AND startDay <= '\(day)')) ORDER BY startMonth, startDay, name ASC"
 
         let results = database.search(querySQL)
         while (results.next()) {
@@ -64,10 +64,6 @@ class RosterListViewController: UIViewController, UITableViewDataSource, UITable
         navTitle = title
     }
     
-    func setRosterType(type: Int) {
-        rosterType = type
-    }
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let roster = rosterList[(indexPath.row)]
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
@@ -83,15 +79,24 @@ class RosterListViewController: UIViewController, UITableViewDataSource, UITable
         let roster = rosterList[(indexPath.row)]
         forwardedRosterName = roster.getName()
         forwardedRosterID = roster.getRosterID()
+        forwardedRosterType = roster.getRosterType()
         performSegueWithIdentifier("RosterSelectToStudentRoster", sender: self)
     }
     
+    @IBAction func back(sender: AnyObject) {
+        if (rosterState == 1) {
+            performSegueWithIdentifier("ReturnHomeFromRosterSelect", sender: self)
+        } else if (rosterState == 2) {
+            performSegueWithIdentifier("ReturnToUpcomingAbsencesFromRosterSelect", sender: self)
+        }
+    }
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let srvc = segue.destinationViewController as? StudentRosterViewController
         srvc?.setState(rosterState)
         srvc?.setRosterID(forwardedRosterID)
+        srvc?.setRosterType(forwardedRosterType)
         srvc?.setTitleValue(forwardedRosterName)
-        srvc?.setRosterType(rosterType)
     }
 
     @IBAction func rosterSelectUnwind(segue: UIStoryboardSegue) {

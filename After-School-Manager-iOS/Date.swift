@@ -14,13 +14,13 @@ class Date {
     private var year: Int
     private var hour: Int
     private var minute: Int
+    private var weekday = "monday"
 
     private var currentYear = 1900
     private var currentMonth = 1
     private var currentDay = 1
     private var currentHour = 0
     private var currentMinute = 0
-
     private var currentWeekDay = "monday"
 
     init () {
@@ -119,7 +119,43 @@ class Date {
         return age
     }
 
-    func setCurrentDate() {
+    private func setWeekday() {
+        let formatter  = NSDateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let today = (String(year) + "-" + String(month) + "-" + String(day))
+        let todayDate = formatter.dateFromString(today)!
+        let myCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let myComponents = myCalendar.components(.Weekday, fromDate: todayDate)
+        let weekdayNumber = myComponents.weekday
+        switch weekdayNumber {
+        case 1:
+            weekday = "sunday"
+            break
+        case 2:
+            weekday = "monday"
+            break
+        case 3:
+            weekday = "tuesday"
+            break
+        case 4:
+            weekday = "wednesday"
+            break
+        case 5:
+            weekday = "thursday"
+            break
+        case 6:
+            weekday = "friday"
+            break
+        case 7:
+            weekday = "saturday"
+            break
+        default:
+            print("Error fetching days")
+            weekday = "day"
+        }
+    }
+
+    private func setCurrentDate() {
         let date = NSDate()
         let calendar = NSCalendar.currentCalendar()
         currentYear = calendar.components(.Year, fromDate: date).year
@@ -176,9 +212,11 @@ class Date {
     func getCurrentMinute() -> Int {
         return currentMinute
     }
-
     func getCurrentWeekday() -> String {
         return currentWeekDay
+    }
+    func getWeekday() -> String {
+        return weekday
     }
 
 }
