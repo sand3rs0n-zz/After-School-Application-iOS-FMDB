@@ -8,6 +8,7 @@
 */
 
 import UIKit
+var instructorPin = "0000"
 
 class HomePageViewController: UIViewController {
 
@@ -16,6 +17,10 @@ class HomePageViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         image.image = UIImage(named:"img/logo.png")!
+        let settingsSQL = "SELECT * FROM USERSETTINGS"
+        let results = database.search(settingsSQL)
+        results.next()
+        instructorPin = results.stringForColumn("pin")
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,6 +31,34 @@ class HomePageViewController: UIViewController {
     @IBAction func returnHomeUnwind(segue: UIStoryboardSegue) {
     }
     
+    @IBAction func goToInstructorMenu(sender: AnyObject) {
+        /*var pin:String = ""
+
+        let alertController = UIAlertController(title: "Instructor Menu", message: "Please enter pin.", preferredStyle: .Alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) -> Void in
+            print("Cancelled")
+        }
+        alertController.addAction(cancelAction)
+        alertController.addTextFieldWithConfigurationHandler { (textField) -> Void in
+            textField.placeholder = "Pin"
+            textField.keyboardType =  UIKeyboardType.DecimalPad
+        }
+
+        let submitAction = UIAlertAction(title: "Submit", style: .Default) { (action) -> Void in
+            pin = ((alertController.textFields?.last)! as UITextField).text!
+            if (pin == instructorPin) {
+                self.performSegueWithIdentifier("HomePageToInstructorMenu", sender: self)
+            } else if (pin != instructorPin) {
+                print("Please enter correct pin")
+            }
+        }
+        alertController.addAction(submitAction)
+
+        self.presentViewController(alertController, animated: true) {
+            // Not really sure what to do here, actually
+        }*/performSegueWithIdentifier("HomePageToInstructorMenu", sender: self)
+    }
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "HomePageToSignOutRosterSelect") {
             let rlvc = segue.destinationViewController as? RosterListViewController

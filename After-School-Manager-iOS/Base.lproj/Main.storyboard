@@ -119,9 +119,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="9Gq-Av-E4n" kind="show" id="RnZ-pl-rKh">
-                                        <nil key="action"/>
-                                    </segue>
+                                    <action selector="goToInstructorMenu:" destination="exd-2Y-jDk" eventType="touchUpInside" id="pJ8-Fg-0za"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ngP-lF-sCA">
@@ -150,6 +148,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
                         <outlet property="image" destination="ngP-lF-sCA" id="qDI-Gf-eQC"/>
+                        <segue destination="9Gq-Av-E4n" kind="show" identifier="HomePageToInstructorMenu" id="pPe-wf-JHg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eXT-OV-cP1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -428,7 +427,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kde-il-QaT" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="S2O-ge-ZUp" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1237" y="27"/>
+            <point key="canvasLocation" x="1122" y="-54"/>
         </scene>
         <!--All Rosters View Controller-->
         <scene sceneID="ILt-ts-AXM">
@@ -2448,13 +2447,13 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="9dc-XQ-oCj"/>
+        <segue reference="0CC-ZP-ABi"/>
+        <segue reference="UNw-e2-ufb"/>
+        <segue reference="MbP-O1-PDi"/>
         <segue reference="Jcc-rI-ynV"/>
+        <segue reference="0dW-OO-Qat"/>
         <segue reference="aHV-gM-FhL"/>
         <segue reference="lZo-3K-BmO"/>
         <segue reference="p75-6g-aLt"/>
-        <segue reference="lem-1G-GJi"/>
-        <segue reference="njK-ob-as0"/>
-        <segue reference="R5z-Eg-ICD"/>
     </inferredMetricsTieBreakers>
 </document>

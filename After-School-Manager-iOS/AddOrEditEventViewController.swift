@@ -103,10 +103,13 @@ class AddOrEditEventViewController: UIViewController {
         eventName.text = event.getName()
         eventDescription.text = event.getDescription()
         eventType.selectedSegmentIndex = event.getEventType()
-        if (event.getEventType() == 1) {
+        if (event.getEventType() == 1 && event.getRosterID() != 0) {
             suspendRosterButton.backgroundColor = UIColor.greenColor()
             suspendRosterButton.hidden = false
             rosterPicker.hidden = false
+        } else if (event.getEventType() == 1) {
+            suspendRosterButton.backgroundColor = UIColor.lightGrayColor()
+            suspendRosterButton.hidden = false
         }
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
