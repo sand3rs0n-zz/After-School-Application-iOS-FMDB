@@ -1446,6 +1446,13 @@
                                     <outlet property="delegate" destination="bJt-LC-pkh" id="PX9-vn-fMg"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QGy-6D-GHa">
+                                <rect key="frame" x="220" y="588" width="37" height="30"/>
+                                <state key="normal" title="Email"/>
+                                <connections>
+                                    <action selector="emailSignOuts:" destination="bJt-LC-pkh" eventType="touchUpInside" id="i6J-eB-QZE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1971,15 +1978,28 @@
                                     <navigationItem title="Edit Attendance" id="jmb-Jo-rdT">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="bJt-z5-9Rm">
                                             <connections>
-                                                <segue destination="rzw-sS-th8" kind="unwind" unwindAction="returnToTodayRosterUnwind:" id="lFI-2d-HN1"/>
+                                                <segue destination="rzw-sS-th8" kind="unwind" identifier="ReturnToTodayRosterFromEditAttendance" unwindAction="returnToTodayRosterUnwind:" id="lFI-2d-HN1"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bhc-9T-gd4">
+                                <rect key="frame" x="222" y="227" width="146" height="30"/>
+                                <state key="normal" title="Unschedule Absence"/>
+                                <connections>
+                                    <action selector="unscheduleAbsence:" destination="DkY-zU-xft" eventType="touchUpInside" id="Kfu-uK-cVr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="instructorButton" destination="f4E-RR-w0F" id="dI5-6Z-YRe"/>
+                        <outlet property="scheduleButton" destination="v9Z-5o-Amc" id="M08-ZS-K1q"/>
+                        <outlet property="unscheduleButton" destination="bhc-9T-gd4" id="l98-8j-V6g"/>
+                        <outlet property="unscheduledButton" destination="Ceg-Xh-ly5" id="n8g-TW-m1U"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U7t-YV-Dgq" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="rzw-sS-th8" userLabel="Exit" sceneMemberID="exit"/>
@@ -2452,8 +2472,8 @@
         <segue reference="MbP-O1-PDi"/>
         <segue reference="Jcc-rI-ynV"/>
         <segue reference="0dW-OO-Qat"/>
-        <segue reference="aHV-gM-FhL"/>
+        <segue reference="OIi-5h-Iro"/>
         <segue reference="lZo-3K-BmO"/>
-        <segue reference="p75-6g-aLt"/>
+        <segue reference="LZy-H4-SEb"/>
     </inferredMetricsTieBreakers>
 </document>

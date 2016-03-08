@@ -88,9 +88,8 @@ class TodayRosterViewController: UIViewController, UITableViewDataSource, UITabl
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var currentRow = 0
-        for (var i = 0; i < sectionSize[indexPath.section]; i++) {
+        for (var i = 0; i < indexPath.section; i++) {
             currentRow += sectionSize[i]
-            currentRow--
         }
         let student = studentList[currentRow + indexPath.row]
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
@@ -117,19 +116,17 @@ class TodayRosterViewController: UIViewController, UITableViewDataSource, UITabl
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if (indexPath.row < numberOfNonSignedOut) {
-            var currentRow = 0
-            for (var i = 0; i < sectionSize[indexPath.section]; i++) {
-                currentRow += sectionSize[i]
-                currentRow--
-            }
-            let student = studentList[currentRow + indexPath.row]
-            forwardedStudentID = student.getStudentID()
-            forwardedRosterID = student.getRosterID()
-            forwardedStudentFirstName = student.getStudentFirstName()
-            forwardedStudentLastName = student.getStudentLastName()
-            performSegueWithIdentifier("TodayRosterToEditAttendance", sender: self)
+        var currentRow = 0
+        for (var i = 0; i < indexPath.section; i++) {
+            currentRow += sectionSize[i]
         }
+        let student = studentList[currentRow + indexPath.row]
+        forwardedStudentID = student.getStudentID()
+        forwardedRosterID = student.getRosterID()
+        forwardedStudentFirstName = student.getStudentFirstName()
+        forwardedStudentLastName = student.getStudentLastName()
+        performSegueWithIdentifier("TodayRosterToEditAttendance", sender: self)
+
     }
 
     @IBAction func returnToTodayRosterUnwind(segue: UIStoryboardSegue) {

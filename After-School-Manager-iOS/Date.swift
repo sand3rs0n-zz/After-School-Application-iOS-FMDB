@@ -39,6 +39,7 @@ class Date {
         self.hour = hour
         self.minute = minute
         setCurrentDate()
+        setWeekday()
     }
 
     init (day: Int, month: Int, year: Int) {
@@ -48,6 +49,7 @@ class Date {
         self.hour = 0
         self.minute = 0
         setCurrentDate()
+        setWeekday()
     }
 
     init (day: Int, month: Int, year: Int, hour: Int, minute: Int) {
@@ -57,6 +59,7 @@ class Date {
         self.hour = hour
         self.minute = minute
         setCurrentDate()
+        setWeekday()
     }
 
     func dayAsString() -> String {

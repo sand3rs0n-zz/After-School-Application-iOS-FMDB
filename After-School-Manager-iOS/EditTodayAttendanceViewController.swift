@@ -10,6 +10,10 @@ import UIKit
 
 class EditTodayAttendanceViewController: UIViewController {
 
+    @IBOutlet weak var scheduleButton: UIButton!
+    @IBOutlet weak var unscheduledButton: UIButton!
+    @IBOutlet weak var instructorButton: UIButton!
+    @IBOutlet weak var unscheduleButton: UIButton!
     private var studentID = 0
     private var studentFirstName = ""
     private var studentLastName = ""
@@ -26,6 +30,21 @@ class EditTodayAttendanceViewController: UIViewController {
         roster.setPickUpHour(Int(result.intForColumn("pickUpHour")))
         roster.setPickUpMinute(Int(result.intForColumn("pickUpMinute")))
         // Do any additional setup after loading the view.
+        let absenceListSQL = "SELECT * FROM ABSENCESLIST WHERE studentID = '\(studentID)' AND rosterID = '\(rosterID)' AND day = '\(date.getCurrentDay())' AND month = '\(date.getCurrentMonth())' AND year = '\(date.getCurrentYear())'"
+        let signOutSQL = "SELECT * FROM SIGNOUTS WHERE  studentID = '\(studentID)' AND rosterID = '\(rosterID)' AND day = '\(date.getCurrentDay())' AND month = '\(date.getCurrentMonth())' AND year = '\(date.getCurrentYear())'"
+        let result1 = database.search(absenceListSQL)
+        result1.next()
+
+        let result2 = database.search(signOutSQL)
+        result2.next()
+        if (result1.hasAnotherRow() || result2.hasAnotherRow()) {
+            scheduleButton.enabled = false
+            unscheduledButton.enabled = false
+            instructorButton.enabled = false
+        }
+        if (!result1.hasAnotherRow()) {
+            unscheduleButton.enabled = false
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,26 +66,45 @@ class EditTodayAttendanceViewController: UIViewController {
     }
 
     @IBAction func scheduleAbsenceToday(sender: AnyObject) {
-        scheduleAbsence()
-        signOut(2)
+        if (scheduleAbsence() && signOut(2)) {
+            back()
+        }
     }
 
     @IBAction func unscheduledAbsence(sender: AnyObject) {
         //perform an instructor signout and mark it as unscheduled absence
-        scheduleAbsence()
-        signOut(3)
+        if (scheduleAbsence() && signOut(3)) {
+            back()
+        }
     }
 
     @IBAction func instructorSignOut(sender: AnyObject) {
-        signOut(4)
+        if (signOut(4)) {
+            back()
+        }
     }
 
-    private func scheduleAbsence() {
+    private func back() {
+        performSegueWithIdentifier("ReturnToTodayRosterFromEditAttendance", sender: self)
+
+    }
+
+    @IBAction func unscheduleAbsence(sender: AnyObject) {
+        let deleteAbsenceListSQL = "DELETE FROM ABSENCESLIST WHERE studentID = '\(studentID)' AND rosterID = '\(rosterID)' AND day = '\(date.getCurrentDay())' AND month = '\(date.getCurrentMonth())' AND year = '\(date.getCurrentYear())'"
+        let deleteSignOutSQL = "DELETE FROM SIGNOUTS WHERE  studentID = '\(studentID)' AND rosterID = '\(rosterID)' AND day = '\(date.getCurrentDay())' AND month = '\(date.getCurrentMonth())' AND year = '\(date.getCurrentYear())'"
+        let result1 = database.update(deleteAbsenceListSQL)
+        let result2 = database.update(deleteSignOutSQL)
+        if (result1 && result2) {
+            back()
+        }
+    }
+
+    private func scheduleAbsence() -> Bool {
         let insertSQL = "INSERT INTO ABSENCESLIST (studentFirstName, studentLastName, studentID, rosterID, day, month, year) VALUES ('\(studentFirstName)', '\(studentLastName)', '\(studentID)', '\(rosterID)', '\(date.getCurrentDay())', '\(date.getCurrentMonth())', '\(date.getCurrentYear())')"
-        database.update(insertSQL)
+        return database.update(insertSQL)
     }
 
-    private func signOut(signOutType: Int) {
+    private func signOut(signOutType: Int) -> Bool {
         var pickUpHour = roster.getPickUpHour()
         var pickUpMinute = roster.getPickUpMinute()
         if (signOutType == 4) {
@@ -75,6 +113,6 @@ class EditTodayAttendanceViewController: UIViewController {
             pickUpMinute = date.getCurrentMinute()
         }
         let insertSQL = "INSERT INTO SIGNOUTS (studentID, rosterID, signOutGuardian, rosterType, signOutType, day, month, year, hour, minute) VALUES ('\(studentID)', '\(rosterID)', 'Instructor', '\(roster.getRosterType())', '\(signOutType)', '\(date.getCurrentDay())', '\(date.getCurrentMonth())', '\(date.getCurrentYear())', '\(pickUpHour)', '\(pickUpMinute)')"
-        database.update(insertSQL)
+        return database.update(insertSQL)
     }
 }
