@@ -23,7 +23,6 @@
 		0F1CF3751C5C65FC0048A7D7 /* InstructorMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1CF3631C5C65FC0048A7D7 /* InstructorMenuViewController.swift */; };
 		0F1CF3761C5C65FC0048A7D7 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1CF3641C5C65FC0048A7D7 /* Line.swift */; };
 		0F1CF3771C5C65FC0048A7D7 /* RosterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1CF3651C5C65FC0048A7D7 /* RosterListViewController.swift */; };
-		0F1CF3781C5C65FC0048A7D7 /* RosterTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1CF3661C5C65FC0048A7D7 /* RosterTypeViewController.swift */; };
 		0F1CF37C1C5C65FC0048A7D7 /* SignatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1CF36A1C5C65FC0048A7D7 /* SignatureView.swift */; };
 		0F1CF3861C5D0C450048A7D7 /* Roster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1CF3851C5D0C450048A7D7 /* Roster.swift */; };
 		0F1CF3891C5D1D3A0048A7D7 /* SignOutHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1CF3881C5D1D3A0048A7D7 /* SignOutHistoryViewController.swift */; };
@@ -90,7 +89,6 @@
 		0F1CF3631C5C65FC0048A7D7 /* InstructorMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructorMenuViewController.swift; sourceTree = "<group>"; };
 		0F1CF3641C5C65FC0048A7D7 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		0F1CF3651C5C65FC0048A7D7 /* RosterListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterListViewController.swift; sourceTree = "<group>"; };
-		0F1CF3661C5C65FC0048A7D7 /* RosterTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterTypeViewController.swift; sourceTree = "<group>"; };
 		0F1CF36A1C5C65FC0048A7D7 /* SignatureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignatureView.swift; sourceTree = "<group>"; };
 		0F1CF3851C5D0C450048A7D7 /* Roster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Roster.swift; sourceTree = "<group>"; };
 		0F1CF3881C5D1D3A0048A7D7 /* SignOutHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignOutHistoryViewController.swift; sourceTree = "<group>"; };
@@ -229,7 +227,6 @@
 				0F1CF3631C5C65FC0048A7D7 /* InstructorMenuViewController.swift */,
 				0F7D26C71C65784000176CF2 /* RosterHistoryViewController.swift */,
 				0F1CF3651C5C65FC0048A7D7 /* RosterListViewController.swift */,
-				0F1CF3661C5C65FC0048A7D7 /* RosterTypeViewController.swift */,
 				0F76991E1C5D64C800F04142 /* RosterViewController.swift */,
 				0F7D26C91C657A6000176CF2 /* SelectRosterToAddStudentViewController.swift */,
 				0FF20FF11C72A847007285DB /* SelectStudentToAddAttendanceViewController.swift */,
@@ -348,7 +345,6 @@
 				0FF20FF01C72A80F007285DB /* AddSpecialAttendanceViewController.swift in Sources */,
 				0F1CF3111C5C4BB00048A7D7 /* FMResultSet.m in Sources */,
 				0F76990F1C5D4FC200F04142 /* Util.swift in Sources */,
-				0F1CF3781C5C65FC0048A7D7 /* RosterTypeViewController.swift in Sources */,
 				0F1CF30F1C5C4BB00048A7D7 /* FMDatabasePool.m in Sources */,
 				0F1CF3A31C5D3DEA0048A7D7 /* UpcomingAbsencesViewController.swift in Sources */,
 				0F76990E1C5D4FC200F04142 /* TodayRosterViewController.swift in Sources */,
