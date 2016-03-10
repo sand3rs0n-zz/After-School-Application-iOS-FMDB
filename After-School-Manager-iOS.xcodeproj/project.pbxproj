@@ -496,7 +496,7 @@
 				INFOPLIST_FILE = "After-School-Manager-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.StevenAnderson.After-School-Manager-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = afterschoolmgrapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "After-School-Manager-iOS/After-School-Manager-iOS-Bridging-Header.h";
@@ -515,7 +515,7 @@
 				INFOPLIST_FILE = "After-School-Manager-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.StevenAnderson.After-School-Manager-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = afterschoolmgrapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "After-School-Manager-iOS/After-School-Manager-iOS-Bridging-Header.h";
