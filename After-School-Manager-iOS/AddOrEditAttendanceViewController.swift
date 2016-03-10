@@ -116,6 +116,9 @@ class AddOrEditAttendanceViewController: UIViewController {
         schedule.setSaturday(Int(results.intForColumn("saturday")))
         schedule.setSunday(Int(results.intForColumn("sunday")))
         results.close()
+        
+        
+        
         studentName.text = (schedule.getStudentFirstName() + " " + schedule.getStudentLastName())
 
         if (schedule.getMonday() == 1) {
@@ -231,6 +234,7 @@ class AddOrEditAttendanceViewController: UIViewController {
         var name = studentName.text?.componentsSeparatedByString(" ")
         var insertSQL = ""
         if (state == 0 || state == 2) {
+            print(weekBool[6])
             insertSQL = "UPDATE STUDENTROSTERS SET studentFirstName = '\(name![0])', studentLastName = '\(name![1])', studentID = '\(studentID)', rosterID = '\(rosterID)', monday = '\(weekBool[0])', tuesday = '\(weekBool[1])', wednesday = '\(weekBool[2])', thursday = '\(weekBool[3])', friday = '\(weekBool[4])', saturday = '\(weekBool[5])', sunday = '\(weekBool[6])' WHERE rosterID = '\(rosterID)' AND studentID = '\(studentID)'"
         } else if (state == 1 || state == 3) {
             insertSQL = "INSERT INTO STUDENTROSTERS (studentFirstName, studentLastName, rosterName, studentID, rosterID, monday, tuesday, wednesday, thursday, friday, saturday, sunday) VALUES ('\(name![0])', '\(name![1])', '\(schedule.getRosterName())', '\(studentID)', '\(rosterID)', '\(weekBool[0])', '\(weekBool[1])', '\(weekBool[2])', '\(weekBool[3])', '\(weekBool[4])', '\(weekBool[5])', '\(weekBool[6])')"

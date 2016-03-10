@@ -98,7 +98,7 @@ class RosterViewController: UIViewController, UITableViewDataSource, UITableView
             crvc?.setState(1)
             crvc?.setTitleValue("Edit Roster")
             crvc?.setExistingRoster(roster)
-            crvc?.setCreateRosterButtonValue("Edit Roster")
+            crvc?.setCreateRosterButtonValue("Update Roster")
         } else if (segue.identifier == "SpecificRosterToEditStudent") {
             let aeavc = segue.destinationViewController as? AddOrEditAttendanceViewController
             aeavc?.setState(0)
