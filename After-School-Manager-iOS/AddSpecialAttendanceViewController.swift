@@ -74,7 +74,12 @@ class AddSpecialAttendanceViewController: UIViewController {
         let timestamp = Date()
         let rosterID = rosters[rosterList.selectedRowInComponent(0)].getRosterID()
         let insertSQL = "INSERT INTO ONETIMEATTENDANCE VALUES ('\(studentID)', '\(rosterID)', '\(timestamp.getCurrentDay())', '\(timestamp.getCurrentMonth())', '\(timestamp.getCurrentYear())')"
-        database.update(insertSQL)
-        self.performSegueWithIdentifier("SelectStudentToAddUnwind", sender: self)
+        let result = database.update(insertSQL)
+        if (result) {
+            self.performSegueWithIdentifier("SelectStudentToAddUnwind", sender: self)
+        } else {
+            let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Add Attendance to OneTimeAttendance Database")
+            errorAlert.displayError()
+        }
     }
 }

@@ -69,12 +69,12 @@ class SelectStudentToAddToRosterViewController: UIViewController, UITableViewDat
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "SelectStudentToAddToRoster") {
-        let aeavc = segue.destinationViewController as? AddOrEditAttendanceViewController
-        aeavc?.setState(1)
-        aeavc?.setTitleValue("Add Student to Roster")
-        aeavc?.setStudentId(forwardedStudentID)
-        aeavc?.setRosterId(rosterID)
-        aeavc?.setButtonText("Add Attendance")
+            let aeavc = segue.destinationViewController as? AddOrEditAttendanceViewController
+            aeavc?.setState(1)
+            aeavc?.setTitleValue("Add Student to Roster")
+            aeavc?.setStudentId(forwardedStudentID)
+            aeavc?.setRosterId(rosterID)
+            aeavc?.setButtonText("Add Attendance")
         }
     }
 
@@ -82,7 +82,7 @@ class SelectStudentToAddToRosterViewController: UIViewController, UITableViewDat
         students.removeAll()
         getStudents()
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
-        self.studentListTable.reloadData()
+            self.studentListTable.reloadData()
         })
     }
 }

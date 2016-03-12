@@ -708,22 +708,6 @@
                                     <action selector="wednesdaySelect:" destination="G1Q-IP-rXa" eventType="touchUpInside" id="gT0-VZ-Nbz"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZEO-nP-jMC">
-                                <rect key="frame" x="678" y="328" width="100" height="30"/>
-                                <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                <state key="normal" title="Friday">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="fridaySelect:" destination="G1Q-IP-rXa" eventType="touchUpInside" id="dJv-I6-dCi"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1jU-9m-VFu">
                                 <rect key="frame" x="408" y="366" width="100" height="30"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -822,6 +806,22 @@
                                     <action selector="deleteFromRoster:" destination="G1Q-IP-rXa" eventType="touchUpInside" id="Tb0-YZ-8fj"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tJD-uv-MbX">
+                                <rect key="frame" x="678" y="328" width="100" height="30"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="Friday">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="fridaySelect:" destination="G1Q-IP-rXa" eventType="touchUpInside" id="qlM-Di-rob"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -832,7 +832,7 @@
                     </view>
                     <connections>
                         <outlet property="deleteFromRosterButton" destination="PaG-1J-q8k" id="1r1-Fa-rRM"/>
-                        <outlet property="friday" destination="ZEO-nP-jMC" id="Unn-3J-tlL"/>
+                        <outlet property="friday" destination="tJD-uv-MbX" id="CYz-zQ-eVK"/>
                         <outlet property="monday" destination="ce6-aT-uyf" id="Ohc-A4-jGf"/>
                         <outlet property="rosterName" destination="1Gu-wa-mwk" id="9eH-Qc-luO"/>
                         <outlet property="saturday" destination="1jU-9m-VFu" id="T5d-Bs-ZpB"/>
@@ -2467,13 +2467,13 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="0CC-ZP-ABi"/>
-        <segue reference="UNw-e2-ufb"/>
         <segue reference="MbP-O1-PDi"/>
+        <segue reference="UNw-e2-ufb"/>
+        <segue reference="0CC-ZP-ABi"/>
         <segue reference="Jcc-rI-ynV"/>
         <segue reference="0dW-OO-Qat"/>
         <segue reference="OIi-5h-Iro"/>
-        <segue reference="lZo-3K-BmO"/>
         <segue reference="LZy-H4-SEb"/>
+        <segue reference="lZo-3K-BmO"/>
     </inferredMetricsTieBreakers>
 </document>

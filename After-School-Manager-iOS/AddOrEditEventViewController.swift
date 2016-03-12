@@ -200,9 +200,12 @@ class AddOrEditEventViewController: UIViewController {
         let result = database.update(insertSQL)
         if (result) {
             self.back()
+        } else {
+            let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Add Event to Events Database")
+            errorAlert.displayError()
         }
     }
-    
+
     @IBAction func deleteEvent(sender: AnyObject) {
         let myAlertController = UIAlertController(title: "Delete Event", message: "Are you sure you want to delete this event?", preferredStyle: .Alert)
 
@@ -213,8 +216,13 @@ class AddOrEditEventViewController: UIViewController {
 
         let nextAction = UIAlertAction(title: "Delete", style: .Default) { action -> Void in
             let insertSQL = "DELETE FROM EVENTS WHERE eventID = '\(self.event.getEventID())'"
-            database.update(insertSQL)
-            self.back()
+            let result = database.update(insertSQL)
+            if (result) {
+                self.back()
+            } else {
+                let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete Event From Events Database")
+                errorAlert.displayError()
+            }
         }
         myAlertController.addAction(nextAction)
         presentViewController(myAlertController, animated: true, completion: nil)

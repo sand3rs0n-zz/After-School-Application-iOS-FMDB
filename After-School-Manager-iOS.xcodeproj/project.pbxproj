@@ -55,6 +55,7 @@
 		0F7D26C61C6571DC00176CF2 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7D26C51C6571DC00176CF2 /* EventViewController.swift */; };
 		0F7D26C81C65784000176CF2 /* RosterHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7D26C71C65784000176CF2 /* RosterHistoryViewController.swift */; };
 		0F7D26CA1C657A6000176CF2 /* SelectRosterToAddStudentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7D26C91C657A6000176CF2 /* SelectRosterToAddStudentViewController.swift */; };
+		0F9F85F71C93790E008A8284 /* ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F85F61C93790E008A8284 /* ErrorAlert.swift */; };
 		0FA27F241C7BB455003D67DF /* FMDBSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA27F231C7BB455003D67DF /* FMDBSupport.swift */; };
 		0FF20FEE1C72A7F2007285DB /* EditTodayAttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF20FED1C72A7F2007285DB /* EditTodayAttendanceViewController.swift */; };
 		0FF20FF01C72A80F007285DB /* AddSpecialAttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF20FEF1C72A80F007285DB /* AddSpecialAttendanceViewController.swift */; };
@@ -121,6 +122,7 @@
 		0F7D26C51C6571DC00176CF2 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		0F7D26C71C65784000176CF2 /* RosterHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterHistoryViewController.swift; sourceTree = "<group>"; };
 		0F7D26C91C657A6000176CF2 /* SelectRosterToAddStudentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectRosterToAddStudentViewController.swift; sourceTree = "<group>"; };
+		0F9F85F61C93790E008A8284 /* ErrorAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorAlert.swift; sourceTree = "<group>"; };
 		0FA27F231C7BB455003D67DF /* FMDBSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMDBSupport.swift; sourceTree = "<group>"; };
 		0FF20FED1C72A7F2007285DB /* EditTodayAttendanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTodayAttendanceViewController.swift; sourceTree = "<group>"; };
 		0FF20FEF1C72A80F007285DB /* AddSpecialAttendanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSpecialAttendanceViewController.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				0F1CF3601C5C65FC0048A7D7 /* Date.swift */,
+				0F9F85F61C93790E008A8284 /* ErrorAlert.swift */,
 				0F1CF3641C5C65FC0048A7D7 /* Line.swift */,
 				0F1CF36A1C5C65FC0048A7D7 /* SignatureView.swift */,
 				0F76990B1C5D4FC200F04142 /* Util.swift */,
@@ -346,6 +349,7 @@
 				0F1CF3111C5C4BB00048A7D7 /* FMResultSet.m in Sources */,
 				0F76990F1C5D4FC200F04142 /* Util.swift in Sources */,
 				0F1CF30F1C5C4BB00048A7D7 /* FMDatabasePool.m in Sources */,
+				0F9F85F71C93790E008A8284 /* ErrorAlert.swift in Sources */,
 				0F1CF3A31C5D3DEA0048A7D7 /* UpcomingAbsencesViewController.swift in Sources */,
 				0F76990E1C5D4FC200F04142 /* TodayRosterViewController.swift in Sources */,
 				0F1CF2F01C5C4B9D0048A7D7 /* AppDelegate.swift in Sources */,

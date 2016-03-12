@@ -8,7 +8,7 @@
 */
 
 import UIKit
-var instructorPin = "0000"
+var settings = Settings()
 
 class HomePageViewController: UIViewController {
 
@@ -20,7 +20,8 @@ class HomePageViewController: UIViewController {
         let settingsSQL = "SELECT * FROM USERSETTINGS"
         let results = database.search(settingsSQL)
         results.next()
-        instructorPin = results.stringForColumn("pin")
+        settings.setPin(results.stringForColumn("pin"))
+        settings.setEmailAddress(results.stringForColumn("emailAddress"))
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,9 +47,9 @@ class HomePageViewController: UIViewController {
 
         let submitAction = UIAlertAction(title: "Submit", style: .Default) { (action) -> Void in
             pin = ((alertController.textFields?.last)! as UITextField).text!
-            if (pin == instructorPin) {
+            if (pin == settings.getPin()) {
                 self.performSegueWithIdentifier("HomePageToInstructorMenu", sender: self)
-            } else if (pin != instructorPin) {
+            } else if (pin != settings.getPin()) {
                 print("Please enter correct pin")
             }
         }

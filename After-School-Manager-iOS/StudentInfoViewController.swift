@@ -136,6 +136,7 @@ class StudentInfoViewController: UIViewController, UITableViewDataSource, UITabl
             let sohvc = segue.destinationViewController as? SignOutHistoryViewController
             sohvc?.setState(0)
             sohvc?.setStudentID(studentID)
+            sohvc?.setStudentName(studentFullName.text!)
         }
     }
     

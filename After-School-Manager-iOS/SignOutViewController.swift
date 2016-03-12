@@ -76,10 +76,19 @@ class SignOutViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         if (signOutGuardian != "" && !signatureBox.getLines().isEmpty) {
             let timestamp = Date()
             let signOutSQL = "INSERT INTO SIGNOUTS (studentID, rosterID, signOutGuardian, rosterType, signoutType, day, month, year, hour, minute) VALUES ('\(studentID)', '\(rosterID)', '\(signOutGuardian)', '\(rosterType)', '1', '\(timestamp.getCurrentDay())', '\(timestamp.getCurrentMonth())', '\(timestamp.getCurrentYear())', '\(timestamp.getCurrentHour())', '\(timestamp.getCurrentMinute())')"
-            database.update(signOutSQL)
-            self.performSegueWithIdentifier("SignOutToStudentSelectUnwind", sender: self)
-        } else {
-            print("error message")
+            let result = database.update(signOutSQL)
+            if (result) {
+                self.performSegueWithIdentifier("SignOutToStudentSelectUnwind", sender: self)
+            } else {
+                let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Sign Out Student")
+                errorAlert.displayError()
+            }
+        } else if (signOutGuardian == "") {
+            let errorAlert = ErrorAlert(viewController: self, errorString: "Please select Guardian")
+            errorAlert.displayError()
+        } else if (signatureBox.getLines().isEmpty) {
+            let errorAlert = ErrorAlert(viewController: self, errorString: "Please Sign in the Sign Out Box")
+            errorAlert.displayError()
         }
     }
     

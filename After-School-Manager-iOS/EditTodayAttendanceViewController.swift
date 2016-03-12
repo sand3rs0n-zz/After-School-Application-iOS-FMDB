@@ -66,21 +66,39 @@ class EditTodayAttendanceViewController: UIViewController {
     }
 
     @IBAction func scheduleAbsenceToday(sender: AnyObject) {
-        if (scheduleAbsence() && signOut(2)) {
+        let result1 = scheduleAbsence()
+        let result2 = signOut(2)
+        if (result1 && result2) {
             back()
+        }  else if (!result1) {
+            let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Schedule Absence")
+            errorAlert.displayError()
+        } else if (!result2) {
+            let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Sign Out Student")
+            errorAlert.displayError()
         }
     }
 
     @IBAction func unscheduledAbsence(sender: AnyObject) {
-        //perform an instructor signout and mark it as unscheduled absence
-        if (scheduleAbsence() && signOut(3)) {
+        let result1 = scheduleAbsence()
+        let result2 = signOut(3)
+        if (result1 && result2) {
             back()
+        } else if (!result1) {
+            let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Schedule Absence")
+            errorAlert.displayError()
+        } else if (!result2) {
+            let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Sign Out Student")
+            errorAlert.displayError()
         }
     }
 
     @IBAction func instructorSignOut(sender: AnyObject) {
         if (signOut(4)) {
             back()
+        } else {
+            let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Sign Student Out")
+            errorAlert.displayError()
         }
     }
 
@@ -96,6 +114,12 @@ class EditTodayAttendanceViewController: UIViewController {
         let result2 = database.update(deleteSignOutSQL)
         if (result1 && result2) {
             back()
+        } else if (!result1) {
+            let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Unschedule Absence")
+            errorAlert.displayError()
+        } else if (!result2) {
+            let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete SignOut From SignOuts Database")
+            errorAlert.displayError()
         }
     }
 

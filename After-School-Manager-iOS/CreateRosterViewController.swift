@@ -156,7 +156,16 @@ class CreateRosterViewController: UIViewController {
                 if (result1 && result2 && result3) {
                     self.state = 0
                     self.back()
-                }
+                } else if (!result1) {
+                    let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete Roster From Rosters Database")
+                    errorAlert.displayError()
+                } else if (!result2) {
+                    let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete Roster From Sign Outs Database")
+                    errorAlert.displayError()
+                } else if (!result3) {
+                    let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete Roster From Student Rosters Database")
+                    errorAlert.displayError()
+            }
         }
         myAlertController.addAction(nextAction)
         presentViewController(myAlertController, animated: true, completion: nil)
@@ -215,7 +224,19 @@ class CreateRosterViewController: UIViewController {
             let result1 = database.update(insertSQL)
             if (result1 && result2 && result3) {
                 self.back()
+            } else if (!result1) {
+                let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Add Roster to Rosters Database")
+                errorAlert.displayError()
+            } else if (!result2) {
+                let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Update Roster in Sign Outs Database")
+                errorAlert.displayError()
+            } else if (!result3) {
+                let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Add Roster in Student Rosters Database")
+                errorAlert.displayError()
             }
+        } else {
+            let errorAlert = ErrorAlert(viewController: self, errorString: "Please give the Roster a Name")
+            errorAlert.displayError()
         }
     }
 }

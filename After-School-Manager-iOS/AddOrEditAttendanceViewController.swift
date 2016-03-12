@@ -239,6 +239,9 @@ class AddOrEditAttendanceViewController: UIViewController {
 
         if (result) {
             self.back()
+        } else {
+            let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Add Attendance to StudentRosters Database")
+            errorAlert.displayError()
         }
     }
 
@@ -257,6 +260,12 @@ class AddOrEditAttendanceViewController: UIViewController {
             let result2 = database.update(deleteSignOuts)
             if (result1 && result2) {
                 self.back()
+            } else if (!result1) {
+                let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete Student From StudentRosters Database")
+                errorAlert.displayError()
+            } else if (!result2) {
+                let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete SignOuts From StudentRosters Database")
+                errorAlert.displayError()
             }
         }
         myAlertController.addAction(nextAction)

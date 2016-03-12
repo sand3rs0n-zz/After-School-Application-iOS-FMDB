@@ -176,6 +176,15 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
             }
             if (result1 && (!updateStudent || (result2 && result3))) {
                 self.performSegueWithIdentifier("instructorMenuStudentsUnwind", sender: self)
+            } else if (!result1) {
+                let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Add Student to StudentProfiles Database")
+                errorAlert.displayError()
+            } else if (!result2) {
+                let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Update Student in Absences Database")
+                errorAlert.displayError()
+            } else if (!result3) {
+                let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Update Student in StudentRosters Database")
+                errorAlert.displayError()
             }
         }
     }
@@ -213,6 +222,27 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
 
             if (result1 && result2 && result3 && result4 && result5 && result6 && result7) {
                 self.performSegueWithIdentifier("instructorMenuStudentsUnwind", sender: self)
+            } else if (!result1) {
+                let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete Roster From StudentProfiles Database")
+                errorAlert.displayError()
+            } else if (!result2) {
+                let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete Roster From StudentRosters Database")
+                errorAlert.displayError()
+            } else if (!result3) {
+                let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete Roster From SignOuts Database")
+                errorAlert.displayError()
+            } else if (!result4) {
+                let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete Roster From OneTimeAttendance Database")
+                errorAlert.displayError()
+            } else if (!result5) {
+                let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete Roster From Guardians Database")
+                errorAlert.displayError()
+            } else if (!result6) {
+                let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete Roster From ContactNumbers Database")
+                errorAlert.displayError()
+            } else if (!result7) {
+                let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete Roster From AbsencesList Database")
+                errorAlert.displayError()
             }
         }
         myAlertController.addAction(nextAction)
@@ -227,6 +257,7 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
             let sohvc = segue.destinationViewController as? SignOutHistoryViewController
             sohvc?.setState(1)
             sohvc?.setStudentID(studentID)
+            sohvc?.setStudentName(student.getFirstName() + " " + student.getLastName())
         } else if (segue.identifier == "EditStudentToRosterHistory") {
             let rhvc = segue.destinationViewController as? RosterHistoryViewController
             rhvc?.setStudentID(studentID)

@@ -121,6 +121,12 @@ class ScheduleAbsenceViewController: UIViewController {
         let result2 = database.update(signOutSQL)
         if (result1 && result2) {
             self.back()
+        } else if (!result1) {
+            let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Schedule Absence")
+            errorAlert.displayError()
+        } else if (!result2) {
+            let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Sign Student Out")
+            errorAlert.displayError()
         }
     }
 
@@ -139,6 +145,12 @@ class ScheduleAbsenceViewController: UIViewController {
             let result2 = database.update(signOutSQL)
             if (result1 && result2) {
                 self.back()
+            } else if (!result1) {
+                let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete Absence")
+                errorAlert.displayError()
+            } else if (!result2) {
+                let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete SignOut From SignOuts Database")
+                errorAlert.displayError()
             }
         }
         myAlertController.addAction(nextAction)
