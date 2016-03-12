@@ -22,6 +22,7 @@ class HomePageViewController: UIViewController {
         results.next()
         settings.setPin(results.stringForColumn("pin"))
         settings.setEmailAddress(results.stringForColumn("emailAddress"))
+        results.close()
     }
 
     override func didReceiveMemoryWarning() {

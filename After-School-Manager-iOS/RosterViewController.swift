@@ -94,11 +94,11 @@ class RosterViewController: UIViewController, UITableViewDataSource, UITableView
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "RosterToEditRoster") {
-            let crvc = segue.destinationViewController as? CreateRosterViewController
-            crvc?.setState(1)
-            crvc?.setTitleValue("Edit Roster")
-            crvc?.setExistingRoster(roster)
-            crvc?.setCreateRosterButtonValue("Edit Roster")
+            let aoervc = segue.destinationViewController as? AddOrEditRosterViewController
+            aoervc?.setState(1)
+            aoervc?.setTitleValue("Edit Roster")
+            aoervc?.setExistingRoster(roster)
+            aoervc?.setCreateRosterButtonValue("Edit Roster")
         } else if (segue.identifier == "SpecificRosterToEditStudent") {
             let aeavc = segue.destinationViewController as? AddOrEditAttendanceViewController
             aeavc?.setState(0)

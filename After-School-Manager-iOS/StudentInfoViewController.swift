@@ -9,71 +9,18 @@
 import UIKit
 
 class StudentInfoViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
-    private var studentID = 0
-    private var student = Student()
-    private var guardians = [Guardian]()
-    private var contactNumbers = [ContactNumber]()
-    private var dob = Date()
-    
-
+    private var studentInfoModel = StudentInfoModel()
     @IBOutlet weak var studentFullName: UILabel!
     @IBOutlet weak var studentDOB: UILabel!
     @IBOutlet weak var studentSchool: UILabel!
     @IBOutlet weak var studentAge: UILabel!
     @IBOutlet weak var guardianTable: UITableView!
     @IBOutlet weak var contactTable: UITableView!
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        getStudent()
-        getGuardians()
-        getContactNumbers()
-        setDOB()
+        studentInfoModel.resetResults()
         fillPage()
-    }
-
-    private func getStudent() {
-        let querySQL = "SELECT * FROM STUDENTPROFILES WHERE studentID = '\(studentID)'"
-        let results = database.search(querySQL)
-        results.next()
-        student.setStudentID(Int(results.intForColumn("studentID")))
-        student.setFirstName(results.stringForColumn("firstName"))
-        student.setLastName(results.stringForColumn("lastName"))
-        student.setActive(Int(results.intForColumn("active")))
-        student.setSchool(results.stringForColumn("school"))
-        student.setBirthDay(Int(results.intForColumn("birthDay")))
-        student.setBirthMonth(Int(results.intForColumn("birthMonth")))
-        student.setBirthYear(Int(results.intForColumn("birthYear")))
-        results.close()
-    }
-
-    private func getGuardians() {
-        let querySQL = "SELECT * FROM GUARDIANS WHERE studentID = '\(studentID)'"
-        let results = database.search(querySQL)
-        while (results.next()) {
-            let cur = Guardian()
-            cur.setGuardianID(Int(results.intForColumn("guardianID")))
-            cur.setName(results.stringForColumn("name"))
-            cur.setStudentID(Int(results.intForColumn("studentID")))
-            guardians.append(cur)
-        }
-        results.close()
-    }
-
-    private func getContactNumbers() {
-        let querySQL = "SELECT * FROM CONTACTNUMBERS WHERE studentID = '\(studentID)'"
-        let results = database.search(querySQL)
-        while (results.next()) {
-            let cur = ContactNumber()
-            cur.setContactID(Int(results.intForColumn("contactID")))
-            cur.setName(results.stringForColumn("name"))
-            cur.setPhoneNumber(results.stringForColumn("phoneNumber"))
-            cur.setStudentID(Int(results.intForColumn("studentID")))
-            contactNumbers.append(cur)
-        }
-        results.close()
     }
 
     override func didReceiveMemoryWarning() {
@@ -82,50 +29,14 @@ class StudentInfoViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     private func fillPage() {
-        studentFullName.text = student.getFirstName() + " " + student.getLastName()
-        studentSchool.text = student.getSchool()
-        studentDOB.text = dob.fullDateAmerican()
-        studentAge.text = String(calcAge())
-//        studentGuardians.text = guardianList() Using a table for this instead
-//        studentContacts.text = contactList()
+        studentFullName.text = studentInfoModel.getFirstName() + " " + studentInfoModel.getLastName()
+        studentSchool.text = studentInfoModel.getSchool()
+        studentDOB.text = studentInfoModel.getDOB()
+        studentAge.text = studentInfoModel.getAge()
     }
     
     func setStudentID(id: Int) {
-       studentID = id
-    }
-
-    private func setDOB(){
-        dob = Date(day: student.getBirthDay(), month: student.getBirthMonth(), year: student.getBirthYear())
-    }
-    
-    private func calcAge() -> Int {
-        return dob.age()
-    }
-
-    private func guardianList() -> String {
-        var guardianList = ""
-        for (var i = 0; i < guardians.count; i++) {
-            let guardian = guardians[i]
-            guardianList.appendContentsOf(guardian.getName())
-            if ((i + 1) < guardians.count) {
-                guardianList.appendContentsOf(", ")
-            }
-        }
-        return guardianList
-    }
-
-    private func contactList() -> String {
-        var contactList = ""
-        for (var i = 0; i < contactNumbers.count; i++) {
-            let contact = contactNumbers[i]
-            contactList.appendContentsOf(contact.getName())
-            contactList.appendContentsOf(": ")
-            contactList.appendContentsOf(contact.getPhoneNumber())
-            if ((i + 1) < contactNumbers.count) {
-                contactList.appendContentsOf(", ")
-            }
-        }
-        return contactList
+       studentInfoModel.setStudentID(id)
     }
 
     @IBAction func studentInfoUnwind(segue: UIStoryboardSegue) {
@@ -135,7 +46,7 @@ class StudentInfoViewController: UIViewController, UITableViewDataSource, UITabl
         if (segue.identifier == "StudentInfoToSignOuts") {
             let sohvc = segue.destinationViewController as? SignOutHistoryViewController
             sohvc?.setState(0)
-            sohvc?.setStudentID(studentID)
+            sohvc?.setStudentID(studentInfoModel.getStudentID())
             sohvc?.setStudentName(studentFullName.text!)
         }
     }
@@ -146,10 +57,10 @@ class StudentInfoViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(tableView == self.guardianTable && guardians.count > 0) {
-            return guardians.count
-        } else if (tableView == self.contactTable && contactNumbers.count > 0){
-            return contactNumbers.count
+        if(tableView == self.guardianTable && studentInfoModel.getGuardiansCount() > 0) {
+            return studentInfoModel.getGuardiansCount()
+        } else if (tableView == self.contactTable && studentInfoModel.getContactNumbersCount() > 0){
+            return studentInfoModel.getContactNumbersCount()
         } else {
             return 1
         }
@@ -161,8 +72,8 @@ class StudentInfoViewController: UIViewController, UITableViewDataSource, UITabl
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
             let row = indexPath.row
             
-            if(guardians.count > 0 && row < guardians.count) {
-                let guardian = guardians[row]
+            if(studentInfoModel.getGuardiansCount() > 0 && row < studentInfoModel.getGuardiansCount()) {
+                let guardian = studentInfoModel.getGuardian(row)
                 let guardianName = guardian.getName()
                 cell.textLabel?.text = guardianName
             } else {
@@ -173,8 +84,8 @@ class StudentInfoViewController: UIViewController, UITableViewDataSource, UITabl
             let row = indexPath.row
             
             // Fix this
-            if(contactNumbers.count > 0 && row < contactNumbers.count) {
-                let contact = contactNumbers[row]
+            if(studentInfoModel.getContactNumbersCount() > 0 && row < studentInfoModel.getContactNumbersCount()) {
+                let contact = studentInfoModel.getContactNumber(row)
                 let contactName = contact.getName()
                 let contactPhone = contact.getPhoneNumber()
                 cell.textLabel?.text = "\(contactName): \(contactPhone)"

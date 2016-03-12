@@ -84,10 +84,10 @@ class AllRostersViewController: UIViewController, UITableViewDataSource, UITable
             rvc?.setRosterID(forwardedRosterID)
             rvc?.setRoster(forwardedRoster)
         } else if (segue.identifier == "AllRostersToNewRoster") {
-            let crvc = segue.destinationViewController as? CreateRosterViewController
-            crvc?.setState(0)
-            crvc?.setTitleValue("Create Roster")
-            crvc?.setCreateRosterButtonValue("Create Roster")
+            let aoervc = segue.destinationViewController as? AddOrEditRosterViewController
+            aoervc?.setState(0)
+            aoervc?.setTitleValue("Create Roster")
+            aoervc?.setCreateRosterButtonValue("Create Roster")
         }
     }
 }

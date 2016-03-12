@@ -9,44 +9,21 @@
 import UIKit
 
 class ScheduleAbsenceViewController: UIViewController {
-
-    private var studentID = 0
-    private var state = 0
-    private var rosterType = 0
-    private var rosterID = 0
-    private var signOutID = 0
-    private var absence = Absence()
-    private var roster = Roster()
-    private var studentLastName = ""
-    private var studentFirstName = ""
+    private var scheduleAbsenceModel = ScheduleAbsenceModel()
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var scheduleAbsenceButton: UIButton!
     @IBOutlet weak var deleteAbsenceButton: UIButton!
-    private var buttonText = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.scheduleAbsenceButton!.setTitle(buttonText, forState: .Normal)
-        if (state == 1) {
+        self.scheduleAbsenceButton!.setTitle(scheduleAbsenceModel.getButtonText(), forState: .Normal)
+        if (scheduleAbsenceModel.getState() == 1) {
+            scheduleAbsenceModel.initializeAbsence()
             fillValues()
-            rosterID = absence.getRosterID()
-            studentID = absence.getStudentID()
-            let signOutSQL = "SELECT * FROM SIGNOUTS WHERE rosterID = '\(rosterID)' AND studentID = '\(studentID)' AND day = '\(absence.getDay())' AND month = '\(absence.getMonth())' AND year = '\(absence.getYear())'"
-            let results = database.search(signOutSQL)
-            results.next()
-            signOutID = Int(results.intForColumn("signOutID"))
-            results.close()
-        } else if (state == 0) {
+        } else if (scheduleAbsenceModel.getState() == 0) {
             deleteAbsenceButton.hidden = true
         }
-
-        let rostersSQL = "SELECT * FROM ROSTERS WHERE rosterID = '\(rosterID)'"
-        let results = database.search(rostersSQL)
-        results.next()
-        roster.setPickUpHour(Int(results.intForColumn("pickUpHour")))
-        roster.setPickUpMinute(Int(results.intForColumn("pickUpMinute")))
-        results.close()
-        // Do any additional setup after loading the view.
+        scheduleAbsenceModel.getRosters()
     }
     
     override func didReceiveMemoryWarning() {
@@ -55,6 +32,7 @@ class ScheduleAbsenceViewController: UIViewController {
     }
 
     private func fillValues() {
+        let absence = scheduleAbsenceModel.getAbsence()
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
         let dateString = String(absence.getDay()) + "/" + String(absence.getMonth()) + "/" + String(absence.getYear())
@@ -63,29 +41,28 @@ class ScheduleAbsenceViewController: UIViewController {
     }
 
     func setAbsence(absence: Absence) {
-        self.absence = absence
+        scheduleAbsenceModel.setAbsence(absence)
     }
     func setState(state: Int) {
-        self.state = state
+        scheduleAbsenceModel.setState(state)
     }
     func setButtonText(text: String) {
-        self.buttonText = text
+        scheduleAbsenceModel.setButtonText(text)
     }
     func setRosterType(rosterType: Int) {
-        self.rosterType = rosterType
+        scheduleAbsenceModel.setRosterType(rosterType)
     }
     func setStudentID(studentID: Int) {
-        self.studentID = studentID
+        scheduleAbsenceModel.setStudentID(studentID)
     }
     func setRosterID(rosterID: Int) {
-        self.rosterID = rosterID
+        scheduleAbsenceModel.setRosterID(rosterID)
     }
     func setStudentLastName(name: String) {
-        studentLastName = name
+        scheduleAbsenceModel.setStudentLastName(name)
     }
-
     func setStudentFirstName(name: String) {
-        studentFirstName = name
+        scheduleAbsenceModel.setStudentFirstName(name)
     }
 
     @IBAction func back(sender: AnyObject) {
@@ -93,9 +70,9 @@ class ScheduleAbsenceViewController: UIViewController {
     }
     
     private func back() {
-        if (state == 0) {
+        if (scheduleAbsenceModel.getState() == 0) {
             performSegueWithIdentifier("ScheduleAbsenceToStudentSelect", sender: self)
-        } else if (state == 1) {
+        } else if (scheduleAbsenceModel.getState() == 1) {
             performSegueWithIdentifier("ScheduleAbsenceUnwind", sender: self)
         }
     }
@@ -109,12 +86,13 @@ class ScheduleAbsenceViewController: UIViewController {
 
         var absenceListSQL = ""
         var signOutSQL = ""
-        if (state == 1) {
-            absenceListSQL = "UPDATE ABSENCESLIST SET studentFirstName = '\(absence.getStudentFirstName())', studentLastName = '\(absence.getStudentLastName())', studentID = '\(absence.getStudentID())', rosterID = '\(rosterID)', day = '\(Int(dateArr[1])!)', month = '\(Int(dateArr[0])!)', year = '\(Int(dateArr[2])!)' WHERE absenceID = '\(absence.getAbsenceID())'"
-            signOutSQL = "UPDATE SIGNOUTS SET studentID = '\(absence.getStudentID())', rosterID = '\(rosterID)', signOutGuardian = 'Instructor', rosterType = '\(rosterType)', signOutType = '2', day = '\(Int(dateArr[1])!)', month = '\(Int(dateArr[0])!)', year = '\(Int(dateArr[2])!)', hour = '\(roster.getPickUpHour())', minute = '\(roster.getPickUpMinute())' WHERE signOutID = '\(signOutID)'"
-        } else if (state == 0) {
-            absenceListSQL = "INSERT INTO ABSENCESLIST (studentFirstName, studentLastName, studentID, rosterID, day, month, year) VALUES ('\(studentFirstName)', '\(studentLastName)', '\(studentID)', '\(rosterID)', '\(Int(dateArr[1])!)', '\(Int(dateArr[0])!)', '\(Int(dateArr[2])!)')"
-            signOutSQL = "INSERT INTO SIGNOUTS (studentID, rosterID, signOutGuardian, rosterType, signOutType, day, month, year, hour, minute) VALUES ('\(studentID)', '\(rosterID)', 'Instructor', '\(rosterType)', '2', '\(Int(dateArr[1])!)', '\(Int(dateArr[0])!)', '\(Int(dateArr[2])!)', '\(roster.getPickUpHour())', '\(roster.getPickUpMinute())')"
+        if (scheduleAbsenceModel.getState() == 1) {
+            let absence = scheduleAbsenceModel.getAbsence()
+            absenceListSQL = "UPDATE ABSENCESLIST SET studentFirstName = '\(absence.getStudentFirstName())', studentLastName = '\(absence.getStudentLastName())', studentID = '\(absence.getStudentID())', rosterID = '\(scheduleAbsenceModel.getRosterID())', day = '\(Int(dateArr[1])!)', month = '\(Int(dateArr[0])!)', year = '\(Int(dateArr[2])!)' WHERE absenceID = '\(absence.getAbsenceID())'"
+            signOutSQL = "UPDATE SIGNOUTS SET studentID = '\(absence.getStudentID())', rosterID = '\(scheduleAbsenceModel.getRosterID())', signOutGuardian = 'Instructor', rosterType = '\(scheduleAbsenceModel.getRosterType())', signOutType = '2', day = '\(Int(dateArr[1])!)', month = '\(Int(dateArr[0])!)', year = '\(Int(dateArr[2])!)', hour = '\(scheduleAbsenceModel.getPickUpHour())', minute = '\(scheduleAbsenceModel.getPickUpMinute())' WHERE signOutID = '\(scheduleAbsenceModel.getSignOutID())'"
+        } else if (scheduleAbsenceModel.getState() == 0) {
+            absenceListSQL = "INSERT INTO ABSENCESLIST (studentFirstName, studentLastName, studentID, rosterID, day, month, year) VALUES ('\(scheduleAbsenceModel.getStudentFirstName())', '\(scheduleAbsenceModel.getStudentLastName())', '\(scheduleAbsenceModel.getStudentID())', '\(scheduleAbsenceModel.getRosterID())', '\(Int(dateArr[1])!)', '\(Int(dateArr[0])!)', '\(Int(dateArr[2])!)')"
+            signOutSQL = "INSERT INTO SIGNOUTS (studentID, rosterID, signOutGuardian, rosterType, signOutType, day, month, year, hour, minute) VALUES ('\(scheduleAbsenceModel.getStudentID())', '\(scheduleAbsenceModel.getRosterID())', 'Instructor', '\(scheduleAbsenceModel.getRosterType())', '2', '\(Int(dateArr[1])!)', '\(Int(dateArr[0])!)', '\(Int(dateArr[2])!)', '\(scheduleAbsenceModel.getPickUpHour())', '\(scheduleAbsenceModel.getPickUpMinute())')"
         }
 
         let result1 = database.update(absenceListSQL)
@@ -139,8 +117,8 @@ class ScheduleAbsenceViewController: UIViewController {
         myAlertController.addAction(cancelAction)
 
         let nextAction = UIAlertAction(title: "Delete", style: .Default) { action -> Void in
-            let absenceListSQL = "DELETE FROM ABSENCESLIST WHERE absenceID = '\(self.absence.getAbsenceID())'"
-            let signOutSQL = "DELETE FROM SIGNOUTS WHERE signOutID = '\(self.signOutID)'"
+            let absenceListSQL = "DELETE FROM ABSENCESLIST WHERE absenceID = '\(self.scheduleAbsenceModel.getAbsence().getAbsenceID())'"
+            let signOutSQL = "DELETE FROM SIGNOUTS WHERE signOutID = '\(self.scheduleAbsenceModel.getSignOutID())'"
             let result1 = database.update(absenceListSQL)
             let result2 = database.update(signOutSQL)
             if (result1 && result2) {

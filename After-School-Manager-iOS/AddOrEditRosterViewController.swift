@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateRosterViewController: UIViewController {
+class AddOrEditRosterViewController: UIViewController {
 
     @IBOutlet weak var rosterName: UITextField!
     @IBOutlet weak var rosterType: UIPickerView!

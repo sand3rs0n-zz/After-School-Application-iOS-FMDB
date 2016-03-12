@@ -6,6 +6,72 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Settings View Controller-->
+        <scene sceneID="xIb-v1-JIb">
+            <objects>
+                <viewController id="egv-EJ-My5" customClass="SettingsViewController" customModule="After_School_Manager_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="I90-YM-ehv"/>
+                        <viewControllerLayoutGuide type="bottom" id="yyT-6K-yUW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xJK-RC-lQl">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mo1-3t-WWa">
+                                <rect key="frame" x="232" y="133" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zSb-rg-1cD">
+                                <rect key="frame" x="180" y="137" width="24" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hPX-UL-krs">
+                                <rect key="frame" x="232" y="177" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ps9-j4-5F5">
+                                <rect key="frame" x="96" y="181" width="108" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EVI-8M-2Yv">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Settings" id="xnx-gH-XOO">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="BI9-eA-jzg">
+                                            <connections>
+                                                <segue destination="BDG-1z-bjz" kind="unwind" identifier="returnToInstructorMenuFromSettings" unwindAction="instructorMenuUnwind:" id="X6h-DG-5H9"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uEY-k3-T7c">
+                                <rect key="frame" x="243" y="275" width="51" height="30"/>
+                                <state key="normal" title="Update"/>
+                                <connections>
+                                    <action selector="updateSettings:" destination="egv-EJ-My5" eventType="touchUpInside" id="CkA-Tm-gEe"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="emailAddress" destination="hPX-UL-krs" id="9qf-ZF-xjt"/>
+                        <outlet property="pin" destination="mo1-3t-WWa" id="hVA-dp-UBf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3hG-p3-Gac" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="BDG-1z-bjz" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="201" y="-917"/>
+        </scene>
         <!--Home Page View Controller-->
         <scene sceneID="sC9-eN-N9V">
             <objects>
@@ -364,6 +430,9 @@
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="egv-EJ-My5" kind="show" id="quB-M5-nXL"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbh-LY-FyI">
                                 <rect key="frame" x="537" y="198" width="160" height="75"/>
@@ -493,10 +562,10 @@
             </objects>
             <point key="canvasLocation" x="2572" y="91"/>
         </scene>
-        <!--Create Roster View Controller-->
+        <!--Add Or Edit Roster View Controller-->
         <scene sceneID="K5S-o6-pvC">
             <objects>
-                <viewController id="JIw-fz-5fF" customClass="CreateRosterViewController" customModule="After_School_Manager_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="JIw-fz-5fF" customClass="AddOrEditRosterViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4WE-S4-dDh"/>
                         <viewControllerLayoutGuide type="bottom" id="WjP-xg-c8e"/>
@@ -2467,13 +2536,13 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="MbP-O1-PDi"/>
         <segue reference="UNw-e2-ufb"/>
-        <segue reference="0CC-ZP-ABi"/>
+        <segue reference="MbP-O1-PDi"/>
         <segue reference="Jcc-rI-ynV"/>
         <segue reference="0dW-OO-Qat"/>
-        <segue reference="OIi-5h-Iro"/>
-        <segue reference="LZy-H4-SEb"/>
         <segue reference="lZo-3K-BmO"/>
+        <segue reference="p75-6g-aLt"/>
+        <segue reference="Sgd-4S-nsG"/>
+        <segue reference="0CC-ZP-ABi"/>
     </inferredMetricsTieBreakers>
 </document>

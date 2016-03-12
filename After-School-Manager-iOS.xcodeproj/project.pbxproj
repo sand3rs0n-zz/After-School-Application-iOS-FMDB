@@ -48,14 +48,41 @@
 		0F7699171C5D5E4100F04142 /* AllEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7699161C5D5E4100F04142 /* AllEventsViewController.swift */; };
 		0F7699191C5D5E5400F04142 /* EventsCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7699181C5D5E5400F04142 /* EventsCalendarViewController.swift */; };
 		0F76991B1C5D5E7600F04142 /* AllRostersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F76991A1C5D5E7600F04142 /* AllRostersViewController.swift */; };
-		0F76991D1C5D600600F04142 /* CreateRosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F76991C1C5D600600F04142 /* CreateRosterViewController.swift */; };
 		0F76991F1C5D64C800F04142 /* RosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F76991E1C5D64C800F04142 /* RosterViewController.swift */; };
 		0F7699211C5D674600F04142 /* AddOrEditAttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7699201C5D674600F04142 /* AddOrEditAttendanceViewController.swift */; };
 		0F7699231C5D6E0200F04142 /* SelectStudentToAddToRosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7699221C5D6E0200F04142 /* SelectStudentToAddToRosterViewController.swift */; };
 		0F7D26C61C6571DC00176CF2 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7D26C51C6571DC00176CF2 /* EventViewController.swift */; };
 		0F7D26C81C65784000176CF2 /* RosterHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7D26C71C65784000176CF2 /* RosterHistoryViewController.swift */; };
 		0F7D26CA1C657A6000176CF2 /* SelectRosterToAddStudentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7D26C91C657A6000176CF2 /* SelectRosterToAddStudentViewController.swift */; };
+		0F9F609D1C949EDD006AAA19 /* AddOrEditRosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F609C1C949EDD006AAA19 /* AddOrEditRosterViewController.swift */; };
+		0F9F60A01C94A1F7006AAA19 /* AddOrEditAttendanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F609F1C94A1F7006AAA19 /* AddOrEditAttendanceModel.swift */; };
+		0F9F60A21C94A20B006AAA19 /* AddOrEditEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F60A11C94A20A006AAA19 /* AddOrEditEventModel.swift */; };
+		0F9F60A41C94A21A006AAA19 /* AddOrEditRosterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F60A31C94A21A006AAA19 /* AddOrEditRosterModel.swift */; };
+		0F9F60A61C94A227006AAA19 /* AddOrEditStudentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F60A51C94A227006AAA19 /* AddOrEditStudentModel.swift */; };
+		0F9F60A81C94A266006AAA19 /* AddSpecialAttendanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F60A71C94A266006AAA19 /* AddSpecialAttendanceModel.swift */; };
+		0F9F60AA1C94A2A8006AAA19 /* AllEventsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F60A91C94A2A8006AAA19 /* AllEventsModel.swift */; };
+		0F9F60AC1C94A2B0006AAA19 /* AllRostersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F60AB1C94A2B0006AAA19 /* AllRostersModel.swift */; };
+		0F9F60AE1C94A2B8006AAA19 /* AllStudentsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F60AD1C94A2B8006AAA19 /* AllStudentsModel.swift */; };
+		0F9F60B01C94A2CD006AAA19 /* EditTodayAttendanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F60AF1C94A2CD006AAA19 /* EditTodayAttendanceModel.swift */; };
+		0F9F60B21C94A2DC006AAA19 /* InstructorMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F60B11C94A2DC006AAA19 /* InstructorMenuModel.swift */; };
+		0F9F60B41C94A2E6006AAA19 /* RosterHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F60B31C94A2E6006AAA19 /* RosterHistoryModel.swift */; };
+		0F9F60B61C94A306006AAA19 /* RosterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F60B51C94A306006AAA19 /* RosterViewModel.swift */; };
+		0F9F60B81C94A31A006AAA19 /* SelectRosterToAddStudentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F60B71C94A31A006AAA19 /* SelectRosterToAddStudentModel.swift */; };
+		0F9F60BA1C94A32C006AAA19 /* SelectStudentToAddAttendanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F60B91C94A32C006AAA19 /* SelectStudentToAddAttendanceModel.swift */; };
+		0F9F60BC1C94A339006AAA19 /* SelectStudentToAddToRosterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F60BB1C94A339006AAA19 /* SelectStudentToAddToRosterModel.swift */; };
+		0F9F60BE1C94A349006AAA19 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F60BD1C94A349006AAA19 /* SettingsViewModel.swift */; };
+		0F9F60C01C94A356006AAA19 /* TodayRosterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F60BF1C94A355006AAA19 /* TodayRosterModel.swift */; };
+		0F9F60C41C94A39B006AAA19 /* EventsCalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F60C31C94A39B006AAA19 /* EventsCalendarModel.swift */; };
+		0F9F60C61C94A3A4006AAA19 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F60C51C94A3A4006AAA19 /* EventViewModel.swift */; };
+		0F9F60CA1C94A3B3006AAA19 /* RosterListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F60C91C94A3B3006AAA19 /* RosterListModel.swift */; };
+		0F9F60CC1C94A3BE006AAA19 /* ScheduleAbsenceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F60CB1C94A3BE006AAA19 /* ScheduleAbsenceModel.swift */; };
+		0F9F60CE1C94A3C7006AAA19 /* SignOutHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F60CD1C94A3C7006AAA19 /* SignOutHistoryModel.swift */; };
+		0F9F60D01C94A3CF006AAA19 /* SignOutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F60CF1C94A3CF006AAA19 /* SignOutViewModel.swift */; };
+		0F9F60D21C94A3D5006AAA19 /* StudentInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F60D11C94A3D5006AAA19 /* StudentInfoModel.swift */; };
+		0F9F60D41C94A3DF006AAA19 /* StudentRosterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F60D31C94A3DF006AAA19 /* StudentRosterModel.swift */; };
+		0F9F60D61C94A3EA006AAA19 /* UpcomingAbsencesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F60D51C94A3EA006AAA19 /* UpcomingAbsencesModel.swift */; };
 		0F9F85F71C93790E008A8284 /* ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F85F61C93790E008A8284 /* ErrorAlert.swift */; };
+		0F9F85FD1C948670008A8284 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F85FC1C948670008A8284 /* SettingsViewController.swift */; };
 		0FA27F241C7BB455003D67DF /* FMDBSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA27F231C7BB455003D67DF /* FMDBSupport.swift */; };
 		0FF20FEE1C72A7F2007285DB /* EditTodayAttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF20FED1C72A7F2007285DB /* EditTodayAttendanceViewController.swift */; };
 		0FF20FF01C72A80F007285DB /* AddSpecialAttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF20FEF1C72A80F007285DB /* AddSpecialAttendanceViewController.swift */; };
@@ -115,14 +142,41 @@
 		0F7699161C5D5E4100F04142 /* AllEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllEventsViewController.swift; sourceTree = "<group>"; };
 		0F7699181C5D5E5400F04142 /* EventsCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsCalendarViewController.swift; sourceTree = "<group>"; };
 		0F76991A1C5D5E7600F04142 /* AllRostersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllRostersViewController.swift; sourceTree = "<group>"; };
-		0F76991C1C5D600600F04142 /* CreateRosterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRosterViewController.swift; sourceTree = "<group>"; };
 		0F76991E1C5D64C800F04142 /* RosterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterViewController.swift; sourceTree = "<group>"; };
 		0F7699201C5D674600F04142 /* AddOrEditAttendanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOrEditAttendanceViewController.swift; sourceTree = "<group>"; };
 		0F7699221C5D6E0200F04142 /* SelectStudentToAddToRosterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStudentToAddToRosterViewController.swift; sourceTree = "<group>"; };
 		0F7D26C51C6571DC00176CF2 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		0F7D26C71C65784000176CF2 /* RosterHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterHistoryViewController.swift; sourceTree = "<group>"; };
 		0F7D26C91C657A6000176CF2 /* SelectRosterToAddStudentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectRosterToAddStudentViewController.swift; sourceTree = "<group>"; };
+		0F9F609C1C949EDD006AAA19 /* AddOrEditRosterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOrEditRosterViewController.swift; sourceTree = "<group>"; };
+		0F9F609F1C94A1F7006AAA19 /* AddOrEditAttendanceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOrEditAttendanceModel.swift; sourceTree = "<group>"; };
+		0F9F60A11C94A20A006AAA19 /* AddOrEditEventModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOrEditEventModel.swift; sourceTree = "<group>"; };
+		0F9F60A31C94A21A006AAA19 /* AddOrEditRosterModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOrEditRosterModel.swift; sourceTree = "<group>"; };
+		0F9F60A51C94A227006AAA19 /* AddOrEditStudentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOrEditStudentModel.swift; sourceTree = "<group>"; };
+		0F9F60A71C94A266006AAA19 /* AddSpecialAttendanceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSpecialAttendanceModel.swift; sourceTree = "<group>"; };
+		0F9F60A91C94A2A8006AAA19 /* AllEventsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllEventsModel.swift; sourceTree = "<group>"; };
+		0F9F60AB1C94A2B0006AAA19 /* AllRostersModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllRostersModel.swift; sourceTree = "<group>"; };
+		0F9F60AD1C94A2B8006AAA19 /* AllStudentsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllStudentsModel.swift; sourceTree = "<group>"; };
+		0F9F60AF1C94A2CD006AAA19 /* EditTodayAttendanceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTodayAttendanceModel.swift; sourceTree = "<group>"; };
+		0F9F60B11C94A2DC006AAA19 /* InstructorMenuModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructorMenuModel.swift; sourceTree = "<group>"; };
+		0F9F60B31C94A2E6006AAA19 /* RosterHistoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterHistoryModel.swift; sourceTree = "<group>"; };
+		0F9F60B51C94A306006AAA19 /* RosterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterViewModel.swift; sourceTree = "<group>"; };
+		0F9F60B71C94A31A006AAA19 /* SelectRosterToAddStudentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectRosterToAddStudentModel.swift; sourceTree = "<group>"; };
+		0F9F60B91C94A32C006AAA19 /* SelectStudentToAddAttendanceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStudentToAddAttendanceModel.swift; sourceTree = "<group>"; };
+		0F9F60BB1C94A339006AAA19 /* SelectStudentToAddToRosterModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStudentToAddToRosterModel.swift; sourceTree = "<group>"; };
+		0F9F60BD1C94A349006AAA19 /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		0F9F60BF1C94A355006AAA19 /* TodayRosterModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayRosterModel.swift; sourceTree = "<group>"; };
+		0F9F60C31C94A39B006AAA19 /* EventsCalendarModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsCalendarModel.swift; sourceTree = "<group>"; };
+		0F9F60C51C94A3A4006AAA19 /* EventViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
+		0F9F60C91C94A3B3006AAA19 /* RosterListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterListModel.swift; sourceTree = "<group>"; };
+		0F9F60CB1C94A3BE006AAA19 /* ScheduleAbsenceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleAbsenceModel.swift; sourceTree = "<group>"; };
+		0F9F60CD1C94A3C7006AAA19 /* SignOutHistoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignOutHistoryModel.swift; sourceTree = "<group>"; };
+		0F9F60CF1C94A3CF006AAA19 /* SignOutViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignOutViewModel.swift; sourceTree = "<group>"; };
+		0F9F60D11C94A3D5006AAA19 /* StudentInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentInfoModel.swift; sourceTree = "<group>"; };
+		0F9F60D31C94A3DF006AAA19 /* StudentRosterModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentRosterModel.swift; sourceTree = "<group>"; };
+		0F9F60D51C94A3EA006AAA19 /* UpcomingAbsencesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingAbsencesModel.swift; sourceTree = "<group>"; };
 		0F9F85F61C93790E008A8284 /* ErrorAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorAlert.swift; sourceTree = "<group>"; };
+		0F9F85FC1C948670008A8284 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0FA27F231C7BB455003D67DF /* FMDBSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMDBSupport.swift; sourceTree = "<group>"; };
 		0FF20FED1C72A7F2007285DB /* EditTodayAttendanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTodayAttendanceViewController.swift; sourceTree = "<group>"; };
 		0FF20FEF1C72A80F007285DB /* AddSpecialAttendanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSpecialAttendanceViewController.swift; sourceTree = "<group>"; };
@@ -172,7 +226,7 @@
 				0F1CF2F31C5C4B9D0048A7D7 /* Main.storyboard */,
 				8D35069B1C6AA967007D7A2C /* img */,
 				0F1CF3871C5D0C490048A7D7 /* Models */,
-				0F1CF3841C5D0BEB0048A7D7 /* ViewControllers */,
+				0F1CF3841C5D0BEB0048A7D7 /* View Controllers */,
 				0F1CF2F61C5C4B9D0048A7D7 /* Assets.xcassets */,
 				0F1CF2F81C5C4B9D0048A7D7 /* LaunchScreen.storyboard */,
 				0F1CF2FB1C5C4B9D0048A7D7 /* Info.plist */,
@@ -204,48 +258,82 @@
 			children = (
 				0F1CF3601C5C65FC0048A7D7 /* Date.swift */,
 				0F9F85F61C93790E008A8284 /* ErrorAlert.swift */,
+				0FA27F231C7BB455003D67DF /* FMDBSupport.swift */,
 				0F1CF3641C5C65FC0048A7D7 /* Line.swift */,
 				0F1CF36A1C5C65FC0048A7D7 /* SignatureView.swift */,
 				0F76990B1C5D4FC200F04142 /* Util.swift */,
-				0FA27F231C7BB455003D67DF /* FMDBSupport.swift */,
 			);
 			name = SupportClasses;
 			sourceTree = "<group>";
 		};
-		0F1CF3841C5D0BEB0048A7D7 /* ViewControllers */ = {
+		0F1CF3841C5D0BEB0048A7D7 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0F7699201C5D674600F04142 /* AddOrEditAttendanceViewController.swift */,
-				0F33BEF51C6556EC00312041 /* AddOrEditEventViewController.swift */,
-				0F7699141C5D556800F04142 /* AddOrEditStudentViewController.swift */,
-				0FF20FEF1C72A80F007285DB /* AddSpecialAttendanceViewController.swift */,
-				0F7699161C5D5E4100F04142 /* AllEventsViewController.swift */,
-				0F76991A1C5D5E7600F04142 /* AllRostersViewController.swift */,
-				0F7699121C5D540F00F04142 /* AllStudentsViewController.swift */,
-				0F76991C1C5D600600F04142 /* CreateRosterViewController.swift */,
-				0FF20FED1C72A7F2007285DB /* EditTodayAttendanceViewController.swift */,
-				0F7699181C5D5E5400F04142 /* EventsCalendarViewController.swift */,
-				0F7D26C51C6571DC00176CF2 /* EventViewController.swift */,
-				0F1CF3621C5C65FC0048A7D7 /* HomePageViewController.swift */,
-				0F1CF3631C5C65FC0048A7D7 /* InstructorMenuViewController.swift */,
-				0F7D26C71C65784000176CF2 /* RosterHistoryViewController.swift */,
-				0F1CF3651C5C65FC0048A7D7 /* RosterListViewController.swift */,
-				0F76991E1C5D64C800F04142 /* RosterViewController.swift */,
-				0F7D26C91C657A6000176CF2 /* SelectRosterToAddStudentViewController.swift */,
-				0FF20FF11C72A847007285DB /* SelectStudentToAddAttendanceViewController.swift */,
-				0F7699221C5D6E0200F04142 /* SelectStudentToAddToRosterViewController.swift */,
-				0F1CF39C1C5D26840048A7D7 /* ScheduleAbsenceViewController.swift */,
-				0F1CF3881C5D1D3A0048A7D7 /* SignOutHistoryViewController.swift */,
-				0F1CF39E1C5D283B0048A7D7 /* SignOutViewController.swift */,
-				0F1CF3A01C5D31E90048A7D7 /* StudentInfoViewController.swift */,
-				0F1CF38A1C5D1D5E0048A7D7 /* StudentRosterViewController.swift */,
-				0F76990A1C5D4FC200F04142 /* TodayRosterViewController.swift */,
-				0F1CF3A21C5D3DEA0048A7D7 /* UpcomingAbsencesViewController.swift */,
+				0FAC4C261C949C7800851AB0 /* User Views */,
+				0FAC4C251C949C5600851AB0 /* Instructor Views */,
 			);
-			name = ViewControllers;
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 		0F1CF3871C5D0C490048A7D7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0F9F609E1C94A072006AAA19 /* View Models */,
+				0FAC4C241C949C3F00851AB0 /* Database Models */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		0F9F609E1C94A072006AAA19 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				0F9F60C21C94A388006AAA19 /* User View Models */,
+				0F9F60C11C94A35D006AAA19 /* Instructor View Models */,
+			);
+			name = "View Models";
+			sourceTree = "<group>";
+		};
+		0F9F60C11C94A35D006AAA19 /* Instructor View Models */ = {
+			isa = PBXGroup;
+			children = (
+				0F9F609F1C94A1F7006AAA19 /* AddOrEditAttendanceModel.swift */,
+				0F9F60A11C94A20A006AAA19 /* AddOrEditEventModel.swift */,
+				0F9F60A31C94A21A006AAA19 /* AddOrEditRosterModel.swift */,
+				0F9F60A51C94A227006AAA19 /* AddOrEditStudentModel.swift */,
+				0F9F60A71C94A266006AAA19 /* AddSpecialAttendanceModel.swift */,
+				0F9F60A91C94A2A8006AAA19 /* AllEventsModel.swift */,
+				0F9F60AB1C94A2B0006AAA19 /* AllRostersModel.swift */,
+				0F9F60AD1C94A2B8006AAA19 /* AllStudentsModel.swift */,
+				0F9F60AF1C94A2CD006AAA19 /* EditTodayAttendanceModel.swift */,
+				0F9F60B11C94A2DC006AAA19 /* InstructorMenuModel.swift */,
+				0F9F60B31C94A2E6006AAA19 /* RosterHistoryModel.swift */,
+				0F9F60B51C94A306006AAA19 /* RosterViewModel.swift */,
+				0F9F60B71C94A31A006AAA19 /* SelectRosterToAddStudentModel.swift */,
+				0F9F60B91C94A32C006AAA19 /* SelectStudentToAddAttendanceModel.swift */,
+				0F9F60BB1C94A339006AAA19 /* SelectStudentToAddToRosterModel.swift */,
+				0F9F60BD1C94A349006AAA19 /* SettingsViewModel.swift */,
+				0F9F60BF1C94A355006AAA19 /* TodayRosterModel.swift */,
+			);
+			name = "Instructor View Models";
+			sourceTree = "<group>";
+		};
+		0F9F60C21C94A388006AAA19 /* User View Models */ = {
+			isa = PBXGroup;
+			children = (
+				0F9F60C31C94A39B006AAA19 /* EventsCalendarModel.swift */,
+				0F9F60C51C94A3A4006AAA19 /* EventViewModel.swift */,
+				0F9F60C91C94A3B3006AAA19 /* RosterListModel.swift */,
+				0F9F60CB1C94A3BE006AAA19 /* ScheduleAbsenceModel.swift */,
+				0F9F60CD1C94A3C7006AAA19 /* SignOutHistoryModel.swift */,
+				0F9F60CF1C94A3CF006AAA19 /* SignOutViewModel.swift */,
+				0F9F60D11C94A3D5006AAA19 /* StudentInfoModel.swift */,
+				0F9F60D31C94A3DF006AAA19 /* StudentRosterModel.swift */,
+				0F9F60D51C94A3EA006AAA19 /* UpcomingAbsencesModel.swift */,
+			);
+			name = "User View Models";
+			sourceTree = "<group>";
+		};
+		0FAC4C241C949C3F00851AB0 /* Database Models */ = {
 			isa = PBXGroup;
 			children = (
 				0F7699061C5D4FA400F04142 /* Absence.swift */,
@@ -259,7 +347,48 @@
 				0F1CF38C1C5D1DC40048A7D7 /* Student.swift */,
 				0F1CF38E1C5D1DED0048A7D7 /* StudentRoster.swift */,
 			);
-			name = Models;
+			name = "Database Models";
+			sourceTree = "<group>";
+		};
+		0FAC4C251C949C5600851AB0 /* Instructor Views */ = {
+			isa = PBXGroup;
+			children = (
+				0F7699201C5D674600F04142 /* AddOrEditAttendanceViewController.swift */,
+				0F33BEF51C6556EC00312041 /* AddOrEditEventViewController.swift */,
+				0F9F609C1C949EDD006AAA19 /* AddOrEditRosterViewController.swift */,
+				0F7699141C5D556800F04142 /* AddOrEditStudentViewController.swift */,
+				0FF20FEF1C72A80F007285DB /* AddSpecialAttendanceViewController.swift */,
+				0F7699161C5D5E4100F04142 /* AllEventsViewController.swift */,
+				0F76991A1C5D5E7600F04142 /* AllRostersViewController.swift */,
+				0F7699121C5D540F00F04142 /* AllStudentsViewController.swift */,
+				0FF20FED1C72A7F2007285DB /* EditTodayAttendanceViewController.swift */,
+				0F1CF3631C5C65FC0048A7D7 /* InstructorMenuViewController.swift */,
+				0F7D26C71C65784000176CF2 /* RosterHistoryViewController.swift */,
+				0F76991E1C5D64C800F04142 /* RosterViewController.swift */,
+				0F7D26C91C657A6000176CF2 /* SelectRosterToAddStudentViewController.swift */,
+				0FF20FF11C72A847007285DB /* SelectStudentToAddAttendanceViewController.swift */,
+				0F7699221C5D6E0200F04142 /* SelectStudentToAddToRosterViewController.swift */,
+				0F9F85FC1C948670008A8284 /* SettingsViewController.swift */,
+				0F76990A1C5D4FC200F04142 /* TodayRosterViewController.swift */,
+			);
+			name = "Instructor Views";
+			sourceTree = "<group>";
+		};
+		0FAC4C261C949C7800851AB0 /* User Views */ = {
+			isa = PBXGroup;
+			children = (
+				0F7699181C5D5E5400F04142 /* EventsCalendarViewController.swift */,
+				0F7D26C51C6571DC00176CF2 /* EventViewController.swift */,
+				0F1CF3621C5C65FC0048A7D7 /* HomePageViewController.swift */,
+				0F1CF3651C5C65FC0048A7D7 /* RosterListViewController.swift */,
+				0F1CF39C1C5D26840048A7D7 /* ScheduleAbsenceViewController.swift */,
+				0F1CF3881C5D1D3A0048A7D7 /* SignOutHistoryViewController.swift */,
+				0F1CF39E1C5D283B0048A7D7 /* SignOutViewController.swift */,
+				0F1CF3A01C5D31E90048A7D7 /* StudentInfoViewController.swift */,
+				0F1CF38A1C5D1D5E0048A7D7 /* StudentRosterViewController.swift */,
+				0F1CF3A21C5D3DEA0048A7D7 /* UpcomingAbsencesViewController.swift */,
+			);
+			name = "User Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,36 +466,56 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F1CF30D1C5C4BB00048A7D7 /* FMDatabase.m in Sources */,
+				0F9F60D61C94A3EA006AAA19 /* UpcomingAbsencesModel.swift in Sources */,
+				0F9F60AA1C94A2A8006AAA19 /* AllEventsModel.swift in Sources */,
 				0F76991B1C5D5E7600F04142 /* AllRostersViewController.swift in Sources */,
 				0FA27F241C7BB455003D67DF /* FMDBSupport.swift in Sources */,
+				0F9F60AC1C94A2B0006AAA19 /* AllRostersModel.swift in Sources */,
 				0F76990C1C5D4FC200F04142 /* Settings.swift in Sources */,
+				0F9F60BC1C94A339006AAA19 /* SelectStudentToAddToRosterModel.swift in Sources */,
 				0F1CF3861C5D0C450048A7D7 /* Roster.swift in Sources */,
 				0F7699231C5D6E0200F04142 /* SelectStudentToAddToRosterViewController.swift in Sources */,
 				0F1CF3891C5D1D3A0048A7D7 /* SignOutHistoryViewController.swift in Sources */,
 				0FF20FF41C73ADE0007285DB /* OneTimeAttendance.swift in Sources */,
 				0F7699151C5D556800F04142 /* AddOrEditStudentViewController.swift in Sources */,
+				0F9F60CA1C94A3B3006AAA19 /* RosterListModel.swift in Sources */,
+				0F9F60D21C94A3D5006AAA19 /* StudentInfoModel.swift in Sources */,
 				0FF20FF01C72A80F007285DB /* AddSpecialAttendanceViewController.swift in Sources */,
 				0F1CF3111C5C4BB00048A7D7 /* FMResultSet.m in Sources */,
 				0F76990F1C5D4FC200F04142 /* Util.swift in Sources */,
 				0F1CF30F1C5C4BB00048A7D7 /* FMDatabasePool.m in Sources */,
 				0F9F85F71C93790E008A8284 /* ErrorAlert.swift in Sources */,
+				0F9F60B01C94A2CD006AAA19 /* EditTodayAttendanceModel.swift in Sources */,
+				0F9F60C01C94A356006AAA19 /* TodayRosterModel.swift in Sources */,
 				0F1CF3A31C5D3DEA0048A7D7 /* UpcomingAbsencesViewController.swift in Sources */,
+				0F9F609D1C949EDD006AAA19 /* AddOrEditRosterViewController.swift in Sources */,
+				0F9F60A81C94A266006AAA19 /* AddSpecialAttendanceModel.swift in Sources */,
 				0F76990E1C5D4FC200F04142 /* TodayRosterViewController.swift in Sources */,
+				0F9F60CE1C94A3C7006AAA19 /* SignOutHistoryModel.swift in Sources */,
+				0F9F60A01C94A1F7006AAA19 /* AddOrEditAttendanceModel.swift in Sources */,
+				0F9F60D01C94A3CF006AAA19 /* SignOutViewModel.swift in Sources */,
 				0F1CF2F01C5C4B9D0048A7D7 /* AppDelegate.swift in Sources */,
 				0F1CF3721C5C65FC0048A7D7 /* Date.swift in Sources */,
 				0F1CF38F1C5D1DED0048A7D7 /* StudentRoster.swift in Sources */,
+				0F9F60A41C94A21A006AAA19 /* AddOrEditRosterModel.swift in Sources */,
 				0F7D26CA1C657A6000176CF2 /* SelectRosterToAddStudentViewController.swift in Sources */,
 				0F1CF3751C5C65FC0048A7D7 /* InstructorMenuViewController.swift in Sources */,
 				0F33BEF61C6556EC00312041 /* AddOrEditEventViewController.swift in Sources */,
 				0F7699111C5D4FE100F04142 /* ContactNumber.swift in Sources */,
+				0F9F60A61C94A227006AAA19 /* AddOrEditStudentModel.swift in Sources */,
+				0F9F60A21C94A20B006AAA19 /* AddOrEditEventModel.swift in Sources */,
 				0F1CF39D1C5D26840048A7D7 /* ScheduleAbsenceViewController.swift in Sources */,
 				0F1CF3771C5C65FC0048A7D7 /* RosterListViewController.swift in Sources */,
+				0F9F60AE1C94A2B8006AAA19 /* AllStudentsModel.swift in Sources */,
+				0F9F60C61C94A3A4006AAA19 /* EventViewModel.swift in Sources */,
 				0F1CF39F1C5D283B0048A7D7 /* SignOutViewController.swift in Sources */,
 				0FF20FEE1C72A7F2007285DB /* EditTodayAttendanceViewController.swift in Sources */,
 				0F1CF30E1C5C4BB00048A7D7 /* FMDatabaseAdditions.m in Sources */,
-				0F76991D1C5D600600F04142 /* CreateRosterViewController.swift in Sources */,
 				0F33BEF81C655AB200312041 /* Event.swift in Sources */,
+				0F9F85FD1C948670008A8284 /* SettingsViewController.swift in Sources */,
+				0F9F60B21C94A2DC006AAA19 /* InstructorMenuModel.swift in Sources */,
 				0F1CF3741C5C65FC0048A7D7 /* HomePageViewController.swift in Sources */,
+				0F9F60CC1C94A3BE006AAA19 /* ScheduleAbsenceModel.swift in Sources */,
 				0F76990D1C5D4FC200F04142 /* SignOut.swift in Sources */,
 				0F7699071C5D4FA400F04142 /* Absence.swift in Sources */,
 				0F7D26C61C6571DC00176CF2 /* EventViewController.swift in Sources */,
@@ -374,14 +523,21 @@
 				0F76991F1C5D64C800F04142 /* RosterViewController.swift in Sources */,
 				0F7699191C5D5E5400F04142 /* EventsCalendarViewController.swift in Sources */,
 				0F7D26C81C65784000176CF2 /* RosterHistoryViewController.swift in Sources */,
+				0F9F60D41C94A3DF006AAA19 /* StudentRosterModel.swift in Sources */,
 				0F1CF37C1C5C65FC0048A7D7 /* SignatureView.swift in Sources */,
 				0F1CF3761C5C65FC0048A7D7 /* Line.swift in Sources */,
+				0F9F60C41C94A39B006AAA19 /* EventsCalendarModel.swift in Sources */,
 				0FF20FF21C72A847007285DB /* SelectStudentToAddAttendanceViewController.swift in Sources */,
+				0F9F60BA1C94A32C006AAA19 /* SelectStudentToAddAttendanceModel.swift in Sources */,
 				0F7699171C5D5E4100F04142 /* AllEventsViewController.swift in Sources */,
+				0F9F60B81C94A31A006AAA19 /* SelectRosterToAddStudentModel.swift in Sources */,
+				0F9F60B41C94A2E6006AAA19 /* RosterHistoryModel.swift in Sources */,
 				0F7699051C5D4F9800F04142 /* Guardian.swift in Sources */,
 				0F1CF3101C5C4BB00048A7D7 /* FMDatabaseQueue.m in Sources */,
 				0F7699211C5D674600F04142 /* AddOrEditAttendanceViewController.swift in Sources */,
+				0F9F60BE1C94A349006AAA19 /* SettingsViewModel.swift in Sources */,
 				0F1CF3A11C5D31E90048A7D7 /* StudentInfoViewController.swift in Sources */,
+				0F9F60B61C94A306006AAA19 /* RosterViewModel.swift in Sources */,
 				0F7699131C5D540F00F04142 /* AllStudentsViewController.swift in Sources */,
 				0F1CF38B1C5D1D5E0048A7D7 /* StudentRosterViewController.swift in Sources */,
 			);
