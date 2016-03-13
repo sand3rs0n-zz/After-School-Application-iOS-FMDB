@@ -9,6 +9,7 @@
 import UIKit
 
 class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    private var addOrEditStudentModel = AddOrEditStudentModel()
 
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var lastName: UITextField!
@@ -18,31 +19,18 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var addToRoster: UIButton!
     @IBOutlet weak var signOutRecordsButton: UIButton!
-
     @IBOutlet weak var titleBar: UINavigationItem!
     @IBOutlet weak var active: UISegmentedControl!
-
     @IBOutlet weak var guardianTable: UITableView!
     @IBOutlet weak var contactTable: UITableView!
-    
-    
-    private var updateStudent = false
-    private var studentID = 0
-    private var student = Student()
-    private var guardians = [Guardian]()
-    private var contactNumbers = [ContactNumber]()
-    private var navTitle = ""
-    private var buttonText = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.titleBar.title = navTitle
-        self.addUpdateButton!.setTitle(buttonText, forState: .Normal)
-        if (updateStudent) {
-            getStudent()
-            getGuardians()
-            getContactNumbers()
+        self.titleBar.title = addOrEditStudentModel.getTitleValue()
+        self.addUpdateButton!.setTitle(addOrEditStudentModel.getButtonText(), forState: .Normal)
+        if (addOrEditStudentModel.getUpdate()) {
+            addOrEditStudentModel.resetResults()
             fillFields()
         } else {
             hideFields()
@@ -50,50 +38,8 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
         // Do any additional setup after loading the view.
     }
 
-    private func getStudent() {
-        let querySQL = "SELECT * FROM STUDENTPROFILES WHERE studentID = '\(studentID)'"
-        let results = database.search(querySQL)
-        while(results.next()) {
-            student.setStudentID(Int(results.intForColumn("studentID")))
-            student.setFirstName(results.stringForColumn("firstName"))
-            student.setLastName(results.stringForColumn("lastName"))
-            student.setActive(Int(results.intForColumn("active")))
-            student.setSchool(results.stringForColumn("school"))
-            student.setBirthDay(Int(results.intForColumn("birthDay")))
-            student.setBirthMonth(Int(results.intForColumn("birthMonth")))
-            student.setBirthYear(Int(results.intForColumn("birthYear")))
-        }
-        results.close()
-    }
-
-    private func getGuardians() {
-        let querySQL = "SELECT * FROM GUARDIANS WHERE studentID = '\(studentID)'"
-        let results = database.search(querySQL)
-        while (results.next()) {
-            let cur = Guardian()
-            cur.setGuardianID(Int(results.intForColumn("guardianID")))
-            cur.setName(results.stringForColumn("name"))
-            cur.setStudentID(Int(results.intForColumn("studentID")))
-            guardians.append(cur)
-        }
-        results.close()
-    }
-
-    private func getContactNumbers() {
-        let querySQL = "SELECT * FROM CONTACTNUMBERS WHERE studentID = '\(studentID)'"
-        let results = database.search(querySQL)
-        while (results.next()) {
-            let cur = ContactNumber()
-            cur.setContactID(Int(results.intForColumn("contactID")))
-            cur.setName(results.stringForColumn("name"))
-            cur.setPhoneNumber(results.stringForColumn("phoneNumber"))
-            cur.setStudentID(Int(results.intForColumn("studentID")))
-            contactNumbers.append(cur)
-        }
-        results.close()
-    }
-
     private func fillFields() {
+        let student = addOrEditStudentModel.getStudent()
         firstName.text = student.getFirstName()
         lastName.text = student.getLastName()
         school.text = student.getSchool()
@@ -113,6 +59,7 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
     }
 
     private func setBirthDate() {
+        let student = addOrEditStudentModel.getStudent()
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
         let dateString = String(student.getBirthDay()) + "/" + String(student.getBirthMonth()) + "/" + String(student.getBirthYear())
@@ -121,19 +68,16 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
     }
 
     func setTitleValue(navTitle: String) {
-        self.navTitle = navTitle
+        addOrEditStudentModel.setTitleValue(navTitle)
     }
-
     func setAddUpdateButtonText(buttonText: String) {
-        self.buttonText = buttonText
+        addOrEditStudentModel.setButtonText(buttonText)
     }
-
     func setUpdate(update: Bool) {
-        updateStudent = update
+        addOrEditStudentModel.setUpdate(update)
     }
-
     func setStudentID(studentID: Int) {
-        self.studentID = studentID
+        addOrEditStudentModel.setStudentID(studentID)
     }
 
     override func didReceiveMemoryWarning() {
@@ -159,10 +103,10 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
         var studentRosters = ""
 
         if (validatFields()) {
-            if (updateStudent) {
-                insertSQL = "UPDATE STUDENTPROFILES SET firstName = '\(firstName.text!)', lastName = '\(lastName.text!)', active = '\(activeBool)', school = '\(school.text!)', birthDay = '\(Int(dateArr[1])!)', birthMonth = '\(Int(dateArr[0])!)', birthYear = '\(Int(dateArr[2])!)' WHERE studentID = '\(studentID)'"
-                absencesList = "UPDATE ABSENCESLIST SET studentFirstName = '\(firstName.text!)', studentLastName = '\(lastName.text!)' WHERE studentID = '\(studentID)'"
-                studentRosters = "UPDATE STUDENTROSTERS SET studentFirstName = '\(firstName.text!)', studentLastName = '\(lastName.text!)' WHERE studentID = '\(studentID)'"
+            if (addOrEditStudentModel.getUpdate()) {
+                insertSQL = "UPDATE STUDENTPROFILES SET firstName = '\(firstName.text!)', lastName = '\(lastName.text!)', active = '\(activeBool)', school = '\(school.text!)', birthDay = '\(Int(dateArr[1])!)', birthMonth = '\(Int(dateArr[0])!)', birthYear = '\(Int(dateArr[2])!)' WHERE studentID = '\(addOrEditStudentModel.getStudentID())'"
+                absencesList = "UPDATE ABSENCESLIST SET studentFirstName = '\(firstName.text!)', studentLastName = '\(lastName.text!)' WHERE studentID = '\(addOrEditStudentModel.getStudentID())'"
+                studentRosters = "UPDATE STUDENTROSTERS SET studentFirstName = '\(firstName.text!)', studentLastName = '\(lastName.text!)' WHERE studentID = '\(addOrEditStudentModel.getStudentID())'"
             } else {
                 insertSQL = "INSERT INTO STUDENTPROFILES (firstName, lastName, active, school, birthDay, birthMonth, birthYear) VALUES ('\(firstName.text!)', '\(lastName.text!)', '\(activeBool)', '\(school.text!)', '\(Int(dateArr[1])!)', '\(Int(dateArr[0])!)', '\(Int(dateArr[2])!)')"
             }
@@ -170,11 +114,11 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
             let result1 = database.update(insertSQL)
             var result2 = false
             var result3 = false
-            if (updateStudent) {
+            if (addOrEditStudentModel.getUpdate()) {
                 result2 = database.update(absencesList)
                 result3 = database.update(studentRosters)
             }
-            if (result1 && (!updateStudent || (result2 && result3))) {
+            if (result1 && (!addOrEditStudentModel.getUpdate() || (result2 && result3))) {
                 self.performSegueWithIdentifier("instructorMenuStudentsUnwind", sender: self)
             } else if (!result1) {
                 let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Add Student to StudentProfiles Database")
@@ -205,13 +149,13 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
         myAlertController.addAction(cancelAction)
 
         let nextAction = UIAlertAction(title: "Delete", style: .Default) { action -> Void in
-            let insertSQL = "DELETE FROM STUDENTPROFILES WHERE studentID = '\(self.studentID)'"
-            let deleteStudentRosters = "DELETE FROM STUDENTROSTERS WHERE studentID = '\(self.studentID)'"
-            let deleteSignOuts = "DELETE FROM SIGNOUTS WHERE studentID = '\(self.studentID)'"
-            let deleteOneTimeAttendance = "DELETE FROM ONETIMEATTENDANCE WHERE studentID = '\(self.studentID)'"
-            let deleteGuardians = "DELETE FROM GUARDIANS WHERE studentID = '\(self.studentID)'"
-            let deleteContactNumbers = "DELETE FROM CONTACTNUMBERS WHERE studentID = '\(self.studentID)'"
-            let deleteAbsencesList = "DELETE FROM ABSENCESLIST WHERE studentID = '\(self.studentID)'"
+            let insertSQL = "DELETE FROM STUDENTPROFILES WHERE studentID = '\(self.addOrEditStudentModel.getStudentID())'"
+            let deleteStudentRosters = "DELETE FROM STUDENTROSTERS WHERE studentID = '\(self.addOrEditStudentModel.getStudentID())'"
+            let deleteSignOuts = "DELETE FROM SIGNOUTS WHERE studentID = '\(self.addOrEditStudentModel.getStudentID())'"
+            let deleteOneTimeAttendance = "DELETE FROM ONETIMEATTENDANCE WHERE studentID = '\(self.addOrEditStudentModel.getStudentID())'"
+            let deleteGuardians = "DELETE FROM GUARDIANS WHERE studentID = '\(self.addOrEditStudentModel.getStudentID())'"
+            let deleteContactNumbers = "DELETE FROM CONTACTNUMBERS WHERE studentID = '\(self.addOrEditStudentModel.getStudentID())'"
+            let deleteAbsencesList = "DELETE FROM ABSENCESLIST WHERE studentID = '\(self.addOrEditStudentModel.getStudentID())'"
             let result1 = database.update(insertSQL)
             let result2 = database.update(deleteStudentRosters)
             let result3 = database.update(deleteSignOuts)
@@ -253,14 +197,15 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let student = addOrEditStudentModel.getStudent()
         if (segue.identifier == "EditStudentInfoToSignOuts") {
             let sohvc = segue.destinationViewController as? SignOutHistoryViewController
             sohvc?.setState(1)
-            sohvc?.setStudentID(studentID)
+            sohvc?.setStudentID(student.getStudentID())
             sohvc?.setStudentName(student.getFirstName() + " " + student.getLastName())
         } else if (segue.identifier == "EditStudentToRosterHistory") {
             let rhvc = segue.destinationViewController as? RosterHistoryViewController
-            rhvc?.setStudentID(studentID)
+            rhvc?.setStudentID(student.getStudentID())
         }
     }
     
@@ -270,10 +215,10 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(tableView == self.guardianTable && guardians.count > 0) {
-            return guardians.count + 1
-        } else if(tableView == self.contactTable && contactNumbers.count > 0) {
-            return contactNumbers.count + 1
+        if(tableView == self.guardianTable && addOrEditStudentModel.getGuardiansCount() > 0) {
+            return addOrEditStudentModel.getGuardiansCount() + 1
+        } else if(tableView == self.contactTable && addOrEditStudentModel.getContactNumbersCount() > 0) {
+            return addOrEditStudentModel.getContactNumbersCount() + 1
         } else {
             return 2
         }
@@ -285,16 +230,16 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
             let row = indexPath.row
 
-            if (guardians.count == 0) {
+            if (addOrEditStudentModel.getGuardiansCount() == 0) {
                 cell.textLabel?.text = "No Approved Guardians"
             }
             
-            if (guardians.count > 0 && row < guardians.count) {
-                let guardian = guardians[row]
+            if (addOrEditStudentModel.getGuardiansCount() > 0 && row < addOrEditStudentModel.getGuardiansCount()) {
+                let guardian = addOrEditStudentModel.getGuardian(row)
                 let guardianName = guardian.getName()
                 cell.textLabel?.text = guardianName
             }
-            else if (row == guardians.count) {
+            else if (row == addOrEditStudentModel.getGuardiansCount()) {
                 cell.textLabel?.text = "Add New Guardian"
                 cell.textLabel?.textColor = UIColor.redColor()
                 cell.textLabel?.font = UIFont.boldSystemFontOfSize(17.0)
@@ -303,17 +248,17 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "contactCell")
             let row = indexPath.row
 
-            if (contactNumbers.count == 0) {
+            if (addOrEditStudentModel.getContactNumbersCount() == 0) {
                 cell.textLabel?.text = "No Emergency Contacts"
             }
 
-            if (contactNumbers.count > 0 && row < contactNumbers.count) {
-                let contact = contactNumbers[row]
+            if (addOrEditStudentModel.getContactNumbersCount() > 0 && row < addOrEditStudentModel.getContactNumbersCount()) {
+                let contact = addOrEditStudentModel.getContactNumber(row)
                 let contactName = contact.getName()
                 let contactPhone = contact.getPhoneNumber()
                 cell.textLabel?.text = "\(contactName): \(contactPhone)"
             }
-            else if (row == contactNumbers.count){
+            else if (row == addOrEditStudentModel.getContactNumbersCount()){
                 cell.textLabel?.text = "Add New Contact"
                 cell.textLabel?.textColor = UIColor.redColor()
                 cell.textLabel?.font = UIFont.boldSystemFontOfSize(17.0)
@@ -344,11 +289,10 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
                     name = ((alertController.textFields?.first)! as UITextField).text!
                     if(name != "") {
                         print("Added guardian \(name)")
-                        let insertSQL = "INSERT INTO GUARDIANS (studentID, name) VALUES ('\(self.studentID)', '\(name)')"
+                        let insertSQL = "INSERT INTO GUARDIANS (studentID, name) VALUES ('\(self.addOrEditStudentModel.getStudentID())', '\(name)')"
                         let result = database.update(insertSQL)
                         if (result) {
-                            self.guardians.removeAll()
-                            self.getGuardians()
+                            self.addOrEditStudentModel.resetGuardians()
                             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                                 self.guardianTable.reloadData()
                             })
@@ -389,11 +333,10 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
                     number = ((alertController.textFields?.last)! as UITextField).text!
                     if(name != "" && number != "") {
                         print("Added contact \(name) with number \(number)")
-                        let insertSQL = "INSERT INTO CONTACTNUMBERS (studentID, phoneNumber, name) VALUES ('\(self.studentID)', '\(number)', '\(name)')"
+                        let insertSQL = "INSERT INTO CONTACTNUMBERS (studentID, phoneNumber, name) VALUES ('\(self.addOrEditStudentModel.getStudentID())', '\(number)', '\(name)')"
                         let result = database.update(insertSQL)
                         if (result) {
-                            self.contactNumbers.removeAll()
-                            self.getContactNumbers()
+                            self.addOrEditStudentModel.resetContactNumbers()
                             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                                 self.contactTable.reloadData()
                             })

@@ -82,7 +82,6 @@ class StudentInfoModel {
     func getStudentID() -> Int {
         return studentID
     }
-
     private func setDOB(){
         dob = Date(day: student.getBirthDay(), month: student.getBirthMonth(), year: student.getBirthYear())
     }
@@ -101,7 +100,6 @@ class StudentInfoModel {
     func getContactNumber(i: Int) -> ContactNumber {
         return contactNumbers[i]
     }
-
     func getFirstName() -> String {
         return student.getFirstName()
     }

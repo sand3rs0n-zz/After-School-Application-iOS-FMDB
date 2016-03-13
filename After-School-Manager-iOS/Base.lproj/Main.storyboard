@@ -565,7 +565,7 @@
         <!--Add Or Edit Roster View Controller-->
         <scene sceneID="K5S-o6-pvC">
             <objects>
-                <viewController id="JIw-fz-5fF" customClass="AddOrEditRosterViewController" sceneMemberID="viewController">
+                <viewController id="JIw-fz-5fF" customClass="AddOrEditRosterViewController" customModule="After_School_Manager_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4WE-S4-dDh"/>
                         <viewControllerLayoutGuide type="bottom" id="WjP-xg-c8e"/>

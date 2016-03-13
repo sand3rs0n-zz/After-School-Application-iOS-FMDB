@@ -64,13 +64,11 @@
 		0F9F60AC1C94A2B0006AAA19 /* AllRostersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F60AB1C94A2B0006AAA19 /* AllRostersModel.swift */; };
 		0F9F60AE1C94A2B8006AAA19 /* AllStudentsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F60AD1C94A2B8006AAA19 /* AllStudentsModel.swift */; };
 		0F9F60B01C94A2CD006AAA19 /* EditTodayAttendanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F60AF1C94A2CD006AAA19 /* EditTodayAttendanceModel.swift */; };
-		0F9F60B21C94A2DC006AAA19 /* InstructorMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F60B11C94A2DC006AAA19 /* InstructorMenuModel.swift */; };
 		0F9F60B41C94A2E6006AAA19 /* RosterHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F60B31C94A2E6006AAA19 /* RosterHistoryModel.swift */; };
 		0F9F60B61C94A306006AAA19 /* RosterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F60B51C94A306006AAA19 /* RosterViewModel.swift */; };
 		0F9F60B81C94A31A006AAA19 /* SelectRosterToAddStudentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F60B71C94A31A006AAA19 /* SelectRosterToAddStudentModel.swift */; };
 		0F9F60BA1C94A32C006AAA19 /* SelectStudentToAddAttendanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F60B91C94A32C006AAA19 /* SelectStudentToAddAttendanceModel.swift */; };
 		0F9F60BC1C94A339006AAA19 /* SelectStudentToAddToRosterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F60BB1C94A339006AAA19 /* SelectStudentToAddToRosterModel.swift */; };
-		0F9F60BE1C94A349006AAA19 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F60BD1C94A349006AAA19 /* SettingsViewModel.swift */; };
 		0F9F60C01C94A356006AAA19 /* TodayRosterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F60BF1C94A355006AAA19 /* TodayRosterModel.swift */; };
 		0F9F60C41C94A39B006AAA19 /* EventsCalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F60C31C94A39B006AAA19 /* EventsCalendarModel.swift */; };
 		0F9F60C61C94A3A4006AAA19 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F60C51C94A3A4006AAA19 /* EventViewModel.swift */; };
@@ -158,13 +156,11 @@
 		0F9F60AB1C94A2B0006AAA19 /* AllRostersModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllRostersModel.swift; sourceTree = "<group>"; };
 		0F9F60AD1C94A2B8006AAA19 /* AllStudentsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllStudentsModel.swift; sourceTree = "<group>"; };
 		0F9F60AF1C94A2CD006AAA19 /* EditTodayAttendanceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTodayAttendanceModel.swift; sourceTree = "<group>"; };
-		0F9F60B11C94A2DC006AAA19 /* InstructorMenuModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructorMenuModel.swift; sourceTree = "<group>"; };
 		0F9F60B31C94A2E6006AAA19 /* RosterHistoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterHistoryModel.swift; sourceTree = "<group>"; };
 		0F9F60B51C94A306006AAA19 /* RosterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterViewModel.swift; sourceTree = "<group>"; };
 		0F9F60B71C94A31A006AAA19 /* SelectRosterToAddStudentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectRosterToAddStudentModel.swift; sourceTree = "<group>"; };
 		0F9F60B91C94A32C006AAA19 /* SelectStudentToAddAttendanceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStudentToAddAttendanceModel.swift; sourceTree = "<group>"; };
 		0F9F60BB1C94A339006AAA19 /* SelectStudentToAddToRosterModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStudentToAddToRosterModel.swift; sourceTree = "<group>"; };
-		0F9F60BD1C94A349006AAA19 /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		0F9F60BF1C94A355006AAA19 /* TodayRosterModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayRosterModel.swift; sourceTree = "<group>"; };
 		0F9F60C31C94A39B006AAA19 /* EventsCalendarModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsCalendarModel.swift; sourceTree = "<group>"; };
 		0F9F60C51C94A3A4006AAA19 /* EventViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
@@ -305,13 +301,11 @@
 				0F9F60AB1C94A2B0006AAA19 /* AllRostersModel.swift */,
 				0F9F60AD1C94A2B8006AAA19 /* AllStudentsModel.swift */,
 				0F9F60AF1C94A2CD006AAA19 /* EditTodayAttendanceModel.swift */,
-				0F9F60B11C94A2DC006AAA19 /* InstructorMenuModel.swift */,
 				0F9F60B31C94A2E6006AAA19 /* RosterHistoryModel.swift */,
 				0F9F60B51C94A306006AAA19 /* RosterViewModel.swift */,
 				0F9F60B71C94A31A006AAA19 /* SelectRosterToAddStudentModel.swift */,
 				0F9F60B91C94A32C006AAA19 /* SelectStudentToAddAttendanceModel.swift */,
 				0F9F60BB1C94A339006AAA19 /* SelectStudentToAddToRosterModel.swift */,
-				0F9F60BD1C94A349006AAA19 /* SettingsViewModel.swift */,
 				0F9F60BF1C94A355006AAA19 /* TodayRosterModel.swift */,
 			);
 			name = "Instructor View Models";
@@ -513,7 +507,6 @@
 				0F1CF30E1C5C4BB00048A7D7 /* FMDatabaseAdditions.m in Sources */,
 				0F33BEF81C655AB200312041 /* Event.swift in Sources */,
 				0F9F85FD1C948670008A8284 /* SettingsViewController.swift in Sources */,
-				0F9F60B21C94A2DC006AAA19 /* InstructorMenuModel.swift in Sources */,
 				0F1CF3741C5C65FC0048A7D7 /* HomePageViewController.swift in Sources */,
 				0F9F60CC1C94A3BE006AAA19 /* ScheduleAbsenceModel.swift in Sources */,
 				0F76990D1C5D4FC200F04142 /* SignOut.swift in Sources */,
@@ -535,7 +528,6 @@
 				0F7699051C5D4F9800F04142 /* Guardian.swift in Sources */,
 				0F1CF3101C5C4BB00048A7D7 /* FMDatabaseQueue.m in Sources */,
 				0F7699211C5D674600F04142 /* AddOrEditAttendanceViewController.swift in Sources */,
-				0F9F60BE1C94A349006AAA19 /* SettingsViewModel.swift in Sources */,
 				0F1CF3A11C5D31E90048A7D7 /* StudentInfoViewController.swift in Sources */,
 				0F9F60B61C94A306006AAA19 /* RosterViewModel.swift in Sources */,
 				0F7699131C5D540F00F04142 /* AllStudentsViewController.swift in Sources */,
