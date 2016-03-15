@@ -9,14 +9,12 @@
 import UIKit
 
 class SelectStudentToAddAttendanceViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+    private var selectStudentToAddAttendanceModel = SelectStudentToAddAttendanceModel()
     @IBOutlet weak var studentListTable: UITableView!
-    private var studentList = [Student]()
-    private var forwardedStudentID = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        getStudents()
+        selectStudentToAddAttendanceModel.resetStudents()
 
         // Do any additional setup after loading the view.
     }
@@ -26,45 +24,24 @@ class SelectStudentToAddAttendanceViewController: UIViewController, UITableViewD
         // Dispose of any resources that can be recreated.
     }
 
-    private func getStudents() {
-        let querySQL = "SELECT * FROM STUDENTPROFILES WHERE active = 1 ORDER BY lastName, firstName ASC"
-
-        let results = database.search(querySQL)
-        while (results.next()) {
-            let cur = Student()
-            cur.setStudentID(Int(results.intForColumn("studentID")))
-            cur.setFirstName(results.stringForColumn("firstName"))
-            cur.setLastName(results.stringForColumn("lastName"))
-            cur.setActive(Int(results.intForColumn("active")))
-            cur.setSchool(results.stringForColumn("school"))
-            cur.setBirthDay(Int(results.intForColumn("birthDay")))
-            cur.setBirthMonth(Int(results.intForColumn("birthMonth")))
-            cur.setBirthYear(Int(results.intForColumn("birthYear")))
-            studentList.append(cur)
-        }
-        results.close()
-    }
-
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let student = studentList[indexPath.row]
+        let student = selectStudentToAddAttendanceModel.getStudent(indexPath.row)
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         cell.textLabel?.text = student.getFirstName() + " " + student.getLastName()
         return cell
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return studentList.count
+        return selectStudentToAddAttendanceModel.getStudentListCount()
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let student = studentList[(indexPath.row)]
-        forwardedStudentID = student.getStudentID()
+        selectStudentToAddAttendanceModel.setForwardedStudentID(selectStudentToAddAttendanceModel.getStudent(indexPath.row).getStudentID())
         performSegueWithIdentifier("SelectStudentToSelectRoster", sender: self)
     }
 
     @IBAction func selectStudentToAddUnwind(segue: UIStoryboardSegue) {
-        studentList.removeAll()
-        getStudents()
+        selectStudentToAddAttendanceModel.resetStudents()
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             self.studentListTable.reloadData()
         })
@@ -73,7 +50,8 @@ class SelectStudentToAddAttendanceViewController: UIViewController, UITableViewD
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "SelectStudentToSelectRoster") {
             let asavc = segue.destinationViewController as? AddSpecialAttendanceViewController
-            asavc?.setStudentID(forwardedStudentID)
+            asavc?.setStudentID(
+                selectStudentToAddAttendanceModel.getForwardedStudentID())
         }
     }
 }

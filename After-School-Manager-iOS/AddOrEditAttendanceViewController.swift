@@ -9,8 +9,7 @@
 import UIKit
 
 class AddOrEditAttendanceViewController: UIViewController {
-
-    private var state = 0
+    private var addOrEditAttendanceModel = AddOrEditAttendanceModel()
 
     @IBOutlet weak var monday: UIButton!
     @IBOutlet weak var tuesday: UIButton!
@@ -26,37 +25,26 @@ class AddOrEditAttendanceViewController: UIViewController {
     @IBOutlet weak var studentName: UILabel!
     @IBOutlet weak var rosterName: UILabel!
 
-    private var week: [UIButton] = []
-    private var weekBool = [0, 0, 0, 0, 0, 0, 0]
-    private var navTitle = ""
-    private var studentID = 0
-    private var rosterID = 0
-    private var schedule = StudentRoster()
-    private var student = Student()
-    private var buttonText = ""
-    private var rosterType = 0
-    private var weekday = ""
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        week = [monday, tuesday, wednesday, thursday, friday, saturday, sunday]
+        addOrEditAttendanceModel.setWeek([monday, tuesday, wednesday, thursday, friday, saturday, sunday])
 
-        self.titleBar.title = navTitle
-        self.updateAttendanceButton!.setTitle(buttonText, forState: .Normal)
+        self.titleBar.title = addOrEditAttendanceModel.getTitleValue()
+        self.updateAttendanceButton!.setTitle(addOrEditAttendanceModel.getButtonText(), forState: .Normal)
 
-        let results = database.search("SELECT * FROM ROSTERS WHERE rosterID = '\(rosterID)'")
+        let results = database.search("SELECT * FROM ROSTERS WHERE rosterID = '\(addOrEditAttendanceModel.getRosterID())'")
         results.next()
         rosterName.text = results.stringForColumn("name")
-        rosterType = Int(results.intForColumn("rosterType"))
+        addOrEditAttendanceModel.setRosterType(Int(results.intForColumn("rosterType")))
 
-        if (rosterType == 0) {
+        if (addOrEditAttendanceModel.getRosterType() == 0) {
             let date = Date(day: Int(results.intForColumn("startDay")), month: Int(results.intForColumn("startMonth")), year: Int(results.intForColumn("startYear")))
             dayCampButtons(date)
         }
 
-        if (state == 0 || state == 2) {
+        if (addOrEditAttendanceModel.getState() == 0 || addOrEditAttendanceModel.getState() == 2) {
             fillEditPage()
-        } else if (state == 1 || state == 3) {
+        } else if (addOrEditAttendanceModel.getState() == 1 || addOrEditAttendanceModel.getState() == 3) {
             fillAddPage()
         }
         results.close()
@@ -69,106 +57,74 @@ class AddOrEditAttendanceViewController: UIViewController {
     }
 
     private func dayCampButtons(date: Date) {
-        weekday = date.getWeekday()
+        addOrEditAttendanceModel.setWeekday(date.getWeekday())
         for (var i = 0; i < 7; i++) {
-            if (week[i].titleLabel?.text! == weekday.capitalizedString) {
-                if (state == 1 || state == 3) {
-                    toggleColor(week[i])
+            if (addOrEditAttendanceModel.getWeek(i).titleLabel?.text! == addOrEditAttendanceModel.getWeekday().capitalizedString) {
+                if (addOrEditAttendanceModel.getState() == 1 || addOrEditAttendanceModel.getState() == 3) {
+                    toggleColor(addOrEditAttendanceModel.getWeek(i))
                 }
-                weekBool[i] = 1
+                addOrEditAttendanceModel.setWeekBool(1, i: i)
             } else {
-                week[i].hidden = true
+                addOrEditAttendanceModel.getWeek(i).hidden = true
             }
         }
     }
 
     private func fillAddPage() {
-        let querySQL = "SELECT * FROM STUDENTPROFILES WHERE studentID = '\(studentID)'"
-        let results = database.search(querySQL)
-        results.next()
-        student.setStudentID(Int(results.intForColumn("studentID")))
-        student.setFirstName(results.stringForColumn("firstName"))
-        student.setLastName(results.stringForColumn("lastName"))
-        student.setActive(Int(results.intForColumn("active")))
-        student.setSchool(results.stringForColumn("school"))
-        student.setBirthDay(Int(results.intForColumn("birthDay")))
-        student.setBirthMonth(Int(results.intForColumn("birthMonth")))
-        student.setBirthYear(Int(results.intForColumn("birthYear")))
-        results.close()
-        studentName.text = (student.getFirstName() + " " + student.getLastName())
+        addOrEditAttendanceModel.getStudent()
+        studentName.text =  addOrEditAttendanceModel.getStudentName()
         deleteFromRosterButton.hidden = true
     }
 
     private func fillEditPage() {
-        let querySQL = "SELECT * FROM STUDENTROSTERS WHERE rosterID = '\(rosterID)' AND studentID = '\(studentID)'"
-        let results = database.search(querySQL)
-        results.next()
-        schedule.setStudentFirstName(results.stringForColumn("studentFirstName"))
-        schedule.setStudentLastName(results.stringForColumn("studentLastName"))
-        schedule.setRosterName(results.stringForColumn("rosterName"))
-        schedule.setStudentID(Int(results.intForColumn("studentID")))
-        schedule.setRosterID(Int(results.intForColumn("rosterID")))
-        schedule.setMonday(Int(results.intForColumn("monday")))
-        schedule.setTuesday(Int(results.intForColumn("tuesday")))
-        schedule.setWednesday(Int(results.intForColumn("wednesday")))
-        schedule.setThursday(Int(results.intForColumn("thursday")))
-        schedule.setFriday(Int(results.intForColumn("friday")))
-        schedule.setSaturday(Int(results.intForColumn("saturday")))
-        schedule.setSunday(Int(results.intForColumn("sunday")))
-        results.close()
-        
-        
-        
+        addOrEditAttendanceModel.getStudentRoster()
+        let schedule = addOrEditAttendanceModel.getSchedule()
         studentName.text = (schedule.getStudentFirstName() + " " + schedule.getStudentLastName())
 
         if (schedule.getMonday() == 1) {
             toggleColor(monday)
-            weekBool[0] = 1
+            addOrEditAttendanceModel.setWeekBool(1, i: 0)
         }
         if (schedule.getTuesday() == 1) {
             toggleColor(tuesday)
-            weekBool[1] = 1
+            addOrEditAttendanceModel.setWeekBool(1, i: 1)
         }
         if (schedule.getWednesday() == 1) {
             toggleColor(wednesday)
-            weekBool[2] = 1
+            addOrEditAttendanceModel.setWeekBool(1, i: 2)
         }
         if (schedule.getThursday() == 1) {
             toggleColor(thursday)
-            weekBool[3] = 1
+            addOrEditAttendanceModel.setWeekBool(1, i: 3)
         }
         if (schedule.getFriday() == 1) {
             toggleColor(friday)
-            weekBool[4] = 1
+            addOrEditAttendanceModel.setWeekBool(1, i: 4)
         }
         if (schedule.getSaturday() == 1) {
             toggleColor(saturday)
-            weekBool[5] = 1
+            addOrEditAttendanceModel.setWeekBool(1, i: 5)
         }
         if (schedule.getSunday() == 1) {
             toggleColor(sunday)
-            weekBool[6] = 1
+            addOrEditAttendanceModel.setWeekBool(1, i: 6)
         }
     }
 
     func setState(state: Int) {
-        self.state = state
+        addOrEditAttendanceModel.setState(state)
     }
-
     func setTitleValue(navTitle: String) {
-        self.navTitle = navTitle
+        addOrEditAttendanceModel.setTitleValue(navTitle)
     }
-
     func setButtonText(buttonText: String) {
-        self.buttonText = buttonText
+        addOrEditAttendanceModel.setButtonText(buttonText)
     }
-
     func setStudentId(studentID: Int) {
-        self.studentID = studentID
+        addOrEditAttendanceModel.setStudentID(studentID)
     }
-
     func setRosterId(rosterID: Int) {
-        self.rosterID = rosterID
+        addOrEditAttendanceModel.setRosterID(rosterID)
     }
 
     @IBAction func backButton(sender: AnyObject) {
@@ -176,13 +132,13 @@ class AddOrEditAttendanceViewController: UIViewController {
     }
 
     private func back() {
-        if (state == 0) {
+        if (addOrEditAttendanceModel.getState() == 0) {
             performSegueWithIdentifier("EditStudentFromAllRostersUnwind", sender: self)
-        } else if (state == 1) {
+        } else if (addOrEditAttendanceModel.getState() == 1) {
             performSegueWithIdentifier("ReturnToSelectStudentToAddToRosterUnwind", sender: self)
-        } else if (state == 2) {
+        } else if (addOrEditAttendanceModel.getState() == 2) {
             performSegueWithIdentifier("ReturnToRosterHistoryUnwind", sender: self)
-        } else if (state == 3) {
+        } else if (addOrEditAttendanceModel.getState() == 3) {
             performSegueWithIdentifier("ReturnToSelectRosterToAddStudentUnwind", sender: self)
         }
     }
@@ -210,12 +166,12 @@ class AddOrEditAttendanceViewController: UIViewController {
     }
 
     private func daySelected(day: Int) {
-        if (weekBool[day] == 1) {
-            weekBool[day] = 0
+        if (addOrEditAttendanceModel.getWeekBool(day) == 1) {
+            addOrEditAttendanceModel.setWeekBool(0, i: day)
         } else {
-            weekBool[day] = 1
+            addOrEditAttendanceModel.setWeekBool(1, i: day)
         }
-        let dayOfWeek = week[day]
+        let dayOfWeek = addOrEditAttendanceModel.getWeek(day)
         toggleColor(dayOfWeek)
     }
 
@@ -233,16 +189,19 @@ class AddOrEditAttendanceViewController: UIViewController {
     @IBAction func updateAttendance(sender: AnyObject) {
         var name = studentName.text?.componentsSeparatedByString(" ")
         var insertSQL = ""
-        if (state == 0 || state == 2) {
-            print(weekBool[6])
-            insertSQL = "UPDATE STUDENTROSTERS SET studentFirstName = '\(name![0])', studentLastName = '\(name![1])', studentID = '\(studentID)', rosterID = '\(rosterID)', monday = '\(weekBool[0])', tuesday = '\(weekBool[1])', wednesday = '\(weekBool[2])', thursday = '\(weekBool[3])', friday = '\(weekBool[4])', saturday = '\(weekBool[5])', sunday = '\(weekBool[6])' WHERE rosterID = '\(rosterID)' AND studentID = '\(studentID)'"
-        } else if (state == 1 || state == 3) {
-            insertSQL = "INSERT INTO STUDENTROSTERS (studentFirstName, studentLastName, rosterName, studentID, rosterID, monday, tuesday, wednesday, thursday, friday, saturday, sunday) VALUES ('\(name![0])', '\(name![1])', '\(schedule.getRosterName())', '\(studentID)', '\(rosterID)', '\(weekBool[0])', '\(weekBool[1])', '\(weekBool[2])', '\(weekBool[3])', '\(weekBool[4])', '\(weekBool[5])', '\(weekBool[6])')"
+        addOrEditAttendanceModel.getWeekBool(0)
+        if (addOrEditAttendanceModel.getState() == 0 || addOrEditAttendanceModel.getState() == 2) {
+            insertSQL = "UPDATE STUDENTROSTERS SET studentFirstName = '\(name![0])', studentLastName = '\(name![1])', studentID = '\(addOrEditAttendanceModel.getStudentID())', rosterID = '\(addOrEditAttendanceModel.getRosterID())', monday = '\(addOrEditAttendanceModel.getWeekBool(0))', tuesday = '\(addOrEditAttendanceModel.getWeekBool(1))', wednesday = '\(addOrEditAttendanceModel.getWeekBool(2))', thursday = '\(addOrEditAttendanceModel.getWeekBool(3))', friday = '\(addOrEditAttendanceModel.getWeekBool(4))', saturday = '\(addOrEditAttendanceModel.getWeekBool(5))', sunday = '\(addOrEditAttendanceModel.getWeekBool(6))' WHERE rosterID = '\(addOrEditAttendanceModel.getRosterID())' AND studentID = '\(addOrEditAttendanceModel.getStudentID())'"
+        } else if (addOrEditAttendanceModel.getState() == 1 || addOrEditAttendanceModel.getState() == 3) {
+            insertSQL = "INSERT INTO STUDENTROSTERS (studentFirstName, studentLastName, rosterName, studentID, rosterID, monday, tuesday, wednesday, thursday, friday, saturday, sunday) VALUES ('\(name![0])', '\(name![1])', '\(addOrEditAttendanceModel.getRosterName())', '\(addOrEditAttendanceModel.getStudentID())', '\(addOrEditAttendanceModel.getRosterID())', '\(addOrEditAttendanceModel.getWeekBool(0))', '\(addOrEditAttendanceModel.getWeekBool(1))', '\(addOrEditAttendanceModel.getWeekBool(2))', '\(addOrEditAttendanceModel.getWeekBool(3))', '\(addOrEditAttendanceModel.getWeekBool(4))', '\(addOrEditAttendanceModel.getWeekBool(5))', '\(addOrEditAttendanceModel.getWeekBool(6))')"
         }
         let result = database.update(insertSQL)
 
         if (result) {
             self.back()
+        } else {
+            let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Add Attendance to StudentRosters Database")
+            errorAlert.displayError()
         }
     }
 
@@ -255,12 +214,18 @@ class AddOrEditAttendanceViewController: UIViewController {
         myAlertController.addAction(cancelAction)
 
         let nextAction = UIAlertAction(title: "Delete", style: .Default) { action -> Void in
-            let deleteSQL = "DELETE FROM STUDENTROSTERS WHERE rosterID = '\(self.rosterID)' AND studentID = '\(self.studentID)'"
-            let deleteSignOuts = "DELETE FROM SIGNOUTS WHERE rosterID = '\(self.rosterID)' AND studentID = '\(self.studentID)'"
+            let deleteSQL = "DELETE FROM STUDENTROSTERS WHERE rosterID = '\(self.addOrEditAttendanceModel.getRosterID())' AND studentID = '\(self.addOrEditAttendanceModel.getStudentID())'"
+            let deleteSignOuts = "DELETE FROM SIGNOUTS WHERE rosterID = '\(self.addOrEditAttendanceModel.getRosterID())' AND studentID = '\(self.addOrEditAttendanceModel.getStudentID())'"
             let result1 = database.update(deleteSQL)
             let result2 = database.update(deleteSignOuts)
             if (result1 && result2) {
                 self.back()
+            } else if (!result1) {
+                let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete Student From StudentRosters Database")
+                errorAlert.displayError()
+            } else if (!result2) {
+                let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete SignOuts From StudentRosters Database")
+                errorAlert.displayError()
             }
         }
         myAlertController.addAction(nextAction)

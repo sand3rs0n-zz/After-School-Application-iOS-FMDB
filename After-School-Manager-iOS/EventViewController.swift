@@ -9,8 +9,7 @@
 import UIKit
 
 class EventViewController: UIViewController {
-
-    private var event = Event()
+    private var eventViewModel = EventViewModel()
     @IBOutlet weak var titleBar: UINavigationItem!
     @IBOutlet weak var eventDate: UILabel!
     @IBOutlet weak var eventDescription: UILabel!
@@ -18,7 +17,7 @@ class EventViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.titleBar.title = event.getName()
+        self.titleBar.title = eventViewModel.getName()
         fillValues()
     }
 
@@ -28,18 +27,18 @@ class EventViewController: UIViewController {
     }
 
     func setEvent(event: Event) {
-        self.event = event
+        eventViewModel.setEvent(event)
     }
 
     private func fillValues() {
-        let date = Date(day: event.getDay(), month: event.getMonth(), year: event.getYear())
+        let date = Date(day: eventViewModel.getDay(), month: eventViewModel.getMonth(), year: eventViewModel.getYear())
         eventDate.text = date.fullDateAmerican()
-        eventDescription.text = event.getDescription()
-        if (event.getEventType() == 0) {
+        eventDescription.text = eventViewModel.getDescription()
+        if (eventViewModel.getEventType() == 0) {
             eventType.text = "Early Dismissal from School"
-        } else if (event.getEventType() == 1) {
+        } else if (eventViewModel.getEventType() == 1) {
             eventType.text = "No School"
-        } else if (event.getEventType() == 1) {
+        } else if (eventViewModel.getEventType() == 1) {
             eventType.text = "Some Other Event"
         }
     }

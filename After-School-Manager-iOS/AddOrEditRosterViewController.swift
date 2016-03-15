@@ -8,7 +8,8 @@
 
 import UIKit
 
-class CreateRosterViewController: UIViewController {
+class AddOrEditRosterViewController: UIViewController {
+    private var addOrEditRosterModel = AddOrEditRosterModel()
 
     @IBOutlet weak var rosterName: UITextField!
     @IBOutlet weak var rosterType: UIPickerView!
@@ -20,24 +21,17 @@ class CreateRosterViewController: UIViewController {
     @IBOutlet weak var titleBar: UINavigationItem!
     @IBOutlet weak var deleteRosterButton: UIButton!
 
-    private var state = 0
-    private var navTitle = ""
-    private var buttonText = ""
-    private var existingRoster = Roster()
-
-    private var options = ["Day Camp", "Week Camp", "After School Program"]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         endDate.hidden = true;
         endDateLabel.hidden = true;
 
-        self.titleBar.title = navTitle
-        self.createRosterButton!.setTitle(buttonText, forState: .Normal)
+        self.titleBar.title = addOrEditRosterModel.getTitleValue()
+        self.createRosterButton!.setTitle(addOrEditRosterModel.getButtonText(), forState: .Normal)
 
-        if (state == 0) {
+        if (addOrEditRosterModel.getState() == 0) {
             hideElements()
-        } else if (state == 1) {
+        } else if (addOrEditRosterModel.getState() == 1) {
             fillElements()
         }
 
@@ -54,15 +48,15 @@ class CreateRosterViewController: UIViewController {
     }
 
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent componenet: Int) -> Int {
-        return options.count
+        return addOrEditRosterModel.getOptionCount()
     }
 
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        return options[row]
+        return addOrEditRosterModel.getOption(row)
     }
 
     func pickerView(pickerView: UIPickerView!, didSelectRow row: Int, inComponent component: Int) {
-        let selected = options[row]
+        let selected = addOrEditRosterModel.getOption(row)
         if (selected == "Day Camp") {
             endDate.hidden = true;
             endDateLabel.hidden = true;
@@ -73,19 +67,16 @@ class CreateRosterViewController: UIViewController {
     }
 
     func setState(state: Int) {
-        self.state = state
+        addOrEditRosterModel.setState(state)
     }
-
     func setTitleValue(navTitle: String) {
-        self.navTitle = navTitle
+        addOrEditRosterModel.setTitleValue(navTitle)
     }
-
     func setCreateRosterButtonValue(buttonText: String) {
-        self.buttonText = buttonText
+        addOrEditRosterModel.setButtonText(buttonText)
     }
-
     func setExistingRoster(roster: Roster) {
-        existingRoster = roster
+        addOrEditRosterModel.setExistingRoster(roster)
     }
 
     private func hideElements() {
@@ -94,7 +85,7 @@ class CreateRosterViewController: UIViewController {
 
     private func fillElements() {
         //put stuff in proper fields
-        let roster = existingRoster
+        let roster = addOrEditRosterModel.getExistingRoster()
         rosterName.text = roster.getName()
 
         rosterType.selectRow(roster.getRosterType(), inComponent: 0, animated: true)
@@ -131,9 +122,9 @@ class CreateRosterViewController: UIViewController {
     }
 
     private func back() {
-        if (state == 0) {
+        if (addOrEditRosterModel.getState() == 0) {
             performSegueWithIdentifier("ReturnToAllRostersUnwind", sender: self)
-        } else if (state == 1) {
+        } else if (addOrEditRosterModel.getState() == 1) {
             performSegueWithIdentifier("ReturnToRosterUnwind", sender: self)
         }
     }
@@ -147,16 +138,26 @@ class CreateRosterViewController: UIViewController {
         myAlertController.addAction(cancelAction)
 
         let nextAction = UIAlertAction(title: "Delete", style: .Default) { action -> Void in
-                let insertSQL = "DELETE FROM ROSTERS WHERE rosterID = '\(self.existingRoster.getRosterID())'"
-                let deleteSignOut = "DELETE FROM SIGNOUTS WHERE rosterID = '\(self.existingRoster.getRosterID())'"
-                let deleteStudentRosters = "DELETE FROM STUDENTROSTERS WHERE rosterID = '\(self.existingRoster.getRosterID())'"
+            let existingRoster = self.addOrEditRosterModel.getExistingRoster()
+                let insertSQL = "DELETE FROM ROSTERS WHERE rosterID = '\(existingRoster.getRosterID())'"
+                let deleteSignOut = "DELETE FROM SIGNOUTS WHERE rosterID = '\(existingRoster.getRosterID())'"
+                let deleteStudentRosters = "DELETE FROM STUDENTROSTERS WHERE rosterID = '\(existingRoster.getRosterID())'"
                 let result1 = database.update(insertSQL)
                 let result2 = database.update(deleteSignOut)
                 let result3 = database.update(deleteStudentRosters)
                 if (result1 && result2 && result3) {
-                    self.state = 0
+                    self.addOrEditRosterModel.setState(0)
                     self.back()
-                }
+                } else if (!result1) {
+                    let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete Roster From Rosters Database")
+                    errorAlert.displayError()
+                } else if (!result2) {
+                    let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete Roster From Sign Outs Database")
+                    errorAlert.displayError()
+                } else if (!result3) {
+                    let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete Roster From Student Rosters Database")
+                    errorAlert.displayError()
+            }
         }
         myAlertController.addAction(nextAction)
         presentViewController(myAlertController, animated: true, completion: nil)
@@ -166,7 +167,7 @@ class CreateRosterViewController: UIViewController {
 
     @IBAction func createRoster(sender: AnyObject) {
         let selected = rosterType.selectedRowInComponent(0)
-        if (options[selected] == "Day Camp") {
+        if (addOrEditRosterModel.getOption(selected)  == "Day Camp") {
             endDate.setDate(startDate.date, animated: true)
         }
 
@@ -201,7 +202,18 @@ class CreateRosterViewController: UIViewController {
         if (rosterName.text != "") {
             var result2 = true
             var result3 = true
-            if (state == 1) {
+            if (addOrEditRosterModel.getState() == 1) {
+                let existingRoster = addOrEditRosterModel.getExistingRoster()
+                existingRoster.setName(rosterName.text!)
+                existingRoster.setRosterType(selected)
+                existingRoster.setStartDay(startDay)
+                existingRoster.setStartMonth(startMonth)
+                existingRoster.setStartYear(startYear)
+                existingRoster.setEndDay(endDay)
+                existingRoster.setEndMonth(endMonth)
+                existingRoster.setEndYear(endYear)
+                existingRoster.setPickUpHour(pickUpHour)
+                existingRoster.setPickUpMinute(pickUpMinute)
                 insertSQL = "UPDATE ROSTERS SET rosterType = '\(selected)', name = '\(rosterName.text!)', startDay = '\(startDay)', startMonth = '\(startMonth)', startYear = '\(startYear)', endDay = '\(endDay)', endMonth = '\(endMonth)', endYear = '\(endYear)', pickUpHour = '\(pickUpHour)', pickUpMinute = '\(pickUpMinute)' WHERE rosterID = '\(existingRoster.getRosterID())'"
                 existingRoster.setName(rosterName.text!)
                 updateSignOut = "UPDATE SIGNOUTS SET rosterType = '\(selected)' WHERE rosterID = '\(existingRoster.getRosterID())'"
@@ -209,13 +221,25 @@ class CreateRosterViewController: UIViewController {
 
                 result2 = database.update(updateSignOut)
                 result3 = database.update(updateStudentRosters)
-            } else if (state == 0) {
+            } else if (addOrEditRosterModel.getState() == 0) {
                 insertSQL = "INSERT INTO ROSTERS (rosterType, name, startDay, startMonth, startYear, endDay, endMonth, endYear, pickUpHour, pickUpMinute) VALUES ('\(selected)', '\(rosterName.text!)', '\(startDay)', '\(startMonth)', '\(startYear)', '\(endDay)', '\(endMonth)', '\(endYear)', '\(pickUpHour)', '\(pickUpMinute)')"
             }
             let result1 = database.update(insertSQL)
             if (result1 && result2 && result3) {
                 self.back()
+            } else if (!result1) {
+                let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Add Roster to Rosters Database")
+                errorAlert.displayError()
+            } else if (!result2) {
+                let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Update Roster in Sign Outs Database")
+                errorAlert.displayError()
+            } else if (!result3) {
+                let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Add Roster in Student Rosters Database")
+                errorAlert.displayError()
             }
+        } else {
+            let errorAlert = ErrorAlert(viewController: self, errorString: "Please give the Roster a Name")
+            errorAlert.displayError()
         }
     }
     

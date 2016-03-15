@@ -9,31 +9,23 @@
 import UIKit
 
 class SignOutViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-
-    private var studentID = 0
-    private var rosterType = 0
-    private var signOutGuardian = ""
-    private var rosterID = 0
-    private var guardianNames:[String] = [String]()
-
+    private var signOutViewModel = SignOutViewModel()
     @IBOutlet weak var titleBar: UINavigationItem!
     @IBOutlet weak var signatureBox: SignatureView!
-    private var navTitle = ""
     
     @IBOutlet weak var selectedGuardian: UILabel! // to store which Guardian they have selected
     @IBOutlet weak var guardianPicker: UIPickerView!
-    var guardianPickerData:[String] = [String]() // string array of guardian names
+    var guardianPickerData = [String]() // string array of guardian names
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.titleBar.title = "Sign Out " + navTitle
-
-        // Do any additional setup after loading the view.
-        
-        getGuardianNames()
-        guardianPickerData = guardianNames
-        // First hardcoding this in
-//        guardianPickerData = ["Mom", "Dad", "Brother", "Sister", "Grandma"]
+        self.titleBar.title = "Sign Out " + signOutViewModel.getTitleValue()
+        signOutViewModel.resetGuardians()
+        guardianPickerData = signOutViewModel.getGuardianNames()
+        if (signOutViewModel.getGuardianNamesCount() > 0) {
+            self.selectedGuardian.text = signOutViewModel.getGuardianName(0)
+            self.signOutViewModel.setSignOutGuardian(signOutViewModel.getGuardianName(0))
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -42,29 +34,16 @@ class SignOutViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     }
     
     func setStudentID(id: Int) {
-        studentID = id
+        signOutViewModel.setStudentID(id)
     }
-
     func setTitleValue(title: String) {
-        navTitle = title
+        signOutViewModel.setTitleValue(title)
     }
-
     func setRosterType(type: Int) {
-        rosterType = type
+        signOutViewModel.setRosterType(type)
     }
-
     func setRosterID(id: Int) {
-        rosterID = id
-    }
-    
-    private func getGuardianNames() {
-        let querySQL = "SELECT * FROM GUARDIANS WHERE studentID = '\(studentID)'"
-        let results = database.search(querySQL)
-        while (results.next()) {
-            let curname = results.stringForColumn("name")
-            guardianNames.append(curname)
-        }
-        results.close()
+        signOutViewModel.setRosterID(id)
     }
     
     @IBAction func clearSignature(sender: AnyObject) {
@@ -73,13 +52,22 @@ class SignOutViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     }
 
     @IBAction func signOut(sender: AnyObject) {
-        if (signOutGuardian != "" && !signatureBox.getLines().isEmpty) {
+        if (signOutViewModel.getSignOutGuardian() != "" && !signatureBox.getLines().isEmpty) {
             let timestamp = Date()
-            let signOutSQL = "INSERT INTO SIGNOUTS (studentID, rosterID, signOutGuardian, rosterType, signoutType, day, month, year, hour, minute) VALUES ('\(studentID)', '\(rosterID)', '\(signOutGuardian)', '\(rosterType)', '1', '\(timestamp.getCurrentDay())', '\(timestamp.getCurrentMonth())', '\(timestamp.getCurrentYear())', '\(timestamp.getCurrentHour())', '\(timestamp.getCurrentMinute())')"
-            database.update(signOutSQL)
-            self.performSegueWithIdentifier("SignOutToStudentSelectUnwind", sender: self)
-        } else {
-            print("error message")
+            let signOutSQL = "INSERT INTO SIGNOUTS (studentID, rosterID, signOutGuardian, rosterType, signoutType, day, month, year, hour, minute) VALUES ('\(signOutViewModel.getStudentID())', '\(signOutViewModel.getRosterID())', '\(signOutViewModel.getSignOutGuardian())', '\(signOutViewModel.getRosterType())', '1', '\(timestamp.getCurrentDay())', '\(timestamp.getCurrentMonth())', '\(timestamp.getCurrentYear())', '\(timestamp.getCurrentHour())', '\(timestamp.getCurrentMinute())')"
+            let result = database.update(signOutSQL)
+            if (result) {
+                self.performSegueWithIdentifier("SignOutToStudentSelectUnwind", sender: self)
+            } else {
+                let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Sign Out Student")
+                errorAlert.displayError()
+            }
+        } else if (signOutViewModel.getSignOutGuardian() == "") {
+            let errorAlert = ErrorAlert(viewController: self, errorString: "Please select Guardian")
+            errorAlert.displayError()
+        } else if (signatureBox.getLines().isEmpty) {
+            let errorAlert = ErrorAlert(viewController: self, errorString: "Please Sign in the Sign Out Box")
+            errorAlert.displayError()
         }
     }
     
@@ -100,7 +88,7 @@ class SignOutViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         let submitAction = UIAlertAction(title: "Submit", style: .Default) { (action) -> Void in
             name = ((alertController.textFields?.first)! as UITextField).text!
             self.selectedGuardian.text = name
-            self.signOutGuardian = name
+            self.signOutViewModel.setSignOutGuardian(name)
         }
         alertController.addAction(submitAction)
         
@@ -131,9 +119,9 @@ class SignOutViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     }
     // Detect selection from user
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if (guardianNames.count > 0) {
+        if (signOutViewModel.getGuardianNamesCount() > 0) {
             self.selectedGuardian.text = guardianPickerData[row]
-            self.signOutGuardian = guardianPickerData[row]
+            self.signOutViewModel.setSignOutGuardian(guardianPickerData[row])
         }
     }
 }
