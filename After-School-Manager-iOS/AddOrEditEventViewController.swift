@@ -9,6 +9,7 @@
 import UIKit
 
 class AddOrEditEventViewController: UIViewController {
+    private var addOrEditEventModel = AddOrEditEventModel()
 
     @IBOutlet weak var titleBar: UINavigationItem!
     @IBOutlet weak var eventName: UITextField!
@@ -20,33 +21,25 @@ class AddOrEditEventViewController: UIViewController {
     @IBOutlet weak var suspendRosterButton: UIButton!
     @IBOutlet weak var rosterPicker: UIPickerView!
 
-    private var navTitle = ""
-    private var buttonText = ""
-    private var state = 0
-    private var event = Event()
-    private var rosters = [Roster]()
-    private var selectedRoster = 0
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.createOrEditEventButton!.setTitle(buttonText, forState: .Normal)
+        self.createOrEditEventButton!.setTitle(addOrEditEventModel.getButtonText(), forState: .Normal)
         suspendRosterButton.backgroundColor = UIColor.grayColor()
         suspendRosterButton.hidden = true
         rosterPicker.hidden = true
-        self.titleBar.title = navTitle
-        if (state == 0) {
+        self.titleBar.title = addOrEditEventModel.getTitleValue()
+        if (addOrEditEventModel.getState() == 0) {
             deleteEventButton.hidden = true
-        } else if (state == 1) {
+        } else if (addOrEditEventModel.getState() == 1) {
             fillValues()
         }
-        getRosters()
+        addOrEditEventModel.resetRosters(datePicker)
 
         // Do any additional setup after loading the view.
     }
 
     override func viewDidAppear(animated: Bool) {
-        rosterPicker.selectRow(selectedRoster, inComponent: 0, animated: false)
+        rosterPicker.selectRow(addOrEditEventModel.getSelectedRoster(), inComponent: 0, animated: false)
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,52 +47,23 @@ class AddOrEditEventViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    private func getRosters() {
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
-        dateFormatter.dateFormat = "dd/MM/yyyy"
-        let inputDate = dateFormatter.stringFromDate(datePicker.date)
-        let dateArr = inputDate.characters.split{$0 == "/"}.map(String.init)
-        let day = Int(dateArr[0])!
-        let month = Int(dateArr[1])!
-        let year = Int(dateArr[2])!
-
-        let querySQL = "SELECT * FROM ROSTERS WHERE (endYear > '\(year)' OR (endYear = '\(year)' AND endMonth > '\(month)') OR (endYear = '\(year)' AND endMonth = '\(month)' AND endDay >= '\(day)')) AND (startYear < '\(year)' OR (startYear = '\(year)' AND startMonth < '\(month)') OR (startYear = '\(year)' AND startMonth = '\(month)' AND startDay <= '\(day)')) ORDER BY name ASC"
-        let results = database.search(querySQL)
-        while (results.next()) {
-            let cur = Roster()
-            cur.setRosterID(Int(results.intForColumn("rosterID")))
-            cur.setRosterType(Int(results.intForColumn("rosterType")))
-            cur.setName(results.stringForColumn("name"))
-            cur.setStartDay(Int(results.intForColumn("startDay")))
-            cur.setStartMonth(Int(results.intForColumn("startMonth")))
-            cur.setStartYear(Int(results.intForColumn("startYear")))
-            cur.setEndDay(Int(results.intForColumn("endDay")))
-            cur.setEndMonth(Int(results.intForColumn("endMonth")))
-            cur.setEndYear(Int(results.intForColumn("endYear")))
-            cur.setPickUpHour(Int(results.intForColumn("pickUpHour")))
-            cur.setPickUpMinute(Int(results.intForColumn("pickUpMinute")))
-            rosters.append(cur)
-        }
-        results.close()
-    }
-
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
 
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent componenet: Int) -> Int {
-        return rosters.count
+        return addOrEditEventModel.getRosterCount()
     }
 
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        if (event.getRosterID() == rosters[row].getRosterID()) {
-            selectedRoster = row
+        if (addOrEditEventModel.getEvent().getRosterID() == addOrEditEventModel.getRoster(row).getRosterID()) {
+            addOrEditEventModel.setSelectedRoster(row)
         }
-        return rosters[row].getName()
+        return addOrEditEventModel.getRoster(row).getName()
     }
 
     private func fillValues() {
+        let event = addOrEditEventModel.getEvent()
         eventName.text = event.getName()
         eventDescription.text = event.getDescription()
         eventType.selectedSegmentIndex = event.getEventType()
@@ -119,16 +83,16 @@ class AddOrEditEventViewController: UIViewController {
     }
 
     func setTitleValue(navTitle: String) {
-        self.navTitle = navTitle
+        addOrEditEventModel.setTitleValue(navTitle)
     }
     func setButtonText(buttonText: String) {
-        self.buttonText = buttonText
+        addOrEditEventModel.setButtonText(buttonText)
     }
     func setState(state: Int) {
-        self.state = state
+        addOrEditEventModel.setState(state)
     }
     func setEvent(event: Event) {
-        self.event = event
+        addOrEditEventModel.setEvent(event)
     }
 
     private func back() {
@@ -157,8 +121,7 @@ class AddOrEditEventViewController: UIViewController {
     }
 
     @IBAction func datePickerChanged(sender: AnyObject) {
-        rosters.removeAll()
-        getRosters()
+        addOrEditEventModel.resetRosters(datePicker)
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             self.rosterPicker.reloadAllComponents()
         })
@@ -184,15 +147,15 @@ class AddOrEditEventViewController: UIViewController {
         let year = Int(dateArr[2])!
         var rosterID = 0
         if (suspendRosterButton.backgroundColor == UIColor.greenColor() && suspendRosterButton.hidden == false) {
-            rosterID = rosters[rosterPicker.selectedRowInComponent(0)].getRosterID()
+            rosterID = addOrEditEventModel.getRoster(rosterPicker.selectedRowInComponent(0)).getRosterID()
         }
 
         var insertSQL = ""
         if (eventName.text != "" && eventDescription.text != "") {
-            if (state == 1) {
-                insertSQL = "UPDATE EVENTS SET name = '\(eventName.text!)', eventType = '\(selected)', description = '\(eventDescription.text!)', day = '\(day)', month = '\(month)', year = '\(year)', rosterID = '\(rosterID)' WHERE eventID = '\(event.getEventID())'"
-                event.setName(eventName.text!)
-            } else if (state == 0) {
+            if (addOrEditEventModel.getState() == 1) {
+                insertSQL = "UPDATE EVENTS SET name = '\(eventName.text!)', eventType = '\(selected)', description = '\(eventDescription.text!)', day = '\(day)', month = '\(month)', year = '\(year)', rosterID = '\(rosterID)' WHERE eventID = '\(addOrEditEventModel.getEvent().getEventID())'"
+                addOrEditEventModel.getEvent().setName(eventName.text!)
+            } else if (addOrEditEventModel.getState() == 0) {
                 insertSQL = "INSERT INTO EVENTS (name, eventType, description, day, month, year, rosterID) VALUES ('\(eventName.text!)', '\(selected)', '\(eventDescription.text!)', '\(day)', '\(month)', '\(year)', '\(rosterID)')"
             }
         }
@@ -200,9 +163,12 @@ class AddOrEditEventViewController: UIViewController {
         let result = database.update(insertSQL)
         if (result) {
             self.back()
+        } else {
+            let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Add Event to Events Database")
+            errorAlert.displayError()
         }
     }
-    
+
     @IBAction func deleteEvent(sender: AnyObject) {
         let myAlertController = UIAlertController(title: "Delete Event", message: "Are you sure you want to delete this event?", preferredStyle: .Alert)
 
@@ -212,9 +178,14 @@ class AddOrEditEventViewController: UIViewController {
         myAlertController.addAction(cancelAction)
 
         let nextAction = UIAlertAction(title: "Delete", style: .Default) { action -> Void in
-            let insertSQL = "DELETE FROM EVENTS WHERE eventID = '\(self.event.getEventID())'"
-            database.update(insertSQL)
-            self.back()
+            let insertSQL = "DELETE FROM EVENTS WHERE eventID = '\(self.addOrEditEventModel.getEvent().getEventID())'"
+            let result = database.update(insertSQL)
+            if (result) {
+                self.back()
+            } else {
+                let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete Event From Events Database")
+                errorAlert.displayError()
+            }
         }
         myAlertController.addAction(nextAction)
         presentViewController(myAlertController, animated: true, completion: nil)
