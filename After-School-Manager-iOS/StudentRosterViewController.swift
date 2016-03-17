@@ -17,6 +17,9 @@ class StudentRosterViewController: UIViewController, UITableViewDataSource, UITa
         super.viewDidLoad()
         self.titleBar.title = studentRosterModel.getTitleValue()
         studentRosterModel.resetStudentRoster()
+        if(studentRosterModel.getState() == 0) {
+            self.titleBar.rightBarButtonItem = nil
+        }
     }
     
     override func didReceiveMemoryWarning() {
