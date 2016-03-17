@@ -177,11 +177,11 @@ class AddOrEditAttendanceViewController: UIViewController {
 
     private func toggleColor(dayOfWeek: UIButton) {
         // Toggle attendance colors
-        if(dayOfWeek.backgroundColor == UIColor.groupTableViewBackgroundColor()) {
+        if(dayOfWeek.backgroundColor == UIColor.whiteColor()) {
             dayOfWeek.backgroundColor = UIColor.redColor()
             dayOfWeek.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         } else {
-            dayOfWeek.backgroundColor = UIColor.groupTableViewBackgroundColor()
+            dayOfWeek.backgroundColor = UIColor.whiteColor()
             dayOfWeek.setTitleColor(UIColor.darkTextColor(), forState: UIControlState.Normal)
         }
     }
