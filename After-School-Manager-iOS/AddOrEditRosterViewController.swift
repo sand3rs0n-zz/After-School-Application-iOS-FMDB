@@ -167,10 +167,6 @@ class AddOrEditRosterViewController: UIViewController {
 
     @IBAction func createRoster(sender: AnyObject) {
         let selected = rosterType.selectedRowInComponent(0)
-        if (addOrEditRosterModel.getOption(selected)  == "Day Camp") {
-            endDate.setDate(startDate.date, animated: true)
-        }
-
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
         dateFormatter.dateFormat = "MM/dd/yyyy"
@@ -180,6 +176,11 @@ class AddOrEditRosterViewController: UIViewController {
         let startDay = Int(dateArr[1])!
         let startMonth = Int(dateArr[0])!
         let startYear = Int(dateArr[2])!
+        var weekday = 0
+        if (addOrEditRosterModel.getOption(selected)  == "Day Camp") {
+            endDate.setDate(startDate.date, animated: true)
+            weekday = Date(day: startDay, month: startMonth, year: startYear).getWeekdayInt()
+        }
 
         inputDate = dateFormatter.stringFromDate(endDate.date)
         dateArr = inputDate.characters.split{$0 == "/"}.map(String.init)
@@ -214,10 +215,12 @@ class AddOrEditRosterViewController: UIViewController {
                 existingRoster.setEndYear(endYear)
                 existingRoster.setPickUpHour(pickUpHour)
                 existingRoster.setPickUpMinute(pickUpMinute)
+                var weekBool = [0, 0, 0, 0, 0, 0, 0]
+                weekBool[weekday] = 1
+
                 insertSQL = "UPDATE ROSTERS SET rosterType = '\(selected)', name = '\(rosterName.text!)', startDay = '\(startDay)', startMonth = '\(startMonth)', startYear = '\(startYear)', endDay = '\(endDay)', endMonth = '\(endMonth)', endYear = '\(endYear)', pickUpHour = '\(pickUpHour)', pickUpMinute = '\(pickUpMinute)' WHERE rosterID = '\(existingRoster.getRosterID())'"
-                existingRoster.setName(rosterName.text!)
                 updateSignOut = "UPDATE SIGNOUTS SET rosterType = '\(selected)' WHERE rosterID = '\(existingRoster.getRosterID())'"
-                updateStudentRosters = "UPDATE STUDENTROSTERS SET rosterName = '\(rosterName.text!)' WHERE rosterID = '\(existingRoster.getRosterID())'"
+                updateStudentRosters = "UPDATE STUDENTROSTERS SET rosterName = '\(rosterName.text!)', monday = '\(weekBool[0])', tuesday = '\(weekBool[1])', wednesday = '\(weekBool[2])', thursday = '\(weekBool[3])', friday = '\(weekBool[4])', saturday = '\(weekBool[5])', sunday = '\(weekBool[6])' WHERE rosterID = '\(existingRoster.getRosterID())'"
 
                 result2 = database.update(updateSignOut)
                 result3 = database.update(updateStudentRosters)

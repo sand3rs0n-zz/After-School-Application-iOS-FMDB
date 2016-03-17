@@ -30,11 +30,6 @@ class AllStudentsModel {
             cur.setStudentID(Int(results.intForColumn("studentID")))
             cur.setFirstName(results.stringForColumn("firstName"))
             cur.setLastName(results.stringForColumn("lastName"))
-            cur.setActive(Int(results.intForColumn("active")))
-            cur.setSchool(results.stringForColumn("school"))
-            cur.setBirthDay(Int(results.intForColumn("birthDay")))
-            cur.setBirthMonth(Int(results.intForColumn("birthMonth")))
-            cur.setBirthYear(Int(results.intForColumn("birthYear")))
             studentList.append(cur)
         }
         results.close()
