@@ -2835,7 +2835,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Add Description Here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="yBo-al-d5d">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="yBo-al-d5d">
                                 <rect key="frame" x="142" y="258" width="301" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -2893,7 +2893,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kwy-bR-Fo0" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Dcr-XS-jof" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3936" y="2926"/>
+            <point key="canvasLocation" x="3895" y="2896"/>
         </scene>
         <!--Roster History View Controller-->
         <scene sceneID="6E7-e8-kpd">
