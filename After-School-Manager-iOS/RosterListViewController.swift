@@ -15,6 +15,9 @@ class RosterListViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         self.titleBar.title = rosterListModel.getTitleValue()
+        if(rosterListModel.getState() != 2) {
+            self.titleBar.rightBarButtonItem = nil
+        }
         rosterListModel.getRosters()
     }
 
