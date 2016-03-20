@@ -43,4 +43,9 @@ class SettingsViewController: UIViewController {
             errorAlert.displayError()
         }
     }
+    
+    // Hide keyboard when done typing
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 }

@@ -19,9 +19,10 @@ class SignOutHistoryViewController: UIViewController, UITableViewDataSource, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         signOutHistoryModel.setRosterTypes([dayCampButton, weekCampButton, afterSchoolButton])
-        dayCampButton.backgroundColor = UIColor.redColor()
-        weekCampButton.backgroundColor = UIColor.redColor()
-        afterSchoolButton.backgroundColor = UIColor.redColor()
+//        dayCampButton.backgroundColor = UIColor.redColor()
+//        weekCampButton.backgroundColor = UIColor.redColor()
+//        afterSchoolButton.backgroundColor = UIColor.redColor()
+        
 
         signOutHistoryModel.resetSignOuts()
 
@@ -83,11 +84,6 @@ class SignOutHistoryViewController: UIViewController, UITableViewDataSource, UIT
         }
         let roster = signOutHistoryModel.getRosterTypes(rosterType)
         toggleColor(roster)
-//        if (roster.backgroundColor == UIColor.greenColor()) {
-//            roster.backgroundColor = UIColor.lightGrayColor()
-//        } else {
-//            roster.backgroundColor = UIColor.greenColor()
-//        }
 
         resetRosterTypeString()
 

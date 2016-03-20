@@ -191,5 +191,10 @@ class AddOrEditEventViewController: UIViewController {
         presentViewController(myAlertController, animated: true, completion: nil)
         //also delete all relevant info
     }
+    
+    // Hide keyboard when done typing
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 
 }
