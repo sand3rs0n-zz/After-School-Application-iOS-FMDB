@@ -28,6 +28,12 @@
                                                 <segue destination="BDG-1z-bjz" kind="unwind" identifier="returnToInstructorMenuFromSettings" unwindAction="instructorMenuUnwind:" id="X6h-DG-5H9"/>
                                             </connections>
                                         </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Home" id="dUY-Dk-q2C">
+                                            <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <segue destination="BDG-1z-bjz" kind="unwind" unwindAction="returnHomeUnwind:" id="WWJ-mZ-5Kt"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -534,12 +540,10 @@
                                                 <segue destination="cPU-bE-ia1" kind="unwind" unwindAction="instructorMenuUnwind:" id="5DQ-jM-8a1"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="9T4-Dq-apH">
+                                        <barButtonItem key="rightBarButtonItem" title="Home" id="7VY-uK-e9o">
                                             <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
-                                                <segue destination="JIw-fz-5fF" kind="show" identifier="AllRostersToNewRoster" id="LZy-H4-SEb">
-                                                    <nil key="action"/>
-                                                </segue>
+                                                <segue destination="cPU-bE-ia1" kind="unwind" unwindAction="returnHomeUnwind:" id="kBy-pl-ne6"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -563,6 +567,24 @@
                                     <outlet property="delegate" destination="Plr-Nq-L0d" id="S7I-vn-3EP"/>
                                 </connections>
                             </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UJY-rT-B4m">
+                                <rect key="frame" x="0.0" y="693" width="1024" height="44"/>
+                                <items>
+                                    <barButtonItem title="Instructor Menu" id="eyN-Mf-ANg">
+                                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="cPU-bE-ia1" kind="unwind" unwindAction="instructorMenuUnwind:" id="6hD-5P-l1P"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="FlH-Sd-2X0"/>
+                                    <barButtonItem title="Item" systemItem="add" id="KqB-4h-BYW">
+                                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="JIw-fz-5fF" kind="show" identifier="AllRostersToNewRoster" id="5RP-wG-aKh"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -600,10 +622,10 @@
                                                 <action selector="backButton:" destination="JIw-fz-5fF" id="hZJ-Hd-BsM"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Instructor Menu" id="6yQ-Dq-GC6">
+                                        <barButtonItem key="rightBarButtonItem" title="Home" id="0Jw-1r-eT0">
                                             <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
-                                                <segue destination="MSn-5D-Yer" kind="unwind" unwindAction="instructorMenuUnwind:" id="nJV-Xu-Pxy"/>
+                                                <segue destination="MSn-5D-Yer" kind="unwind" unwindAction="returnHomeUnwind:" id="RTI-In-Ii9"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -692,6 +714,17 @@
                                     <action selector="deleteRoster:" destination="JIw-fz-5fF" eventType="touchUpInside" id="H7V-Nm-z2P"/>
                                 </connections>
                             </button>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VEI-xT-h9v">
+                                <rect key="frame" x="0.0" y="707" width="1024" height="44"/>
+                                <items>
+                                    <barButtonItem title="Instructor Menu" id="SmO-Yr-0FO">
+                                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="MSn-5D-Yer" kind="unwind" unwindAction="instructorMenuUnwind:" id="Ccd-Kt-Hff"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -743,10 +776,10 @@
                                                 <action selector="backButton:" destination="G1Q-IP-rXa" id="xFH-9Y-ogj"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Instructor Menu" id="uD2-jh-BeL">
+                                        <barButtonItem key="rightBarButtonItem" title="Home" id="XWr-cT-DtQ">
                                             <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
-                                                <segue destination="7hq-1b-YII" kind="unwind" unwindAction="instructorMenuUnwind:" id="9cA-oV-Lau"/>
+                                                <segue destination="7hq-1b-YII" kind="unwind" unwindAction="returnHomeUnwind:" id="Hyn-CJ-B98"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -920,6 +953,17 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f2j-iU-Kdr">
+                                <rect key="frame" x="0.0" y="709" width="1024" height="44"/>
+                                <items>
+                                    <barButtonItem title="Instructor Menu" id="4uc-CS-aie">
+                                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="7hq-1b-YII" kind="unwind" unwindAction="instructorMenuUnwind:" id="rb0-rF-A8e"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -1750,14 +1794,39 @@
                                                 <segue destination="GGQ-HY-VuM" kind="unwind" identifier="instructorMenuStudentsUnwind" unwindAction="instructorMenuStudentsUnwind:" id="THE-MJ-ztA"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Instructor Menu" id="9pF-UJ-zyp">
+                                        <barButtonItem key="rightBarButtonItem" title="Home" id="C77-ZB-W09">
                                             <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <segue destination="GGQ-HY-VuM" kind="unwind" unwindAction="returnHomeUnwind:" id="uOm-Gr-zb2"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="via-90-fAc">
+                                <rect key="frame" x="57" y="452" width="448" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Sign Out Records &gt;">
+                                            <attributes>
+                                                <color key="NSColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <font key="NSFont" size="15" name="HelveticaNeue-Medium"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="bJt-LC-pkh" kind="show" identifier="EditStudentInfoToSignOuts" id="0dW-OO-Qat"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W3a-dK-SlR">
-                                <rect key="frame" x="829" y="630" width="150" height="50"/>
+                                <rect key="frame" x="829" y="534" width="150" height="50"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <state key="normal" title="Add/Edit Student">
@@ -1801,7 +1870,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XWO-vT-ALc">
-                                <rect key="frame" x="829" y="688" width="150" height="50"/>
+                                <rect key="frame" x="829" y="592" width="150" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <state key="normal" title="Delete Student">
@@ -1835,7 +1904,7 @@
                                 </connections>
                             </tableView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="s7h-4E-ui3">
-                                <rect key="frame" x="618" y="413" width="361" height="157"/>
+                                <rect key="frame" x="618" y="356" width="361" height="157"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="contactCell" id="xQH-rm-Psv">
@@ -1853,33 +1922,22 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="EMERGENCY CONTACTS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XDT-aI-9Xp">
-                                <rect key="frame" x="618" y="372" width="260" height="24"/>
+                                <rect key="frame" x="618" y="315" width="260" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="via-90-fAc">
-                                <rect key="frame" x="57" y="452" width="448" height="50"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Sign Out Records &gt;">
-                                            <attributes>
-                                                <color key="NSColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <font key="NSFont" size="15" name="HelveticaNeue-Medium"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="bJt-LC-pkh" kind="show" identifier="EditStudentInfoToSignOuts" id="0dW-OO-Qat"/>
-                                </connections>
-                            </button>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mrj-SH-zeL">
+                                <rect key="frame" x="0.0" y="706" width="1024" height="44"/>
+                                <items>
+                                    <barButtonItem title="Instructor Menu" id="of3-RL-0e2">
+                                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="GGQ-HY-VuM" kind="unwind" unwindAction="instructorMenuUnwind:" id="CuV-2U-XB3"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1925,12 +1983,10 @@
                                                 <segue destination="Fsz-z8-y0N" kind="unwind" unwindAction="instructorMenuUnwind:" id="6ab-Vx-ekI"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="2Sk-9R-sqv">
+                                        <barButtonItem key="rightBarButtonItem" title="Home" id="bKC-as-aIO">
                                             <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
-                                                <segue destination="eat-KY-ysK" kind="show" identifier="InstructorMenuStudentsToAddStudent" id="69W-z6-Bqt">
-                                                    <nil key="action"/>
-                                                </segue>
+                                                <segue destination="Fsz-z8-y0N" kind="unwind" unwindAction="returnHomeUnwind:" id="SQl-Ba-yyO"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -1954,6 +2010,18 @@
                                     <outlet property="delegate" destination="aMe-6K-Fcj" id="9bP-0n-iG8"/>
                                 </connections>
                             </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bPu-Hr-1hU">
+                                <rect key="frame" x="0.0" y="694" width="1024" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="4hy-Nc-GqV"/>
+                                    <barButtonItem title="Item" systemItem="add" id="NwX-Ro-3fi">
+                                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="eat-KY-ysK" kind="show" identifier="InstructorMenuStudentsToAddStudent" id="yVJ-bF-MBW"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1990,10 +2058,10 @@
                                                 <segue destination="4pX-Yj-Zwc" kind="unwind" unwindAction="returnToAllRostersUnwind:" id="QKF-ff-mP5"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Instructor Menu" id="a6C-UB-piS">
+                                        <barButtonItem key="rightBarButtonItem" title="Home" id="TD0-al-C97">
                                             <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
-                                                <segue destination="4pX-Yj-Zwc" kind="unwind" unwindAction="instructorMenuUnwind:" id="ant-cL-RLZ"/>
+                                                <segue destination="4pX-Yj-Zwc" kind="unwind" unwindAction="returnHomeUnwind:" id="buG-Ds-gVQ"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -2002,10 +2070,10 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cbs-Q3-TSm">
                                 <rect key="frame" x="0.0" y="703" width="1024" height="44"/>
                                 <items>
-                                    <barButtonItem systemItem="add" id="9jf-gl-FQN">
+                                    <barButtonItem title="Instructor Menu" id="Vs9-Ef-M3H">
                                         <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <segue destination="Y9H-KI-o7c" kind="show" identifier="InstructorMenuStudentsToAddStudent" id="BQM-ML-oK8"/>
+                                            <segue destination="4pX-Yj-Zwc" kind="unwind" unwindAction="instructorMenuUnwind:" id="aPJ-Cl-wQH"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="8Ct-qE-uNb"/>
@@ -2037,6 +2105,16 @@
                                     <outlet property="delegate" destination="suQ-xa-ndd" id="jMM-HN-qov"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8rr-Az-Ogu">
+                                <rect key="frame" x="615" y="94" width="195" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="Add Student to Roster">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Y9H-KI-o7c" kind="show" identifier="InstructorMenuStudentsToAddStudent" id="06S-Ur-GZl"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -2073,6 +2151,12 @@
                                             <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <segue destination="AQe-tT-ftm" kind="unwind" unwindAction="upcomingEventsUnwind:" id="tjo-WF-Vot"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Home" id="bMY-bi-rVi">
+                                            <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <segue destination="AQe-tT-ftm" kind="unwind" unwindAction="returnHomeUnwind:" id="XvE-JY-PBh"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -2151,10 +2235,10 @@
                                                 <segue destination="eze-X9-HTx" kind="unwind" unwindAction="instructorMenuUnwind:" id="919-nP-Ydi"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="dJn-jt-0B5">
+                                        <barButtonItem key="rightBarButtonItem" title="Home" id="l8n-8n-wXn">
                                             <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
-                                                <segue destination="Ec2-Wj-bOi" kind="show" id="q9s-PR-1o3"/>
+                                                <segue destination="eze-X9-HTx" kind="unwind" unwindAction="returnHomeUnwind:" id="dVL-1U-s4Z"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -2178,6 +2262,24 @@
                                     <outlet property="delegate" destination="ucB-K0-gfW" id="bP7-rT-TTh"/>
                                 </connections>
                             </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B5N-66-ODE">
+                                <rect key="frame" x="0.0" y="704" width="1024" height="44"/>
+                                <items>
+                                    <barButtonItem title="Instructor Menu" id="sBr-E8-sfx">
+                                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="eze-X9-HTx" kind="unwind" unwindAction="instructorMenuUnwind:" id="83X-cf-sOE"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="NRv-T1-0dT"/>
+                                    <barButtonItem systemItem="add" id="FE3-0o-77A">
+                                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="Ec2-Wj-bOi" kind="show" id="QRS-Lp-4uF"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -2213,10 +2315,10 @@
                                                 <segue destination="rzw-sS-th8" kind="unwind" identifier="ReturnToTodayRosterFromEditAttendance" unwindAction="returnToTodayRosterUnwind:" id="lFI-2d-HN1"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Instructor Menu" id="plT-z4-f6p">
+                                        <barButtonItem key="rightBarButtonItem" title="Home" id="ZZs-xp-hek">
                                             <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
-                                                <segue destination="rzw-sS-th8" kind="unwind" unwindAction="instructorMenuUnwind:" id="28W-f7-Z8m"/>
+                                                <segue destination="rzw-sS-th8" kind="unwind" unwindAction="returnHomeUnwind:" id="8Xf-8b-QNS"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -2286,6 +2388,17 @@
                                     <action selector="unscheduleAbsence:" destination="DkY-zU-xft" eventType="touchUpInside" id="Kfu-uK-cVr"/>
                                 </connections>
                             </button>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8KI-2E-aEl">
+                                <rect key="frame" x="0.0" y="690" width="1024" height="44"/>
+                                <items>
+                                    <barButtonItem title="Instructor Menu" id="O2L-Zo-vQf">
+                                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="rzw-sS-th8" kind="unwind" unwindAction="instructorMenuUnwind:" id="Eb9-6L-mTZ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -2323,10 +2436,10 @@
                                                 <segue destination="UuN-r2-Njb" kind="unwind" identifier="" unwindAction="instructorMenuUnwind:" id="1ap-LT-6VX"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="z2v-ku-qke">
+                                        <barButtonItem key="rightBarButtonItem" title="Home" id="Jnv-3h-a9G">
                                             <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
-                                                <segue destination="M3Y-Zp-MFq" kind="show" identifier="AllEventsToAddEvent" id="lZo-3K-BmO"/>
+                                                <segue destination="UuN-r2-Njb" kind="unwind" unwindAction="returnHomeUnwind:" id="xld-XQ-kSj"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -2350,6 +2463,24 @@
                                     <outlet property="delegate" destination="1dN-bJ-7yp" id="Wqf-in-pCq"/>
                                 </connections>
                             </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tcd-i8-t5C">
+                                <rect key="frame" x="0.0" y="708" width="1024" height="44"/>
+                                <items>
+                                    <barButtonItem title="Instructor Menu" id="WhN-Gk-nqD">
+                                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="UuN-r2-Njb" kind="unwind" unwindAction="instructorMenuUnwind:" id="gsZ-m4-LD1"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Hox-cj-3uk"/>
+                                    <barButtonItem systemItem="add" id="6y4-91-VIx">
+                                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="M3Y-Zp-MFq" kind="show" identifier="AllEventsToAddEvent" id="uTg-An-jIk"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -2385,10 +2516,10 @@
                                                 <segue destination="JA2-DO-LVl" kind="unwind" unwindAction="returnToTodayRosterUnwind:" id="zq0-0v-52w"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Instructor Menu" id="0fL-1v-ArG">
+                                        <barButtonItem key="rightBarButtonItem" title="Home" id="6EW-9C-obS">
                                             <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
-                                                <segue destination="JA2-DO-LVl" kind="unwind" unwindAction="instructorMenuUnwind:" id="xkm-KQ-uO9"/>
+                                                <segue destination="JA2-DO-LVl" kind="unwind" unwindAction="returnHomeUnwind:" id="Huw-cF-jrd"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -2412,6 +2543,17 @@
                                     <outlet property="delegate" destination="Ec2-Wj-bOi" id="i84-1k-Xgj"/>
                                 </connections>
                             </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yAh-Kf-7yW">
+                                <rect key="frame" x="0.0" y="704" width="1024" height="44"/>
+                                <items>
+                                    <barButtonItem title="Instructor Menu" id="hhh-Zp-gpt">
+                                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="JA2-DO-LVl" kind="unwind" unwindAction="instructorMenuUnwind:" id="7QL-Cp-DhQ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -2447,10 +2589,10 @@
                                                 <segue destination="r8Q-9G-0JZ" kind="unwind" identifier="SelectStudentToAddUnwind" unwindAction="selectStudentToAddUnwind:" id="QVd-ot-ZjA"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Instructor Menu" id="Reb-ye-MBS">
+                                        <barButtonItem key="rightBarButtonItem" title="Home" id="eub-Ul-wrz">
                                             <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
-                                                <segue destination="r8Q-9G-0JZ" kind="unwind" unwindAction="instructorMenuUnwind:" id="a2V-Qu-lX2"/>
+                                                <segue destination="r8Q-9G-0JZ" kind="unwind" unwindAction="returnHomeUnwind:" id="tKV-dO-59U"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -2480,6 +2622,17 @@
                                     <action selector="addToOneTimeAttendance:" destination="O3p-XD-d7O" eventType="touchUpInside" id="2mq-VW-xw5"/>
                                 </connections>
                             </button>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dXA-Uc-qAX">
+                                <rect key="frame" x="0.0" y="710" width="1024" height="44"/>
+                                <items>
+                                    <barButtonItem title="Instructor Menu" id="q8P-hI-kIq">
+                                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="r8Q-9G-0JZ" kind="unwind" unwindAction="instructorMenuUnwind:" id="97G-B7-JqQ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -2514,10 +2667,10 @@
                                                 <segue destination="0LC-Zp-1VV" kind="unwind" unwindAction="returnToRosterUnwind:" id="Gs1-fy-nZ1"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Instructor Menu" id="Onl-3d-O01">
+                                        <barButtonItem key="rightBarButtonItem" title="Home" id="xGR-ze-YDN">
                                             <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
-                                                <segue destination="0LC-Zp-1VV" kind="unwind" unwindAction="instructorMenuUnwind:" id="g1N-eJ-7M8"/>
+                                                <segue destination="0LC-Zp-1VV" kind="unwind" unwindAction="returnHomeUnwind:" id="jbG-fD-bj3"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -2541,6 +2694,17 @@
                                     <outlet property="delegate" destination="Y9H-KI-o7c" id="KWO-Zz-fCs"/>
                                 </connections>
                             </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kDm-vM-MIw">
+                                <rect key="frame" x="0.0" y="710" width="1024" height="44"/>
+                                <items>
+                                    <barButtonItem title="Instructor Menu" id="6PU-LG-0Wp">
+                                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="0LC-Zp-1VV" kind="unwind" unwindAction="instructorMenuUnwind:" id="07i-v2-BHH"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -2578,10 +2742,10 @@
                                                 <segue destination="Dcr-XS-jof" kind="unwind" identifier="ReturnToAllEventsUnwind" unwindAction="allEventsUnwind:" id="zOD-zD-ab2"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Instructor Menu" id="FAJ-JE-b7N">
+                                        <barButtonItem key="rightBarButtonItem" title="Home" id="0TP-2c-Bua">
                                             <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
-                                                <segue destination="Dcr-XS-jof" kind="unwind" unwindAction="instructorMenuUnwind:" id="xms-eH-52h"/>
+                                                <segue destination="Dcr-XS-jof" kind="unwind" unwindAction="returnHomeUnwind:" id="sip-CW-Pwm"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -2594,7 +2758,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1h2-ZH-sTv">
-                                <rect key="frame" x="821" y="531" width="150" height="50"/>
+                                <rect key="frame" x="821" y="431" width="150" height="50"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -2611,7 +2775,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HjK-cv-OqM">
-                                <rect key="frame" x="821" y="589" width="150" height="50"/>
+                                <rect key="frame" x="821" y="489" width="150" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <state key="normal" title="Delete Event">
@@ -2699,6 +2863,17 @@
                                     <action selector="suspendRoster:" destination="M3Y-Zp-MFq" eventType="touchUpInside" id="Okg-Cy-LcT"/>
                                 </connections>
                             </button>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Ff-JQ-aae">
+                                <rect key="frame" x="0.0" y="704" width="1024" height="44"/>
+                                <items>
+                                    <barButtonItem title="Instructor Menu" id="uEZ-38-aXU">
+                                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="Dcr-XS-jof" kind="unwind" unwindAction="instructorMenuUnwind:" id="IHt-Iu-xiO"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -2717,7 +2892,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kwy-bR-Fo0" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Dcr-XS-jof" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3904" y="2872"/>
+            <point key="canvasLocation" x="3936" y="2926"/>
         </scene>
         <!--Roster History View Controller-->
         <scene sceneID="6E7-e8-kpd">
@@ -2741,10 +2916,10 @@
                                                 <segue destination="1s7-Yc-gVv" kind="unwind" unwindAction="editStudentInfoUnwind:" id="Ehx-kQ-8dH"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Instructor Menu" id="p9d-xN-Nhd">
+                                        <barButtonItem key="rightBarButtonItem" title="Home" id="ncs-LQ-Yce">
                                             <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
-                                                <segue destination="1s7-Yc-gVv" kind="unwind" unwindAction="instructorMenuUnwind:" id="duW-2W-VYX"/>
+                                                <segue destination="1s7-Yc-gVv" kind="unwind" unwindAction="returnHomeUnwind:" id="H0X-J3-iC6"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -2771,6 +2946,13 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3rv-fN-S3J">
                                 <rect key="frame" x="0.0" y="702" width="1024" height="44"/>
                                 <items>
+                                    <barButtonItem title="Instructor Menu" id="pMR-gV-Hhm">
+                                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="1s7-Yc-gVv" kind="unwind" unwindAction="instructorMenuUnwind:" id="sBx-SS-Xbs"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ZNi-gF-ZGC"/>
                                     <barButtonItem systemItem="add" id="o0x-9H-FuW">
                                         <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
@@ -2814,10 +2996,10 @@
                                                 <segue destination="6ya-Lo-f0x" kind="unwind" unwindAction="returnToRosterHistoryUnwind:" id="qy0-7O-Ie4"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Instructor Menu" id="MmQ-ce-HPy">
+                                        <barButtonItem key="rightBarButtonItem" title="Home" id="5cu-mY-fPP">
                                             <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
-                                                <segue destination="6ya-Lo-f0x" kind="unwind" unwindAction="instructorMenuUnwind:" id="Cc1-Yv-WFv"/>
+                                                <segue destination="6ya-Lo-f0x" kind="unwind" unwindAction="returnHomeUnwind:" id="TXP-SV-VNN"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -2841,6 +3023,17 @@
                                     <outlet property="delegate" destination="G4T-1L-atF" id="d0T-pl-o4V"/>
                                 </connections>
                             </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ISK-XL-7Zh">
+                                <rect key="frame" x="0.0" y="707" width="1024" height="44"/>
+                                <items>
+                                    <barButtonItem title="Instructor Menu" id="3ph-ap-j0W">
+                                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="6ya-Lo-f0x" kind="unwind" unwindAction="instructorMenuUnwind:" id="Mug-te-s67"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -2856,13 +3049,13 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Jcc-rI-ynV"/>
+        <segue reference="yVJ-bF-MBW"/>
         <segue reference="MbP-O1-PDi"/>
         <segue reference="njK-ob-as0"/>
         <segue reference="0CC-ZP-ABi"/>
+        <segue reference="Sgd-4S-nsG"/>
         <segue reference="p75-6g-aLt"/>
-        <segue reference="lZo-3K-BmO"/>
+        <segue reference="uTg-An-jIk"/>
         <segue reference="0dW-OO-Qat"/>
-        <segue reference="OIi-5h-Iro"/>
     </inferredMetricsTieBreakers>
 </document>
