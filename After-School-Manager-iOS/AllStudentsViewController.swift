@@ -39,7 +39,7 @@ class AllStudentsViewController: UIViewController, UITableViewDataSource, UITabl
         performSegueWithIdentifier("InstructorMenuStudentsToEditStudent", sender: self)
     }
 
-    @IBAction func instructorMenuStudentsUnwind(segue: UIStoryboardSegue) {
+    @IBAction func allStudentsUnwind(segue: UIStoryboardSegue) {
         allStudentsModel.resetStudents()
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             self.studentListTable.reloadData()

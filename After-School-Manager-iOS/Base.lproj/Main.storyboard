@@ -1623,7 +1623,7 @@
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="mpc-e2-SiR">
                                             <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
-                                                <segue destination="GGQ-HY-VuM" kind="unwind" identifier="instructorMenuStudentsUnwind" unwindAction="instructorMenuStudentsUnwind:" id="THE-MJ-ztA"/>
+                                                <action selector="backButton:" destination="eat-KY-ysK" id="2uB-Ai-08Y"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="My Menu" id="9pF-UJ-zyp">
@@ -1725,6 +1725,7 @@
                         <outlet property="school" destination="6UN-Vg-W2p" id="GPH-SO-icy"/>
                         <outlet property="signOutRecordsButton" destination="via-90-fAc" id="i0v-yH-fKM"/>
                         <outlet property="titleBar" destination="E4s-WF-UcW" id="NMz-jg-RRB"/>
+                        <segue destination="GGQ-HY-VuM" kind="unwind" identifier="AllStudentsUnwind" unwindAction="allStudentsUnwind:" id="j1u-u3-TeC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p3F-Cn-QeA" userLabel="First Responder" sceneMemberID="firstResponder"/>
