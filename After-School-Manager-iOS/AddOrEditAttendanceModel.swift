@@ -33,11 +33,6 @@ class AddOrEditAttendanceModel {
         student.setStudentID(Int(results.intForColumn("studentID")))
         student.setFirstName(results.stringForColumn("firstName"))
         student.setLastName(results.stringForColumn("lastName"))
-        student.setActive(Int(results.intForColumn("active")))
-        student.setSchool(results.stringForColumn("school"))
-        student.setBirthDay(Int(results.intForColumn("birthDay")))
-        student.setBirthMonth(Int(results.intForColumn("birthMonth")))
-        student.setBirthYear(Int(results.intForColumn("birthYear")))
         results.close()
     }
 

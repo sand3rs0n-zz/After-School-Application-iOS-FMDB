@@ -28,13 +28,6 @@ class RosterHistoryModel {
             cur.setStudentID(Int(results.intForColumn("studentID")))
             cur.setRosterID(Int(results.intForColumn("rosterID")))
             cur.setRosterName(results.stringForColumn("name"))
-            cur.setMonday(Int(results.intForColumn("monday")))
-            cur.setTuesday(Int(results.intForColumn("tuesday")))
-            cur.setWednesday(Int(results.intForColumn("wednesday")))
-            cur.setThursday(Int(results.intForColumn("thursday")))
-            cur.setFriday(Int(results.intForColumn("friday")))
-            cur.setSaturday(Int(results.intForColumn("saturday")))
-            cur.setSunday(Int(results.intForColumn("sunday")))
             rosterList.append(cur)
         }
         results.close()

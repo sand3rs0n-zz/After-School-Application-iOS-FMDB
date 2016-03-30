@@ -221,5 +221,35 @@ class Date {
     func getWeekday() -> String {
         return weekday
     }
+    func getWeekdayInt() -> Int {
+        var weekdayInt = 0
+        switch weekday {
+        case "sunday":
+            weekdayInt = 6
+            break
+        case "monday":
+            weekdayInt = 0
+            break
+        case "tuesday":
+            weekdayInt = 1
+            break
+        case "wednesday":
+            weekdayInt = 2
+            break
+        case "thursday":
+            weekdayInt = 3
+            break
+        case "friday":
+            weekdayInt = 4
+            break
+        case "saturday":
+            weekdayInt = 5
+            break
+        default:
+            print("Error fetching day count")
+            weekdayInt = 0
+        }
+        return weekdayInt
+    }
 
 }

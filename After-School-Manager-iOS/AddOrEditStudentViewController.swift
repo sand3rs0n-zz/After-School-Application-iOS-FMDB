@@ -84,6 +84,20 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+    @IBAction func backButton(sender: AnyObject) {
+        if (!addOrEditStudentModel.getUpdate()) {
+            let deleteGuardians = "DELETE FROM GUARDIANS WHERE studentID = '\(self.addOrEditStudentModel.getStudentID())'"
+            let deleteContactNumbers = "DELETE FROM CONTACTNUMBERS WHERE studentID = '\(self.addOrEditStudentModel.getStudentID())'"
+            database.update(deleteGuardians)
+            database.update(deleteContactNumbers)
+        }
+        back()
+    }
+
+    private func back() {
+        performSegueWithIdentifier("AllStudentsUnwind", sender: self)
+    }
     
     @IBAction func updateStudent(sender: AnyObject) {
         let dateFormatter = NSDateFormatter()
@@ -119,7 +133,14 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
                 result3 = database.update(studentRosters)
             }
             if (result1 && (!addOrEditStudentModel.getUpdate() || (result2 && result3))) {
-                self.performSegueWithIdentifier("instructorMenuStudentsUnwind", sender: self)
+                if (!addOrEditStudentModel.getUpdate()) {
+                    addOrEditStudentModel.resetResults()
+                    let updateGuardians = "UPDATE GUARDIANS SET studentID = '\(addOrEditStudentModel.getStudentID())' WHERE studentID = '\(0)'"
+                    let updateContacts = "UPDATE CONTACTNUMBERS SET studentID = '\(addOrEditStudentModel.getStudentID())' WHERE studentID = '\(0)'"
+                    database.update(updateGuardians)
+                    database.update(updateContacts)
+                }
+                self.back()
             } else if (!result1) {
                 let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Add Student to StudentProfiles Database")
                 errorAlert.displayError()
@@ -165,7 +186,7 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
             let result7 = database.update(deleteAbsencesList)
 
             if (result1 && result2 && result3 && result4 && result5 && result6 && result7) {
-                self.performSegueWithIdentifier("instructorMenuStudentsUnwind", sender: self)
+                self.back()
             } else if (!result1) {
                 let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete Roster From StudentProfiles Database")
                 errorAlert.displayError()
