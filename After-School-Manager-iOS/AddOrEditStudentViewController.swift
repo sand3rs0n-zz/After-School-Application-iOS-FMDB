@@ -134,6 +134,9 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
             }
             if (result1 && (!addOrEditStudentModel.getUpdate() || (result2 && result3))) {
                 if (!addOrEditStudentModel.getUpdate()) {
+                    let result = database.search("SELECT MAX(studentID) as id FROM STUDENTPROFILES")
+                    result.next()
+                    addOrEditStudentModel.setStudentID(Int(result.intForColumn("id")))
                     addOrEditStudentModel.resetResults()
                     let updateGuardians = "UPDATE GUARDIANS SET studentID = '\(addOrEditStudentModel.getStudentID())' WHERE studentID = '\(0)'"
                     let updateContacts = "UPDATE CONTACTNUMBERS SET studentID = '\(addOrEditStudentModel.getStudentID())' WHERE studentID = '\(0)'"
@@ -151,6 +154,9 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
                 let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Update Student in StudentRosters Database")
                 errorAlert.displayError()
             }
+        } else {
+            let errorAlert = ErrorAlert(viewController: self, errorString: "Ensure all fields have a value")
+            errorAlert.displayError()
         }
     }
 
