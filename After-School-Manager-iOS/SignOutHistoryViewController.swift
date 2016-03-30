@@ -19,9 +19,10 @@ class SignOutHistoryViewController: UIViewController, UITableViewDataSource, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         signOutHistoryModel.setRosterTypes([dayCampButton, weekCampButton, afterSchoolButton])
-        dayCampButton.backgroundColor = UIColor.greenColor()
-        weekCampButton.backgroundColor = UIColor.greenColor()
-        afterSchoolButton.backgroundColor = UIColor.greenColor()
+//        dayCampButton.backgroundColor = UIColor.redColor()
+//        weekCampButton.backgroundColor = UIColor.redColor()
+//        afterSchoolButton.backgroundColor = UIColor.redColor()
+        
 
         signOutHistoryModel.resetSignOuts()
 
@@ -82,11 +83,7 @@ class SignOutHistoryViewController: UIViewController, UITableViewDataSource, UIT
             signOutHistoryModel.setRosterBool(1, i: rosterType)
         }
         let roster = signOutHistoryModel.getRosterTypes(rosterType)
-        if (roster.backgroundColor == UIColor.greenColor()) {
-            roster.backgroundColor = UIColor.lightGrayColor()
-        } else {
-            roster.backgroundColor = UIColor.greenColor()
-        }
+        toggleColor(roster)
 
         resetRosterTypeString()
 
@@ -94,6 +91,17 @@ class SignOutHistoryViewController: UIViewController, UITableViewDataSource, UIT
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             self.signOutsListTable.reloadData()
         })
+    }
+    
+    private func toggleColor(roster: UIButton) {
+        // Toggle attendance colors
+        if(roster.backgroundColor == UIColor.whiteColor()) {
+            roster.backgroundColor = UIColor.redColor()
+            roster.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        } else {
+            roster.backgroundColor = UIColor.whiteColor()
+            roster.setTitleColor(UIColor.darkTextColor(), forState: UIControlState.Normal)
+        }
     }
 
     private func resetRosterTypeString() {
