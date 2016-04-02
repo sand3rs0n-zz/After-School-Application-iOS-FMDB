@@ -90,6 +90,17 @@ class EditTodayAttendanceViewController: UIViewController {
         }
     }
 
+    private func latePickUp(timestamp: Date) -> Bool {
+        let result = database.search("SELECT * FROM ROSTERS WHERE rosterID = \(editTodayAttendanceModel.getRosterID())")
+        result.next()
+        let pickUpHour = Int(result.intForColumn("pickUpHour"))
+        let pickUpMinute = Int(result.intForColumn("pickUpMinute"))
+        if ((timestamp.getCurrentHour() > pickUpHour) || (timestamp.getCurrentHour() == pickUpHour && timestamp.getCurrentMinute() > pickUpMinute)) {
+            return true
+        }
+        return false
+    }
+
     private func back() {
         performSegueWithIdentifier("ReturnToTodayRosterFromEditAttendance", sender: self)
 
@@ -119,15 +130,19 @@ class EditTodayAttendanceViewController: UIViewController {
     }
 
     private func signOut(signOutType: Int) -> Bool {
+        var sot = signOutType
         var pickUpHour = editTodayAttendanceModel.getRoster().getPickUpHour()
         var pickUpMinute = editTodayAttendanceModel.getRoster().getPickUpMinute()
         let date = editTodayAttendanceModel.getDate()
-        if (signOutType == 4) {
+        if (sot == 4) {
             editTodayAttendanceModel.setDate(Date())
             pickUpHour = editTodayAttendanceModel.getDate().getCurrentHour()
             pickUpMinute = editTodayAttendanceModel.getDate().getCurrentMinute()
         }
-        let insertSQL = "INSERT INTO SIGNOUTS (studentID, rosterID, signOutGuardian, rosterType, signOutType, day, month, year, hour, minute) VALUES ('\(editTodayAttendanceModel.getStudentID())', '\(editTodayAttendanceModel.getRosterID())', 'Instructor', '\(editTodayAttendanceModel.getRoster().getRosterType())', '\(signOutType)', '\(date.getCurrentDay())', '\(date.getCurrentMonth())', '\(date.getCurrentYear())', '\(pickUpHour)', '\(pickUpMinute)')"
+        if (latePickUp(Date())) {
+            sot = 5
+        }
+        let insertSQL = "INSERT INTO SIGNOUTS (studentID, rosterID, signOutGuardian, rosterType, signOutType, day, month, year, hour, minute) VALUES ('\(editTodayAttendanceModel.getStudentID())', '\(editTodayAttendanceModel.getRosterID())', 'Instructor', '\(editTodayAttendanceModel.getRoster().getRosterType())', '\(sot)', '\(date.getCurrentDay())', '\(date.getCurrentMonth())', '\(date.getCurrentYear())', '\(pickUpHour)', '\(pickUpMinute)')"
         return database.update(insertSQL)
     }
 }

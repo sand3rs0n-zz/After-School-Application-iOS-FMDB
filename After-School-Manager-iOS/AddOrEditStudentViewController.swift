@@ -95,10 +95,88 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
         back()
     }
 
+    @IBAction func addGuardian(sender: AnyObject) {
+        print("Add New Guardian Selected")
+        var name:String = ""
+
+        let alertController = UIAlertController(title: "New Guardian", message: "Please enter your name.", preferredStyle: .Alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) -> Void in
+            print("Cancelled")
+        }
+        alertController.addAction(cancelAction)
+
+        alertController.addTextFieldWithConfigurationHandler { (textField) -> Void in
+            textField.placeholder = "Guardian Name"
+        }
+
+        let submitAction = UIAlertAction(title: "Submit", style: .Default) { (action) -> Void in
+            name = ((alertController.textFields?.first)! as UITextField).text!
+            if(name != "") {
+                print("Added guardian \(name)")
+                let insertSQL = "INSERT INTO GUARDIANS (studentID, name) VALUES ('\(self.addOrEditStudentModel.getStudentID())', '\(name)')"
+                let result = database.update(insertSQL)
+                if (result) {
+                    self.addOrEditStudentModel.resetGuardians()
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.guardianTable.reloadData()
+                    })
+                }                    } else {
+                print("Please enter a name")
+            }
+        }
+        alertController.addAction(submitAction)
+
+        self.presentViewController(alertController, animated: true) {
+        }
+    }
+
+    @IBAction func addContact(sender: AnyObject) {
+        print("Add New Contact Selected")
+        var name:String = ""
+        var number:String = ""
+
+        let alertController = UIAlertController(title: "New Contact", message: "Please enter your name.", preferredStyle: .Alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) -> Void in
+            print("Cancelled")
+        }
+        alertController.addAction(cancelAction)
+
+        alertController.addTextFieldWithConfigurationHandler { (textField) -> Void in
+            textField.placeholder = "Contact Name"
+        }
+
+        alertController.addTextFieldWithConfigurationHandler { (textField) -> Void in
+            textField.placeholder = "Phone Number"
+        }
+
+        let submitAction = UIAlertAction(title: "Submit", style: .Default) { (action) -> Void in
+            name = ((alertController.textFields?.first)! as UITextField).text!
+            number = ((alertController.textFields?.last)! as UITextField).text!
+            if(name != "" && number != "") {
+                print("Added contact \(name) with number \(number)")
+                let insertSQL = "INSERT INTO CONTACTNUMBERS (studentID, phoneNumber, name) VALUES ('\(self.addOrEditStudentModel.getStudentID())', '\(number)', '\(name)')"
+                let result = database.update(insertSQL)
+                if (result) {
+                    self.addOrEditStudentModel.resetContactNumbers()
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.contactTable.reloadData()
+                    })
+                }
+            } else {
+                print("Please enter a name and number")
+            }
+        }
+        alertController.addAction(submitAction)
+
+        self.presentViewController(alertController, animated: true) {
+            // Not really sure what to do here, actually
+        }
+    }
+
     private func back() {
         performSegueWithIdentifier("AllStudentsUnwind", sender: self)
     }
-    
+
     @IBAction func updateStudent(sender: AnyObject) {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
@@ -240,6 +318,37 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
+
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (editingStyle == .Delete) {
+            if (tableView == self.guardianTable && addOrEditStudentModel.getGuardiansCount() > 0) {
+                let deleteGuardians = "DELETE FROM GUARDIANS WHERE guardianID = '\(addOrEditStudentModel.getGuardian(indexPath.row).getGuardianID())'"
+                let result = database.update(deleteGuardians)
+                if (result) {
+                    addOrEditStudentModel.removeGuardian(indexPath.row)
+                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                    if (addOrEditStudentModel.getGuardiansCount() == 0) {
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            self.guardianTable.reloadData()
+                        })
+                    }
+                }
+            } else if (tableView == self.contactTable && addOrEditStudentModel.getContactNumbersCount() > 0) {
+                let deleteContacts = "DELETE FROM CONTACTNUMBERS WHERE contactID = '\(self.addOrEditStudentModel.getContactNumber(indexPath.row).getContactID())'"
+                let result = database.update(deleteContacts)
+                if (result) {
+                    addOrEditStudentModel.removeContact(indexPath.row)
+                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                    if (addOrEditStudentModel.getContactNumbersCount() == 0) {
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            self.contactTable.reloadData()
+                        })
+                    }
+                }
+            }
+        }
+    }
+
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(tableView == self.guardianTable && addOrEditStudentModel.getGuardiansCount() > 0) {
@@ -247,7 +356,7 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
         } else if(tableView == self.contactTable && addOrEditStudentModel.getContactNumbersCount() > 0) {
             return addOrEditStudentModel.getContactNumbersCount() + 1
         } else {
-            return 2
+            return 1
         }
     }
     
@@ -266,11 +375,6 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
                 let guardianName = guardian.getName()
                 cell.textLabel?.text = guardianName
             }
-            else if (row == addOrEditStudentModel.getGuardiansCount()) {
-                cell.textLabel?.text = "Add New Guardian"
-                cell.textLabel?.textColor = UIColor.redColor()
-                cell.textLabel?.font = UIFont.boldSystemFontOfSize(17.0)
-            }
         } else if (tableView == self.contactTable) {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "contactCell")
             let row = indexPath.row
@@ -285,100 +389,11 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
                 let contactPhone = contact.getPhoneNumber()
                 cell.textLabel?.text = "\(contactName): \(contactPhone)"
             }
-            else if (row == addOrEditStudentModel.getContactNumbersCount()){
-                cell.textLabel?.text = "Add New Contact"
-                cell.textLabel?.textColor = UIColor.redColor()
-                cell.textLabel?.font = UIFont.boldSystemFontOfSize(17.0)
-            }
         }
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if(tableView == self.guardianTable) {
-            let indexPath = self.guardianTable.indexPathForSelectedRow
-            let selectedCell = self.guardianTable.cellForRowAtIndexPath(indexPath!)! as UITableViewCell
-            if(selectedCell.textLabel!.text == "Add New Guardian") {
-                print("Add New Guardian Selected")
-                var name:String = ""
-                
-                let alertController = UIAlertController(title: "New Guardian", message: "Please enter your name.", preferredStyle: .Alert)
-                let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) -> Void in
-                    print("Cancelled")
-                }
-                alertController.addAction(cancelAction)
-                
-                alertController.addTextFieldWithConfigurationHandler { (textField) -> Void in
-                    textField.placeholder = "Guardian Name"
-                }
-                
-                let submitAction = UIAlertAction(title: "Submit", style: .Default) { (action) -> Void in
-                    name = ((alertController.textFields?.first)! as UITextField).text!
-                    if(name != "") {
-                        print("Added guardian \(name)")
-                        let insertSQL = "INSERT INTO GUARDIANS (studentID, name) VALUES ('\(self.addOrEditStudentModel.getStudentID())', '\(name)')"
-                        let result = database.update(insertSQL)
-                        if (result) {
-                            self.addOrEditStudentModel.resetGuardians()
-                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                self.guardianTable.reloadData()
-                            })
-                        }                    } else {
-                        print("Please enter a name")
-                    }
-                }
-                alertController.addAction(submitAction)
-                
-                self.presentViewController(alertController, animated: true) {
-                }
-            }
-
-        } else if(tableView == self.contactTable) {
-            let indexPath = self.contactTable.indexPathForSelectedRow
-            let selectedCell = self.contactTable.cellForRowAtIndexPath(indexPath!)! as UITableViewCell
-            if(selectedCell.textLabel!.text == "Add New Contact") {
-                print("Add New Contact Selected")
-                var name:String = ""
-                var number:String = ""
-                
-                let alertController = UIAlertController(title: "New Contact", message: "Please enter your name.", preferredStyle: .Alert)
-                let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) -> Void in
-                    print("Cancelled")
-                }
-                alertController.addAction(cancelAction)
-                
-                alertController.addTextFieldWithConfigurationHandler { (textField) -> Void in
-                    textField.placeholder = "Contact Name"
-                }
-                
-                alertController.addTextFieldWithConfigurationHandler { (textField) -> Void in
-                    textField.placeholder = "Phone Number"
-                }
-                
-                let submitAction = UIAlertAction(title: "Submit", style: .Default) { (action) -> Void in
-                    name = ((alertController.textFields?.first)! as UITextField).text!
-                    number = ((alertController.textFields?.last)! as UITextField).text!
-                    if(name != "" && number != "") {
-                        print("Added contact \(name) with number \(number)")
-                        let insertSQL = "INSERT INTO CONTACTNUMBERS (studentID, phoneNumber, name) VALUES ('\(self.addOrEditStudentModel.getStudentID())', '\(number)', '\(name)')"
-                        let result = database.update(insertSQL)
-                        if (result) {
-                            self.addOrEditStudentModel.resetContactNumbers()
-                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                self.contactTable.reloadData()
-                            })
-                        }
-                    } else {
-                        print("Please enter a name and number")
-                    }
-                }
-                alertController.addAction(submitAction)
-                
-                self.presentViewController(alertController, animated: true) {
-                    // Not really sure what to do here, actually
-                }
-            }
-        }
     }
     
     // Hide keyboard when done typing 

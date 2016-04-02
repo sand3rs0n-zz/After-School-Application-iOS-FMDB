@@ -36,6 +36,12 @@ class AddOrEditStudentModel {
         contactNumbers.removeAll()
         getContactNumbers()
     }
+    func removeGuardian(index: Int) {
+        guardians.removeAtIndex(index)
+    }
+    func removeContact(index: Int) {
+        contactNumbers.removeAtIndex(index)
+    }
 
     private func getStudents() {
         let querySQL = "SELECT * FROM STUDENTPROFILES WHERE studentID = '\(studentID)'"

@@ -16,6 +16,7 @@ class ScheduleAbsenceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        datePicker.setValue(UIColor.whiteColor(), forKeyPath: "textColor")
         self.scheduleAbsenceButton!.setTitle(scheduleAbsenceModel.getButtonText(), forState: .Normal)
         if (scheduleAbsenceModel.getState() == 1) {
             scheduleAbsenceModel.initializeAbsence()

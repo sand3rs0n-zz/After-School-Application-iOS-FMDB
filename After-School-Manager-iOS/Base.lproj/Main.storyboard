@@ -785,86 +785,6 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ce6-aT-uyf">
-                                <rect key="frame" x="246" y="328" width="100" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                <state key="normal" title="Monday">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="mondaySelect:" destination="G1Q-IP-rXa" eventType="touchUpInside" id="ydT-gD-AwP"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hdt-ak-xus">
-                                <rect key="frame" x="354" y="328" width="100" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                <state key="normal" title="Tuesday">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="tuesdaySelect:" destination="G1Q-IP-rXa" eventType="touchUpInside" id="eTF-sP-0DT"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r4x-UC-0hD">
-                                <rect key="frame" x="462" y="328" width="100" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                <state key="normal" title="Wednesday">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="wednesdaySelect:" destination="G1Q-IP-rXa" eventType="touchUpInside" id="znH-pB-9xX"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1jU-9m-VFu">
-                                <rect key="frame" x="408" y="366" width="100" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                <state key="normal" title="Saturday">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="saturdaySelect:" destination="G1Q-IP-rXa" eventType="touchUpInside" id="jxY-ml-kL2"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ECN-L6-WLm">
-                                <rect key="frame" x="570" y="328" width="100" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                <state key="normal" title="Thursday">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="thursdaySelect:" destination="G1Q-IP-rXa" eventType="touchUpInside" id="3sB-73-PAT"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="John Doe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ncq-Zu-4zr">
                                 <rect key="frame" x="432" y="121" width="396" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -899,22 +819,6 @@
                                     <action selector="updateAttendance:" destination="G1Q-IP-rXa" eventType="touchUpInside" id="7qF-wb-Ncd"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dVC-DY-zi7">
-                                <rect key="frame" x="516" y="366" width="100" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                <state key="normal" title="Sunday">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="sundaySelect:" destination="G1Q-IP-rXa" eventType="touchUpInside" id="f1q-ff-qiO"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PaG-1J-q8k">
                                 <rect key="frame" x="432" y="491" width="160" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -929,22 +833,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="deleteFromRoster:" destination="G1Q-IP-rXa" eventType="touchUpInside" id="Tb0-YZ-8fj"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tJD-uv-MbX">
-                                <rect key="frame" x="678" y="328" width="100" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                <state key="normal" title="Friday">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="fridaySelect:" destination="G1Q-IP-rXa" eventType="touchUpInside" id="fX1-Da-MFh"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Roster" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sal-45-hBb">
@@ -964,6 +852,83 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q09-1r-ga5">
+                                <rect key="frame" x="246" y="328" width="100" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="Monday">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="mondaySelect:" destination="G1Q-IP-rXa" eventType="touchUpInside" id="zYn-hW-Ohs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i15-md-1ef">
+                                <rect key="frame" x="354" y="328" width="100" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="Tuesday">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tuesdaySelect:" destination="G1Q-IP-rXa" eventType="touchUpInside" id="3eK-pe-XL8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hg8-vr-Ths">
+                                <rect key="frame" x="462" y="328" width="100" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="Wednesday">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="wednesdaySelect:" destination="G1Q-IP-rXa" eventType="touchUpInside" id="1rQ-41-65c"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nq4-5H-cHq">
+                                <rect key="frame" x="570" y="328" width="100" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="Thursday">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="thursdaySelect:" destination="G1Q-IP-rXa" eventType="touchUpInside" id="jru-7z-9qG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Oo-iO-Fo4">
+                                <rect key="frame" x="678" y="328" width="100" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="Friday">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="fridaySelect:" destination="G1Q-IP-rXa" eventType="touchUpInside" id="fL5-h3-C3d"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfP-P4-0rH">
+                                <rect key="frame" x="408" y="366" width="100" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="Saturday">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="saturdaySelect:" destination="G1Q-IP-rXa" eventType="touchUpInside" id="DGr-ZW-T8m"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zDp-qx-arM">
+                                <rect key="frame" x="516" y="366" width="100" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="Sunday">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sundaySelect:" destination="G1Q-IP-rXa" eventType="touchUpInside" id="MeM-IP-Ovr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -974,17 +939,17 @@
                     </view>
                     <connections>
                         <outlet property="deleteFromRosterButton" destination="PaG-1J-q8k" id="1r1-Fa-rRM"/>
-                        <outlet property="friday" destination="tJD-uv-MbX" id="Tfe-RF-L7i"/>
-                        <outlet property="monday" destination="ce6-aT-uyf" id="OLG-g2-vVm"/>
+                        <outlet property="friday" destination="7Oo-iO-Fo4" id="mnf-gc-i0w"/>
+                        <outlet property="monday" destination="q09-1r-ga5" id="urg-Th-a2D"/>
                         <outlet property="rosterName" destination="1Gu-wa-mwk" id="9eH-Qc-luO"/>
-                        <outlet property="saturday" destination="1jU-9m-VFu" id="17A-vv-QY1"/>
+                        <outlet property="saturday" destination="jfP-P4-0rH" id="8eB-hc-Q9V"/>
                         <outlet property="studentName" destination="ncq-Zu-4zr" id="Fby-kd-Spm"/>
-                        <outlet property="sunday" destination="dVC-DY-zi7" id="G5c-Mg-eRy"/>
-                        <outlet property="thursday" destination="ECN-L6-WLm" id="UMS-e7-vFz"/>
+                        <outlet property="sunday" destination="zDp-qx-arM" id="qP2-ja-uuF"/>
+                        <outlet property="thursday" destination="nq4-5H-cHq" id="3iT-QF-erw"/>
                         <outlet property="titleBar" destination="04c-Ww-PoH" id="38D-LS-eX7"/>
-                        <outlet property="tuesday" destination="hdt-ak-xus" id="Gc9-Qk-26x"/>
+                        <outlet property="tuesday" destination="i15-md-1ef" id="SNJ-s7-lZp"/>
                         <outlet property="updateAttendanceButton" destination="9eX-Of-hoA" id="QhU-FU-GOy"/>
-                        <outlet property="wednesday" destination="r4x-UC-0hD" id="DZL-hK-kUq"/>
+                        <outlet property="wednesday" destination="Hg8-vr-Ths" id="vOi-XN-KFB"/>
                         <segue destination="7hq-1b-YII" kind="unwind" identifier="EditStudentFromAllRostersUnwind" unwindAction="returnToRosterUnwind:" id="VGs-RU-juh"/>
                         <segue destination="7hq-1b-YII" kind="unwind" identifier="ReturnToSelectStudentToAddToRosterUnwind" unwindAction="returnToSelectStudentToAddToRosterUnwind:" id="iSr-MC-eaU"/>
                         <segue destination="7hq-1b-YII" kind="unwind" identifier="ReturnToRosterHistoryUnwind" unwindAction="returnToRosterHistoryUnwind:" id="fGh-ed-eTV"/>
@@ -1615,43 +1580,25 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bc6-Gr-Kkd">
-                                <rect key="frame" x="44" y="173" width="36" height="21"/>
+                                <rect key="frame" x="57" y="173" width="36" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1rT-op-10P">
-                                <rect key="frame" x="126" y="173" width="38" height="21"/>
+                                <rect key="frame" x="193" y="173" width="38" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Who Signed Out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kg-80-gEl">
-                                <rect key="frame" x="299" y="173" width="126" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Guardian" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kg-80-gEl">
+                                <rect key="frame" x="479" y="173" width="126" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Signed Out/Absent (scheduled/UNSCHEDULED!/School closed/etc)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5fQ-pW-LFc">
-                                <rect key="frame" x="39" y="607" width="517" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XPl-Sj-U0e">
-                                <rect key="frame" x="474" y="173" width="43" height="21"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event Types" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XlU-bF-RCr">
-                                <rect key="frame" x="44" y="584" width="94" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Camp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pjt-Br-7G0">
-                                <rect key="frame" x="211" y="173" width="46" height="21"/>
+                                <rect key="frame" x="334" y="173" width="46" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1675,7 +1622,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QGy-6D-GHa">
-                                <rect key="frame" x="44" y="655" width="120" height="50"/>
+                                <rect key="frame" x="452" y="584" width="120" height="50"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <state key="normal" title="Email Records">
@@ -1690,6 +1637,12 @@
                                     <action selector="emailSignOuts:" destination="bJt-LC-pkh" eventType="touchUpInside" id="i6J-eB-QZE"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Special Note" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XPl-Sj-U0e">
+                                <rect key="frame" x="640" y="173" width="91" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1886,7 +1839,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zKX-gf-pxn">
-                                <rect key="frame" x="618" y="150" width="361" height="128"/>
+                                <rect key="frame" x="618" y="132" width="361" height="166"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="VQM-gU-5pJ">
@@ -1904,7 +1857,7 @@
                                 </connections>
                             </tableView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="s7h-4E-ui3">
-                                <rect key="frame" x="618" y="356" width="361" height="157"/>
+                                <rect key="frame" x="618" y="347" width="361" height="166"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="contactCell" id="xQH-rm-Psv">
@@ -1938,9 +1891,33 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MWM-22-cb4">
+                                <rect key="frame" x="941" y="309" width="30" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="39"/>
+                                <state key="normal" title="+">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="addContact:" destination="eat-KY-ysK" eventType="touchUpInside" id="V45-gd-xW2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cew-41-V5i">
+                                <rect key="frame" x="941" y="94" width="30" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="39"/>
+                                <state key="normal" title="+">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="addGuardian:" destination="eat-KY-ysK" eventType="touchUpInside" id="87F-TF-uHV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="qoK-QM-4mj"/>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="active" destination="0Ph-Yj-oKS" id="cDb-Ot-RMr"/>
                         <outlet property="addToRoster" destination="Rzz-3o-MtC" id="B8k-cM-2Wj"/>
@@ -2113,7 +2090,7 @@
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Y9H-KI-o7c" kind="show" identifier="InstructorMenuStudentsToAddStudent" id="06S-Ur-GZl"/>
+                                    <segue destination="Y9H-KI-o7c" kind="show" identifier="SelectNewStudentToAddToRoster" id="06S-Ur-GZl"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -3050,13 +3027,13 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="yVJ-bF-MBW"/>
         <segue reference="MbP-O1-PDi"/>
-        <segue reference="njK-ob-as0"/>
-        <segue reference="0CC-ZP-ABi"/>
+        <segue reference="uTg-An-jIk"/>
+        <segue reference="yVJ-bF-MBW"/>
+        <segue reference="0dW-OO-Qat"/>
         <segue reference="Sgd-4S-nsG"/>
         <segue reference="p75-6g-aLt"/>
-        <segue reference="uTg-An-jIk"/>
-        <segue reference="0dW-OO-Qat"/>
+        <segue reference="njK-ob-as0"/>
+        <segue reference="0CC-ZP-ABi"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -45,6 +45,14 @@ class SignOutViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     func setRosterID(id: Int) {
         signOutViewModel.setRosterID(id)
     }
+
+    private func latePickUp(timestamp: Date) -> Bool {
+        if ((timestamp.getCurrentHour() > signOutViewModel.getPickUpHour()) || (timestamp.getCurrentHour() == signOutViewModel.getPickUpHour() && timestamp.getCurrentMinute() > signOutViewModel.getPickUpMinute())) {
+            return true
+        }
+        print(String(timestamp.getCurrentHour()) + " " + String(timestamp.getCurrentMinute()))
+        return false
+    }
     
     @IBAction func clearSignature(sender: AnyObject) {
         signatureBox.setLines([])
@@ -54,7 +62,11 @@ class SignOutViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     @IBAction func signOut(sender: AnyObject) {
         if (signOutViewModel.getSignOutGuardian() != "" && !signatureBox.getLines().isEmpty) {
             let timestamp = Date()
-            let signOutSQL = "INSERT INTO SIGNOUTS (studentID, rosterID, signOutGuardian, rosterType, signoutType, day, month, year, hour, minute) VALUES ('\(signOutViewModel.getStudentID())', '\(signOutViewModel.getRosterID())', '\(signOutViewModel.getSignOutGuardian())', '\(signOutViewModel.getRosterType())', '1', '\(timestamp.getCurrentDay())', '\(timestamp.getCurrentMonth())', '\(timestamp.getCurrentYear())', '\(timestamp.getCurrentHour())', '\(timestamp.getCurrentMinute())')"
+            var signOutType = 1
+            if (latePickUp(timestamp)) {
+                signOutType = 5
+            }
+            let signOutSQL = "INSERT INTO SIGNOUTS (studentID, rosterID, signOutGuardian, rosterType, signoutType, day, month, year, hour, minute) VALUES ('\(signOutViewModel.getStudentID())', '\(signOutViewModel.getRosterID())', '\(signOutViewModel.getSignOutGuardian())', '\(signOutViewModel.getRosterType())', '\(signOutType)', '\(timestamp.getCurrentDay())', '\(timestamp.getCurrentMonth())', '\(timestamp.getCurrentYear())', '\(timestamp.getCurrentHour())', '\(timestamp.getCurrentMinute())')"
             let result = database.update(signOutSQL)
             if (result) {
                 self.performSegueWithIdentifier("SignOutToStudentSelectUnwind", sender: self)

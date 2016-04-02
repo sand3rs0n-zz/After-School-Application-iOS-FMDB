@@ -46,13 +46,76 @@ class SignOutHistoryViewController: UIViewController, UITableViewDataSource, UIT
 
     private func tableString(signOut: SignOut) -> String {
         let timeStamp = signOut.getTimeStamp()
-        return timeStamp.fullDateAmerican() + "\t" + timeStamp.fullTime() + "\t" + signOut.getCampName() + "\t" + signOut.getSignOutGuardian()
+        var string = ""
+        string += timeStamp.fullDateAmerican() + "\t\t"
+        string += timeStamp.fullTime() + "\t\t\t"
+        string += signOut.getCampName()
+        for (var i = signOut.getCampName().characters.count - 1; i < 19; i++) {
+            string += " "
+            if (i < 8) {
+                string += "\t"
+            }
+        }
+        string += "\t\t" + signOut.getSignOutGuardian()
+        for (var i = signOut.getSignOutGuardian().characters.count - 1; i < 20; i++) {
+            string += " "
+            if (i < 5) {
+                 string += "\t"
+            }
+        }
+        string += "\t       " + specialSignOutType(signOut)
+        return string
+    }
+
+    private func emailString(signOut: SignOut) -> String {
+        let timeStamp = signOut.getTimeStamp()
+        var string = ""
+        string += timeStamp.fullDateAmerican() + " &nbsp;&nbsp;&nbsp;&nbsp;"
+        string += timeStamp.fullTime() + " &nbsp;&nbsp;&nbsp;&nbsp;"
+        string += signOut.getCampName()
+        for (var i = signOut.getCampName().characters.count - 1; i < 19; i++) {
+            string += "&nbsp;"
+            if (i < 8) {
+                string += "&nbsp;"
+            }
+        }
+        string += "&nbsp;&nbsp;&nbsp;" + signOut.getSignOutGuardian()
+        for (var i = signOut.getSignOutGuardian().characters.count - 1; i < 20; i++) {
+            string += "&nbsp;"
+            if (i < 5) {
+                string += "&nbsp;"
+            }
+        }
+        string += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + specialSignOutType(signOut)
+        return string
+    }
+
+    private func specialSignOutType(signOut: SignOut) -> String {
+        var signOutType = ""
+        if (signOut.getSignOutType() == 2) {
+            signOutType = "Scheduled Absence"
+        } else if (signOut.getSignOutType() == 3) {
+            signOutType = "Unscheduled Absence"
+        } else if (signOut.getSignOutType() == 4) {
+            signOutType = "Instructor Sign Out"
+        } else if (signOut.getSignOutType() == 5) {
+            signOutType = "Late Sign Out"
+        }
+        return signOutType
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let signOut = signOutHistoryModel.getSignOut(indexPath.row)
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         cell.textLabel?.text = tableString(signOut)
+        if (signOut.getSignOutType() == 2) {
+            cell.backgroundColor = UIColor.init(red: 0, green: 233, blue: 255, alpha: 1)
+        } else if (signOut.getSignOutType() == 3) {
+            cell.backgroundColor = UIColor.init(red: 127/255, green: 255, blue: 76/255, alpha: 1)
+        } else if (signOut.getSignOutType() == 5) {
+            cell.backgroundColor = UIColor.init(red: 255, green: 76/255, blue: 76/255, alpha: 1)
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
         return cell
     }
 
@@ -145,8 +208,7 @@ class SignOutHistoryViewController: UIViewController, UITableViewDataSource, UIT
         let signOutEmail = createEmail()
         mailComposerVC.setToRecipients([settings.getEmailAddress()])
         mailComposerVC.setSubject(signOutHistoryModel.getStudentName() + " Sign Out Records")
-        mailComposerVC.setMessageBody(signOutEmail, isHTML: false)
-
+        mailComposerVC.setMessageBody(signOutEmail, isHTML: true)
         return mailComposerVC
     }
 
@@ -162,9 +224,18 @@ class SignOutHistoryViewController: UIViewController, UITableViewDataSource, UIT
     }
 
     private func createEmail() -> String{
-        var text = signOutHistoryModel.getStudentName() + " Sign Out Records\nDate    Time    Camp    Who Signed Out  Event\n"
+        var text = "<h2 style='line-height:100%'>" + signOutHistoryModel.getStudentName() + " Sign Out Records</h2>"
+        text += "<h3>Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Time &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Camp &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Guardian &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Special Note</h3>"
         for (var i = 0; i < signOutHistoryModel.getSignOutsCount(); i++) {
-            text += tableString(signOutHistoryModel.getSignOut(i)) + "\n"
+            text += "<p style='line-height:50%; font-size:105%"
+            if (signOutHistoryModel.getSignOut(i).getSignOutType() == 2) {
+                text += "; color:blue"
+            } else if (signOutHistoryModel.getSignOut(i).getSignOutType() == 3) {
+                text += "; color:green"
+            } else if (signOutHistoryModel.getSignOut(i).getSignOutType() == 5) {
+                text += "; color:red"
+            }
+            text += "'>" + emailString(signOutHistoryModel.getSignOut(i)) + "</p>"
         }
 
         return text

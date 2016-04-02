@@ -32,6 +32,7 @@ class SignOutHistoryModel {
         let results = database.search(querySQL)
         while (results.next()) {
             let cur = SignOut()
+            cur.setSignOutType(Int(results.intForColumn("signOutType")))
             cur.setRosterID(Int(results.intForColumn("studentID")))
             cur.setRosterID(Int(results.intForColumn("rosterID")))
             cur.setSignOutGuaridan(results.stringForColumn("signOutGuardian"))

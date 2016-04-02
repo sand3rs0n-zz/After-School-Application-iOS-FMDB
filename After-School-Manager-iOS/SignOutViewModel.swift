@@ -15,9 +15,12 @@ class SignOutViewModel {
     private var rosterID = 0
     private var guardianNames = [String]()
     private var navTitle = ""
+    private var pickUpHour = 0
+    private var pickUpMinute = 0
 
     init() {
         getGuardianNames()
+        getRosterTimes()
     }
 
     private func getGuardians() {
@@ -30,8 +33,19 @@ class SignOutViewModel {
         results.close()
     }
 
+    private func getRosterTimes() {
+        let querySQL = "SELECT * FROM ROSTERS WHERE rosterID = '\(rosterID)'"
+        let results = database.search(querySQL)
+        while (results.next()) {
+            pickUpHour = Int(results.intForColumn("pickUpHour"))
+            pickUpMinute = Int(results.intForColumn("pickUpMinute"))
+        }
+        results.close()
+    }
+
     func resetGuardians() {
         getGuardians()
+        getRosterTimes()
     }
 
     func getGuardianNames() -> [String] {
@@ -57,6 +71,12 @@ class SignOutViewModel {
     }
     func getRosterType() -> Int {
         return rosterType
+    }
+    func getPickUpHour() -> Int {
+        return pickUpHour
+    }
+    func getPickUpMinute() -> Int {
+        return pickUpMinute
     }
     func setRosterType(type: Int) {
         rosterType = type

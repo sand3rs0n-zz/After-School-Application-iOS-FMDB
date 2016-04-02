@@ -47,10 +47,10 @@ class SignOut {
     func getCampName() -> String {
         return campName
     }
-    func gerRosterType() -> Int {
+    func getRosterType() -> Int {
         return rosterType
     }
-    func gerSignOutType() -> Int {
+    func getSignOutType() -> Int {
         return signOutType
     }
     func getDay() -> Int {

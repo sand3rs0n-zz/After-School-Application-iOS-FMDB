@@ -42,6 +42,13 @@ class AddOrEditAttendanceViewController: UIViewController {
             dayCampButtons(date)
         }
 
+        //Xcode's white background is apparently not UIColor.whiteColor() so this forces the button to be white, allowing for proper toggles
+        for (var i = 0; i < 7; i++) {
+            let dayOfWeek = addOrEditAttendanceModel.getWeek(i)
+            dayOfWeek.backgroundColor = UIColor.whiteColor()
+            dayOfWeek.setTitleColor(UIColor.darkTextColor(), forState: UIControlState.Normal)
+        }
+
         if (addOrEditAttendanceModel.getState() == 0 || addOrEditAttendanceModel.getState() == 2) {
             fillEditPage()
         } else if (addOrEditAttendanceModel.getState() == 1 || addOrEditAttendanceModel.getState() == 3) {
