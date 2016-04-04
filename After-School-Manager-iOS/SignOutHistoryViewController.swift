@@ -19,14 +19,7 @@ class SignOutHistoryViewController: UIViewController, UITableViewDataSource, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         signOutHistoryModel.setRosterTypes([dayCampButton, weekCampButton, afterSchoolButton])
-//        dayCampButton.backgroundColor = UIColor.redColor()
-//        weekCampButton.backgroundColor = UIColor.redColor()
-//        afterSchoolButton.backgroundColor = UIColor.redColor()
-        
-
         signOutHistoryModel.resetSignOuts()
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,52 +35,6 @@ class SignOutHistoryViewController: UIViewController, UITableViewDataSource, UIT
     }
     func setStudentName(studentName: String) {
         signOutHistoryModel.setStudentName(studentName)
-    }
-
-    private func tableString(signOut: SignOut) -> String {
-        let timeStamp = signOut.getTimeStamp()
-        var string = ""
-        string += timeStamp.fullDateAmerican() + "\t\t"
-        string += timeStamp.fullTime() + "\t\t\t"
-        string += signOut.getCampName()
-        for (var i = signOut.getCampName().characters.count - 1; i < 19; i++) {
-            string += " "
-            if (i < 8) {
-                string += "\t"
-            }
-        }
-        string += "\t\t" + signOut.getSignOutGuardian()
-        for (var i = signOut.getSignOutGuardian().characters.count - 1; i < 20; i++) {
-            string += " "
-            if (i < 5) {
-                 string += "\t"
-            }
-        }
-        string += "\t       " + specialSignOutType(signOut)
-        return string
-    }
-
-    private func emailString(signOut: SignOut) -> String {
-        let timeStamp = signOut.getTimeStamp()
-        var string = ""
-        string += timeStamp.fullDateAmerican() + " &nbsp;&nbsp;&nbsp;&nbsp;"
-        string += timeStamp.fullTime() + " &nbsp;&nbsp;&nbsp;&nbsp;"
-        string += signOut.getCampName()
-        for (var i = signOut.getCampName().characters.count - 1; i < 19; i++) {
-            string += "&nbsp;"
-            if (i < 8) {
-                string += "&nbsp;"
-            }
-        }
-        string += "&nbsp;&nbsp;&nbsp;" + signOut.getSignOutGuardian()
-        for (var i = signOut.getSignOutGuardian().characters.count - 1; i < 20; i++) {
-            string += "&nbsp;"
-            if (i < 5) {
-                string += "&nbsp;"
-            }
-        }
-        string += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + specialSignOutType(signOut)
-        return string
     }
 
     private func specialSignOutType(signOut: SignOut) -> String {
@@ -106,8 +53,14 @@ class SignOutHistoryViewController: UIViewController, UITableViewDataSource, UIT
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let signOut = signOutHistoryModel.getSignOut(indexPath.row)
-        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
-        cell.textLabel?.text = tableString(signOut)
+        let cell = tableView.dequeueReusableCellWithIdentifier("signOut", forIndexPath: indexPath) as! SignOutViewCell
+
+        let timeStamp = signOut.getTimeStamp()
+        cell.date.text = timeStamp.fullDateAmerican()
+        cell.time.text = timeStamp.fullTime()
+        cell.camp.text = signOut.getCampName()
+        cell.guardian.text = signOut.getSignOutGuardian()
+        cell.specialNote.text = specialSignOutType(signOut)
         if (signOut.getSignOutType() == 2) {
             cell.backgroundColor = UIColor.init(red: 0, green: 233, blue: 255, alpha: 1)
         } else if (signOut.getSignOutType() == 3) {
@@ -223,22 +176,37 @@ class SignOutHistoryViewController: UIViewController, UITableViewDataSource, UIT
         controller.dismissViewControllerAnimated(true, completion: nil)
     }
 
+    private func emailString(signOut: SignOut) -> String {
+        // This fixes a weird bug where the Time Stamp was changing to AM for no reason
+        signOut.createTimeStamp()
+
+        let timeStamp = signOut.getTimeStamp()
+        var string = ""
+        string += "<td style='max-width:13px;'>" + timeStamp.fullDateAmerican() + "</td>"
+        string += "<td style='max-width:10px;'>" + timeStamp.fullTime() + "</td>"
+        string += "<td style='max-width:50px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;'>" + signOut.getCampName() + "</td>"
+        string += "<td style='max-width:35px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;'>" + signOut.getSignOutGuardian() + "</td>"
+        string += "<td style='max-width:30px;'>" + specialSignOutType(signOut) + "</td>"
+        return string
+    }
+
     private func createEmail() -> String{
-        var text = "<h2 style='line-height:100%'>" + signOutHistoryModel.getStudentName() + " Sign Out Records</h2>"
-        text += "<h3>Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Time &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Camp &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Guardian &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Special Note</h3>"
+        var text = ""
+        text += "<h2 style='line-height:100%'>" + signOutHistoryModel.getStudentName() + " Sign Out Records</h2>"
+        text += "<table style='width:100%'><tr><th style='text-align: left;'>Date</th> <th style='text-align: left;'>Time</th> <th style='text-align: left;'>Camp</th> <th style='text-align: left;'>Guardian</th> <th style='text-align: left;'>Special Note</th></tr>"
         for (var i = 0; i < signOutHistoryModel.getSignOutsCount(); i++) {
-            text += "<p style='line-height:50%; font-size:105%"
+            text += "<tr style='color:"
             if (signOutHistoryModel.getSignOut(i).getSignOutType() == 2) {
-                text += "; color:blue"
+                text += "blue"
             } else if (signOutHistoryModel.getSignOut(i).getSignOutType() == 3) {
-                text += "; color:green"
+                text += "green"
             } else if (signOutHistoryModel.getSignOut(i).getSignOutType() == 5) {
-                text += "; color:red"
+                text += "red"
             }
-            text += "'>" + emailString(signOutHistoryModel.getSignOut(i)) + "</p>"
+            text += "'>" + emailString(signOutHistoryModel.getSignOut(i)) + "</tr>"
         }
 
-        return text
+        return text + "</table>"
     }
 
     private func back() {

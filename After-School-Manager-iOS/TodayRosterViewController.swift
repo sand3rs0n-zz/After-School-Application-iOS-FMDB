@@ -24,18 +24,15 @@ class TodayRosterViewController: UIViewController, UITableViewDataSource, UITabl
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var currentRow = 0
-        for (var i = 0; i < indexPath.section; i++) {
-            currentRow += todayRosterModel.getSectionSize(i)
+        let student = todayRosterModel.getStudent(indexPath.section, j: indexPath.row)
+        var cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
+        if (indexPath.row >= todayRosterModel.getNumberOfNonSignedOut(indexPath.section)) {
+            cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "Cell")
+            cell.detailTextLabel?.text = "Signed Out"
+            cell.detailTextLabel?.textColor = UIColor.redColor()
+            cell.detailTextLabel?.textAlignment = NSTextAlignment.Right
         }
-        let student = todayRosterModel.getStudent(currentRow + indexPath.row)
-        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
-        var name = ""
-        if (currentRow + indexPath.row >= todayRosterModel.getNumberOfNonSignedOut()) {
-            name = student.getStudentFirstName() + " " + student.getStudentLastName() + " signed out!"
-        } else {
-            name = student.getStudentFirstName() + " " + student.getStudentLastName()
-        }
+        let name = student.getStudentFirstName() + " " + student.getStudentLastName()
         cell.textLabel?.text = name
         return cell
     }
@@ -53,11 +50,7 @@ class TodayRosterViewController: UIViewController, UITableViewDataSource, UITabl
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var currentRow = 0
-        for (var i = 0; i < indexPath.section; i++) {
-            currentRow += todayRosterModel.getSectionSize(i)
-        }
-        let student = todayRosterModel.getStudent(currentRow + indexPath.row)
+        let student = todayRosterModel.getStudent(indexPath.section, j: indexPath.row)
         todayRosterModel.setForwardedStudentID(student.getStudentID())
         todayRosterModel.setForwardedRosterID(student.getRosterID())
         todayRosterModel.setForwardedStudentFirstName(student.getStudentFirstName())

@@ -42,19 +42,16 @@ class StudentRosterViewController: UIViewController, UITableViewDataSource, UITa
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let student = studentRosterModel.getStudent(indexPath.row)
-        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
-        var name: String
+        var cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         if (indexPath.row >= studentRosterModel.getNumberOfNonSignedOut() && studentRosterModel.getState() == 1) {
-            name = student.getStudentFirstName() + " " + student.getStudentLastName() + " signed out!"
-            var string_to_color = "signed out!"
-            var range = (name as NSString).rangeOfString(string_to_color)
-            var attributedString = NSMutableAttributedString(string:name)
-            attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.redColor() , range: range)
-            cell.textLabel?.attributedText = attributedString
-        } else {
-            name = student.getStudentFirstName() + " " + student.getStudentLastName()
-            cell.textLabel?.text = name
+            cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "Cell")
+            cell.detailTextLabel?.text = "Signed Out"
+            cell.detailTextLabel?.textColor = UIColor.redColor()
+            cell.detailTextLabel?.textAlignment = NSTextAlignment.Right
+
         }
+        let name = student.getStudentFirstName() + " " + student.getStudentLastName()
+        cell.textLabel?.text = name
         return cell
     }
     

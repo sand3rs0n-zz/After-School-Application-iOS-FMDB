@@ -37,16 +37,17 @@ class AddOrEditAttendanceViewController: UIViewController {
         rosterName.text = results.stringForColumn("name")
         addOrEditAttendanceModel.setRosterType(Int(results.intForColumn("rosterType")))
 
-        if (addOrEditAttendanceModel.getRosterType() == 0) {
-            let date = Date(day: Int(results.intForColumn("startDay")), month: Int(results.intForColumn("startMonth")), year: Int(results.intForColumn("startYear")))
-            dayCampButtons(date)
-        }
 
         //Xcode's white background is apparently not UIColor.whiteColor() so this forces the button to be white, allowing for proper toggles
         for (var i = 0; i < 7; i++) {
             let dayOfWeek = addOrEditAttendanceModel.getWeek(i)
             dayOfWeek.backgroundColor = UIColor.whiteColor()
             dayOfWeek.setTitleColor(UIColor.darkTextColor(), forState: UIControlState.Normal)
+        }
+
+        if (addOrEditAttendanceModel.getRosterType() == 0) {
+            let date = Date(day: Int(results.intForColumn("startDay")), month: Int(results.intForColumn("startMonth")), year: Int(results.intForColumn("startYear")))
+            dayCampButtons(date)
         }
 
         if (addOrEditAttendanceModel.getState() == 0 || addOrEditAttendanceModel.getState() == 2) {
@@ -69,8 +70,8 @@ class AddOrEditAttendanceViewController: UIViewController {
             if (addOrEditAttendanceModel.getWeek(i).titleLabel?.text! == addOrEditAttendanceModel.getWeekday().capitalizedString) {
                 if (addOrEditAttendanceModel.getState() == 1 || addOrEditAttendanceModel.getState() == 3) {
                     toggleColor(addOrEditAttendanceModel.getWeek(i))
+                    addOrEditAttendanceModel.setWeekBool(1, i: i)
                 }
-                addOrEditAttendanceModel.setWeekBool(1, i: i)
             } else {
                 addOrEditAttendanceModel.getWeek(i).hidden = true
             }
