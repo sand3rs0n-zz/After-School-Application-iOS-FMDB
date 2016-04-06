@@ -45,7 +45,7 @@ class AllEventsViewController: UIViewController, UITableViewDataSource, UITableV
             aoeevc?.setButtonText("Create Event")
         } else if (segue.identifier == "AllEventsToEditEvent") {
             aoeevc?.setTitleValue("Edit Event")
-            aoeevc?.setButtonText("Edit Event")
+            aoeevc?.setButtonText("Update Event")
             aoeevc?.setEvent(allEventsModel.getForwardedEvent())
             aoeevc?.setState(1)
         }
