@@ -26,12 +26,16 @@ class EditTodayAttendanceViewController: UIViewController {
         let result2 = database.search(signOutSQL)
         result2.next()
         if (result1.hasAnotherRow() || result2.hasAnotherRow()) {
-            scheduleButton.enabled = false
-            unscheduledButton.enabled = false
-            instructorButton.enabled = false
+//            scheduleButton.enabled = false
+//            unscheduledButton.enabled = false
+//            instructorButton.enabled = false
+            disableButton(scheduleButton)
+            disableButton(unscheduledButton)
+            disableButton(instructorButton)
         }
         if (!result1.hasAnotherRow()) {
-            unscheduleButton.enabled = false
+//            unscheduleButton.enabled = false
+            disableButton(unscheduledButton)
         }
     }
 
@@ -39,6 +43,12 @@ class EditTodayAttendanceViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func disableButton(button: UIButton) {
+        button.enabled = false
+        button.backgroundColor = UIColor.whiteColor()
+        button.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Disabled)
+}
 
     func setStudentID(studentID: Int) {
         editTodayAttendanceModel.setStudentID(studentID)
