@@ -83,7 +83,6 @@ class StudentInfoViewController: UIViewController, UITableViewDataSource, UITabl
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "contactCell")
             let row = indexPath.row
             
-            // Fix this
             if(studentInfoModel.getContactNumbersCount() > 0 && row < studentInfoModel.getContactNumbersCount()) {
                 let contact = studentInfoModel.getContactNumber(row)
                 let contactName = contact.getName()

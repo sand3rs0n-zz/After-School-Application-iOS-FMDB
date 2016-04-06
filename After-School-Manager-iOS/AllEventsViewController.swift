@@ -25,7 +25,12 @@ class AllEventsViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let event = allEventsModel.getEvent(indexPath.row)
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
-        cell.textLabel?.text = event.getName()
+        let name = event.getName()
+        let day = event.getDay()
+        let month = event.getMonth()
+        let year = event.getYear()
+        let date = "\(month)/\(day)/\(year)"
+        cell.textLabel?.text = "\(name), \(date)"
         return cell
     }
 
@@ -45,7 +50,7 @@ class AllEventsViewController: UIViewController, UITableViewDataSource, UITableV
             aoeevc?.setButtonText("Create Event")
         } else if (segue.identifier == "AllEventsToEditEvent") {
             aoeevc?.setTitleValue("Edit Event")
-            aoeevc?.setButtonText("Edit Event")
+            aoeevc?.setButtonText("Update Event")
             aoeevc?.setEvent(allEventsModel.getForwardedEvent())
             aoeevc?.setState(1)
         }

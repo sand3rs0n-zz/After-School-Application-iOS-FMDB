@@ -19,6 +19,8 @@ class EventViewController: UIViewController {
         super.viewDidLoad()
         self.titleBar.title = eventViewModel.getName()
         fillValues()
+        self.eventDescription.numberOfLines = 0
+        self.eventDescription.sizeToFit()
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,11 +37,11 @@ class EventViewController: UIViewController {
         eventDate.text = date.fullDateAmerican()
         eventDescription.text = eventViewModel.getDescription()
         if (eventViewModel.getEventType() == 0) {
-            eventType.text = "Early Dismissal from School"
+            eventType.text = "Early Out from School"
         } else if (eventViewModel.getEventType() == 1) {
             eventType.text = "No School"
-        } else if (eventViewModel.getEventType() == 1) {
-            eventType.text = "Some Other Event"
+        } else if (eventViewModel.getEventType() == 1) { // should this be event type 2?
+            eventType.text = "Other"
         }
     }
 }

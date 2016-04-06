@@ -22,9 +22,14 @@ class EventsCalendarViewController: UIViewController, UITableViewDataSource, UIT
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let roster = eventsCalendarModel.getEvent(indexPath.row)
+        let event = eventsCalendarModel.getEvent(indexPath.row)
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
-        cell.textLabel?.text = roster.getName()
+        let name = event.getName()
+        let day = event.getDay()
+        let month = event.getMonth()
+        let year = event.getYear()
+        let date = "\(month)/\(day)/\(year)"
+        cell.textLabel?.text = "\(name), \(date)"
         return cell
     }
 
