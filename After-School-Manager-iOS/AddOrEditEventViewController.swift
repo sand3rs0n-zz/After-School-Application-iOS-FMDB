@@ -24,7 +24,7 @@ class AddOrEditEventViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.createOrEditEventButton!.setTitle(addOrEditEventModel.getButtonText(), forState: .Normal)
-        suspendRosterButton.backgroundColor = UIColor.grayColor()
+//        suspendRosterButton.backgroundColor = UIColor.grayColor()
         suspendRosterButton.hidden = true
         rosterPicker.hidden = true
         self.titleBar.title = addOrEditEventModel.getTitleValue()
@@ -110,11 +110,13 @@ class AddOrEditEventViewController: UIViewController {
     }
 
     @IBAction func suspendRoster(sender: AnyObject) {
-        if (suspendRosterButton.backgroundColor == UIColor.greenColor()) {
-            suspendRosterButton.backgroundColor = UIColor.lightGrayColor()
+        if (suspendRosterButton.backgroundColor == UIColor.redColor()) {
+            suspendRosterButton.backgroundColor = UIColor.whiteColor()
+            suspendRosterButton.setTitleColor(UIColor.redColor(), forState: UIControlState.Normal)
             showPicker()
         } else {
-            suspendRosterButton.backgroundColor = UIColor.greenColor()
+            suspendRosterButton.backgroundColor = UIColor.redColor()
+            suspendRosterButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
             showPicker()
         }
         showPicker()
@@ -128,7 +130,7 @@ class AddOrEditEventViewController: UIViewController {
     }
 
     private func showPicker() {
-        if (suspendRosterButton.backgroundColor == UIColor.greenColor() && suspendRosterButton.hidden == false) {
+        if (suspendRosterButton.backgroundColor == UIColor.redColor() && suspendRosterButton.hidden == false) {
             rosterPicker.hidden = false
         } else {
             rosterPicker.hidden = true
