@@ -36,7 +36,8 @@ class RosterListViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let roster = rosterListModel.getRoster(indexPath.row)
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
-        cell.textLabel?.text = roster.getName()
+        let name = roster.getName()
+        cell.textLabel?.text = "\(name)"
         return cell
     }
     
