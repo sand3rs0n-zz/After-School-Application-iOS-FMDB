@@ -35,7 +35,7 @@ class EditTodayAttendanceViewController: UIViewController {
         }
         if (!result1.hasAnotherRow()) {
 //            unscheduleButton.enabled = false
-            disableButton(unscheduledButton)
+            disableButton(unscheduleButton)
         }
     }
 
