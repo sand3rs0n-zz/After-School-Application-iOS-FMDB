@@ -153,12 +153,14 @@ class AddOrEditEventViewController: UIViewController {
         }
 
         var insertSQL = ""
+        let eventNameText = eventName.text!.stringByReplacingOccurrencesOfString("'", withString: "''")
+        let eventDescriptionText = eventDescription.text!.stringByReplacingOccurrencesOfString("'", withString: "''")
         if (eventName.text != "" && eventDescription.text != "") {
             if (addOrEditEventModel.getState() == 1) {
-                insertSQL = "UPDATE EVENTS SET name = '\(eventName.text!)', eventType = '\(selected)', description = '\(eventDescription.text!)', day = '\(day)', month = '\(month)', year = '\(year)', rosterID = '\(rosterID)' WHERE eventID = '\(addOrEditEventModel.getEvent().getEventID())'"
+                insertSQL = "UPDATE EVENTS SET name = '\(eventNameText)', eventType = '\(selected)', description = '\(eventDescriptionText)', day = '\(day)', month = '\(month)', year = '\(year)', rosterID = '\(rosterID)' WHERE eventID = '\(addOrEditEventModel.getEvent().getEventID())'"
                 addOrEditEventModel.getEvent().setName(eventName.text!)
             } else if (addOrEditEventModel.getState() == 0) {
-                insertSQL = "INSERT INTO EVENTS (name, eventType, description, day, month, year, rosterID) VALUES ('\(eventName.text!)', '\(selected)', '\(eventDescription.text!)', '\(day)', '\(month)', '\(year)', '\(rosterID)')"
+                insertSQL = "INSERT INTO EVENTS (name, eventType, description, day, month, year, rosterID) VALUES ('\(eventNameText)', '\(selected)', '\(eventDescriptionText)', '\(day)', '\(month)', '\(year)', '\(rosterID)')"
             }
         }
 

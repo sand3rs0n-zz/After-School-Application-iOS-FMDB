@@ -112,8 +112,8 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
         let submitAction = UIAlertAction(title: "Submit", style: .Default) { (action) -> Void in
             name = ((alertController.textFields?.first)! as UITextField).text!
             if(name != "") {
-                print("Added guardian \(name)")
-                let insertSQL = "INSERT INTO GUARDIANS (studentID, name) VALUES ('\(self.addOrEditStudentModel.getStudentID())', '\(name)')"
+                let nameText = name.stringByReplacingOccurrencesOfString("'", withString: "''")
+                let insertSQL = "INSERT INTO GUARDIANS (studentID, name) VALUES ('\(self.addOrEditStudentModel.getStudentID())', '\(nameText)')"
                 let result = database.update(insertSQL)
                 if (result) {
                     self.addOrEditStudentModel.resetGuardians()
@@ -153,8 +153,9 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
             name = ((alertController.textFields?.first)! as UITextField).text!
             number = ((alertController.textFields?.last)! as UITextField).text!
             if(name != "" && number != "") {
-                print("Added contact \(name) with number \(number)")
-                let insertSQL = "INSERT INTO CONTACTNUMBERS (studentID, phoneNumber, name) VALUES ('\(self.addOrEditStudentModel.getStudentID())', '\(number)', '\(name)')"
+                let nameText = name.stringByReplacingOccurrencesOfString("'", withString: "''")
+                let numberText = number.stringByReplacingOccurrencesOfString("'", withString: "''")
+                let insertSQL = "INSERT INTO CONTACTNUMBERS (studentID, phoneNumber, name) VALUES ('\(self.addOrEditStudentModel.getStudentID())', '\(numberText)', '\(nameText)')"
                 let result = database.update(insertSQL)
                 if (result) {
                     self.addOrEditStudentModel.resetContactNumbers()
@@ -195,12 +196,15 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
         var studentRosters = ""
 
         if (validatFields()) {
+            let firstNameText = firstName.text!.stringByReplacingOccurrencesOfString("'", withString: "''")
+            let lastNameText = lastName.text!.stringByReplacingOccurrencesOfString("'", withString: "''")
+            let schoolText = school.text!.stringByReplacingOccurrencesOfString("'", withString: "''")
             if (addOrEditStudentModel.getUpdate()) {
-                insertSQL = "UPDATE STUDENTPROFILES SET firstName = '\(firstName.text!)', lastName = '\(lastName.text!)', active = '\(activeBool)', school = '\(school.text!)', birthDay = '\(Int(dateArr[1])!)', birthMonth = '\(Int(dateArr[0])!)', birthYear = '\(Int(dateArr[2])!)' WHERE studentID = '\(addOrEditStudentModel.getStudentID())'"
-                absencesList = "UPDATE ABSENCESLIST SET studentFirstName = '\(firstName.text!)', studentLastName = '\(lastName.text!)' WHERE studentID = '\(addOrEditStudentModel.getStudentID())'"
-                studentRosters = "UPDATE STUDENTROSTERS SET studentFirstName = '\(firstName.text!)', studentLastName = '\(lastName.text!)' WHERE studentID = '\(addOrEditStudentModel.getStudentID())'"
+                insertSQL = "UPDATE STUDENTPROFILES SET firstName = '\(firstNameText)', lastName = '\(lastNameText)', active = '\(activeBool)', school = '\(schoolText)', birthDay = '\(Int(dateArr[1])!)', birthMonth = '\(Int(dateArr[0])!)', birthYear = '\(Int(dateArr[2])!)' WHERE studentID = '\(addOrEditStudentModel.getStudentID())'"
+                absencesList = "UPDATE ABSENCESLIST SET studentFirstName = '\(firstNameText)', studentLastName = '\(lastNameText)' WHERE studentID = '\(addOrEditStudentModel.getStudentID())'"
+                studentRosters = "UPDATE STUDENTROSTERS SET studentFirstName = '\(firstNameText)', studentLastName = '\(lastNameText)' WHERE studentID = '\(addOrEditStudentModel.getStudentID())'"
             } else {
-                insertSQL = "INSERT INTO STUDENTPROFILES (firstName, lastName, active, school, birthDay, birthMonth, birthYear) VALUES ('\(firstName.text!)', '\(lastName.text!)', '\(activeBool)', '\(school.text!)', '\(Int(dateArr[1])!)', '\(Int(dateArr[0])!)', '\(Int(dateArr[2])!)')"
+                insertSQL = "INSERT INTO STUDENTPROFILES (firstName, lastName, active, school, birthDay, birthMonth, birthYear) VALUES ('\(firstNameText)', '\(lastNameText)', '\(activeBool)', '\(schoolText)', '\(Int(dateArr[1])!)', '\(Int(dateArr[0])!)', '\(Int(dateArr[2])!)')"
             }
 
             let result1 = database.update(insertSQL)

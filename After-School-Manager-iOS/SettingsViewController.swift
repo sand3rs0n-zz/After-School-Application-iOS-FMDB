@@ -26,7 +26,7 @@ class SettingsViewController: UIViewController {
 
     @IBAction func updateSettings(sender: AnyObject) {
         if (pin.text != "" && emailAddress.text != "") {
-            let insertSQL = "UPDATE USERSETTINGS SET pin = '\(pin.text!)', emailAddress = '\(emailAddress.text!)'"
+            let insertSQL = "UPDATE USERSETTINGS SET pin = '\(pin.text!.stringByReplacingOccurrencesOfString("'", withString: "''"))', emailAddress = '\(emailAddress.text!.stringByReplacingOccurrencesOfString("'", withString: "''"))'"
 
             let result = database.update(insertSQL)
 

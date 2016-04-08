@@ -50,7 +50,6 @@ class SignOutViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         if ((timestamp.getCurrentHour() > signOutViewModel.getPickUpHour()) || (timestamp.getCurrentHour() == signOutViewModel.getPickUpHour() && timestamp.getCurrentMinute() > signOutViewModel.getPickUpMinute())) {
             return true
         }
-        print(String(timestamp.getCurrentHour()) + " " + String(timestamp.getCurrentMinute()))
         return false
     }
     
@@ -66,7 +65,8 @@ class SignOutViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
             if (latePickUp(timestamp)) {
                 signOutType = 5
             }
-            let signOutSQL = "INSERT INTO SIGNOUTS (studentID, rosterID, signOutGuardian, rosterType, signoutType, day, month, year, hour, minute) VALUES ('\(signOutViewModel.getStudentID())', '\(signOutViewModel.getRosterID())', '\(signOutViewModel.getSignOutGuardian())', '\(signOutViewModel.getRosterType())', '\(signOutType)', '\(timestamp.getCurrentDay())', '\(timestamp.getCurrentMonth())', '\(timestamp.getCurrentYear())', '\(timestamp.getCurrentHour())', '\(timestamp.getCurrentMinute())')"
+            let signOutGuardian = signOutViewModel.getSignOutGuardian().stringByReplacingOccurrencesOfString("'", withString: "''")
+            let signOutSQL = "INSERT INTO SIGNOUTS (studentID, rosterID, signOutGuardian, rosterType, signoutType, day, month, year, hour, minute) VALUES ('\(signOutViewModel.getStudentID())', '\(signOutViewModel.getRosterID())', '\(signOutGuardian)', '\(signOutViewModel.getRosterType())', '\(signOutType)', '\(timestamp.getCurrentDay())', '\(timestamp.getCurrentMonth())', '\(timestamp.getCurrentYear())', '\(timestamp.getCurrentHour())', '\(timestamp.getCurrentMinute())')"
             let result = database.update(signOutSQL)
             if (result) {
                 self.performSegueWithIdentifier("SignOutToStudentSelectUnwind", sender: self)
