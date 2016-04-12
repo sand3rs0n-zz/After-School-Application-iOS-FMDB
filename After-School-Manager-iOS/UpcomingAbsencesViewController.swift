@@ -30,6 +30,7 @@ class UpcomingAbsencesViewController: UIViewController, UITableViewDataSource, U
         name.appendContentsOf("\t\t")
         name.appendContentsOf(upcomingAbsencesModel.fullDateAmerican())
         cell.textLabel?.text = name
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
         return cell
     }
     

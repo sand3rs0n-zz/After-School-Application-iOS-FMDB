@@ -41,6 +41,7 @@ class SelectRosterToAddStudentViewController: UIViewController, UITableViewDataS
         
         cell.detailTextLabel?.text = "\(date)"
         cell.detailTextLabel?.textAlignment = NSTextAlignment.Right
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
         return cell
     }
 

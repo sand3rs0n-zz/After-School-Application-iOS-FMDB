@@ -49,6 +49,7 @@ class RosterListViewController: UIViewController, UITableViewDataSource, UITable
         cell.detailTextLabel?.text = "\(date)"
         cell.detailTextLabel?.textAlignment = NSTextAlignment.Right
         
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
         return cell
     }
     

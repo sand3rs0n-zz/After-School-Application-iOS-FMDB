@@ -34,6 +34,7 @@ class TodayRosterViewController: UIViewController, UITableViewDataSource, UITabl
         }
         let name = student.getStudentFirstName() + " " + student.getStudentLastName()
         cell.textLabel?.text = name
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
         return cell
     }
 

@@ -33,6 +33,7 @@ class AllEventsViewController: UIViewController, UITableViewDataSource, UITableV
         cell.textLabel?.text = "\(name)"
         cell.detailTextLabel?.text = "\(date)"
         cell.detailTextLabel?.textAlignment = NSTextAlignment.Right
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
         return cell
     }
 
