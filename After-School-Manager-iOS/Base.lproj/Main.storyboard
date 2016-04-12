@@ -1132,23 +1132,28 @@
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="29X-QC-kbb">
-                                <rect key="frame" x="261" y="591" width="120" height="50"/>
+                                <rect key="frame" x="237" y="657" width="120" height="50"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <state key="normal" title="Confirm">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="signOut:" destination="7Gv-iV-d7w" eventType="touchUpInside" id="y5d-kw-pHf"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please sign below. " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7u2-IS-Y9l">
-                                <rect key="frame" x="261" y="395" width="160" height="21"/>
+                                <rect key="frame" x="237" y="395" width="160" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dY6-Rm-GYf" customClass="SignatureView" customModule="After_School_Manager_iOS" customModuleProvider="target">
-                                <rect key="frame" x="261" y="424" width="502" height="153"/>
+                                <rect key="frame" x="237" y="424" width="550" height="225"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1U6-jj-0x8">
@@ -1171,7 +1176,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SELECTED GUARDIAN: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OWF-mg-tKh">
-                                <rect key="frame" x="261" y="355" width="219" height="24"/>
+                                <rect key="frame" x="237" y="349" width="219" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1186,12 +1191,17 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0gM-Ao-M8r">
-                                <rect key="frame" x="389" y="591" width="120" height="50"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="365" y="657" width="120" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <state key="normal" title="Clear">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="clearSignature:" destination="7Gv-iV-d7w" eventType="touchUpInside" id="nsw-f6-Rfy"/>
                                 </connections>
@@ -3105,10 +3115,10 @@
         <segue reference="ajb-AG-v9a"/>
         <segue reference="njK-ob-as0"/>
         <segue reference="0CC-ZP-ABi"/>
+        <segue reference="R5z-Eg-ICD"/>
         <segue reference="yVJ-bF-MBW"/>
-        <segue reference="0dW-OO-Qat"/>
+        <segue reference="aHV-gM-FhL"/>
         <segue reference="5RP-wG-aKh"/>
-        <segue reference="Sgd-4S-nsG"/>
         <segue reference="uTg-An-jIk"/>
     </inferredMetricsTieBreakers>
 </document>
