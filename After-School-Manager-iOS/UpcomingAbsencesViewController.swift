@@ -25,11 +25,12 @@ class UpcomingAbsencesViewController: UIViewController, UITableViewDataSource, U
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let absence = upcomingAbsencesModel.getAbsence(indexPath.row)
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
-        var name = (absence.getStudentFirstName() + " " + absence.getStudentLastName())
+        let name = (absence.getStudentFirstName() + " " + absence.getStudentLastName())
         upcomingAbsencesModel.setDate(absence.getDay(), month: absence.getMonth(), year: absence.getYear())
-        name.appendContentsOf("\t\t")
-        name.appendContentsOf(upcomingAbsencesModel.fullDateAmerican())
+        let date = upcomingAbsencesModel.fullDateAmerican()
         cell.textLabel?.text = name
+        cell.detailTextLabel?.text = "\(date)"
+        cell.detailTextLabel?.textAlignment = NSTextAlignment.Right
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         return cell
     }
