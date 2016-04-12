@@ -29,7 +29,9 @@ class EventsCalendarViewController: UIViewController, UITableViewDataSource, UIT
         let month = event.getMonth()
         let year = event.getYear()
         let date = "\(month)/\(day)/\(year)"
-        cell.textLabel?.text = "\(name), \(date)"
+        cell.textLabel?.text = "\(name)"
+        cell.detailTextLabel?.text = "\(date)"
+        cell.detailTextLabel?.textAlignment = NSTextAlignment.Right
         return cell
     }
 

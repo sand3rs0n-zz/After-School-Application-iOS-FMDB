@@ -37,7 +37,18 @@ class RosterListViewController: UIViewController, UITableViewDataSource, UITable
         let roster = rosterListModel.getRoster(indexPath.row)
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         let name = roster.getName()
+        let startDay = roster.getStartDay()
+        let startMonth = roster.getStartMonth()
+        let startYear = roster.getStartYear()
+        let endDay = roster.getEndDay()
+        let endMonth = roster.getEndMonth()
+        let endYear = roster.getEndYear()
+        let date = "\(startMonth)/\(startDay)/\(startYear) - \(endMonth)/\(endDay)/\(endYear)"
         cell.textLabel?.text = "\(name)"
+        
+        cell.detailTextLabel?.text = "\(date)"
+        cell.detailTextLabel?.textAlignment = NSTextAlignment.Right
+        
         return cell
     }
     

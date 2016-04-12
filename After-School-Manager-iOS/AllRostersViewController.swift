@@ -34,7 +34,11 @@ class AllRostersViewController: UIViewController, UITableViewDataSource, UITable
         let endMonth = roster.getEndMonth()
         let endYear = roster.getEndYear()
         let date = "\(startMonth)/\(startDay)/\(startYear) - \(endMonth)/\(endDay)/\(endYear)"
-        cell.textLabel?.text = "\(name), \(date)"
+        cell.textLabel?.text = "\(name)"
+        
+        cell.detailTextLabel?.text = "\(date)"
+        cell.detailTextLabel?.textAlignment = NSTextAlignment.Right
+        
         return cell
     }
 
