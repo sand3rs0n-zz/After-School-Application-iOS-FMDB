@@ -41,6 +41,10 @@ class AllEventsViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return allEventsModel.getEventListsCount()
     }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 75
+    }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         allEventsModel.setForwardedEvent(allEventsModel.getEvent(indexPath.row))
