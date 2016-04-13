@@ -31,6 +31,7 @@ class RosterHistoryViewController: UIViewController, UITableViewDataSource, UITa
         let roster = rosterHistoryModel.getRoster(indexPath.row)
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         let name = roster.getRosterName()
+        // ***** BUG *****
         // Student Rosters don't have the start and end date
 //        let startDay = roster.
 //        let startMonth = roster.getStartMonth()
@@ -41,8 +42,8 @@ class RosterHistoryViewController: UIViewController, UITableViewDataSource, UITa
 //        let date = "\(startMonth)/\(startDay)/\(startYear) - \(endMonth)/\(endDay)/\(endYear)"
         cell.textLabel?.text = "\(name)"
         
-        cell.detailTextLabel?.text = "\(date)"
-        cell.detailTextLabel?.textAlignment = NSTextAlignment.Right
+//        cell.detailTextLabel?.text = "\(date)"
+//        cell.detailTextLabel?.textAlignment = NSTextAlignment.Right
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         return cell
     }

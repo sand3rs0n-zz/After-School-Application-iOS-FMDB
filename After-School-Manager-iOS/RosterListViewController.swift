@@ -35,7 +35,7 @@ class RosterListViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let roster = rosterListModel.getRoster(indexPath.row)
-        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
+        var cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         let name = roster.getName()
         let startDay = roster.getStartDay()
         let startMonth = roster.getStartMonth()
@@ -46,10 +46,13 @@ class RosterListViewController: UIViewController, UITableViewDataSource, UITable
         let date = "\(startMonth)/\(startDay)/\(startYear) - \(endMonth)/\(endDay)/\(endYear)"
         cell.textLabel?.text = "\(name)"
         
-        cell.detailTextLabel?.text = "\(date)"
-        cell.detailTextLabel?.textAlignment = NSTextAlignment.Right
-        
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        // ***** BUG *****
+        // The date is not passed in correctly, here, displays 0/0/0/ - 0/0/0
+//        cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "Cell")
+//        cell.detailTextLabel?.text = "\(date)"
+//        cell.detailTextLabel?.textAlignment = NSTextAlignment.Right
+//        
+//        cell.selectionStyle = UITableViewCellSelectionStyle.None
         return cell
     }
     
