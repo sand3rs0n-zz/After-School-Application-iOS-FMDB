@@ -60,6 +60,10 @@ class RosterListViewController: UIViewController, UITableViewDataSource, UITable
         return rosterListModel.getRosterCount()
     }
     
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 75
+    }
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let roster = rosterListModel.getRoster(indexPath.row)
         rosterListModel.setForwardedRosterName(roster.getName())

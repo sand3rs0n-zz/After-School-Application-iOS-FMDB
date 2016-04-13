@@ -51,6 +51,10 @@ class RosterHistoryViewController: UIViewController, UITableViewDataSource, UITa
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return rosterHistoryModel.getRosterListCount()
     }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 75
+    }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         rosterHistoryModel.setForwardedRosterID(rosterHistoryModel.getRoster(indexPath.row).getRosterID())

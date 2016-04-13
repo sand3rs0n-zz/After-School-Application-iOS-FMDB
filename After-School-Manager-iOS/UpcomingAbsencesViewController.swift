@@ -36,6 +36,10 @@ class UpcomingAbsencesViewController: UIViewController, UITableViewDataSource, U
         return cell
     }
     
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 75
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return upcomingAbsencesModel.getAbsencesCount()
     }

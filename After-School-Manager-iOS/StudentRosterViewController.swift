@@ -61,6 +61,10 @@ class StudentRosterViewController: UIViewController, UITableViewDataSource, UITa
         return studentRosterModel.getStudentCount()
     }
     
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 75
+    }
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if (indexPath.row < studentRosterModel.getNumberOfNonSignedOut() || studentRosterModel.getState() != 1) {
             let student: StudentRoster = studentRosterModel.getStudent(indexPath.row)

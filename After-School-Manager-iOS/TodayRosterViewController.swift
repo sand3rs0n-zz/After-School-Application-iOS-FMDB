@@ -49,6 +49,10 @@ class TodayRosterViewController: UIViewController, UITableViewDataSource, UITabl
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return todayRosterModel.getSectionSizeCount()
     }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 75
+    }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let student = todayRosterModel.getStudent(indexPath.section, j: indexPath.row)

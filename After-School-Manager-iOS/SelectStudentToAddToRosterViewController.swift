@@ -37,6 +37,10 @@ class SelectStudentToAddToRosterViewController: UIViewController, UITableViewDat
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return selectStudentToAddToRosterModel.getStudentListCount()
     }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 75
+    }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         selectStudentToAddToRosterModel.setForwardedStudentID(selectStudentToAddToRosterModel.getStudent(indexPath.row).getStudentID())
