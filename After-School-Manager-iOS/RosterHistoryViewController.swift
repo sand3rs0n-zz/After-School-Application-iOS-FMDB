@@ -30,12 +30,30 @@ class RosterHistoryViewController: UIViewController, UITableViewDataSource, UITa
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let roster = rosterHistoryModel.getRoster(indexPath.row)
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
-        cell.textLabel?.text = roster.getRosterName()
+        let name = roster.getRosterName()
+        // ***** BUG *****
+        // Student Rosters don't have the start and end date
+//        let startDay = roster.
+//        let startMonth = roster.getStartMonth()
+//        let startYear = roster.getStartYear()
+//        let endDay = roster.getEndDay()
+//        let endMonth = roster.getEndMonth()
+//        let endYear = roster.getEndYear()
+//        let date = "\(startMonth)/\(startDay)/\(startYear) - \(endMonth)/\(endDay)/\(endYear)"
+        cell.textLabel?.text = "\(name)"
+        
+//        cell.detailTextLabel?.text = "\(date)"
+//        cell.detailTextLabel?.textAlignment = NSTextAlignment.Right
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
         return cell
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return rosterHistoryModel.getRosterListCount()
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 75
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

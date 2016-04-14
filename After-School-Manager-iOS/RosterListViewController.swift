@@ -35,14 +35,33 @@ class RosterListViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let roster = rosterListModel.getRoster(indexPath.row)
-        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
+        var cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         let name = roster.getName()
+        let startDay = roster.getStartDay()
+        let startMonth = roster.getStartMonth()
+        let startYear = roster.getStartYear()
+        let endDay = roster.getEndDay()
+        let endMonth = roster.getEndMonth()
+        let endYear = roster.getEndYear()
+        let date = "\(startMonth)/\(startDay)/\(startYear) - \(endMonth)/\(endDay)/\(endYear)"
         cell.textLabel?.text = "\(name)"
+        
+        // ***** BUG *****
+        // The date is not passed in correctly, here, displays 0/0/0/ - 0/0/0
+//        cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "Cell")
+//        cell.detailTextLabel?.text = "\(date)"
+//        cell.detailTextLabel?.textAlignment = NSTextAlignment.Right
+//        
+//        cell.selectionStyle = UITableViewCellSelectionStyle.None
         return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return rosterListModel.getRosterCount()
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 75
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

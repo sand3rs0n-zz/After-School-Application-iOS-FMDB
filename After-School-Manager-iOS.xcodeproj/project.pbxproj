@@ -10,7 +10,6 @@
 		0F1CF2F01C5C4B9D0048A7D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1CF2EF1C5C4B9D0048A7D7 /* AppDelegate.swift */; };
 		0F1CF2F51C5C4B9D0048A7D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F1CF2F31C5C4B9D0048A7D7 /* Main.storyboard */; };
 		0F1CF2F71C5C4B9D0048A7D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F1CF2F61C5C4B9D0048A7D7 /* Assets.xcassets */; };
-		0F1CF2FA1C5C4B9D0048A7D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F1CF2F81C5C4B9D0048A7D7 /* LaunchScreen.storyboard */; };
 		0F1CF30D1C5C4BB00048A7D7 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1CF3031C5C4BB00048A7D7 /* FMDatabase.m */; };
 		0F1CF30E1C5C4BB00048A7D7 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1CF3051C5C4BB00048A7D7 /* FMDatabaseAdditions.m */; };
 		0F1CF30F1C5C4BB00048A7D7 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1CF3071C5C4BB00048A7D7 /* FMDatabasePool.m */; };
@@ -95,7 +94,6 @@
 		0F1CF2EF1C5C4B9D0048A7D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F1CF2F41C5C4B9D0048A7D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0F1CF2F61C5C4B9D0048A7D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		0F1CF2F91C5C4B9D0048A7D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0F1CF2FB1C5C4B9D0048A7D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F1CF3011C5C4BAF0048A7D7 /* After-School-Manager-iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "After-School-Manager-iOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		0F1CF3021C5C4BB00048A7D7 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
@@ -226,7 +224,6 @@
 				0F1CF3871C5D0C490048A7D7 /* Models */,
 				0F1CF3841C5D0BEB0048A7D7 /* View Controllers */,
 				0F1CF2F61C5C4B9D0048A7D7 /* Assets.xcassets */,
-				0F1CF2F81C5C4B9D0048A7D7 /* LaunchScreen.storyboard */,
 				0F1CF2FB1C5C4B9D0048A7D7 /* Info.plist */,
 			);
 			path = "After-School-Manager-iOS";
@@ -420,7 +417,7 @@
 				TargetAttributes = {
 					0F1CF2EB1C5C4B9D0048A7D7 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = X759E6U2HQ;
+						DevelopmentTeam = D5S846FCRY;
 					};
 				};
 			};
@@ -448,7 +445,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D35069C1C6AA967007D7A2C /* img in Resources */,
-				0F1CF2FA1C5C4B9D0048A7D7 /* LaunchScreen.storyboard in Resources */,
 				0F1CF2F71C5C4B9D0048A7D7 /* Assets.xcassets in Resources */,
 				0F1CF31E1C5C61B60048A7D7 /* AfterSchoolData.sqlite in Resources */,
 				0F1CF2F51C5C4B9D0048A7D7 /* Main.storyboard in Resources */,
@@ -550,14 +546,6 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		0F1CF2F81C5C4B9D0048A7D7 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0F1CF2F91C5C4B9D0048A7D7 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -646,6 +634,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -665,6 +654,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

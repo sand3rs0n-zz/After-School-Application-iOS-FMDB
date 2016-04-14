@@ -73,7 +73,9 @@ class AddOrEditAttendanceViewController: UIViewController {
                     addOrEditAttendanceModel.setWeekBool(1, i: i)
                 }
             } else {
-                addOrEditAttendanceModel.getWeek(i).hidden = true
+                addOrEditAttendanceModel.getWeek(i).enabled = false
+                addOrEditAttendanceModel.getWeek(i).backgroundColor = UIColor.whiteColor()
+                addOrEditAttendanceModel.getWeek(i).setTitleColor(UIColor.grayColor(), forState: UIControlState.Disabled)
             }
         }
     }

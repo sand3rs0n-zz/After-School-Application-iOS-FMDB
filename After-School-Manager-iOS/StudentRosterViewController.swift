@@ -52,11 +52,17 @@ class StudentRosterViewController: UIViewController, UITableViewDataSource, UITa
         }
         let name = student.getStudentFirstName() + " " + student.getStudentLastName()
         cell.textLabel?.text = name
+        
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
         return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return studentRosterModel.getStudentCount()
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 75
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

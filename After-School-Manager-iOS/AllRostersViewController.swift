@@ -34,12 +34,20 @@ class AllRostersViewController: UIViewController, UITableViewDataSource, UITable
         let endMonth = roster.getEndMonth()
         let endYear = roster.getEndYear()
         let date = "\(startMonth)/\(startDay)/\(startYear) - \(endMonth)/\(endDay)/\(endYear)"
-        cell.textLabel?.text = "\(name), \(date)"
+        cell.textLabel?.text = "\(name)"
+        
+        cell.detailTextLabel?.text = "\(date)"
+        cell.detailTextLabel?.textAlignment = NSTextAlignment.Right
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
         return cell
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return allRostersModel.getRosterListsCount()
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 75
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

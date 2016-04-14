@@ -34,6 +34,7 @@ class TodayRosterViewController: UIViewController, UITableViewDataSource, UITabl
         }
         let name = student.getStudentFirstName() + " " + student.getStudentLastName()
         cell.textLabel?.text = name
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
         return cell
     }
 
@@ -47,6 +48,10 @@ class TodayRosterViewController: UIViewController, UITableViewDataSource, UITabl
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return todayRosterModel.getSectionSizeCount()
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 75
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

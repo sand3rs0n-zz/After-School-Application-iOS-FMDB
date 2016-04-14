@@ -40,6 +40,8 @@ class RosterViewController: UIViewController, UITableViewDataSource, UITableView
         let student = rosterViewModel.getStudent(indexPath.row)
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         cell.textLabel?.text = student.getStudentFirstName() + " " + student.getStudentLastName()
+        
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
         return cell
     }
 
