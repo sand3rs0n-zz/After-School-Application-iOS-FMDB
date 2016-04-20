@@ -34,16 +34,19 @@ class HomePageViewController: UIViewController {
     }
     
     @IBAction func goToInstructorMenu(sender: AnyObject) {
-        /*var pin:String = ""
+        var pin:String = ""
 
         let alertController = UIAlertController(title: "Instructor Menu", message: "Please enter pin.", preferredStyle: .Alert)
+
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) -> Void in
             print("Cancelled")
         }
         alertController.addAction(cancelAction)
+
         alertController.addTextFieldWithConfigurationHandler { (textField) -> Void in
             textField.placeholder = "Pin"
             textField.keyboardType =  UIKeyboardType.DecimalPad
+            textField.secureTextEntry = true
         }
 
         let submitAction = UIAlertAction(title: "Submit", style: .Default) { (action) -> Void in
@@ -56,9 +59,24 @@ class HomePageViewController: UIViewController {
         }
         alertController.addAction(submitAction)
 
+        let resetPinAction = UIAlertAction(title: "Reset Pin", style: .Destructive) { (action) -> Void in
+            print("PIN reset")
+            let resetPinQuery = "UPDATE USERSETTINGS SET pin = '0000'"
+            let result = database.update(resetPinQuery)
+            if (result) {
+                settings.setPin("0000")
+            } else {
+                let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Reset Pin")
+                errorAlert.displayError()
+            }
+
+        }
+        alertController.addAction(resetPinAction)
+
         self.presentViewController(alertController, animated: true) {
             // Not really sure what to do here, actually
-        }*/performSegueWithIdentifier("HomePageToInstructorMenu", sender: self)
+        }
+        performSegueWithIdentifier("HomePageToInstructorMenu", sender: self)
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
