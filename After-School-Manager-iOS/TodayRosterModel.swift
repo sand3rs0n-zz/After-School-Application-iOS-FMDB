@@ -63,7 +63,7 @@ class TodayRosterModel {
                 rosterNames.append(studentList[i].getRosterName())
             }
         }
-        print(signOuts.count)
+
         for (var i = 0; i < studentList.count; i++) {
             var bool = false
             for (var k = 0; k < signOuts.count; k++) {
@@ -78,12 +78,10 @@ class TodayRosterModel {
             }
         }
 
-        notSignedOuts.sortInPlace({ $0.getRosterName() > $1.getRosterName() })
-
         rosterNames.sortInPlace({ (a: String, b: String) -> Bool in
             return a > b
         })
-        print(rosterNames)
+
         for (var i = 0; i < rosterNames.count; i++) {
             var c = 0
             let currentTitle = rosterNames[i]
@@ -95,34 +93,49 @@ class TodayRosterModel {
             }
             numberOfNonSignedOut.append(c)
         }
-        studentList = notSignedOuts + signedOuts
-        createTableSections()
+
+        createTableSections(notSignedOuts, signedOuts: signedOuts)
     }
 
-    private func createTableSections() {
-        studentList.sortInPlace({ $0.getRosterName() > $1.getRosterName() })
-        if (studentList.count > 0) {
-            var currentTitle = studentList[0].getRosterName()
-            var count = 0
+    private func createTableSections(notSignedOuts: [StudentRoster], signedOuts: [StudentRoster]) {
+        if (notSignedOuts.count > 0) {
+            var currentTitle = notSignedOuts[0].getRosterName()
             var count2 = 0
             studentList2D.append([StudentRoster]())
-            for (var i = 0; i < studentList.count; i++) {
-                let cur = studentList[i]
-                if (cur.getRosterName() == currentTitle) {
-                    count++
-                } else if (cur.getRosterName() != currentTitle) {
+            for (var i = 0; i < notSignedOuts.count; i += 1) {
+                let cur = notSignedOuts[i]
+                if (cur.getRosterName() != currentTitle) {
                     sectionTitles.append(currentTitle)
-                    sectionSize.append(count)
                     currentTitle = cur.getRosterName()
-                    count = 1
                     count2++
                     currentTitle = cur.getRosterName()
                     studentList2D.append([StudentRoster]())
                 }
                 studentList2D[count2].append(cur)
+
             }
             sectionTitles.append(currentTitle)
-            sectionSize.append(count)
+        }
+        if (signedOuts.count > 0) {
+            var currentTitle = signedOuts[0].getRosterName()
+            var count2 = 0
+            var count = 0
+            while (currentTitle != sectionTitles[count]) {
+                count++
+                count2++
+            }
+            for (var i = 0; i < signedOuts.count; i++) {
+                let cur = signedOuts[i]
+                if (cur.getRosterName() != currentTitle) {
+                    currentTitle = cur.getRosterName()
+                    count2++
+                    currentTitle = cur.getRosterName()
+                }
+                studentList2D[count2].append(cur)
+            }
+        }
+        for (var i = 0; i < studentList2D.count; i++) {
+            sectionSize.append(studentList2D[i].count)
         }
     }
 
