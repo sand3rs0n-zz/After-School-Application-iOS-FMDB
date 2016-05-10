@@ -39,7 +39,7 @@ class AddOrEditAttendanceViewController: UIViewController {
 
 
         //Xcode's white background is apparently not UIColor.whiteColor() so this forces the button to be white, allowing for proper toggles
-        for (var i = 0; i < 7; i++) {
+        for i in 0 ..< 7 {
             let dayOfWeek = addOrEditAttendanceModel.getWeek(i)
             dayOfWeek.backgroundColor = UIColor.whiteColor()
             dayOfWeek.setTitleColor(UIColor.darkTextColor(), forState: UIControlState.Normal)
@@ -66,7 +66,7 @@ class AddOrEditAttendanceViewController: UIViewController {
 
     private func dayCampButtons(date: Date) {
         addOrEditAttendanceModel.setWeekday(date.getWeekday())
-        for (var i = 0; i < 7; i++) {
+        for i in 0 ..< 7 {
             if (addOrEditAttendanceModel.getWeek(i).titleLabel?.text! == addOrEditAttendanceModel.getWeekday().capitalizedString) {
                 if (addOrEditAttendanceModel.getState() == 1 || addOrEditAttendanceModel.getState() == 3) {
                     toggleColor(addOrEditAttendanceModel.getWeek(i))

@@ -28,7 +28,7 @@ class SelectRosterToAddStudentViewController: UIViewController, UITableViewDataS
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let roster = selectRosterToAddStudentModel.getRoster(indexPath.row)
-        var cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
+        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         let name = roster.getName()
         let startDay = roster.getStartDay()
         let startMonth = roster.getStartMonth()
@@ -38,12 +38,8 @@ class SelectRosterToAddStudentViewController: UIViewController, UITableViewDataS
         let endYear = roster.getEndYear()
         let date = "\(startMonth)/\(startDay)/\(startYear) - \(endMonth)/\(endDay)/\(endYear)"
         cell.textLabel?.text = "\(name)"
-        
-        // ***** BUG *****
-        // Date not passed in correctly, again here? 
-//        cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "Cell")
-//        cell.detailTextLabel?.text = "\(date)"
-//        cell.detailTextLabel?.textAlignment = NSTextAlignment.Right
+        cell.detailTextLabel?.text = "\(date)"
+        cell.detailTextLabel?.textAlignment = NSTextAlignment.Right
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         return cell
     }

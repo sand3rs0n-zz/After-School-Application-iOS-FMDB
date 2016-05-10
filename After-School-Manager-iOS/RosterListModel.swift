@@ -32,6 +32,12 @@ class RosterListModel {
             cur.setRosterID(Int(results.intForColumn("rosterID")))
             cur.setRosterType(Int(results.intForColumn("rosterType")))
             cur.setName(results.stringForColumn("name"))
+            cur.setEndDay(Int(results.intForColumn("endDay")))
+            cur.setEndMonth(Int(results.intForColumn("endMonth")))
+            cur.setEndYear(Int(results.intForColumn("endYear")))
+            cur.setStartDay(Int(results.intForColumn("startDay")))
+            cur.setStartMonth(Int(results.intForColumn("startMonth")))
+            cur.setStartYear(Int(results.intForColumn("startYear")))
             rosterList.append(cur)
         }
         results.close()

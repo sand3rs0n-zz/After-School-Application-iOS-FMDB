@@ -25,17 +25,15 @@ class AllRostersViewController: UIViewController, UITableViewDataSource, UITable
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let roster = allRostersModel.getRoster(indexPath.row)
-        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
+        let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "Cell")
         let name = roster.getName()
-        let startDay = roster.getStartDay()
-        let startMonth = roster.getStartMonth()
-        let startYear = roster.getStartYear()
-        let endDay = roster.getEndDay()
-        let endMonth = roster.getEndMonth()
-        let endYear = roster.getEndYear()
-        let date = "\(startMonth)/\(startDay)/\(startYear) - \(endMonth)/\(endDay)/\(endYear)"
+        let startDate = Date(day: roster.getStartDay(), month: roster.getStartMonth(), year: roster.getStartYear())
+        let endDate = Date(day: roster.getEndDay(), month: roster.getEndMonth(), year: roster.getEndYear())
+        var date = startDate.fullDateAmerican()
+        if (roster.getRosterType() != 0) {
+            date = date + " - " + endDate.fullDateAmerican()
+        }
         cell.textLabel?.text = "\(name)"
-        
         cell.detailTextLabel?.text = "\(date)"
         cell.detailTextLabel?.textAlignment = NSTextAlignment.Right
         cell.selectionStyle = UITableViewCellSelectionStyle.None

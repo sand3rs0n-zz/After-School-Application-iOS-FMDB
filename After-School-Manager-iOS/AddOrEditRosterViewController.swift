@@ -221,7 +221,11 @@ class AddOrEditRosterViewController: UIViewController {
 
                 insertSQL = "UPDATE ROSTERS SET rosterType = '\(selected)', name = '\(rosterNameText)', startDay = '\(startDay)', startMonth = '\(startMonth)', startYear = '\(startYear)', endDay = '\(endDay)', endMonth = '\(endMonth)', endYear = '\(endYear)', pickUpHour = '\(pickUpHour)', pickUpMinute = '\(pickUpMinute)' WHERE rosterID = '\(existingRoster.getRosterID())'"
                 updateSignOut = "UPDATE SIGNOUTS SET rosterType = '\(selected)' WHERE rosterID = '\(existingRoster.getRosterID())'"
+                if (selected == 0) {
                 updateStudentRosters = "UPDATE STUDENTROSTERS SET rosterName = '\(rosterNameText)', monday = '\(weekBool[0])', tuesday = '\(weekBool[1])', wednesday = '\(weekBool[2])', thursday = '\(weekBool[3])', friday = '\(weekBool[4])', saturday = '\(weekBool[5])', sunday = '\(weekBool[6])' WHERE rosterID = '\(existingRoster.getRosterID())'"
+                } else {
+                    updateStudentRosters = "UPDATE STUDENTROSTERS SET rosterName = '\(rosterNameText)' WHERE rosterID = '\(existingRoster.getRosterID())'"
+                }
 
                 result2 = database.update(updateSignOut)
                 result3 = database.update(updateStudentRosters)

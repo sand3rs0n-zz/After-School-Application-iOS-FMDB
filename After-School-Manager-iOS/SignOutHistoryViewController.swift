@@ -194,7 +194,7 @@ class SignOutHistoryViewController: UIViewController, UITableViewDataSource, UIT
         var text = ""
         text += "<h2 style='line-height:100%'>" + signOutHistoryModel.getStudentName() + " Sign Out Records</h2>"
         text += "<table style='width:100%'><tr><th style='text-align: left;'>Date</th> <th style='text-align: left;'>Time</th> <th style='text-align: left;'>Camp</th> <th style='text-align: left;'>Guardian</th> <th style='text-align: left;'>Special Note</th></tr>"
-        for (var i = 0; i < signOutHistoryModel.getSignOutsCount(); i++) {
+        for i in 0 ..< signOutHistoryModel.getSignOutsCount() {
             text += "<tr style='color:"
             if (signOutHistoryModel.getSignOut(i).getSignOutType() == 2) {
                 text += "blue"

@@ -26,13 +26,10 @@ class AllEventsViewController: UIViewController, UITableViewDataSource, UITableV
         let event = allEventsModel.getEvent(indexPath.row)
         var cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         let name = event.getName()
-        let day = event.getDay()
-        let month = event.getMonth()
-        let year = event.getYear()
-        let date = "\(month)/\(day)/\(year)"
+        let date = Date(day: event.getDay(), month: event.getMonth(), year: event.getYear())
         cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "Cell")
         cell.textLabel?.text = "\(name)"
-        cell.detailTextLabel?.text = "\(date)"
+        cell.detailTextLabel?.text = "\(date.fullDateAmerican())"
         cell.detailTextLabel?.textAlignment = NSTextAlignment.Right
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         return cell
