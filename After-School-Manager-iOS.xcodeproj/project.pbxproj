@@ -33,6 +33,7 @@
 		0F1CF3A11C5D31E90048A7D7 /* StudentInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1CF3A01C5D31E90048A7D7 /* StudentInfoViewController.swift */; };
 		0F1CF3A31C5D3DEA0048A7D7 /* UpcomingAbsencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1CF3A21C5D3DEA0048A7D7 /* UpcomingAbsencesViewController.swift */; };
 		0F1CF3A71C5D4CE80048A7D7 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1CF3A61C5D4CE80048A7D7 /* libsqlite3.0.tbd */; };
+		0F2E215F1CFF76B100283942 /* SignOutViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2E215E1CFF76B100283942 /* SignOutViewCell.swift */; };
 		0F33BEF61C6556EC00312041 /* AddOrEditEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F33BEF51C6556EC00312041 /* AddOrEditEventViewController.swift */; };
 		0F33BEF81C655AB200312041 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F33BEF71C655AB200312041 /* Event.swift */; };
 		0F7699051C5D4F9800F04142 /* Guardian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7699041C5D4F9800F04142 /* Guardian.swift */; };
@@ -53,7 +54,6 @@
 		0F7D26C61C6571DC00176CF2 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7D26C51C6571DC00176CF2 /* EventViewController.swift */; };
 		0F7D26C81C65784000176CF2 /* RosterHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7D26C71C65784000176CF2 /* RosterHistoryViewController.swift */; };
 		0F7D26CA1C657A6000176CF2 /* SelectRosterToAddStudentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7D26C91C657A6000176CF2 /* SelectRosterToAddStudentViewController.swift */; };
-		0F84AFA41CB1696500D83B9C /* SignOutViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F84AFA31CB1696500D83B9C /* SignOutViewCell.swift */; };
 		0F9F609D1C949EDD006AAA19 /* AddOrEditRosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F609C1C949EDD006AAA19 /* AddOrEditRosterViewController.swift */; };
 		0F9F60A01C94A1F7006AAA19 /* AddOrEditAttendanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F609F1C94A1F7006AAA19 /* AddOrEditAttendanceModel.swift */; };
 		0F9F60A21C94A20B006AAA19 /* AddOrEditEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F60A11C94A20A006AAA19 /* AddOrEditEventModel.swift */; };
@@ -125,6 +125,7 @@
 		0F1CF3A01C5D31E90048A7D7 /* StudentInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentInfoViewController.swift; sourceTree = "<group>"; };
 		0F1CF3A21C5D3DEA0048A7D7 /* UpcomingAbsencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingAbsencesViewController.swift; sourceTree = "<group>"; };
 		0F1CF3A61C5D4CE80048A7D7 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		0F2E215E1CFF76B100283942 /* SignOutViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignOutViewCell.swift; path = "After-School-Manager-iOS/SignOutViewCell.swift"; sourceTree = "<group>"; };
 		0F33BEF51C6556EC00312041 /* AddOrEditEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOrEditEventViewController.swift; sourceTree = "<group>"; };
 		0F33BEF71C655AB200312041 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		0F7699041C5D4F9800F04142 /* Guardian.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Guardian.swift; sourceTree = "<group>"; };
@@ -145,7 +146,6 @@
 		0F7D26C51C6571DC00176CF2 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		0F7D26C71C65784000176CF2 /* RosterHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterHistoryViewController.swift; sourceTree = "<group>"; };
 		0F7D26C91C657A6000176CF2 /* SelectRosterToAddStudentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectRosterToAddStudentViewController.swift; sourceTree = "<group>"; };
-		0F84AFA31CB1696500D83B9C /* SignOutViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignOutViewCell.swift; path = ../SignOutViewCell.swift; sourceTree = "<group>"; };
 		0F9F609C1C949EDD006AAA19 /* AddOrEditRosterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOrEditRosterViewController.swift; sourceTree = "<group>"; };
 		0F9F609F1C94A1F7006AAA19 /* AddOrEditAttendanceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOrEditAttendanceModel.swift; sourceTree = "<group>"; };
 		0F9F60A11C94A20A006AAA19 /* AddOrEditEventModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOrEditEventModel.swift; sourceTree = "<group>"; };
@@ -197,6 +197,7 @@
 		0F1CF2E31C5C4B9D0048A7D7 = {
 			isa = PBXGroup;
 			children = (
+				0F2E215E1CFF76B100283942 /* SignOutViewCell.swift */,
 				0F1CF3A61C5D4CE80048A7D7 /* libsqlite3.0.tbd */,
 				0F1CF3141C5C4C4F0048A7D7 /* libsqlite3.tbd */,
 				0F1CF2EE1C5C4B9D0048A7D7 /* After-School-Manager-iOS */,
@@ -256,7 +257,6 @@
 				0FA27F231C7BB455003D67DF /* FMDBSupport.swift */,
 				0F1CF3641C5C65FC0048A7D7 /* Line.swift */,
 				0F1CF36A1C5C65FC0048A7D7 /* SignatureView.swift */,
-				0F84AFA31CB1696500D83B9C /* SignOutViewCell.swift */,
 				0F76990B1C5D4FC200F04142 /* Util.swift */,
 			);
 			name = SupportClasses;
@@ -506,7 +506,7 @@
 				0F1CF30E1C5C4BB00048A7D7 /* FMDatabaseAdditions.m in Sources */,
 				0F33BEF81C655AB200312041 /* Event.swift in Sources */,
 				0F9F85FD1C948670008A8284 /* SettingsViewController.swift in Sources */,
-				0F84AFA41CB1696500D83B9C /* SignOutViewCell.swift in Sources */,
+				0F2E215F1CFF76B100283942 /* SignOutViewCell.swift in Sources */,
 				0F1CF3741C5C65FC0048A7D7 /* HomePageViewController.swift in Sources */,
 				0F9F60CC1C94A3BE006AAA19 /* ScheduleAbsenceModel.swift in Sources */,
 				0F76990D1C5D4FC200F04142 /* SignOut.swift in Sources */,

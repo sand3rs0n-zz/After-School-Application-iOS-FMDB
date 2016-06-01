@@ -163,5 +163,51 @@
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "After-School-Manager-iOS/AddOrEditAttendanceViewController.swift"
+            timestampString = "486427509.96512"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "9"
+            endingLineNumber = "9">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "After_School_Manager_iOS.AddOrEditAttendanceViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; After_School_Manager_iOS.AddOrEditAttendanceViewController"
+                  moduleName = "After-School-Manager-iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user2/Documents/After-School-Application-iOS-FMDB/After-School-Manager-iOS/AddOrEditAttendanceViewController.swift"
+                  timestampString = "486504148.821293"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "79">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "After_School_Manager_iOS.AddOrEditAttendanceViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;After_School_Manager_iOS.AddOrEditAttendanceViewController&gt;"
+                  moduleName = "After-School-Manager-iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user2/Documents/After-School-Application-iOS-FMDB/After-School-Manager-iOS/AddOrEditAttendanceViewController.swift"
+                  timestampString = "486504148.821479"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "30">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
