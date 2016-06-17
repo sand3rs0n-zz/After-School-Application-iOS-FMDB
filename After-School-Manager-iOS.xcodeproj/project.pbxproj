@@ -125,7 +125,7 @@
 		0F1CF3A01C5D31E90048A7D7 /* StudentInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentInfoViewController.swift; sourceTree = "<group>"; };
 		0F1CF3A21C5D3DEA0048A7D7 /* UpcomingAbsencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingAbsencesViewController.swift; sourceTree = "<group>"; };
 		0F1CF3A61C5D4CE80048A7D7 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
-		0F2E215E1CFF76B100283942 /* SignOutViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignOutViewCell.swift; path = "After-School-Manager-iOS/SignOutViewCell.swift"; sourceTree = "<group>"; };
+		0F2E215E1CFF76B100283942 /* SignOutViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignOutViewCell.swift; sourceTree = "<group>"; };
 		0F33BEF51C6556EC00312041 /* AddOrEditEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOrEditEventViewController.swift; sourceTree = "<group>"; };
 		0F33BEF71C655AB200312041 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		0F7699041C5D4F9800F04142 /* Guardian.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Guardian.swift; sourceTree = "<group>"; };
@@ -197,7 +197,6 @@
 		0F1CF2E31C5C4B9D0048A7D7 = {
 			isa = PBXGroup;
 			children = (
-				0F2E215E1CFF76B100283942 /* SignOutViewCell.swift */,
 				0F1CF3A61C5D4CE80048A7D7 /* libsqlite3.0.tbd */,
 				0F1CF3141C5C4C4F0048A7D7 /* libsqlite3.tbd */,
 				0F1CF2EE1C5C4B9D0048A7D7 /* After-School-Manager-iOS */,
@@ -252,6 +251,7 @@
 		0F1CF3831C5D0BBF0048A7D7 /* SupportClasses */ = {
 			isa = PBXGroup;
 			children = (
+				0F2E215E1CFF76B100283942 /* SignOutViewCell.swift */,
 				0F1CF3601C5C65FC0048A7D7 /* Date.swift */,
 				0F9F85F61C93790E008A8284 /* ErrorAlert.swift */,
 				0FA27F231C7BB455003D67DF /* FMDBSupport.swift */,
