@@ -322,7 +322,7 @@
                                     <constraint firstAttribute="width" constant="800" id="hYv-Ed-Ys7"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="TBS-RV-EL1">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="upcomingAbsence" id="TBS-RV-EL1">
                                         <rect key="frame" x="0.0" y="28" width="800" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TBS-RV-EL1" id="X9H-me-DhQ">
@@ -394,7 +394,7 @@
                                     <constraint firstAttribute="height" constant="625" id="uSf-OV-CGo"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="SNE-ly-Ge6">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="upcomingEvent" id="SNE-ly-Ge6">
                                         <rect key="frame" x="0.0" y="28" width="774" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SNE-ly-Ge6" id="khL-uV-AmT">
@@ -635,7 +635,7 @@
                                     <constraint firstAttribute="height" constant="625" id="UHU-ud-QD5"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="caI-z4-6gm">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="roster" id="caI-z4-6gm">
                                         <rect key="frame" x="0.0" y="28" width="800" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="caI-z4-6gm" id="atR-F4-ym8">
@@ -657,7 +657,7 @@
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="FlH-Sd-2X0"/>
-                                    <barButtonItem title="Item" systemItem="add" id="KqB-4h-BYW">
+                                    <barButtonItem systemItem="add" id="KqB-4h-BYW">
                                         <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <segue destination="JIw-fz-5fF" kind="show" identifier="AllRostersToNewRoster" id="5RP-wG-aKh"/>
@@ -1322,7 +1322,7 @@
                                     <constraint firstAttribute="width" constant="800" id="c2h-I7-Kzu"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="3Mg-oE-aDi">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="roster" id="3Mg-oE-aDi">
                                         <rect key="frame" x="0.0" y="28" width="800" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Mg-oE-aDi" id="mTJ-HO-MNt">
@@ -1404,7 +1404,7 @@
                                     <constraint firstAttribute="width" constant="800" id="wv4-5N-RPJ"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Edq-ZV-Dh1">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="student" id="Edq-ZV-Dh1">
                                         <rect key="frame" x="0.0" y="28" width="800" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Edq-ZV-Dh1" id="oBN-op-uzF">
@@ -1937,7 +1937,7 @@
                                     <constraint firstAttribute="height" constant="200" id="qaz-CD-U7K"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Fnq-gh-cmU">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="guardianCell" id="Fnq-gh-cmU">
                                         <rect key="frame" x="0.0" y="28" width="370" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fnq-gh-cmU" id="xyF-vv-oQG">
@@ -2588,7 +2588,7 @@
                                     <constraint firstAttribute="width" constant="370" id="qpN-gm-TEh"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="VQM-gU-5pJ">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="guardianCell" id="VQM-gU-5pJ">
                                         <rect key="frame" x="0.0" y="28" width="370" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VQM-gU-5pJ" id="jw3-Th-5nr">
@@ -2796,7 +2796,7 @@
                                     <constraint firstAttribute="width" constant="800" id="Zrt-35-WrT"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="cLH-qg-boL">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="student" id="cLH-qg-boL">
                                         <rect key="frame" x="0.0" y="28" width="800" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cLH-qg-boL" id="zBv-Q2-t7s">
@@ -2818,7 +2818,7 @@
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="4hy-Nc-GqV"/>
-                                    <barButtonItem title="Item" systemItem="add" id="NwX-Ro-3fi">
+                                    <barButtonItem systemItem="add" id="NwX-Ro-3fi">
                                         <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <segue destination="eat-KY-ysK" kind="show" identifier="InstructorMenuStudentsToAddStudent" id="yVJ-bF-MBW"/>
@@ -2918,7 +2918,7 @@
                                     <constraint firstAttribute="height" constant="600" id="ci9-VQ-SJp"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="sgl-TD-1dl">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="student" id="sgl-TD-1dl">
                                         <rect key="frame" x="0.0" y="28" width="800" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sgl-TD-1dl" id="pGE-uK-8sb">
@@ -3145,7 +3145,7 @@
                                     <constraint firstAttribute="width" constant="800" id="V3g-lX-Imi"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="qaR-9P-Bm1">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="todayRoster" id="qaR-9P-Bm1">
                                         <rect key="frame" x="0.0" y="28" width="800" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qaR-9P-Bm1" id="ef1-ya-rrK">
@@ -3419,7 +3419,7 @@
                                     <constraint firstAttribute="width" constant="800" id="nPT-Og-Ecg"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="mQ9-tc-VA0">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="event" id="mQ9-tc-VA0">
                                         <rect key="frame" x="0.0" y="28" width="800" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mQ9-tc-VA0" id="cxL-4C-YgW">
@@ -3515,7 +3515,7 @@
                                     <constraint firstAttribute="width" constant="800" id="sK0-JK-7gh"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Lyw-iX-etQ">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="student" id="Lyw-iX-etQ">
                                         <rect key="frame" x="0.0" y="28" width="800" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lyw-iX-etQ" id="zq3-RP-lhN">
@@ -3703,7 +3703,7 @@
                                     <constraint firstAttribute="width" constant="800" id="JcP-5J-N2q"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="LJA-9w-8U4">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="roster" id="LJA-9w-8U4">
                                         <rect key="frame" x="0.0" y="28" width="800" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LJA-9w-8U4" id="Opk-Xl-P1J">
@@ -4069,7 +4069,7 @@
                                     <constraint firstAttribute="height" constant="625" id="mlf-pY-SlG"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="oCu-j6-iU4">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="roster" id="oCu-j6-iU4">
                                         <rect key="frame" x="0.0" y="28" width="800" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oCu-j6-iU4" id="gEe-nh-519">
@@ -4172,7 +4172,7 @@
                                     <constraint firstAttribute="width" constant="800" id="cR5-Ky-sSU"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="zwf-JY-xFx">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="roster" id="zwf-JY-xFx">
                                         <rect key="frame" x="0.0" y="28" width="800" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zwf-JY-xFx" id="m9b-iy-lMP">
@@ -4227,13 +4227,13 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="MbP-O1-PDi"/>
-        <segue reference="5RP-wG-aKh"/>
+        <segue reference="UNw-e2-ufb"/>
         <segue reference="yVJ-bF-MBW"/>
-        <segue reference="0dW-OO-Qat"/>
-        <segue reference="aHV-gM-FhL"/>
+        <segue reference="5RP-wG-aKh"/>
+        <segue reference="Sgd-4S-nsG"/>
         <segue reference="uTg-An-jIk"/>
-        <segue reference="njK-ob-as0"/>
-        <segue reference="0CC-ZP-ABi"/>
+        <segue reference="R5z-Eg-ICD"/>
+        <segue reference="9dc-XQ-oCj"/>
+        <segue reference="ajb-AG-v9a"/>
     </inferredMetricsTieBreakers>
 </document>
