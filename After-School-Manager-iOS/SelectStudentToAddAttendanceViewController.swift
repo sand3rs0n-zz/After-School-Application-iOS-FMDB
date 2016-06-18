@@ -28,6 +28,7 @@ class SelectStudentToAddAttendanceViewController: UIViewController, UITableViewD
         let student = selectStudentToAddAttendanceModel.getStudent(indexPath.row)
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         cell.textLabel?.text = student.getFirstName() + " " + student.getLastName()
+        cell.textLabel?.font  = UIFont(name: "Arial", size: 30.0)
         return cell
     }
 

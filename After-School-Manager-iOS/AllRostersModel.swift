@@ -67,4 +67,7 @@ class AllRostersModel {
     func setForwardedRoster(forwardedRoster: Roster) {
         self.forwardedRoster = forwardedRoster
     }
+    func removeRoster(index: Int) {
+        rosterList.removeAtIndex(index)
+    }
 }

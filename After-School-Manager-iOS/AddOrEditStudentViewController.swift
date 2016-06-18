@@ -16,7 +16,6 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
     @IBOutlet weak var birthdayPicker: UIDatePicker!
     @IBOutlet weak var school: UITextField!
     @IBOutlet weak var addUpdateButton: UIButton!
-    @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var addToRoster: UIButton!
     @IBOutlet weak var signOutRecordsButton: UIButton!
     @IBOutlet weak var titleBar: UINavigationItem!
@@ -53,7 +52,6 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
     }
 
     private func hideFields() {
-        deleteButton.hidden = true
         addToRoster.hidden = true
         signOutRecordsButton.hidden = true
     }
@@ -247,59 +245,6 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
             return false
         }
         return true
-    }
-
-    @IBAction func deleteStudent(sender: AnyObject) {
-        let myAlertController = UIAlertController(title: "Delete Student", message: "Are you sure you want to delete the student?", preferredStyle: .Alert)
-
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
-            //Do some stuff
-        }
-        myAlertController.addAction(cancelAction)
-
-        let nextAction = UIAlertAction(title: "Delete", style: .Default) { action -> Void in
-            let insertSQL = "DELETE FROM STUDENTPROFILES WHERE studentID = '\(self.addOrEditStudentModel.getStudentID())'"
-            let deleteStudentRosters = "DELETE FROM STUDENTROSTERS WHERE studentID = '\(self.addOrEditStudentModel.getStudentID())'"
-            let deleteSignOuts = "DELETE FROM SIGNOUTS WHERE studentID = '\(self.addOrEditStudentModel.getStudentID())'"
-            let deleteOneTimeAttendance = "DELETE FROM ONETIMEATTENDANCE WHERE studentID = '\(self.addOrEditStudentModel.getStudentID())'"
-            let deleteGuardians = "DELETE FROM GUARDIANS WHERE studentID = '\(self.addOrEditStudentModel.getStudentID())'"
-            let deleteContactNumbers = "DELETE FROM CONTACTNUMBERS WHERE studentID = '\(self.addOrEditStudentModel.getStudentID())'"
-            let deleteAbsencesList = "DELETE FROM ABSENCESLIST WHERE studentID = '\(self.addOrEditStudentModel.getStudentID())'"
-            let result1 = database.update(insertSQL)
-            let result2 = database.update(deleteStudentRosters)
-            let result3 = database.update(deleteSignOuts)
-            let result4 = database.update(deleteOneTimeAttendance)
-            let result5 = database.update(deleteGuardians)
-            let result6 = database.update(deleteContactNumbers)
-            let result7 = database.update(deleteAbsencesList)
-
-            if (result1 && result2 && result3 && result4 && result5 && result6 && result7) {
-                self.back()
-            } else if (!result1) {
-                let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete Roster From StudentProfiles Database")
-                errorAlert.displayError()
-            } else if (!result2) {
-                let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete Roster From StudentRosters Database")
-                errorAlert.displayError()
-            } else if (!result3) {
-                let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete Roster From SignOuts Database")
-                errorAlert.displayError()
-            } else if (!result4) {
-                let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete Roster From OneTimeAttendance Database")
-                errorAlert.displayError()
-            } else if (!result5) {
-                let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete Roster From Guardians Database")
-                errorAlert.displayError()
-            } else if (!result6) {
-                let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete Roster From ContactNumbers Database")
-                errorAlert.displayError()
-            } else if (!result7) {
-                let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete Roster From AbsencesList Database")
-                errorAlert.displayError()
-            }
-        }
-        myAlertController.addAction(nextAction)
-        presentViewController(myAlertController, animated: true, completion: nil)
     }
 
     @IBAction func editStudentInfoUnwind(segue: UIStoryboardSegue) {

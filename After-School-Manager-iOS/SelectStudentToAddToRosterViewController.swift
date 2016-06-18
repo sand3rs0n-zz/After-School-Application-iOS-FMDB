@@ -30,6 +30,7 @@ class SelectStudentToAddToRosterViewController: UIViewController, UITableViewDat
         let student = selectStudentToAddToRosterModel.getStudent(indexPath.row)
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         cell.textLabel?.text = (student.getFirstName() + " " + student.getLastName())
+        cell.textLabel?.font  = UIFont(name: "Arial", size: 30.0)
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         return cell
     }

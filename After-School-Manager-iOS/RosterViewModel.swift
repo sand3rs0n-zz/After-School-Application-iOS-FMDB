@@ -69,4 +69,7 @@ class RosterViewModel {
     func getForwardedStudentID() -> Int {
         return forwardedStudentID
     }
+    func removeStudent(index: Int) {
+        students.removeAtIndex(index)
+    }
 }

@@ -51,4 +51,7 @@ class AllEventsModel {
     func getEvent(i: Int) -> Event {
         return eventList[i]
     }
+    func removeEvent(index: Int) {
+        eventList.removeAtIndex(index)
+    }
 }

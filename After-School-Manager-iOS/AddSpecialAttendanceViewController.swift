@@ -15,7 +15,6 @@ class AddSpecialAttendanceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addSpecialAttendanceModel.getRosters()
-
         // Do any additional setup after loading the view.
     }
 

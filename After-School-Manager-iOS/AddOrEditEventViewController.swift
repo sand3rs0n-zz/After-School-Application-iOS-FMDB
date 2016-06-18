@@ -17,7 +17,6 @@ class AddOrEditEventViewController: UIViewController {
     @IBOutlet weak var eventDescription: UITextView!
     @IBOutlet weak var eventType: UISegmentedControl!
     @IBOutlet weak var createOrEditEventButton: UIButton!
-    @IBOutlet weak var deleteEventButton: UIButton!
     @IBOutlet weak var suspendRosterButton: UIButton!
     @IBOutlet weak var rosterPicker: UIPickerView!
 
@@ -28,9 +27,7 @@ class AddOrEditEventViewController: UIViewController {
         suspendRosterButton.hidden = true
         rosterPicker.hidden = true
         self.titleBar.title = addOrEditEventModel.getTitleValue()
-        if (addOrEditEventModel.getState() == 0) {
-            deleteEventButton.hidden = true
-        } else if (addOrEditEventModel.getState() == 1) {
+        if (addOrEditEventModel.getState() == 1) {
             fillValues()
         }
         addOrEditEventModel.resetRosters(datePicker)
@@ -171,29 +168,6 @@ class AddOrEditEventViewController: UIViewController {
             let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Add Event to Events Database")
             errorAlert.displayError()
         }
-    }
-
-    @IBAction func deleteEvent(sender: AnyObject) {
-        let myAlertController = UIAlertController(title: "Delete Event", message: "Are you sure you want to delete this event?", preferredStyle: .Alert)
-
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
-            //Do some stuff
-        }
-        myAlertController.addAction(cancelAction)
-
-        let nextAction = UIAlertAction(title: "Delete", style: .Default) { action -> Void in
-            let insertSQL = "DELETE FROM EVENTS WHERE eventID = '\(self.addOrEditEventModel.getEvent().getEventID())'"
-            let result = database.update(insertSQL)
-            if (result) {
-                self.back()
-            } else {
-                let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete Event From Events Database")
-                errorAlert.displayError()
-            }
-        }
-        myAlertController.addAction(nextAction)
-        presentViewController(myAlertController, animated: true, completion: nil)
-        //also delete all relevant info
     }
     
     // Hide keyboard when done typing

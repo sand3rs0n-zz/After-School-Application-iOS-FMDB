@@ -47,4 +47,7 @@ class AllStudentsModel {
     func setForwardedStudentID(forwardedStudentID: Int) {
         self.forwardedStudentID = forwardedStudentID
     }
+    func removeStudent(index: Int) {
+        studentList.removeAtIndex(index)
+    }
 }

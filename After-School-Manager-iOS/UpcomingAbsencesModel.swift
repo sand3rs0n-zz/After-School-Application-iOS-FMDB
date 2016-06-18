@@ -60,5 +60,8 @@ class UpcomingAbsencesModel {
     func fullDateAmerican() -> String {
         return date.fullDateAmerican()
     }
+    func removeAbsence(index: Int) {
+        absenceList.removeAtIndex(index)
+    }
     
 }

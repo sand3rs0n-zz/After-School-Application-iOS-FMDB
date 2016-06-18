@@ -38,7 +38,9 @@ class SelectRosterToAddStudentViewController: UIViewController, UITableViewDataS
         let endYear = roster.getEndYear()
         let date = "\(startMonth)/\(startDay)/\(startYear) - \(endMonth)/\(endDay)/\(endYear)"
         cell.textLabel?.text = "\(name)"
+        cell.textLabel?.font  = UIFont(name: "Arial", size: 30.0)
         cell.detailTextLabel?.text = "\(date)"
+        cell.detailTextLabel?.font  = UIFont(name: "Arial", size: 30.0)
         cell.detailTextLabel?.textAlignment = NSTextAlignment.Right
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         return cell

@@ -11,7 +11,7 @@ import UIKit
 class AddOrEditRosterViewController: UIViewController {
     private var addOrEditRosterModel = AddOrEditRosterModel()
 
-    @IBOutlet weak var rosterName: UITextField!
+    @IBOutlet weak var rosterName: UITextView!
     @IBOutlet weak var rosterType: UIPickerView!
     @IBOutlet weak var pickUpTime: UIDatePicker!
     @IBOutlet weak var startDate: UIDatePicker!
@@ -19,7 +19,6 @@ class AddOrEditRosterViewController: UIViewController {
     @IBOutlet weak var endDateLabel: UILabel!
     @IBOutlet weak var createRosterButton: UIButton!
     @IBOutlet weak var titleBar: UINavigationItem!
-    @IBOutlet weak var deleteRosterButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,9 +28,7 @@ class AddOrEditRosterViewController: UIViewController {
         self.titleBar.title = addOrEditRosterModel.getTitleValue()
         self.createRosterButton!.setTitle(addOrEditRosterModel.getButtonText(), forState: .Normal)
 
-        if (addOrEditRosterModel.getState() == 0) {
-            hideElements()
-        } else if (addOrEditRosterModel.getState() == 1) {
+        if (addOrEditRosterModel.getState() == 1) {
             fillElements()
         }
 
@@ -79,10 +76,6 @@ class AddOrEditRosterViewController: UIViewController {
         addOrEditRosterModel.setExistingRoster(roster)
     }
 
-    private func hideElements() {
-        deleteRosterButton.hidden = true
-    }
-
     private func fillElements() {
         //put stuff in proper fields
         let roster = addOrEditRosterModel.getExistingRoster()
@@ -127,42 +120,6 @@ class AddOrEditRosterViewController: UIViewController {
         } else if (addOrEditRosterModel.getState() == 1) {
             performSegueWithIdentifier("ReturnToRosterUnwind", sender: self)
         }
-    }
-
-    @IBAction func deleteRoster(sender: AnyObject) {
-        let myAlertController = UIAlertController(title: "Delete Roster", message: "Are you sure you want to delete this roster?", preferredStyle: .Alert)
-
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
-            //Do some stuff
-        }
-        myAlertController.addAction(cancelAction)
-
-        let nextAction = UIAlertAction(title: "Delete", style: .Default) { action -> Void in
-            let existingRoster = self.addOrEditRosterModel.getExistingRoster()
-                let insertSQL = "DELETE FROM ROSTERS WHERE rosterID = '\(existingRoster.getRosterID())'"
-                let deleteSignOut = "DELETE FROM SIGNOUTS WHERE rosterID = '\(existingRoster.getRosterID())'"
-                let deleteStudentRosters = "DELETE FROM STUDENTROSTERS WHERE rosterID = '\(existingRoster.getRosterID())'"
-                let result1 = database.update(insertSQL)
-                let result2 = database.update(deleteSignOut)
-                let result3 = database.update(deleteStudentRosters)
-                if (result1 && result2 && result3) {
-                    self.addOrEditRosterModel.setState(0)
-                    self.back()
-                } else if (!result1) {
-                    let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete Roster From Rosters Database")
-                    errorAlert.displayError()
-                } else if (!result2) {
-                    let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete Roster From Sign Outs Database")
-                    errorAlert.displayError()
-                } else if (!result3) {
-                    let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete Roster From Student Rosters Database")
-                    errorAlert.displayError()
-            }
-        }
-        myAlertController.addAction(nextAction)
-        presentViewController(myAlertController, animated: true, completion: nil)
-        //also delete all relevant info
-
     }
 
     @IBAction func createRoster(sender: AnyObject) {

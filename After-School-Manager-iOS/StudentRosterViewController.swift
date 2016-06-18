@@ -46,13 +46,14 @@ class StudentRosterViewController: UIViewController, UITableViewDataSource, UITa
         if (indexPath.row >= studentRosterModel.getNumberOfNonSignedOut() && studentRosterModel.getState() == 1) {
             cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "Cell")
             cell.detailTextLabel?.text = "Signed Out"
+            cell.detailTextLabel?.font  = UIFont(name: "Arial", size: 30.0)
             cell.detailTextLabel?.textColor = UIColor.redColor()
             cell.detailTextLabel?.textAlignment = NSTextAlignment.Right
 
         }
         let name = student.getStudentFirstName() + " " + student.getStudentLastName()
         cell.textLabel?.text = name
-        
+        cell.textLabel?.font  = UIFont(name: "Arial", size: 30.0)
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         return cell
     }

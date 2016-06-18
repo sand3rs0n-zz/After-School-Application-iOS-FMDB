@@ -82,6 +82,7 @@
 		0F9F85F71C93790E008A8284 /* ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F85F61C93790E008A8284 /* ErrorAlert.swift */; };
 		0F9F85FD1C948670008A8284 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9F85FC1C948670008A8284 /* SettingsViewController.swift */; };
 		0FA27F241C7BB455003D67DF /* FMDBSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA27F231C7BB455003D67DF /* FMDBSupport.swift */; };
+		0FECDC0D1D1495360021204B /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FECDC0C1D1495360021204B /* iTunesArtwork.png */; };
 		0FF20FEE1C72A7F2007285DB /* EditTodayAttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF20FED1C72A7F2007285DB /* EditTodayAttendanceViewController.swift */; };
 		0FF20FF01C72A80F007285DB /* AddSpecialAttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF20FEF1C72A80F007285DB /* AddSpecialAttendanceViewController.swift */; };
 		0FF20FF21C72A847007285DB /* SelectStudentToAddAttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF20FF11C72A847007285DB /* SelectStudentToAddAttendanceViewController.swift */; };
@@ -174,6 +175,7 @@
 		0F9F85F61C93790E008A8284 /* ErrorAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorAlert.swift; sourceTree = "<group>"; };
 		0F9F85FC1C948670008A8284 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0FA27F231C7BB455003D67DF /* FMDBSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMDBSupport.swift; sourceTree = "<group>"; };
+		0FECDC0C1D1495360021204B /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		0FF20FED1C72A7F2007285DB /* EditTodayAttendanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTodayAttendanceViewController.swift; sourceTree = "<group>"; };
 		0FF20FEF1C72A80F007285DB /* AddSpecialAttendanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSpecialAttendanceViewController.swift; sourceTree = "<group>"; };
 		0FF20FF11C72A847007285DB /* SelectStudentToAddAttendanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStudentToAddAttendanceViewController.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 		0F1CF2EE1C5C4B9D0048A7D7 /* After-School-Manager-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				0FECDC0C1D1495360021204B /* iTunesArtwork.png */,
 				0F1CF3831C5D0BBF0048A7D7 /* SupportClasses */,
 				0F1CF3131C5C4BC50048A7D7 /* FMDB */,
 				0F1CF2EF1C5C4B9D0048A7D7 /* AppDelegate.swift */,
@@ -447,6 +450,7 @@
 				8D35069C1C6AA967007D7A2C /* img in Resources */,
 				0F1CF2F71C5C4B9D0048A7D7 /* Assets.xcassets in Resources */,
 				0F1CF31E1C5C61B60048A7D7 /* AfterSchoolData.sqlite in Resources */,
+				0FECDC0D1D1495360021204B /* iTunesArtwork.png in Resources */,
 				0F1CF2F51C5C4B9D0048A7D7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

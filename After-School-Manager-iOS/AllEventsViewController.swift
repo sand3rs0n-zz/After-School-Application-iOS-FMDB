@@ -29,7 +29,9 @@ class AllEventsViewController: UIViewController, UITableViewDataSource, UITableV
         let date = Date(day: event.getDay(), month: event.getMonth(), year: event.getYear())
         cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "Cell")
         cell.textLabel?.text = "\(name)"
+        cell.textLabel?.font  = UIFont(name: "Arial", size: 30.0)
         cell.detailTextLabel?.text = "\(date.fullDateAmerican())"
+        cell.detailTextLabel?.font  = UIFont(name: "Arial", size: 30.0)
         cell.detailTextLabel?.textAlignment = NSTextAlignment.Right
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         return cell
@@ -46,6 +48,39 @@ class AllEventsViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         allEventsModel.setForwardedEvent(allEventsModel.getEvent(indexPath.row))
         performSegueWithIdentifier("AllEventsToEditEvent", sender: self)
+    }
+
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (editingStyle == .Delete) {
+            let myAlertController = UIAlertController(title: "Delete Event", message: "Are you sure you want to delete this event?", preferredStyle: .Alert)
+
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
+                //Do some stuff
+            }
+            myAlertController.addAction(cancelAction)
+
+            let nextAction = UIAlertAction(title: "Delete", style: .Default) { action -> Void in
+                let insertSQL = "DELETE FROM EVENTS WHERE eventID = '\(self.allEventsModel.getEvent(indexPath.row).getEventID())'"
+                let result = database.update(insertSQL)
+                if (result) {
+                    self.allEventsModel.removeEvent(indexPath.row)
+                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                    if (self.allEventsModel.getEventListsCount() == 0) {
+                        self.allEventsModel.resetEvents()
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            self.eventsListTable.reloadData()
+                        })
+
+                    }
+                } else {
+                    let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete Event From Events Database")
+                    errorAlert.displayError()
+                }
+            }
+            myAlertController.addAction(nextAction)
+            presentViewController(myAlertController, animated: true, completion: nil)
+            
+        }
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

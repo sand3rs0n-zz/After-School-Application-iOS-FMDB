@@ -28,7 +28,9 @@ class EventsCalendarViewController: UIViewController, UITableViewDataSource, UIT
         let date = Date(day: event.getDay(), month: event.getMonth(), year: event.getYear())
         cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "Cell")
         cell.textLabel?.text = "\(name)"
+        cell.textLabel?.font  = UIFont(name: "Arial", size: 30.0)
         cell.detailTextLabel?.text = "\(date.fullDateAmerican())"
+        cell.detailTextLabel?.font  = UIFont(name: "Arial", size: 30.0)
         cell.detailTextLabel?.textAlignment = NSTextAlignment.Right
         
         cell.selectionStyle = UITableViewCellSelectionStyle.None
@@ -37,6 +39,10 @@ class EventsCalendarViewController: UIViewController, UITableViewDataSource, UIT
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return eventsCalendarModel.getEventCount()
+    }
+
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 75
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

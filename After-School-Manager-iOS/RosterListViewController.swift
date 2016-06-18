@@ -41,7 +41,9 @@ class RosterListViewController: UIViewController, UITableViewDataSource, UITable
         let endDate = Date(day: roster.getEndDay(), month: roster.getEndMonth(), year: roster.getEndYear())
         let date = startDate.fullDateAmerican() + " - " + endDate.fullDateAmerican()
         cell.textLabel?.text = "\(name)"
+        cell.textLabel?.font  = UIFont(name: "Arial", size: 30.0)
         cell.detailTextLabel?.text = "\(date)"
+        cell.detailTextLabel?.font  = UIFont(name: "Arial", size: 30.0)
         cell.detailTextLabel?.textAlignment = NSTextAlignment.Right
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         return cell

@@ -12,7 +12,6 @@ class ScheduleAbsenceViewController: UIViewController {
     private var scheduleAbsenceModel = ScheduleAbsenceModel()
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var scheduleAbsenceButton: UIButton!
-    @IBOutlet weak var deleteAbsenceButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,8 +20,6 @@ class ScheduleAbsenceViewController: UIViewController {
         if (scheduleAbsenceModel.getState() == 1) {
             scheduleAbsenceModel.initializeAbsence()
             fillValues()
-        } else if (scheduleAbsenceModel.getState() == 0) {
-            deleteAbsenceButton.hidden = true
         }
         scheduleAbsenceModel.getRosters()
     }
@@ -107,32 +104,5 @@ class ScheduleAbsenceViewController: UIViewController {
             let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Sign Student Out")
             errorAlert.displayError()
         }
-    }
-
-    @IBAction func deleteAbsence(sender: AnyObject) {
-        let myAlertController = UIAlertController(title: "Delete Absence", message: "Are you sure you want to delete this scheduled absence?", preferredStyle: .Alert)
-
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
-            //Do some stuff
-        }
-        myAlertController.addAction(cancelAction)
-
-        let nextAction = UIAlertAction(title: "Delete", style: .Default) { action -> Void in
-            let absenceListSQL = "DELETE FROM ABSENCESLIST WHERE absenceID = '\(self.scheduleAbsenceModel.getAbsence().getAbsenceID())'"
-            let signOutSQL = "DELETE FROM SIGNOUTS WHERE signOutID = '\(self.scheduleAbsenceModel.getSignOutID())'"
-            let result1 = database.update(absenceListSQL)
-            let result2 = database.update(signOutSQL)
-            if (result1 && result2) {
-                self.back()
-            } else if (!result1) {
-                let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete Absence")
-                errorAlert.displayError()
-            } else if (!result2) {
-                let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete SignOut From SignOuts Database")
-                errorAlert.displayError()
-            }
-        }
-        myAlertController.addAction(nextAction)
-        presentViewController(myAlertController, animated: true, completion: nil)
     }
 }

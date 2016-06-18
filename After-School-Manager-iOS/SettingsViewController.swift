@@ -10,8 +10,8 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
-    @IBOutlet weak var pin: UITextField!
-    @IBOutlet weak var emailAddress: UITextField!
+    @IBOutlet weak var pin: UITextView!
+    @IBOutlet weak var emailAddress: UITextView!
 
     override func viewDidLoad() {
         super.viewDidLoad()

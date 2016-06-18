@@ -30,7 +30,9 @@ class UpcomingAbsencesViewController: UIViewController, UITableViewDataSource, U
         let date = upcomingAbsencesModel.fullDateAmerican()
         cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "Cell")
         cell.textLabel?.text = name
+        cell.textLabel?.font  = UIFont(name: "Arial", size: 30.0)
         cell.detailTextLabel?.text = "\(date)"
+        cell.detailTextLabel?.font  = UIFont(name: "Arial", size: 30.0)
         cell.detailTextLabel?.textAlignment = NSTextAlignment.Right
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         return cell
@@ -48,7 +50,45 @@ class UpcomingAbsencesViewController: UIViewController, UITableViewDataSource, U
         upcomingAbsencesModel.setForwardedAbsence(upcomingAbsencesModel.getAbsence(indexPath.row))
         performSegueWithIdentifier("UpcomingAbsenceToUpdateAbsence", sender: self)
     }
-    
+
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (editingStyle == .Delete) {
+            let myAlertController = UIAlertController(title: "Delete Absence", message: "Are you sure you want to delete this scheduled absence?", preferredStyle: .Alert)
+
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
+                //Do some stuff
+            }
+            myAlertController.addAction(cancelAction)
+
+            let nextAction = UIAlertAction(title: "Delete", style: .Default) { action -> Void in
+                let absenceListSQL = "DELETE FROM ABSENCESLIST WHERE absenceID = '\(self.upcomingAbsencesModel.getAbsence(indexPath.row).getAbsenceID())'"
+                let signOutSQL = "DELETE FROM SIGNOUTS WHERE signOutID = '\(self.upcomingAbsencesModel.getAbsence(indexPath.row).getAbsenceID())'"
+                let result1 = database.update(absenceListSQL)
+                let result2 = database.update(signOutSQL)
+                if (result1 && result2) {
+                    self.upcomingAbsencesModel.removeAbsence(indexPath.row)
+                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                    if (self.upcomingAbsencesModel.getAbsencesCount() == 0) {
+                        self.upcomingAbsencesModel.resetAbsences()
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            self.upcomingAbsencesListTable.reloadData()
+                        })
+
+                    }
+                } else if (!result1) {
+                    let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete Absence")
+                    errorAlert.displayError()
+                } else if (!result2) {
+                    let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete SignOut From SignOuts Database")
+                    errorAlert.displayError()
+                }
+            }
+            myAlertController.addAction(nextAction)
+            presentViewController(myAlertController, animated: true, completion: nil)
+
+        }
+    }
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "ScheduleAbsenceToRosterSelect") {
             let rlvc = segue.destinationViewController as? RosterListViewController

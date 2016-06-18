@@ -56,4 +56,7 @@ class RosterHistoryModel {
     func getForwardedRosterID() -> Int {
         return forwardedRosterID
     }
+    func removeRoster(index: Int) {
+        rosterList.removeAtIndex(index)
+    }
 }
