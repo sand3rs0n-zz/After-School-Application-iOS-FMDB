@@ -12,7 +12,7 @@ class AddOrEditEventViewController: UIViewController {
     private var addOrEditEventModel = AddOrEditEventModel()
 
     @IBOutlet weak var titleBar: UINavigationItem!
-    @IBOutlet weak var eventName: UITextField!
+    @IBOutlet weak var eventName: UITextView!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var eventDescription: UITextView!
     @IBOutlet weak var eventType: UISegmentedControl!

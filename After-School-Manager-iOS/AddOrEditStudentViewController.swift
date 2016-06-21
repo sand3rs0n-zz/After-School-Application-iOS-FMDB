@@ -22,6 +22,8 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
     @IBOutlet weak var active: UISegmentedControl!
     @IBOutlet weak var guardianTable: UITableView!
     @IBOutlet weak var contactTable: UITableView!
+    @IBOutlet weak var addFamilyButton: UIBarButtonItem!
+    @IBOutlet weak var bottomToolbar: UIToolbar!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +56,7 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
     private func hideFields() {
         addToRoster.hidden = true
         signOutRecordsButton.hidden = true
+        bottomToolbar.items?.removeLast()
     }
 
     private func setBirthDate() {
@@ -81,6 +84,18 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+
+    @IBAction func addFamily(sender: AnyObject) {
+        self.titleBar.title = "Add Family Member"
+        self.addUpdateButton!.setTitle("Add Family Member", forState: .Normal)
+        firstName.text = ""
+        lastName.text = ""
+        addOrEditStudentModel.setAddFamily()
+        addOrEditStudentModel.setUpdate(false)
+        addToRoster.hidden = true
+        signOutRecordsButton.hidden = true
     }
 
     @IBAction func backButton(sender: AnyObject) {
@@ -213,7 +228,30 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
                 result3 = database.update(studentRosters)
             }
             if (result1 && (!addOrEditStudentModel.getUpdate() || (result2 && result3))) {
-                if (!addOrEditStudentModel.getUpdate()) {
+                if (addOrEditStudentModel.getAddFamily()) {
+                    let result = database.search("SELECT MAX(studentID) as id FROM STUDENTPROFILES")
+                    result.next()
+                    addOrEditStudentModel.setStudentID(Int(result.intForColumn("id")))
+                    for i in 0 ..< addOrEditStudentModel.getGuardiansCount() {
+                        let insertGuardians = "INSERT INTO GUARDIANS (studentID, name) VALUES ('\(self.addOrEditStudentModel.getStudentID())', '\(addOrEditStudentModel.getGuardian(i).getName())')"
+                        if (database.update(insertGuardians)) {
+                            continue
+                        } else {
+                            let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Add Guardian to Guardians Database")
+                            errorAlert.displayError()
+                        }
+
+                    }
+                    for i in 0 ..< addOrEditStudentModel.getContactNumbersCount() {
+                        let insertContacts = "INSERT INTO CONTACTNUMBERS (studentID, phoneNumber, name) VALUES ('\(self.addOrEditStudentModel.getStudentID())', '\(addOrEditStudentModel.getContactNumber(i).getPhoneNumber())', '\(addOrEditStudentModel.getContactNumber(i).getName())')"
+                        if (database.update(insertContacts)) {
+                            continue
+                        } else {
+                            let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Add Contact to Contacts Database")
+                            errorAlert.displayError()
+                        }
+                    }
+                } else if (!addOrEditStudentModel.getUpdate()) {
                     let result = database.search("SELECT MAX(studentID) as id FROM STUDENTPROFILES")
                     result.next()
                     addOrEditStudentModel.setStudentID(Int(result.intForColumn("id")))
@@ -241,7 +279,10 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
     }
 
     private func validatFields() -> Bool {
-        if (firstName.text == "" || lastName.text == "" || school.text == ""){
+        if (school.text == "") {
+            school.text = "N/A"
+        }
+        if (firstName.text == "" || lastName.text == "") {
             return false
         }
         return true
@@ -297,7 +338,10 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
             }
         }
     }
-
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 55
+    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(tableView == self.guardianTable && addOrEditStudentModel.getGuardiansCount() > 0) {
@@ -313,6 +357,7 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
         var cell = UITableViewCell()
         if(tableView == self.guardianTable) {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
+            cell.textLabel?.font  = UIFont(name: "Arial", size: 20.0)
             let row = indexPath.row
 
             if (addOrEditStudentModel.getGuardiansCount() == 0) {
@@ -326,6 +371,7 @@ class AddOrEditStudentViewController: UIViewController, UITableViewDataSource, U
             }
         } else if (tableView == self.contactTable) {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "contactCell")
+            cell.textLabel?.font  = UIFont(name: "Arial", size: 20.0)
             let row = indexPath.row
 
             if (addOrEditStudentModel.getContactNumbersCount() == 0) {

@@ -19,13 +19,16 @@ class EventViewController: UIViewController {
         super.viewDidLoad()
         self.titleBar.title = eventViewModel.getName()
         fillValues()
-        self.eventDescription.numberOfLines = 0
-        self.eventDescription.sizeToFit()
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    override func viewDidLayoutSubviews() {
+        self.eventDescription.sizeToFit()
     }
 
     func setEvent(event: Event) {
@@ -40,7 +43,7 @@ class EventViewController: UIViewController {
             eventType.text = "Early Out from School"
         } else if (eventViewModel.getEventType() == 1) {
             eventType.text = "No School"
-        } else if (eventViewModel.getEventType() == 1) { // should this be event type 2?
+        } else if (eventViewModel.getEventType() == 2) {
             eventType.text = "Other"
         }
     }

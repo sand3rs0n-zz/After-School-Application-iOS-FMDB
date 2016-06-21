@@ -16,6 +16,7 @@ class AddOrEditStudentModel {
     private var contactNumbers = [ContactNumber]()
     private var navTitle = ""
     private var buttonText = ""
+    private var addFamily = false
 
     init() {
         getStudent()
@@ -116,13 +117,25 @@ class AddOrEditStudentModel {
     func getGuardian(i: Int) -> Guardian {
         return guardians[i]
     }
+    func getAllGuardians() -> [Guardian] {
+        return guardians
+    }
     func getContactNumbersCount() -> Int {
         return contactNumbers.count
     }
     func getContactNumber(i: Int) -> ContactNumber {
         return contactNumbers[i]
     }
+    func getAllContacts() -> [ContactNumber] {
+        return contactNumbers
+    }
     func getStudent() -> Student {
         return student
+    }
+    func setAddFamily() {
+        addFamily = true
+    }
+    func getAddFamily() -> Bool {
+        return addFamily
     }
 }

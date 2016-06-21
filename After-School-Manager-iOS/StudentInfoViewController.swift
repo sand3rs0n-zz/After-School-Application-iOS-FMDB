@@ -55,7 +55,11 @@ class StudentInfoViewController: UIViewController, UITableViewDataSource, UITabl
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-    
+
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 55
+    }
+
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(tableView == self.guardianTable && studentInfoModel.getGuardiansCount() > 0) {
             return studentInfoModel.getGuardiansCount()
@@ -71,6 +75,7 @@ class StudentInfoViewController: UIViewController, UITableViewDataSource, UITabl
         if(tableView == self.guardianTable) {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
             let row = indexPath.row
+            cell.textLabel?.font  = UIFont(name: "Arial", size: 20.0)
             
             if(studentInfoModel.getGuardiansCount() > 0 && row < studentInfoModel.getGuardiansCount()) {
                 let guardian = studentInfoModel.getGuardian(row)
@@ -81,6 +86,7 @@ class StudentInfoViewController: UIViewController, UITableViewDataSource, UITabl
             }
         } else if(tableView == self.contactTable) {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "contactCell")
+            cell.textLabel?.font  = UIFont(name: "Arial", size: 20.0)
             let row = indexPath.row
             
             if(studentInfoModel.getContactNumbersCount() > 0 && row < studentInfoModel.getContactNumbersCount()) {
