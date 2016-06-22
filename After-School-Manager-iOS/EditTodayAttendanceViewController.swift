@@ -14,6 +14,7 @@ class EditTodayAttendanceViewController: UIViewController {
     @IBOutlet weak var unscheduledButton: UIButton!
     @IBOutlet weak var instructorButton: UIButton!
     @IBOutlet weak var unscheduleButton: UIButton!
+    @IBOutlet weak var cancelSignOutButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,16 +27,15 @@ class EditTodayAttendanceViewController: UIViewController {
         let result2 = database.search(signOutSQL)
         result2.next()
         if (result1.hasAnotherRow() || result2.hasAnotherRow()) {
-//            scheduleButton.enabled = false
-//            unscheduledButton.enabled = false
-//            instructorButton.enabled = false
             disableButton(scheduleButton)
             disableButton(unscheduledButton)
             disableButton(instructorButton)
         }
         if (!result1.hasAnotherRow()) {
-//            unscheduleButton.enabled = false
             disableButton(unscheduleButton)
+        }
+        if (!result2.hasAnotherRow() || result1.hasAnotherRow()) {
+            disableButton(cancelSignOutButton)
         }
     }
 
@@ -48,7 +48,7 @@ class EditTodayAttendanceViewController: UIViewController {
         button.enabled = false
         button.backgroundColor = UIColor.whiteColor()
         button.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Disabled)
-}
+    }
 
     func setStudentID(studentID: Int) {
         editTodayAttendanceModel.setStudentID(studentID)
@@ -96,6 +96,18 @@ class EditTodayAttendanceViewController: UIViewController {
             back()
         } else {
             let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Sign Student Out")
+            errorAlert.displayError()
+        }
+    }
+
+    @IBAction func cancelSignOut(sender: AnyObject) {
+        let date = editTodayAttendanceModel.getDate()
+        let deleteSignOutSQL = "DELETE FROM SIGNOUTS WHERE  studentID = '\(editTodayAttendanceModel.getStudentID())' AND rosterID = '\(editTodayAttendanceModel.getRosterID())' AND day = '\(date.getCurrentDay())' AND month = '\(date.getCurrentMonth())' AND year = '\(date.getCurrentYear())'"
+        let result = database.update(deleteSignOutSQL)
+        if (result) {
+            back()
+        } else if (!result) {
+            let errorAlert = ErrorAlert(viewController: self, errorString: "Failed to Delete SignOut From SignOuts Database")
             errorAlert.displayError()
         }
     }

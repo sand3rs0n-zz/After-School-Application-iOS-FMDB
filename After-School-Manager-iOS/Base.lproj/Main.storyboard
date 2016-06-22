@@ -2949,11 +2949,11 @@
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ceg-Xh-ly5">
-                                <rect key="frame" x="168" y="246" width="688" height="137"/>
+                                <rect key="frame" x="168" y="216" width="688" height="100"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="688" id="9XF-kT-7hC"/>
-                                    <constraint firstAttribute="height" constant="137" id="bdt-EY-yhR"/>
+                                    <constraint firstAttribute="width" constant="688" id="CjQ-Gs-n1u"/>
+                                    <constraint firstAttribute="height" constant="100" id="Zca-t4-fGW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="33"/>
                                 <state key="normal" title="Unscheduled Absence for Today">
@@ -2969,11 +2969,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v9Z-5o-Amc">
-                                <rect key="frame" x="168" y="86" width="688" height="137"/>
+                                <rect key="frame" x="168" y="90" width="688" height="100"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="688" id="IxV-2Q-OtH"/>
-                                    <constraint firstAttribute="height" constant="137" id="uxU-co-UP7"/>
+                                    <constraint firstAttribute="width" constant="688" id="gIF-SU-pdH"/>
+                                    <constraint firstAttribute="height" constant="100" id="wTh-6u-I42"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="33"/>
                                 <state key="normal" title="Schedule Absence for Today">
@@ -2989,11 +2989,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bhc-9T-gd4">
-                                <rect key="frame" x="168" y="566" width="688" height="137"/>
+                                <rect key="frame" x="168" y="468" width="688" height="100"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="688" id="Wva-HJ-ohY"/>
-                                    <constraint firstAttribute="height" constant="137" id="bGY-u8-SiH"/>
+                                    <constraint firstAttribute="height" constant="100" id="2a0-ae-k3d"/>
+                                    <constraint firstAttribute="width" constant="688" id="Rqy-cG-tyT"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="33"/>
                                 <state key="normal" title="Unschedule Absence">
@@ -3023,12 +3023,27 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f4E-RR-w0F">
-                                <rect key="frame" x="168" y="406" width="688" height="137"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="72T-xK-BaG">
+                                <rect key="frame" x="168" y="594" width="688" height="100"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="137" id="3g3-nv-Azo"/>
-                                    <constraint firstAttribute="width" constant="688" id="789-U5-syH"/>
+                                    <constraint firstAttribute="width" constant="688" id="37P-vR-7XE"/>
+                                    <constraint firstAttribute="height" constant="100" id="Ryq-7q-iVC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="33"/>
+                                <state key="normal" title="Cancel Sign Out">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelSignOut:" destination="DkY-zU-xft" eventType="touchUpInside" id="lwt-PX-Xwe"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f4E-RR-w0F">
+                                <rect key="frame" x="168" y="342" width="688" height="100"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="688" id="aia-dU-zaW"/>
+                                    <constraint firstAttribute="height" constant="100" id="sch-ng-mbf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="33"/>
                                 <state key="normal" title="Instructor Sign Out">
@@ -3047,20 +3062,23 @@
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="HBX-Xc-dFF" firstAttribute="leading" secondItem="ezK-Yn-DWr" secondAttribute="leading" id="2FI-jU-AS7"/>
-                            <constraint firstItem="bhc-9T-gd4" firstAttribute="leading" secondItem="ezK-Yn-DWr" secondAttribute="leadingMargin" constant="148" id="4Uz-hA-QvM"/>
                             <constraint firstItem="HBX-Xc-dFF" firstAttribute="top" secondItem="M6h-2c-xeY" secondAttribute="bottom" id="AOY-0Q-Sjk"/>
-                            <constraint firstItem="bhc-9T-gd4" firstAttribute="top" secondItem="f4E-RR-w0F" secondAttribute="bottom" constant="23" id="CMa-aI-6MQ"/>
-                            <constraint firstItem="Ceg-Xh-ly5" firstAttribute="top" secondItem="v9Z-5o-Amc" secondAttribute="bottom" constant="23" id="Gq9-px-e8L"/>
-                            <constraint firstItem="Ceg-Xh-ly5" firstAttribute="leading" secondItem="ezK-Yn-DWr" secondAttribute="leadingMargin" constant="148" id="JW1-Ix-gCK"/>
-                            <constraint firstItem="v9Z-5o-Amc" firstAttribute="top" secondItem="HBX-Xc-dFF" secondAttribute="bottom" constant="22" id="aRs-s1-CHm"/>
-                            <constraint firstItem="f4E-RR-w0F" firstAttribute="leading" secondItem="ezK-Yn-DWr" secondAttribute="leadingMargin" constant="148" id="c7A-xh-I29"/>
+                            <constraint firstItem="v9Z-5o-Amc" firstAttribute="leading" secondItem="ezK-Yn-DWr" secondAttribute="leadingMargin" constant="148" id="B8O-Y2-bPh"/>
+                            <constraint firstItem="v9Z-5o-Amc" firstAttribute="top" secondItem="HBX-Xc-dFF" secondAttribute="bottom" constant="26" id="BxD-dd-LWC"/>
+                            <constraint firstItem="Ceg-Xh-ly5" firstAttribute="top" secondItem="v9Z-5o-Amc" secondAttribute="bottom" constant="26" id="Io8-4o-lOg"/>
+                            <constraint firstItem="bhc-9T-gd4" firstAttribute="leading" secondItem="ezK-Yn-DWr" secondAttribute="leadingMargin" constant="148" id="MLf-cE-bG1"/>
+                            <constraint firstItem="Ceg-Xh-ly5" firstAttribute="leading" secondItem="ezK-Yn-DWr" secondAttribute="leadingMargin" constant="148" id="NKJ-S6-BDT"/>
+                            <constraint firstItem="f4E-RR-w0F" firstAttribute="leading" secondItem="ezK-Yn-DWr" secondAttribute="leadingMargin" constant="148" id="NQ3-LJ-sj1"/>
+                            <constraint firstItem="bhc-9T-gd4" firstAttribute="top" secondItem="f4E-RR-w0F" secondAttribute="bottom" constant="26" id="ULN-Sn-S0X"/>
+                            <constraint firstItem="72T-xK-BaG" firstAttribute="leading" secondItem="ezK-Yn-DWr" secondAttribute="leadingMargin" constant="148" id="Vh6-mc-vsa"/>
                             <constraint firstItem="QQX-mx-L2Y" firstAttribute="top" secondItem="8KI-2E-aEl" secondAttribute="bottom" id="fIR-77-0RM"/>
                             <constraint firstItem="8KI-2E-aEl" firstAttribute="leading" secondItem="ezK-Yn-DWr" secondAttribute="leading" id="p0Z-bH-MJl"/>
-                            <constraint firstItem="f4E-RR-w0F" firstAttribute="top" secondItem="Ceg-Xh-ly5" secondAttribute="bottom" constant="23" id="ruv-PM-hq4"/>
-                            <constraint firstItem="v9Z-5o-Amc" firstAttribute="leading" secondItem="ezK-Yn-DWr" secondAttribute="leadingMargin" constant="148" id="uce-cL-B7U"/>
+                            <constraint firstItem="72T-xK-BaG" firstAttribute="top" secondItem="bhc-9T-gd4" secondAttribute="bottom" constant="26" id="q1p-Mx-UNq"/>
+                            <constraint firstItem="f4E-RR-w0F" firstAttribute="top" secondItem="Ceg-Xh-ly5" secondAttribute="bottom" constant="26" id="tse-jO-zEf"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cancelSignOutButton" destination="72T-xK-BaG" id="bG8-IH-PjZ"/>
                         <outlet property="instructorButton" destination="f4E-RR-w0F" id="dI5-6Z-YRe"/>
                         <outlet property="scheduleButton" destination="v9Z-5o-Amc" id="M08-ZS-K1q"/>
                         <outlet property="unscheduleButton" destination="bhc-9T-gd4" id="l98-8j-V6g"/>
